@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.Commands.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
