@@ -1,6 +1,6 @@
 Generating JSON files:
 
-1. Download the latest spreadsheet from {link coming soon}
+1. Download the latest spreadsheet from https://docs.google.com/spreadsheets/d/1avFYGBP_J6BYpxsn3W25g98MJ4ijJeHLdXLWY-lrM_0/edit?usp=sharing
 2. Run "generate_json.py"
 3. JSON files will be in the json directory.
 
