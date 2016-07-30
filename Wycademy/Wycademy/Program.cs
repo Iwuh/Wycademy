@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.Commands.Permissions.Levels;
+using Discord.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +30,10 @@ namespace Wycademy
             {
                 x.PrefixChar = '<';
                 x.HelpMode = HelpMode.Private;
+                x.ErrorHandler = CommandError;
             })
-            .UsingPermissionLevels((u, c) => (int)GetPermissions(u, c)); // Pass User, Channel to GetPermissions and then cast the returned PermissionLevels to int.
+            .UsingPermissionLevels((u, c) => (int)GetPermissions(u, c)) // Pass User, Channel to GetPermissions and then cast the returned PermissionLevels to int.
+            .UsingModules();
 
             //Set up message logging
             _client.MessageReceived += (s, e) =>
@@ -55,6 +58,26 @@ namespace Wycademy
             });
         }
 
+        // Handle command errors
+        public async void CommandError(object sender, CommandErrorEventArgs e)
+        {
+            switch (e.ErrorType)
+            {
+                case CommandErrorType.Exception:
+                    await e.Channel.SendMessage($":interrobang: Exception: {e.Exception.GetBaseException().Message} <@176775302897336331>");
+                    break;
+                case CommandErrorType.BadPermissions:
+                    await e.Channel.SendMessage(":no_entry: You don't have the required permissions to use this command!");
+                    break;
+                case CommandErrorType.InvalidInput:
+                    await e.Channel.SendMessage("Error: Invalid input.");
+                    break;
+                case CommandErrorType.BadArgCount:
+                    await e.Channel.SendMessage("Error: Invalid argument count. Try <help [command].");
+                    break;
+            }
+        }
+
         //Whenever we log data, this method is called.
         private void Log(object sender, LogMessageEventArgs e)
         {
@@ -64,15 +87,17 @@ namespace Wycademy
         // Used for minimum permissions on commands.
         public PermissionLevels GetPermissions(User u, Channel c)
         {
-            // Only allows access to BotOwner level commands if I call them
             if (u.Id == 176775302897336331)
             {
+                // Only allows access to BotOwner level commands if I call them
                 return PermissionLevels.BotOwner;
             }
             else if (u.IsBot)
             {
+                // Ignores all bots (and in the future, possibly a list of spammers)
                 return PermissionLevels.Ignored;
             }
+            // Otherwise it allows access to regular commands
             return PermissionLevels.User;
         }
     }
