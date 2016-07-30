@@ -1,6 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
-using Discord.Commands.Permissions;
+using Discord.Commands.Permissions.Levels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,8 @@ namespace Wycademy
             {
                 x.PrefixChar = '<';
                 x.HelpMode = HelpMode.Private;
-            });
+            })
+            .UsingPermissionLevels((u, c) => (int)GetPermissions(u, c)); // Pass User, Channel to GetPermissions and then cast the returned PermissionLevels to int.
 
             //Set up message logging
             _client.MessageReceived += (s, e) =>
@@ -58,6 +59,21 @@ namespace Wycademy
         private void Log(object sender, LogMessageEventArgs e)
         {
             Console.WriteLine($"[{e.Severity}] [{e.Source}] {e.Message}");
+        }
+
+        // Used for minimum permissions on commands.
+        public PermissionLevels GetPermissions(User u, Channel c)
+        {
+            // Only allows access to BotOwner level commands if I call them
+            if (u.Id == 176775302897336331)
+            {
+                return PermissionLevels.BotOwner;
+            }
+            else if (u.IsBot)
+            {
+                return PermissionLevels.Ignored;
+            }
+            return PermissionLevels.User;
         }
     }
 }
