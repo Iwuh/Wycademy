@@ -13,7 +13,7 @@ for i in wb.sheetnames:
     itemeffects = collections.OrderedDict()
     current_sheet = wb.get_sheet_by_name(i)
     # add columns B & C as a key:value pair to a dictionary depending on which category is in A
-    for j in range(1, current_sheet.max_row):
+    for j in range(1, current_sheet.max_row + 1):
         if current_sheet["A{0}".format(j)].value == "Hitzone":
             hitzones[current_sheet["B{0}".format(j)].value] = current_sheet["C{0}".format(j)].value
         elif current_sheet["A{0}".format(j)].value == "Stagger/Sever":

@@ -9,16 +9,6 @@
         "Mount": "60 100 860 0sec 0/0sec 150",
         "Blast": "70 30 670 0sec 0/0sec 100"
     },
-    "stagger/sever": {
-        "Head": "200 200 Red",
-        "Torso / Tail": "240 N/A Orange",
-        "Foreleg (Left)": "160 N/A White",
-        "Foreleg (Right)": "160 N/A White",
-        "Hind Leg (Left)": "140 N/A White",
-        "Hind Leg (Right)": "140 N/A White",
-        "Gills": "120 N/A Green",
-        "Uvula": "150 150 Green"
-    },
     "hitzones": {
         "Stomach (Fished Out)": "25 26 22 0 15 15 10 5 100 100",
         "Head (Fished Out)": "35 36 32 0 15 15 10 5 100 100",
@@ -36,6 +26,17 @@
     },
     "itemeffects": {
         "Flash Bomb": "0sec 0sec 0sec",
-        "Pitfall Trap": "0sec 0sec 0sec"
+        "Pitfall Trap": "0sec 0sec 0sec",
+        "Shock Trap": "8sec 8sec 15sec"
+    },
+    "stagger/sever": {
+        "Head": "200 200 Red",
+        "Torso / Tail": "240 N/A Orange",
+        "Foreleg (Left)": "160 N/A White",
+        "Foreleg (Right)": "160 N/A White",
+        "Hind Leg (Left)": "140 N/A White",
+        "Hind Leg (Right)": "140 N/A White",
+        "Gills": "120 N/A Green",
+        "Uvula": "150 150 Green"
     }
 }

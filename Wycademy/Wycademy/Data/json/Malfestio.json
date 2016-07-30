@@ -9,14 +9,6 @@
         "Mount": "60 100 760 0sec 0/0sec 150",
         "Blast": "70 30 670 0sec 0/0sec 100"
     },
-    "stagger/sever": {
-        "Head": "180 N/A Red",
-        "Torso": "200 N/A Orange",
-        "Wing (Left)": "150 N/A White",
-        "Wing (Right)": "150 N/A White",
-        "Feet": "140 N/A White",
-        "Tail": "120 N/A Green"
-    },
     "hitzones": {
         "Head": "55 50 55 10 15 5 5 5 100 100",
         "Torso": "40 40 40 5 10 5 5 5 0 100",
@@ -27,6 +19,15 @@
     },
     "itemeffects": {
         "Flash Bomb": "18sec 15sec 30sec",
-        "Pitfall Trap": "12sec 12sec 25sec"
+        "Pitfall Trap": "12sec 12sec 25sec",
+        "Shock Trap": "8sec 8sec 15sec"
+    },
+    "stagger/sever": {
+        "Head": "180 N/A Red",
+        "Torso": "200 N/A Orange",
+        "Wing (Left)": "150 N/A White",
+        "Wing (Right)": "150 N/A White",
+        "Feet": "140 N/A White",
+        "Tail": "120 N/A Green"
     }
 }

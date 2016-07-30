@@ -9,16 +9,17 @@
         "Mount": "50 80 600 0sec 0/0sec 150 ",
         "Blast": "70 30 670 0sec 0/0sec 100 "
     },
-    "stagger/sever": {
-        "Head": "90 N/A Red",
-        "Torso": "120 N/A White"
-    },
     "hitzones": {
         "Head": "85 85 80 30 30 40 30 10 100 100 ",
         "Torso": "55 55 50 25 25 30 25 5 0 100 "
     },
     "itemeffects": {
         "Flash Bomb": "20sec 15sec 30sec ",
-        "Pitfall Trap": "18sec 15sec 25sec "
+        "Pitfall Trap": "18sec 15sec 25sec ",
+        "Shock Trap": "15sec 12sec 18sec "
+    },
+    "stagger/sever": {
+        "Head": "90 N/A Red",
+        "Torso": "120 N/A White"
     }
 }
