@@ -48,6 +48,9 @@ namespace Wycademy
                 }
             };
 
+            // Add Modules to bot
+            _client.AddModule<InfoCommandModule>("Info Commands", ModuleFilter.None);
+
             //Bot token is stored in an environment variable so that nobody sees it when I push to GitHub :D
             string token = Environment.GetEnvironmentVariable("WYCADEMY_TOKEN", EnvironmentVariableTarget.User);
 
