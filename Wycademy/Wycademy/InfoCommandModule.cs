@@ -4,6 +4,7 @@ using Discord.Commands.Permissions.Levels;
 using Discord.Modules;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,14 @@ namespace Wycademy
                     .Parameter("Monster", ParameterType.Required)
                     .Do(async e =>
                     {
-
+                        try
+                        {
+                            MonsterInfo hitzoneinfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "hitzones"));
+                        }
+                        catch (FileNotFoundException)
+                        {
+                            await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                        }
                     });
                     info.CreateCommand("stagger")
                     .Alias("sever", "break", "extract")
@@ -40,7 +48,14 @@ namespace Wycademy
                     .Parameter("Monster", ParameterType.Required)
                     .Do(async e =>
                     {
-
+                        try
+                        {
+                            MonsterInfo staggerinfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "hitzones"));
+                        }
+                        catch (FileNotFoundException)
+                        {
+                            await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                        }
                     });
                     info.CreateCommand("status")
                     .Alias("trap")
@@ -49,7 +64,14 @@ namespace Wycademy
                     .Parameter("Monster", ParameterType.Required)
                     .Do(async e =>
                     {
-
+                        try
+                        {
+                            MonsterInfo statusinfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "hitzones"));
+                        }
+                        catch (FileNotFoundException)
+                        {
+                            await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                        }
                     });
                     info.CreateCommand("list")
                     .MinPermissions((int)PermissionLevels.User)

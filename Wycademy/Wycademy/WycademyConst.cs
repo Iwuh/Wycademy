@@ -11,6 +11,7 @@ namespace Wycademy
         public static char WYCADEMY_PREFIX = '<';
         public static ulong OWNER_ID = 176775302897336331;
         public static string JSON_PATH = @".\..\..\Data\json";
+        public static string INVALID_MONSTER_NAME = "is not a valid choice. Try `<info list` for the list of choices.";
 
         public static string[] MONSTER_LIST = new string[71] 
         {
