@@ -10,6 +10,7 @@ for i in wb.sheetnames:
     hitzones = collections.OrderedDict()
     staggersever = collections.OrderedDict()
     status = collections.OrderedDict()
+    itemeffects = collections.OrderedDict()
     current_sheet = wb.get_sheet_by_name(i)
     # add columns B & C as a key:value pair to a dictionary depending on which category is in A
     for j in range(1, current_sheet.max_row + 1):
@@ -20,12 +21,12 @@ for i in wb.sheetnames:
         elif current_sheet["A{0}".format(j)].value == "Status":
             status[current_sheet["B{0}".format(j)].value] = current_sheet["C{0}".format(j)].value
         elif current_sheet["A{0}".format(j)].value == "Item Effects":
-            status[current_sheet["B{0}".format(j)].value] = current_sheet["C{0}".format(j)].value
+            itemeffects[current_sheet["B{0}".format(j)].value] = current_sheet["C{0}".format(j)].value
         else:
             # If none of the previous matched then raise an error because that shouldn't happen and it needs to be fixed
             raise ValueError("Unknown category: " + current_sheet["A{0}".format(j)].value)
 
     # write the data to a json file, prettyprinted with 4 space indentations
     with open("json\{0}.json".format(i), "w+") as f:
-        json.dump({'hitzones': hitzones, 'stagger/sever': staggersever, 'status': status},
+        json.dump({'hitzones': hitzones, 'stagger/sever': staggersever, 'status': status, 'item effects': itemeffects},
                   f, indent=4)

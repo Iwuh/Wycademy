@@ -1,13 +1,4 @@
 {
-    "hitzones": {
-        "Head": "65 60 50 0 20 10 0 5 150 100",
-        "Neck (Below)": "42 42 25 0 15 10 0 5 0 100",
-        "Torso (Back)": "15 15 10 5 50 20 10 30 0 100",
-        "Stomach": "29 25 35 15 20 15 10 10 0 100",
-        "Tail (Below)": "50 30 15 5 15 10 0 5 0 100",
-        "Wings": "32 45 20 0 15 10 0 5 0 100",
-        "Feet": "32 32 10 0 10 10 5 5 0 100"
-    },
     "stagger/sever": {
         "Head": "130 N/A Orange",
         "Neck": "150 N/A White",
@@ -26,7 +17,18 @@
         "Exhaust": "280 200 680 0sec 5/10sec 0",
         "Jump": "50 70 400 0sec 0/0sec 0",
         "Mount": "50 80 800 0sec 0/0sec 0",
-        "Blast": "55 45 1090 0sec 0/0sec 100",
+        "Blast": "55 45 1090 0sec 0/0sec 100"
+    },
+    "hitzones": {
+        "Head": "65 60 50 0 20 10 0 5 150 100",
+        "Neck (Below)": "42 42 25 0 15 10 0 5 0 100",
+        "Torso (Back)": "15 15 10 5 50 20 10 30 0 100",
+        "Stomach": "29 25 35 15 20 15 10 10 0 100",
+        "Tail (Below)": "50 30 15 5 15 10 0 5 0 100",
+        "Wings": "32 45 20 0 15 10 0 5 0 100",
+        "Feet": "32 32 10 0 10 10 5 5 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "30sec 30sec 30sec",
         "Pitfall Trap": "17sec 17sec 25sec",
         "Shock Trap": "8sec 8sec 15sec"

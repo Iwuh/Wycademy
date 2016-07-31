@@ -1,16 +1,4 @@
 {
-    "hitzones": {
-        "Head": "85 80 75 0 5 15 10 5 100 100",
-        "Neck": "40 40 45 0 5 5 0 0 0 100",
-        "Torso": "30 30 30 10 20 25 10 5 0 100",
-        "Resonating Organs": "15 20 10 10 25 30 5 5 0 100",
-        "Resonating Organs (Exhausted)": "45 50 25 10 25 30 5 5 0 100",
-        "Tail": "50 45 45 0 10 10 5 0 0 100",
-        "Tail (Broken)": "50 50 45 0 10 10 5 0 0 100",
-        "Forelegs": "25 35 40 10 5 35 5 5 0 100",
-        "Hind Legs": "60 60 65 0 5 15 10 0 0 100",
-        "Hind Legs (Exhausted)": "65 65 70 0 5 15 10 0 0 100"
-    },
     "stagger/sever": {
         "Head": "120 N/A Red",
         "Torso": "170 N/A Orange",
@@ -29,7 +17,21 @@
         "Exhaust": "180 75 480 0sec 5/10sec 0",
         "Jump": "50 60 650 0sec 0/0sec 0",
         "Mount": "50 60 700 0sec 0/0sec 150",
-        "Blast": "70 30 670 0sec 0/0sec 100",
+        "Blast": "70 30 670 0sec 0/0sec 100"
+    },
+    "hitzones": {
+        "Head": "85 80 75 0 5 15 10 5 100 100",
+        "Neck": "40 40 45 0 5 5 0 0 0 100",
+        "Torso": "30 30 30 10 20 25 10 5 0 100",
+        "Resonating Organs": "15 20 10 10 25 30 5 5 0 100",
+        "Resonating Organs (Exhausted)": "45 50 25 10 25 30 5 5 0 100",
+        "Tail": "50 45 45 0 10 10 5 0 0 100",
+        "Tail (Broken)": "50 50 45 0 10 10 5 0 0 100",
+        "Forelegs": "25 35 40 10 5 35 5 5 0 100",
+        "Hind Legs": "60 60 65 0 5 15 10 0 0 100",
+        "Hind Legs (Exhausted)": "65 65 70 0 5 15 10 0 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "20sec 20sec 30sec",
         "Pitfall Trap": "16sec 12sec 20sec",
         "Shock Trap": "10sec 8sec 15sec"

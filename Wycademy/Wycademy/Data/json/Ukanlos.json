@@ -1,20 +1,4 @@
 {
-    "hitzones": {
-        "Head": "45 45 65 20 5 0 20 15 100 100 ",
-        "Head (Broken)": "50 45 70 25 5 0 20 20 100 100 ",
-        "Neck": "20 30 20 15 5 0 15 10 0 100 ",
-        "Neck (Broken)": "30 40 30 15 5 0 15 10 0 100 ",
-        "Stomach": "35 40 25 15 5 0 15 10 0 100 ",
-        "Stomach (Broken)": "40 50 30 20 5 0 15 15 0 100 ",
-        "Torso (Back)": "20 25 15 20 5 0 25 10 0 100 ",
-        "Torso (Back) (Broken)": "25 30 20 20 5 0 25 10 0 100 ",
-        "Tail": "30 35 15 15 5 0 15 15 0 100 ",
-        "Tail (Broken)": "30 35 20 15 5 0 15 20 0 100 ",
-        "Forelegs": "25 20 15 15 5 0 10 10 0 100 ",
-        "Forelegs (Broken)": "30 25 15 20 5 0 10 10 0 100 ",
-        "Hind Legs": "30 25 30 25 5 0 10 15 0 100 ",
-        "Hind Legs (Broken)": "30 30 40 25 5 0 10 15 0 100 "
-    },
     "stagger/sever": {
         "Head": "270 N/A Red",
         "Stomach": "120 N/A Orange",
@@ -33,7 +17,25 @@
         "Exhaust": "0 0 0 0sec 0/0sec 0 ",
         "Jump": "50 120 530 0sec 0/0sec 0 ",
         "Mount": "60 120 900 0sec 0/0sec 0 ",
-        "Blast": "140 75 2015 0sec 0/0sec 300 ",
+        "Blast": "140 75 2015 0sec 0/0sec 300 "
+    },
+    "hitzones": {
+        "Head": "45 45 65 20 5 0 20 15 100 100 ",
+        "Head (Broken)": "50 45 70 25 5 0 20 20 100 100 ",
+        "Neck": "20 30 20 15 5 0 15 10 0 100 ",
+        "Neck (Broken)": "30 40 30 15 5 0 15 10 0 100 ",
+        "Stomach": "35 40 25 15 5 0 15 10 0 100 ",
+        "Stomach (Broken)": "40 50 30 20 5 0 15 15 0 100 ",
+        "Torso (Back)": "20 25 15 20 5 0 25 10 0 100 ",
+        "Torso (Back) (Broken)": "25 30 20 20 5 0 25 10 0 100 ",
+        "Tail": "30 35 15 15 5 0 15 15 0 100 ",
+        "Tail (Broken)": "30 35 20 15 5 0 15 20 0 100 ",
+        "Forelegs": "25 20 15 15 5 0 10 10 0 100 ",
+        "Forelegs (Broken)": "30 25 15 20 5 0 10 10 0 100 ",
+        "Hind Legs": "30 25 30 25 5 0 10 15 0 100 ",
+        "Hind Legs (Broken)": "30 30 40 25 5 0 10 15 0 100 "
+    },
+    "item effects": {
         "Flash Bomb": "1sec 1sec 1sec ",
         "Pitfall Trap": "0sec 0sec 0sec ",
         "Shock Trap": "0sec 0sec 0sec "

@@ -1,8 +1,4 @@
 {
-    "hitzones": {
-        "Head": "38 38 45 20 30 10 30 10 100 100 ",
-        "Torso": "56 56 60 15 25 10 25 5 0 100 "
-    },
     "stagger/sever": {
         "Head": "120 N/A Red",
         "Torso": "150 N/A White"
@@ -15,7 +11,13 @@
         "Exhaust": "150 75 300 0sec 5/10sec 0 ",
         "Jump": "30 40 210 0sec 0/0sec 0 ",
         "Mount": "50 80 600 0sec 0/0sec 150 ",
-        "Blast": "55 45 1080 0sec 0/0sec 100 ",
+        "Blast": "55 45 1080 0sec 0/0sec 100 "
+    },
+    "hitzones": {
+        "Head": "38 38 45 20 30 10 30 10 100 100 ",
+        "Torso": "56 56 60 15 25 10 25 5 0 100 "
+    },
+    "item effects": {
         "Flash Bomb": "20sec 15sec 30sec ",
         "Pitfall Trap": "18sec 15sec 25sec ",
         "Shock Trap": "15sec 12sec 18sec "

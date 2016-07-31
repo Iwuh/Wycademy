@@ -1,21 +1,4 @@
 {
-    "hitzones": {
-        "Head": "55 55 30 5 5 5 0 5 100 100",
-        "Head (Broken)": "55 55 30 6 6 10 0 5 100 100",
-        "Head (Charged)": "63 63 50 10 10 15 0 5 100 100",
-        "Stomach": "24 24 15 10 10 20 0 5 0 100",
-        "Stomach (Broken)": "25 25 20 5 5 5 0 5 0 100",
-        "Stomach (Charged)": "25 25 15 10 10 10 0 5 0 100",
-        "Torso (Back)": "25 25 20 5 5 5 0 5 0 100",
-        "Torso (Back) (Broken)": "25 25 25 6 10 15 0 5 0 100",
-        "Wings": "25 25 20 5 5 5 0 5 0 100",
-        "Wings (Broken)": "55 55 40 10 12 15 0 5 0 100",
-        "Feet": "25 25 15 10 10 15 0 5 0 100",
-        "Feet (Broken)": "25 25 20 5 5 10 0 5 0 100",
-        "Tail": "35 35 20 10 10 20 0 5 0 100",
-        "Tail (Broken)": "35 35 26 10 15 25 0 5 0 100",
-        "Tail (Tip) (Broken)": "55 55 45 10 20 25 0 5 0 100"
-    },
     "stagger/sever": {
         "Head": "200 N/A Red",
         "Wing (Left)": "180 N'/A White",
@@ -34,7 +17,26 @@
         "Exhaust": "180 75 480 0sec 5/10sec 0",
         "Jump": "200 120 560 0sec 0/0sec 0",
         "Mount": "60 100 800 0sec 0/0sec 150",
-        "Blast": "70 55 1445 0sec 0/0sec 100",
+        "Blast": "70 55 1445 0sec 0/0sec 100"
+    },
+    "hitzones": {
+        "Head": "55 55 30 5 5 5 0 5 100 100",
+        "Head (Broken)": "55 55 30 6 6 10 0 5 100 100",
+        "Head (Charged)": "63 63 50 10 10 15 0 5 100 100",
+        "Stomach": "24 24 15 10 10 20 0 5 0 100",
+        "Stomach (Broken)": "25 25 20 5 5 5 0 5 0 100",
+        "Stomach (Charged)": "25 25 15 10 10 10 0 5 0 100",
+        "Torso (Back)": "25 25 20 5 5 5 0 5 0 100",
+        "Torso (Back) (Broken)": "25 25 25 6 10 15 0 5 0 100",
+        "Wings": "25 25 20 5 5 5 0 5 0 100",
+        "Wings (Broken)": "55 55 40 10 12 15 0 5 0 100",
+        "Feet": "25 25 15 10 10 15 0 5 0 100",
+        "Feet (Broken)": "25 25 20 5 5 10 0 5 0 100",
+        "Tail": "35 35 20 10 10 20 0 5 0 100",
+        "Tail (Broken)": "35 35 26 10 15 25 0 5 0 100",
+        "Tail (Tip) (Broken)": "55 55 45 10 20 25 0 5 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "18sec 18sec 30sec",
         "Pitfall Trap": "12sec 12sec 25sec",
         "Shock Trap": "4sec 3sec 15sec"

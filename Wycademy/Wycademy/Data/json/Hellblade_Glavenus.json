@@ -1,18 +1,4 @@
 {
-    "hitzones": {
-        "Head": "55 55 40 0 20 10 10 10 100 100",
-        "Head (Red Hot)": "63 63 40 0 10 25 5 5 100 100",
-        "Throat": "63 63 45 0 25 15 15 15 0 100",
-        "Throat (Red Hot)": "70 70 50 0 15 25 10 10 0 100",
-        "Dorsal Horns": "36 36 50 0 20 10 5 5 0 100",
-        "Torso": "25 25 20 0 15 10 5 5 0 100",
-        "Forelegs": "41 41 20 0 15 5 5 5 0 100",
-        "Hind Legs": "25 25 20 0 10 5 5 5 0 100",
-        "Tail (Base)": "36 36 20 0 15 10 10 10 0 100",
-        "Tail (Base) (Overheated)": "36 36 20 0 10 15 5 5 0 100",
-        "Tail (Blade)": "55 55 40 0 30 10 10 10 0 100",
-        "Tail (Blade) (Overheated)": "63 63 40 0 10 30 10 10 0 100"
-    },
     "stagger/sever": {
         "Head": "350 350 Red",
         "Torso (Back)": "300 N/A Orange",
@@ -30,7 +16,23 @@
         "Exhaust": "180 150 780 0sec 5/10sec 0",
         "Jump": "150 120 410 0sec 0/0sec 0",
         "Mount": "70 110 800 0sec 0/0sec 150",
-        "Blast": "130 45 1030 0sec 0/0sec 50",
+        "Blast": "130 45 1030 0sec 0/0sec 50"
+    },
+    "hitzones": {
+        "Head": "55 55 40 0 20 10 10 10 100 100",
+        "Head (Red Hot)": "63 63 40 0 10 25 5 5 100 100",
+        "Throat": "63 63 45 0 25 15 15 15 0 100",
+        "Throat (Red Hot)": "70 70 50 0 15 25 10 10 0 100",
+        "Dorsal Horns": "36 36 50 0 20 10 5 5 0 100",
+        "Torso": "25 25 20 0 15 10 5 5 0 100",
+        "Forelegs": "41 41 20 0 15 5 5 5 0 100",
+        "Hind Legs": "25 25 20 0 10 5 5 5 0 100",
+        "Tail (Base)": "36 36 20 0 15 10 10 10 0 100",
+        "Tail (Base) (Overheated)": "36 36 20 0 10 15 5 5 0 100",
+        "Tail (Blade)": "55 55 40 0 30 10 10 10 0 100",
+        "Tail (Blade) (Overheated)": "63 63 40 0 10 30 10 10 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "15sec 15sec 30sec",
         "Pitfall Trap": "12sec 10sec 20sec",
         "Shock Trap": "12sec 10sec 15sec"

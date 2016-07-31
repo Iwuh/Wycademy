@@ -1,14 +1,4 @@
 {
-    "hitzones": {
-        "Torso (Back)": "30 30 10 10 0 0 5 15 0 0 ",
-        "Shell": "15 15 10 5 0 0 0 5 0 0 ",
-        "Head": "65 65 40 15 0 0 10 20 0 0 ",
-        "Head (Covered)": "30 30 15 0 0 0 0 0 0 0 ",
-        "Fin": "22 22 15 5 0 0 0 10 0 0 ",
-        "Body": "15 15 10 0 0 0 0 0 0 0 ",
-        "Blowhole": "38 38 20 5 0 0 0 10 0 0 ",
-        "Back Weakness": "70 70 70 20 0 0 10 30 0 0 "
-    },
     "stagger/sever": {
         "Left Feeler": "150 150 Red",
         "Right Feeler": "150 150 Red",
@@ -27,7 +17,19 @@
         "Exhaust": "0 0 0 0sec 0/0sec 0 ",
         "Jump": "0 0 0 0sec 0/0sec 0 ",
         "Mount": "0 0 0 0sec 0/0sec 0 ",
-        "Blast": "70 55 1445 0sec 0/0sec 150 ",
+        "Blast": "70 55 1445 0sec 0/0sec 150 "
+    },
+    "hitzones": {
+        "Torso (Back)": "30 30 10 10 0 0 5 15 0 0 ",
+        "Shell": "15 15 10 5 0 0 0 5 0 0 ",
+        "Head": "65 65 40 15 0 0 10 20 0 0 ",
+        "Head (Covered)": "30 30 15 0 0 0 0 0 0 0 ",
+        "Fin": "22 22 15 5 0 0 0 10 0 0 ",
+        "Body": "15 15 10 0 0 0 0 0 0 0 ",
+        "Blowhole": "38 38 20 5 0 0 0 10 0 0 ",
+        "Back Weakness": "70 70 70 20 0 0 10 30 0 0 "
+    },
+    "item effects": {
         "Flash Bomb": "0sec 0sec 0sec ",
         "Pitfall Trap": "0sec 0sec 0sec ",
         "Shock Trap": "0sec 0sec 0sec "

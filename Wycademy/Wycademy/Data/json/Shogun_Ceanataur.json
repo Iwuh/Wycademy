@@ -1,15 +1,4 @@
 {
-    "hitzones": {
-        "Head": "50 45 40 10 10 20 35 0 100 100",
-        "Torso": "35 35 25 15 5 10 20 0 0 100",
-        "Shell": "25 45 25 20 5 10 25 0 0 100",
-        "Shell (Alternate)": "20 30 15 15 5 10 20 0 0 100",
-        "Shell (Broken)": "45 50 35 10 10 15 20 0 0 100",
-        "Feet": "35 30 30 15 5 10 15 0 0 100",
-        "Claws": "25 30 15 35 5 10 20 0 0 100",
-        "Arms": "25 35 25 15 5 10 15 0 0 100",
-        "Shell Flesh": "35 40 30 10 5 10 20 0 0 100"
-    },
     "stagger/sever": {
         "Head": "170 N/A Green",
         "Torso": "170 N/A Green",
@@ -28,7 +17,20 @@
         "Exhaust": "180 75 480 0sec 5/10sec 0",
         "Jump": "50 120 530 0sec 0/0sec 0",
         "Mount": "70 110 730 0sec 0/0sec 150",
-        "Blast": "70 30 670 0sec 0/0sec 100",
+        "Blast": "70 30 670 0sec 0/0sec 100"
+    },
+    "hitzones": {
+        "Head": "50 45 40 10 10 20 35 0 100 100",
+        "Torso": "35 35 25 15 5 10 20 0 0 100",
+        "Shell": "25 45 25 20 5 10 25 0 0 100",
+        "Shell (Alternate)": "20 30 15 15 5 10 20 0 0 100",
+        "Shell (Broken)": "45 50 35 10 10 15 20 0 0 100",
+        "Feet": "35 30 30 15 5 10 15 0 0 100",
+        "Claws": "25 30 15 35 5 10 20 0 0 100",
+        "Arms": "25 35 25 15 5 10 15 0 0 100",
+        "Shell Flesh": "35 40 30 10 5 10 20 0 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "0sec 0sec 0sec",
         "Pitfall Trap": "12sec 12sec 25sec",
         "Shock Trap": "12sec 10sec 15sec"

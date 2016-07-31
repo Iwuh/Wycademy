@@ -1,19 +1,4 @@
 {
-    "hitzones": {
-        "Head": "65 65 50 0 25 15 10 15 100 100 ",
-        "Head (Red Hot)": "70 70 35 0 30 15 5 5 100 100 ",
-        "Throat": "70 70 30 0 30 15 15 15 0 100 ",
-        "Throat (Red Hot)": "75 75 35 0 35 15 15 10 0 100 ",
-        "Dorsal Horns": "36 36 45 0 20 10 5 10 0 100 ",
-        "Torso": "25 25 20 0 20 10 5 10 0 100 ",
-        "Forelegs": "41 41 20 0 15 5 5 5 0 100 ",
-        "Hind Legs": "25 25 20 0 15 5 5 5 0 100 ",
-        "Tail (Base)": "36 36 20 0 25 15 10 15 0 100 ",
-        "Tail (Blade)": "22 22 22 0 20 5 5 5 0 100 ",
-        "Tail (Blade) (Rusty)": "17 17 17 0 20 15 5 5 0 100 ",
-        "Tail (Blade) (Red Hot)": "65 65 55 0 35 20 15 15 0 100 ",
-        "Tail (Blade) (Broken)": "36 36 36 0 20 15 10 5 0 100 "
-    },
     "stagger/sever": {
         "Head": "350 350 Red",
         "Torso (Back)": "300 N/A Orange",
@@ -31,7 +16,24 @@
         "Exhaust": "180 150 780 0sec 5/10sec 0 ",
         "Jump": "150 120 410 0sec 0/0sec 0 ",
         "Mount": "60 100 800 0sec 0/0sec 150 ",
-        "Blast": "130 45 1030 0sec 0/0sec 100 ",
+        "Blast": "130 45 1030 0sec 0/0sec 100 "
+    },
+    "hitzones": {
+        "Head": "65 65 50 0 25 15 10 15 100 100 ",
+        "Head (Red Hot)": "70 70 35 0 30 15 5 5 100 100 ",
+        "Throat": "70 70 30 0 30 15 15 15 0 100 ",
+        "Throat (Red Hot)": "75 75 35 0 35 15 15 10 0 100 ",
+        "Dorsal Horns": "36 36 45 0 20 10 5 10 0 100 ",
+        "Torso": "25 25 20 0 20 10 5 10 0 100 ",
+        "Forelegs": "41 41 20 0 15 5 5 5 0 100 ",
+        "Hind Legs": "25 25 20 0 15 5 5 5 0 100 ",
+        "Tail (Base)": "36 36 20 0 25 15 10 15 0 100 ",
+        "Tail (Blade)": "22 22 22 0 20 5 5 5 0 100 ",
+        "Tail (Blade) (Rusty)": "17 17 17 0 20 15 5 5 0 100 ",
+        "Tail (Blade) (Red Hot)": "65 65 55 0 35 20 15 15 0 100 ",
+        "Tail (Blade) (Broken)": "36 36 36 0 20 15 10 5 0 100 "
+    },
+    "item effects": {
         "Flash Bomb": "15sec 15sec 30sec ",
         "Pitfall Trap": "12sec 10sec 20sec ",
         "Shock Trap": "12sec 10sec 15sec "

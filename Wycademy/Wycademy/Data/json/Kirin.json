@@ -1,14 +1,4 @@
 {
-    "hitzones": {
-        "Head": "50 50 45 5 5 5 0 5 100 100",
-        "Head (Rage)": "40 40 35 5 5 5 0 5 100 100",
-        "Torso": "24 24 20 10 10 10 0 5 0 100",
-        "Torso (Rage)": "24 24 20 15 15 10 0 5 0 100",
-        "Torso (Below)": "15 15 15 10 10 10 0 5 0 100",
-        "Torso (Below) (Rage)": "27 27 25 15 15 10 0 5 0 100",
-        "Forelegs": "28 28 32 5 5 5 0 5 0 100",
-        "Forelegs (Rage)": "25 25 30 5 5 5 0 5 0 100"
-    },
     "stagger/sever": {
         "Head": "250 N/A Red",
         "Torso": "220 N/A Orange",
@@ -22,7 +12,19 @@
         "Exhaust": "0 0 0 0sec 0/0sec 0",
         "Jump": "50 120 530 0sec 0/0sec 0",
         "Mount": "50 80 850 0sec 0/0sec 0",
-        "Blast": "70 30 670 0sec 0/0sec 100",
+        "Blast": "70 30 670 0sec 0/0sec 100"
+    },
+    "hitzones": {
+        "Head": "50 50 45 5 5 5 0 5 100 100",
+        "Head (Rage)": "40 40 35 5 5 5 0 5 100 100",
+        "Torso": "24 24 20 10 10 10 0 5 0 100",
+        "Torso (Rage)": "24 24 20 15 15 10 0 5 0 100",
+        "Torso (Below)": "15 15 15 10 10 10 0 5 0 100",
+        "Torso (Below) (Rage)": "27 27 25 15 15 10 0 5 0 100",
+        "Forelegs": "28 28 32 5 5 5 0 5 0 100",
+        "Forelegs (Rage)": "25 25 30 5 5 5 0 5 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "0sec 0sec 0sec",
         "Pitfall Trap": "0sec 0sec 0sec",
         "Shock Trap": "0sec 0sec 0sec"

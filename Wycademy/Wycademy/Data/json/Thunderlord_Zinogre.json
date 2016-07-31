@@ -1,21 +1,4 @@
 {
-    "hitzones": {
-        "Head": "65 65 35 10 10 15 0 5 100 100 ",
-        "Head (Charged)": "65 65 35 10 10 15 0 10 120 100",
-        "Torso": "25 25 10 5 5 5 0 5 0 100 ",
-        "Torso (Charged)": "30 30 10 5 10 10 0 5 0 100",
-        "Torso (Back)": "45 40 40 10 15 20 0 5 0 100 ",
-        "Torso (Back) (Charged)": "45 40 40 15 20 25 0 5 0 100",
-        "Forelegs": "25 30 20 5 5 15 0 5 0 100 ",
-        "Forelegs (Charged)": "17 17 10 5 5 25 0 5 0 100",
-        "Hind Legs": "45 45 35 5 5 10 0 5 0 100 ",
-        "Hind Legs (Charged)": "50 50 35 10 10 15 0 5 0 100",
-        "Shoulders": "44 44 25 5 5 10 0 5 0 100 ",
-        "Shoulders (Charged)": "45 45 25 10 10 15 0 5 0 100",
-        "Tail": "30 25 25 5 5 5 0 5 0 100 ",
-        "Tail (Charged)": "30 25 25 5 10 10 0 5 0 100",
-        "Tail (Tip)": "21 19 10 10 15 25 0 5 0 100"
-    },
     "stagger/sever": {
         "Head": "380 N/A Red",
         "Torso": "300 N/A Orange",
@@ -34,7 +17,26 @@
         "Exhaust": "250 150 850 0sec 5/10sec 0 ",
         "Jump": "50 50 850 0sec 0/0sec 0 ",
         "Mount": "70 100 800 0sec 0/0sec 150 ",
-        "Blast": "85 50 585 0sec 0/0sec 100 ",
+        "Blast": "85 50 585 0sec 0/0sec 100 "
+    },
+    "hitzones": {
+        "Head": "65 65 35 10 10 15 0 5 100 100 ",
+        "Head (Charged)": "65 65 35 10 10 15 0 10 120 100",
+        "Torso": "25 25 10 5 5 5 0 5 0 100 ",
+        "Torso (Charged)": "30 30 10 5 10 10 0 5 0 100",
+        "Torso (Back)": "45 40 40 10 15 20 0 5 0 100 ",
+        "Torso (Back) (Charged)": "45 40 40 15 20 25 0 5 0 100",
+        "Forelegs": "25 30 20 5 5 15 0 5 0 100 ",
+        "Forelegs (Charged)": "17 17 10 5 5 25 0 5 0 100",
+        "Hind Legs": "45 45 35 5 5 10 0 5 0 100 ",
+        "Hind Legs (Charged)": "50 50 35 10 10 15 0 5 0 100",
+        "Shoulders": "44 44 25 5 5 10 0 5 0 100 ",
+        "Shoulders (Charged)": "45 45 25 10 10 15 0 5 0 100",
+        "Tail": "30 25 25 5 5 5 0 5 0 100 ",
+        "Tail (Charged)": "30 25 25 5 10 10 0 5 0 100",
+        "Tail (Tip)": "21 19 10 10 15 25 0 5 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "20sec 15sec 30sec ",
         "Pitfall Trap": "12sec 12sec 25sec ",
         "Shock Trap": "12sec 8sec 15sec "

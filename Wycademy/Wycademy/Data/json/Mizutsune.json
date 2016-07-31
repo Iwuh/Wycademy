@@ -1,22 +1,4 @@
 {
-    "hitzones": {
-        "Head": "63 63 45 5 0 5 10 8 100 100 ",
-        "Head (Rage)": "63 63 45 10 0 5 15 10 100 100 ",
-        "Foreleg (Left)": "21 21 10 5 0 15 35 30 0 100 ",
-        "Foreleg (Left) (Broken)": "28 28 10 10 0 5 15 10 0 100 ",
-        "Foreleg (Right)": "21 21 10 5 0 15 35 30 0 100 ",
-        "Foreleg (Right) (Broken)": "28 28 10 10 0 5 15 10 0 100 ",
-        "Hind Legs": "38 38 25 5 0 5 10 5 0 100 ",
-        "Hind Legs (Rage)": "38 38 30 10 0 5 15 5 0 100 ",
-        "Torso": "25 25 20 5 0 5 10 5 0 100 ",
-        "Torso (Rage)": "25 25 20 5 0 5 15 5 0 100 ",
-        "Tail": "43 33 40 5 0 5 10 5 0 100 ",
-        "Tail (Broken)": "43 33 40 5 0 5 15 5 0 100 ",
-        "Fin (Head)": "43 43 40 8 0 5 10 8 0 100 ",
-        "Fin (Head) (Rage)": "43 43 40 10 0 5 15 10 0 100 ",
-        "Fin (Dorsal)": "43 43 45 8 0 5 15 10 0 100 ",
-        "Fin (Dorsal) (Rage)": "43 43 45 10 0 5 20 15 0 100 "
-    },
     "stagger/sever": {
         "Head": "270 N/A Red",
         "Foreleg (Left)": "230 N/A Orange",
@@ -35,7 +17,27 @@
         "Exhaust": "180 75 480 0sec 5/10sec 0 ",
         "Jump": "80 120 530 0sec 0/0sec 0 ",
         "Mount": "60 110 800 0sec 0/0sec 150 ",
-        "Blast": "70 50 670 0sec 0/0sec 80 ",
+        "Blast": "70 50 670 0sec 0/0sec 80 "
+    },
+    "hitzones": {
+        "Head": "63 63 45 5 0 5 10 8 100 100 ",
+        "Head (Rage)": "63 63 45 10 0 5 15 10 100 100 ",
+        "Foreleg (Left)": "21 21 10 5 0 15 35 30 0 100 ",
+        "Foreleg (Left) (Broken)": "28 28 10 10 0 5 15 10 0 100 ",
+        "Foreleg (Right)": "21 21 10 5 0 15 35 30 0 100 ",
+        "Foreleg (Right) (Broken)": "28 28 10 10 0 5 15 10 0 100 ",
+        "Hind Legs": "38 38 25 5 0 5 10 5 0 100 ",
+        "Hind Legs (Rage)": "38 38 30 10 0 5 15 5 0 100 ",
+        "Torso": "25 25 20 5 0 5 10 5 0 100 ",
+        "Torso (Rage)": "25 25 20 5 0 5 15 5 0 100 ",
+        "Tail": "43 33 40 5 0 5 10 5 0 100 ",
+        "Tail (Broken)": "43 33 40 5 0 5 15 5 0 100 ",
+        "Fin (Head)": "43 43 40 8 0 5 10 8 0 100 ",
+        "Fin (Head) (Rage)": "43 43 40 10 0 5 15 10 0 100 ",
+        "Fin (Dorsal)": "43 43 45 8 0 5 15 10 0 100 ",
+        "Fin (Dorsal) (Rage)": "43 43 45 10 0 5 20 15 0 100 "
+    },
+    "item effects": {
         "Flash Bomb": "18sec 18sec 30sec ",
         "Pitfall Trap": "12sec 10sec 25sec ",
         "Shock Trap": "10sec 8sec 15sec "

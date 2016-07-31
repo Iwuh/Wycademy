@@ -34,7 +34,39 @@ namespace Wycademy
                     {
                         try
                         {
-                            MonsterInfo hitzoneinfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "hitzones"));
+                            MonsterInfo hitzoneInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Hitzones"));
+
+                            // Get the length of the longest category
+                            int columnTitleWidth = (WycademyConst.HITZONE_COLUMN_NAMES.Max(x => x.Length));
+                            // Get the length of the longest hitzone
+                            int rowTitleWidth = hitzoneInfo.Data.Keys.Max(x => x.Length);
+
+                            StringBuilder sb = new StringBuilder();
+                            sb.AppendLine($"{hitzoneInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine("```");
+                            // Add blank spaces in the upper-left corner.
+                            sb.Append(' ', rowTitleWidth);
+                            // Add column titles followed by a newline
+                            foreach (var title in WycademyConst.HITZONE_COLUMN_NAMES)
+                            {
+                                sb.Append($"| {PadCenter(title, columnTitleWidth)}");
+                            }
+                            sb.AppendLine();
+                            // Now add a new line for each hitzone and it's values
+                            foreach (var hitzone in hitzoneInfo.Data.Keys)
+                            {
+                                sb.Append(hitzone + new string(' ', rowTitleWidth - hitzone.Length));
+                                // I used to just use a foreach but I'm no longer using the last 2 elements in the array to save space
+                                // and I am _not_ going through 71 sheets and editing the numbers. I'll just use a regular for loop.
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    sb.Append($"| {PadCenter(hitzoneInfo.Data[hitzone][i], columnTitleWidth)}");
+                                }
+                                sb.AppendLine();
+                            }
+                            sb.AppendLine("```");
+
+                            await e.Channel.SendMessage(sb.ToString());
                         }
                         catch (FileNotFoundException)
                         {
@@ -50,7 +82,37 @@ namespace Wycademy
                     {
                         try
                         {
-                            MonsterInfo staggerinfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "hitzones"));
+                            MonsterInfo staggerInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Stagger/Sever"));
+
+                            // Get the length of the longest category
+                            int columnTitleWidth = (WycademyConst.STAGGER_COLUMN_NAMES.Max(x => x.Length));
+                            // Get the length of the longest body part name
+                            int rowTitleWidth = staggerInfo.Data.Keys.Max(x => x.Length);
+
+                            StringBuilder sb = new StringBuilder();
+                            sb.AppendLine($"{staggerInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine("```");
+                            // Add blank spaces in the upper-left corner.
+                            sb.Append(' ', rowTitleWidth);
+                            // Add column titles followed by a newline
+                            foreach (var title in WycademyConst.STAGGER_COLUMN_NAMES)
+                            {
+                                sb.Append($"| {PadCenter(title, columnTitleWidth)}");
+                            }
+                            sb.AppendLine();
+                            // Now add a new line for each hitzone and it's values
+                            foreach (var bodypart in staggerInfo.Data.Keys)
+                            {
+                                sb.Append(bodypart + new string(' ', rowTitleWidth - bodypart.Length));
+                                foreach (var value in staggerInfo.Data[bodypart])
+                                {
+                                    sb.Append($"| {PadCenter(value, columnTitleWidth)}");
+                                }
+                                sb.AppendLine();
+                            }
+                            sb.AppendLine("```");
+
+                            await e.Channel.SendMessage(sb.ToString());
                         }
                         catch (FileNotFoundException)
                         {
@@ -58,15 +120,90 @@ namespace Wycademy
                         }
                     });
                     info.CreateCommand("status")
-                    .Alias("trap")
                     .MinPermissions((int)PermissionLevels.User)
-                    .Description("Provides status, flash bomb, and trap information about a monster. Alias is 'trap'.")
+                    .Description("Provides status information about a monster.")
                     .Parameter("Monster", ParameterType.Required)
                     .Do(async e =>
                     {
                         try
                         {
-                            MonsterInfo statusinfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "hitzones"));
+                            MonsterInfo statusInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Status"));
+
+                            // Get the length of the longest category
+                            int columnTitleWidth = (WycademyConst.STATUS_COLUMN_NAMES.Max(x => x.Length));
+                            // Get the length of the longest status
+                            int rowTitleWidth = statusInfo.Data.Keys.Max(x => x.Length);
+
+                            StringBuilder sb = new StringBuilder();
+                            sb.AppendLine($"{statusInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine("```");
+                            // Add blank spaces in the upper-left corner.
+                            sb.Append(' ', rowTitleWidth);
+                            // Add column titles followed by a newline
+                            foreach (var title in WycademyConst.STATUS_COLUMN_NAMES)
+                            {
+                                sb.Append($"| {PadCenter(title, columnTitleWidth)}");
+                            }
+                            sb.AppendLine();
+                            // Now add a new line for each hitzone and it's values
+                            foreach (var bodypart in statusInfo.Data.Keys)
+                            {
+                                sb.Append(bodypart + new string(' ', rowTitleWidth - bodypart.Length));
+                                foreach (var value in statusInfo.Data[bodypart])
+                                {
+                                    sb.Append($"| {PadCenter(value, columnTitleWidth)}");
+                                }
+                                sb.AppendLine();
+                            }
+                            sb.AppendLine("```");
+
+                            await e.Channel.SendMessage(sb.ToString());
+                        }
+                        catch (FileNotFoundException)
+                        {
+                            await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                        }
+                    });
+                    info.CreateCommand("trap")
+                    .Alias("item")
+                    .MinPermissions((int)PermissionLevels.User)
+                    .Description("Provides flash bomb and trap information about a monster. Alias is 'item'.")
+                    .Parameter("Monster", ParameterType.Required)
+                    .Do(async e =>
+                    {
+                        try
+                        {
+                            MonsterInfo itemInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Item Effects"));
+
+                            // Get the length of the longest category
+                            int columnTitleWidth = (WycademyConst.ITEMEFFECTS_COLUMN_NAMES.Max(x => x.Length));
+                            // Get the length of the longest status
+                            int rowTitleWidth = itemInfo.Data.Keys.Max(x => x.Length);
+
+                            StringBuilder sb = new StringBuilder();
+                            sb.AppendLine($"{itemInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine("```");
+                            // Add blank spaces in the upper-left corner.
+                            sb.Append(' ', rowTitleWidth);
+                            // Add column titles followed by a newline
+                            foreach (var title in WycademyConst.ITEMEFFECTS_COLUMN_NAMES)
+                            {
+                                sb.Append($"| {PadCenter(title, columnTitleWidth)}");
+                            }
+                            sb.AppendLine();
+                            // Now add a new line for each hitzone and it's values
+                            foreach (var bodypart in itemInfo.Data.Keys)
+                            {
+                                sb.Append(bodypart + new string(' ', rowTitleWidth - bodypart.Length));
+                                foreach (var value in itemInfo.Data[bodypart])
+                                {
+                                    sb.Append($"| {PadCenter(value, columnTitleWidth)}");
+                                }
+                                sb.AppendLine();
+                            }
+                            sb.AppendLine("```");
+
+                            await e.Channel.SendMessage(sb.ToString());
                         }
                         catch (FileNotFoundException)
                         {
@@ -91,6 +228,18 @@ namespace Wycademy
                     });
                 });
             });
+        }
+
+        // Centers a string inside a given amount of whitespace.
+        public string PadCenter(string original, int totalLength)
+        {
+            int delta = totalLength - original.Length;
+            if (delta == 0)
+            {
+                // If the string takes up 100% of the whitespace then just return the original string
+                return original;
+            }
+            return original.PadLeft(delta / 2 + original.Length).PadRight(totalLength);
         }
     }
 }

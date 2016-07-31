@@ -1,16 +1,4 @@
 {
-    "hitzones": {
-        "Head": "65 55 55 15 0 5 15 15 100 100",
-        "Head (Rage)": "75 70 65 25 0 5 15 30 100 100",
-        "Neck": "50 50 50 15 0 5 10 5 0 100",
-        "Torso": "25 25 35 10 0 5 5 5 0 100",
-        "Wing Legs": "30 30 30 25 0 5 15 10 0 100",
-        "Wing Legs (Rage)": "30 30 30 30 0 5 15 10 0 100",
-        "Forelegs": "45 45 40 10 0 5 5 5 0 100",
-        "Hind Legs": "42 42 50 10 0 5 5 5 0 100",
-        "Wings": "26 26 20 15 0 0 10 5 0 100",
-        "Tail": "45 45 40 10 0 5 10 5 0 100"
-    },
     "stagger/sever": {
         "Head": "240 N/A Red",
         "Torso": "400 N/A Orange",
@@ -29,7 +17,21 @@
         "Exhaust": "180 100 680 0sec 5/10sec 0",
         "Jump": "80 120 650 0sec 0/0sec 0",
         "Mount": "60 100 800 0sec 0/0sec 150",
-        "Blast": "70 30 670 0sec 0/0sec 100",
+        "Blast": "70 30 670 0sec 0/0sec 100"
+    },
+    "hitzones": {
+        "Head": "65 55 55 15 0 5 15 15 100 100",
+        "Head (Rage)": "75 70 65 25 0 5 15 30 100 100",
+        "Neck": "50 50 50 15 0 5 10 5 0 100",
+        "Torso": "25 25 35 10 0 5 5 5 0 100",
+        "Wing Legs": "30 30 30 25 0 5 15 10 0 100",
+        "Wing Legs (Rage)": "30 30 30 30 0 5 15 10 0 100",
+        "Forelegs": "45 45 40 10 0 5 5 5 0 100",
+        "Hind Legs": "42 42 50 10 0 5 5 5 0 100",
+        "Wings": "26 26 20 15 0 0 10 5 0 100",
+        "Tail": "45 45 40 10 0 5 10 5 0 100"
+    },
+    "item effects": {
         "Flash Bomb": "0sec 0sec 0sec",
         "Pitfall Trap": "10sec 10sec 20sec",
         "Shock Trap": "8sec 8sec 15sec"
