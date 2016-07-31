@@ -28,7 +28,7 @@ namespace Wycademy
             })
             .UsingCommands(x =>
             {
-                x.PrefixChar = '<';
+                x.PrefixChar = WycademyConst.WYCADEMY_PREFIX;
                 x.HelpMode = HelpMode.Private;
                 x.ErrorHandler = CommandError;
             })
@@ -64,7 +64,7 @@ namespace Wycademy
             switch (e.ErrorType)
             {
                 case CommandErrorType.Exception:
-                    await e.Channel.SendMessage($":interrobang: Exception: {e.Exception.GetBaseException().Message} <@176775302897336331>");
+                    await e.Channel.SendMessage($":interrobang: Exception: {e.Exception.GetBaseException().Message} <@{WycademyConst.OWNER_ID}>");
                     break;
                 case CommandErrorType.BadPermissions:
                     await e.Channel.SendMessage(":no_entry: You don't have the required permissions to use this command!");
@@ -87,7 +87,7 @@ namespace Wycademy
         // Used for minimum permissions on commands.
         public PermissionLevels GetPermissions(User u, Channel c)
         {
-            if (u.Id == 176775302897336331)
+            if (u.Id == WycademyConst.OWNER_ID)
             {
                 // Only allows access to BotOwner level commands if I call them
                 return PermissionLevels.BotOwner;
