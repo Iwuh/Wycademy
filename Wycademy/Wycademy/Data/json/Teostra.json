@@ -1,14 +1,4 @@
 {
-    "status": {
-        "Poison": "180 100 580 40sec 10/5sec 5 ",
-        "Sleep": "200 100 600 40sec 5/10sec 0 ",
-        "Paralysis": "200 200 800 10sec 5/10sec 0 ",
-        "KO": "150 100 650 10sec 5/10sec 0 ",
-        "Exhaust": "0 0 0 0sec 0/0sec 0 ",
-        "Jump": "80 50 380 0sec 0/0sec 0 ",
-        "Mount": "80 110 1000 0sec 0/0sec 0 ",
-        "Blast": "180 100 2180 0sec 0/0sec 100"
-    },
     "hitzones": {
         "Head": "50 50 45 0 25 15 10 10 100 100 ",
         "Head (Rage)": "60 55 50 0 15 10 10 25 120 100 ",
@@ -25,11 +15,6 @@
         "Wings": "20 20 10 0 5 5 5 5 0 100 ",
         "Wings (Rage)": "20 20 10 0 5 5 5 10 0 100 "
     },
-    "itemeffects": {
-        "Flash Bomb": "20sec 10sec 30sec",
-        "Pitfall Trap": "0sec 0sec 0sec",
-        "Shock Trap": "0sec 0sec 0sec"
-    },
     "stagger/sever": {
         "Head": "320 320 Red",
         "Torso": "150 N/A Orange",
@@ -37,5 +22,18 @@
         "Foot (Left)": "260 N/A White",
         "Foot (Right)": "260 N/A White",
         "Wings": "100 N/A Orange"
+    },
+    "status": {
+        "Poison": "180 100 580 40sec 10/5sec 5 ",
+        "Sleep": "200 100 600 40sec 5/10sec 0 ",
+        "Paralysis": "200 200 800 10sec 5/10sec 0 ",
+        "KO": "150 100 650 10sec 5/10sec 0 ",
+        "Exhaust": "0 0 0 0sec 0/0sec 0 ",
+        "Jump": "80 50 380 0sec 0/0sec 0 ",
+        "Mount": "80 110 1000 0sec 0/0sec 0 ",
+        "Blast": "180 100 2180 0sec 0/0sec 100",
+        "Flash Bomb": "20sec 10sec 30sec",
+        "Pitfall Trap": "0sec 0sec 0sec",
+        "Shock Trap": "0sec 0sec 0sec"
     }
 }
