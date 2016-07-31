@@ -56,7 +56,16 @@ namespace Wycademy
                     .Description("Provides a list of all monsters you can get info from.")
                     .Do(async e =>
                     {
-
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine("Here are all the valid monster names for the info commands.");
+                        // 3 backticks indicate a code block in Discord's markdown. Here we use it to wrap the monster names in a block.
+                        sb.AppendLine("```");
+                        foreach (var monster in WycademyConst.MONSTER_LIST)
+                        {
+                            sb.AppendLine(monster);
+                        }
+                        sb.AppendLine("```");
+                        await e.User.SendMessage(sb.ToString());
                     });
                 });
             });
