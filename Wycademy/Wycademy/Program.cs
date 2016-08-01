@@ -41,11 +41,11 @@ namespace Wycademy
             {
                 if (e.Message.IsAuthor)
                 {
-                    _client.Log.Info(">>Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")} by {e.User.Name}");
+                    _client.Log.Info(">>Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")} by {e.User.Name}: {e.Message}");
                 }
                 else if (!e.Message.IsAuthor)
                 {
-                    _client.Log.Info("<<Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")} by {e.User.Name}");
+                    _client.Log.Info("<<Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")} by {e.User.Name}: {e.Message}");
                 }
             };
 

@@ -42,7 +42,7 @@ namespace Wycademy
                             int rowTitleWidth = hitzoneInfo.Data.Keys.Max(x => x.Length);
 
                             StringBuilder sb = new StringBuilder();
-                            sb.AppendLine($"{hitzoneInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine($"{hitzoneInfo.Category} info about {e.GetArg("Monster")}:");
                             sb.AppendLine("```");
                             // Add blank spaces in the upper-left corner.
                             sb.Append(' ', rowTitleWidth);
@@ -90,7 +90,7 @@ namespace Wycademy
                             int rowTitleWidth = staggerInfo.Data.Keys.Max(x => x.Length);
 
                             StringBuilder sb = new StringBuilder();
-                            sb.AppendLine($"{staggerInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine($"{staggerInfo.Category} info about {e.GetArg("Monster")}:");
                             sb.AppendLine("```");
                             // Add blank spaces in the upper-left corner.
                             sb.Append(' ', rowTitleWidth);
@@ -135,7 +135,7 @@ namespace Wycademy
                             int rowTitleWidth = statusInfo.Data.Keys.Max(x => x.Length);
 
                             StringBuilder sb = new StringBuilder();
-                            sb.AppendLine($"{statusInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine($"{statusInfo.Category} info about {e.GetArg("Monster")}:");
                             sb.AppendLine("```");
                             // Add blank spaces in the upper-left corner.
                             sb.Append(' ', rowTitleWidth);
@@ -181,7 +181,7 @@ namespace Wycademy
                             int rowTitleWidth = itemInfo.Data.Keys.Max(x => x.Length);
 
                             StringBuilder sb = new StringBuilder();
-                            sb.AppendLine($"{itemInfo.Category} info about {e.GetArg("Monster")}");
+                            sb.AppendLine($"{itemInfo.Category} info about {e.GetArg("Monster")}:");
                             sb.AppendLine("```");
                             // Add blank spaces in the upper-left corner.
                             sb.Append(' ', rowTitleWidth);
