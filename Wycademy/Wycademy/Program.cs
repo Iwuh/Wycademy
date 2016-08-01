@@ -16,6 +16,7 @@ namespace Wycademy
         static void Main(string[] args) => new Program().Start();
 
         private DiscordClient _client;
+        public static DateTime startTime = DateTime.Now;
 
         public void Start()
         {
@@ -50,6 +51,7 @@ namespace Wycademy
 
             // Add Modules to bot
             _client.AddModule<InfoCommandModule>("Info Commands", ModuleFilter.None);
+            _client.AddModule<SettingsCommandModule>("Settings Commands", ModuleFilter.None);
 
             //Bot token is stored in an environment variable so that nobody sees it when I push to GitHub :D
             string token = Environment.GetEnvironmentVariable("WYCADEMY_TOKEN", EnvironmentVariableTarget.User);
