@@ -70,7 +70,7 @@ namespace Wycademy
             switch (e.ErrorType)
             {
                 case CommandErrorType.Exception:
-                    await e.Channel.SendMessage($":interrobang: Exception: {e.Exception.GetBaseException().Message} <@{WycademyConst.OWNER_ID}>");
+                    await e.Channel.SendMessage($":interrobang: Error: An exception occured.");
                     break;
                 case CommandErrorType.BadPermissions:
                     await e.Channel.SendMessage(":no_entry: You don't have the required permissions to use this command!");
