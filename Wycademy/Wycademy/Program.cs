@@ -17,6 +17,7 @@ namespace Wycademy
 
         private DiscordClient _client;
         public static DateTime startTime = DateTime.Now;
+        public static bool locked = false;
 
         public void Start()
         {
