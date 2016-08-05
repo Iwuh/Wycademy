@@ -86,7 +86,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsCommandModule.cs" />
-    <Compile Include="WycademyInfo.cs" />
+    <Compile Include="WycademySettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

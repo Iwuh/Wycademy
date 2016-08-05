@@ -98,9 +98,9 @@ namespace Wycademy
                 // Only allows access to BotOwner level commands if I call them
                 return PermissionLevels.BotOwner;
             }
-            else if (u.IsBot)
+            else if (u.IsBot || WycademySettings.Blacklist.Contains(u.Id))
             {
-                // Ignores all bots (and in the future, possibly a list of spammers)
+                // Ignores all bots and people on the blacklist
                 return PermissionLevels.Ignored;
             }
             // Otherwise it allows access to regular commands

@@ -111,6 +111,41 @@ namespace Wycademy
                         }
                     });
                 });
+
+                cgb.CreateGroup("blacklist", igb =>
+                {
+                    igb.CreateCommand("add")
+                    .MinPermissions((int)PermissionLevels.BotOwner)
+                    .Description("Adds a user to the blacklist.")
+                    .Parameter("User", ParameterType.Required)
+                    .Do(async e =>
+                    {
+                        WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
+                        await WycademySettings.UpdateBlacklist();
+                    });
+                    igb.CreateCommand("remove")
+                    .MinPermissions((int)PermissionLevels.BotOwner)
+                    .Description("Removes a user from the blacklist.")
+                    .Parameter("User", ParameterType.Required)
+                    .Do(async e =>
+                    {
+                        WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
+                        await WycademySettings.UpdateBlacklist();
+                    });
+                    igb.CreateCommand("list")
+                    .MinPermissions((int)PermissionLevels.BotOwner)
+                    .Description("Lists all users on the blacklist.")
+                    .Do(async e =>
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine($"There are {WycademySettings.Blacklist.Count} users on the blacklist:");
+                        foreach (var id in WycademySettings.Blacklist)
+                        {
+                            sb.AppendLine(id.ToString());
+                        }
+                        await e.Channel.SendMessage(sb.ToString());
+                    });
+                });
             });
         }
     }

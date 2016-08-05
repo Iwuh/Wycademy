@@ -92,5 +92,31 @@ namespace Wycademy
         public static string[] STAGGER_COLUMN_NAMES = new string[] { "Stagger Value", "Sever Value", "Extract Colour" };
         public static string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
         public static string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
+
+        // Contains all the IDs of users that are not allowed to use the bot.
+        public static List<ulong> Blacklist = new List<ulong>();
+
+        static WycademySettings()
+        {
+            // Populate the blacklist with the IDs stored in blacklist.txt
+            using (StreamReader sr = new StreamReader("blacklist.txt"))
+            {
+                foreach (var id in sr.ReadToEnd().Split(','))
+                {
+                    Blacklist.Add(ulong.Parse(id));
+                }
+            }
+        }
+
+        public static async Task UpdateBlacklist()
+        {
+            // Converts Blacklist to a string and then writes it to a file.
+            string blacklistString = string.Join(",", Blacklist);
+
+            using (StreamWriter sw = new StreamWriter("blacklist.txt", false))
+            {
+                await sw.WriteAsync(blacklistString);
+            }
+        }
     }
 }
