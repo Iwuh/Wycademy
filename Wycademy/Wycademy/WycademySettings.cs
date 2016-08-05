@@ -101,9 +101,12 @@ namespace Wycademy
             // Populate the blacklist with the IDs stored in blacklist.txt
             using (StreamReader sr = new StreamReader("blacklist.txt"))
             {
-                foreach (var id in sr.ReadToEnd().Split(','))
+                if (sr.ReadToEnd() != string.Empty)
                 {
-                    Blacklist.Add(ulong.Parse(id));
+                    foreach (var id in sr.ReadToEnd().Split(','))
+                    {
+                        Blacklist.Add(ulong.Parse(id));
+                    }
                 }
             }
         }

@@ -122,6 +122,7 @@ namespace Wycademy
                     {
                         WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist();
+                        await e.Channel.SendMessage($"ID {e.GetArg("User")} added to blacklist.");
                     });
                     igb.CreateCommand("remove")
                     .MinPermissions((int)PermissionLevels.BotOwner)
@@ -131,6 +132,7 @@ namespace Wycademy
                     {
                         WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist();
+                        await e.Channel.SendMessage($"ID {e.GetArg("User")} removed from blacklist.");
                     });
                     igb.CreateCommand("list")
                     .MinPermissions((int)PermissionLevels.BotOwner)
