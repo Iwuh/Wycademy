@@ -19,7 +19,7 @@ namespace Wycademy
         {
             // Read the content of a json file into a JObject
             JObject parsed;
-            using (StreamReader sr = new StreamReader($"{WycademyConst.JSON_PATH}\\{monster}.json"))
+            using (StreamReader sr = new StreamReader($"{WycademySettings.JSON_PATH}\\{monster}.json"))
             {
                 parsed = (JObject)JToken.ReadFrom(new JsonTextReader(sr));
             }

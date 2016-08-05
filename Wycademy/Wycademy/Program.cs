@@ -30,7 +30,7 @@ namespace Wycademy
             })
             .UsingCommands(x =>
             {
-                x.PrefixChar = WycademyConst.WYCADEMY_PREFIX;
+                x.PrefixChar = WycademySettings.WYCADEMY_PREFIX;
                 x.HelpMode = HelpMode.Private;
                 x.ErrorHandler = CommandError;
             })
@@ -93,7 +93,7 @@ namespace Wycademy
         // Used for minimum permissions on commands.
         public PermissionLevels GetPermissions(User u, Channel c)
         {
-            if (u.Id == WycademyConst.OWNER_ID)
+            if (u.Id == WycademySettings.OWNER_ID)
             {
                 // Only allows access to BotOwner level commands if I call them
                 return PermissionLevels.BotOwner;

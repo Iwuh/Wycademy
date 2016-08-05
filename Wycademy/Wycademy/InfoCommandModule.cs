@@ -39,7 +39,7 @@ namespace Wycademy
                                 MonsterInfo hitzoneInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Hitzones"));
 
                                 // Get the length of the longest category
-                                int columnTitleWidth = (WycademyConst.HITZONE_COLUMN_NAMES.Max(x => x.Length));
+                                int columnTitleWidth = (WycademySettings.HITZONE_COLUMN_NAMES.Max(x => x.Length));
                                 // Get the length of the longest hitzone
                                 int rowTitleWidth = hitzoneInfo.Data.Keys.Max(x => x.Length);
 
@@ -49,7 +49,7 @@ namespace Wycademy
                                 // Add blank spaces in the upper-left corner.
                                 sb.Append(' ', rowTitleWidth);
                                 // Add column titles followed by a newline
-                                foreach (var title in WycademyConst.HITZONE_COLUMN_NAMES)
+                                foreach (var title in WycademySettings.HITZONE_COLUMN_NAMES)
                                 {
                                     sb.Append($"| {PadCenter(title, columnTitleWidth)}");
                                 }
@@ -72,7 +72,7 @@ namespace Wycademy
                             }
                             catch (FileNotFoundException)
                             {
-                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                             }
                         }
                     });
@@ -90,7 +90,7 @@ namespace Wycademy
                                 MonsterInfo staggerInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Stagger/Sever"));
 
                                 // Get the length of the longest category
-                                int columnTitleWidth = (WycademyConst.STAGGER_COLUMN_NAMES.Max(x => x.Length));
+                                int columnTitleWidth = (WycademySettings.STAGGER_COLUMN_NAMES.Max(x => x.Length));
                                 // Get the length of the longest body part name
                                 int rowTitleWidth = staggerInfo.Data.Keys.Max(x => x.Length);
 
@@ -100,7 +100,7 @@ namespace Wycademy
                                 // Add blank spaces in the upper-left corner.
                                 sb.Append(' ', rowTitleWidth);
                                 // Add column titles followed by a newline
-                                foreach (var title in WycademyConst.STAGGER_COLUMN_NAMES)
+                                foreach (var title in WycademySettings.STAGGER_COLUMN_NAMES)
                                 {
                                     sb.Append($"| {PadCenter(title, columnTitleWidth)}");
                                 }
@@ -121,7 +121,7 @@ namespace Wycademy
                             }
                             catch (FileNotFoundException)
                             {
-                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                             }
                         }
                     });
@@ -138,7 +138,7 @@ namespace Wycademy
                                 MonsterInfo statusInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Status"));
 
                                 // Get the length of the longest category
-                                int columnTitleWidth = (WycademyConst.STATUS_COLUMN_NAMES.Max(x => x.Length));
+                                int columnTitleWidth = (WycademySettings.STATUS_COLUMN_NAMES.Max(x => x.Length));
                                 // Get the length of the longest status
                                 int rowTitleWidth = statusInfo.Data.Keys.Max(x => x.Length);
 
@@ -148,7 +148,7 @@ namespace Wycademy
                                 // Add blank spaces in the upper-left corner.
                                 sb.Append(' ', rowTitleWidth);
                                 // Add column titles followed by a newline
-                                foreach (var title in WycademyConst.STATUS_COLUMN_NAMES)
+                                foreach (var title in WycademySettings.STATUS_COLUMN_NAMES)
                                 {
                                     sb.Append($"| {PadCenter(title, columnTitleWidth)}");
                                 }
@@ -169,7 +169,7 @@ namespace Wycademy
                             }
                             catch (FileNotFoundException)
                             {
-                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                             }
                         }
                     });
@@ -187,7 +187,7 @@ namespace Wycademy
                                 MonsterInfo itemInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Item Effects"));
 
                                 // Get the length of the longest category
-                                int columnTitleWidth = (WycademyConst.ITEMEFFECTS_COLUMN_NAMES.Max(x => x.Length));
+                                int columnTitleWidth = (WycademySettings.ITEMEFFECTS_COLUMN_NAMES.Max(x => x.Length));
                                 // Get the length of the longest status
                                 int rowTitleWidth = itemInfo.Data.Keys.Max(x => x.Length);
 
@@ -197,7 +197,7 @@ namespace Wycademy
                                 // Add blank spaces in the upper-left corner.
                                 sb.Append(' ', rowTitleWidth);
                                 // Add column titles followed by a newline
-                                foreach (var title in WycademyConst.ITEMEFFECTS_COLUMN_NAMES)
+                                foreach (var title in WycademySettings.ITEMEFFECTS_COLUMN_NAMES)
                                 {
                                     sb.Append($"| {PadCenter(title, columnTitleWidth)}");
                                 }
@@ -218,7 +218,7 @@ namespace Wycademy
                             }
                             catch (FileNotFoundException)
                             {
-                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademyConst.INVALID_MONSTER_NAME}");
+                                await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                             }
                         }
                     });
@@ -233,7 +233,7 @@ namespace Wycademy
                             sb.AppendLine("Here are all the valid monster names for the info commands.");
                             // 3 backticks indicate a code block in Discord's markdown. Here we use it to wrap the monster names in a block.
                             sb.AppendLine("```");
-                            foreach (var monster in WycademyConst.MONSTER_LIST)
+                            foreach (var monster in WycademySettings.MONSTER_LIST)
                             {
                                 sb.AppendLine(monster);
                             }
