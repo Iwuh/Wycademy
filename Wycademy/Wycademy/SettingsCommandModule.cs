@@ -58,6 +58,8 @@ namespace Wycademy
                         sb.AppendLine("Statistics about the Wycademy:");
                         sb.AppendLine($"Uptime: {timeDifference.Days} days, {timeDifference.Hours} hours, {timeDifference.Minutes} minutes and {timeDifference.Seconds} seconds.");
                         sb.AppendLine($"Queries: {MonsterInfoBuilder.Queries}");
+                        sb.AppendLine($"Connected servers: {_client.Servers.Count()}");
+                        sb.AppendLine($"Heap size: {(GC.GetTotalMemory(false) / 1024f) / 1024f} MB");
 
                         await e.Channel.SendMessage(sb.ToString());
                     }
