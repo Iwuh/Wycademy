@@ -94,20 +94,23 @@ namespace Wycademy
         public static string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
 
         // Contains all the IDs of users that are not allowed to use the bot.
-        public static List<ulong> Blacklist = new List<ulong>();
+        public static List<ulong> Blacklist = InitializeBlacklist();
 
-        static WycademySettings()
+        private static List<ulong> InitializeBlacklist()
         {
             // Populate the blacklist with the IDs stored in blacklist.txt
             using (StreamReader sr = new StreamReader("blacklist.txt"))
             {
                 if (sr.ReadToEnd() != string.Empty)
                 {
+                    List<ulong> _blacklist = new List<ulong>();
                     foreach (var id in sr.ReadToEnd().Split(','))
                     {
-                        Blacklist.Add(ulong.Parse(id));
+                        _blacklist.Add(ulong.Parse(id));
                     }
+                    return _blacklist;
                 }
+                return new List<ulong>();
             }
         }
 
