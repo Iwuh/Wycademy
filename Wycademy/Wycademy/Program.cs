@@ -72,7 +72,8 @@ namespace Wycademy
             switch (e.ErrorType)
             {
                 case CommandErrorType.Exception:
-                    await e.Channel.SendMessage($":interrobang: Error: An exception occured.");
+                    await e.Channel.SendMessage($":interrobang: Error: An exception occurred and has been logged to the console. If this error happens again, contact DerpDargon.");
+                    _client.Log.Error("Command Error", e.Exception);
                     break;
                 case CommandErrorType.BadPermissions:
                     await e.Channel.SendMessage(":no_entry: You don't have the required permissions to use this command!");
@@ -104,6 +105,10 @@ namespace Wycademy
             {
                 // Ignores all bots and people on the blacklist
                 return PermissionLevels.Ignored;
+            }
+            else if (u == c.Server.Owner || u.Roles.Select(x => x.Name.ToLower()).Contains("moderator"))
+            {
+                return PermissionLevels.ServerModerator;
             }
             // Otherwise it allows access to regular commands
             return PermissionLevels.User;

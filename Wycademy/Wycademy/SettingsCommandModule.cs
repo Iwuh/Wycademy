@@ -162,6 +162,41 @@ namespace Wycademy
                         await e.Channel.SendMessage(sb.ToString());
                     });
                 });
+
+                cgb.CreateCommand("clean")
+                .MinPermissions((int)PermissionLevels.ServerModerator)
+                .UseGlobalBlacklist()
+                .Description("Downloads the last 100 messages in the channel that this command was called in and deletes any by Wycademy.")
+                .Do(async e =>
+                {
+                    // Download the last 100 messages from the channel
+                    Message[] messages = await e.Channel.DownloadMessages();
+                    // Get an IEnumerable containing the ID of every Message in messages written by Wycademy
+                    var messagesToDelete = from Message m in messages
+                                           where m.IsAuthor
+                                           select m;
+                    int messagesDeleted = messagesToDelete.Count();
+
+                    // Bulk delete requires the Manage Messages permission so we need to delete them 1 at a time,
+                    // keeping in mind the 5/1s ratelimit.
+                    int requests = 0;
+                    foreach (Message msg in messagesToDelete)
+                    {
+                        await msg.Delete();
+                        requests++;
+
+                        if (requests >= 4)
+                        {
+                            await Task.Delay(1000);
+                            requests = 0;
+                        }
+                    }
+                    // SendMessage returns a Task<Message> so we can save it to a variable and manipulate it later.
+                    Message response = await e.Channel.SendMessage($"Successfully deleted {messagesDeleted} messages.");
+                    // Wait 4 seconds and then delete the response.
+                    await Task.Delay(4000);
+                    await response.Delete();
+                });
             });
         }
     }

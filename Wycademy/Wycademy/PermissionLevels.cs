@@ -10,6 +10,7 @@ namespace Wycademy
     {
         Ignored = -1,
         User = 0,
-        BotOwner = 1
+        ServerModerator = 1,
+        BotOwner = 2
     }
 }
