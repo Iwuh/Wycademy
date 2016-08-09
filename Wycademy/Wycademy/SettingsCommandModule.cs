@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.Commands.Permissions.Levels;
+using Discord.Commands.Permissions.Userlist;
 using Discord.Modules;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Wycademy
                 {
                     igb.CreateCommand("game")
                     .MinPermissions((int)PermissionLevels.BotOwner)
+                    .UseGlobalBlacklist()
                     .Parameter("Game", ParameterType.Unparsed)
                     .Do(e =>
                     {
@@ -36,6 +38,7 @@ namespace Wycademy
                     });
                     igb.CreateCommand("nickname")
                     .MinPermissions((int)PermissionLevels.BotOwner)
+                    .UseGlobalBlacklist()
                     .Parameter("Nickname", ParameterType.Unparsed)
                     .Do(async e =>
                     {
@@ -48,6 +51,7 @@ namespace Wycademy
 
                 cgb.CreateCommand("stats")
                 .MinPermissions((int)PermissionLevels.User)
+                .UseGlobalBlacklist()
                 .Description("Provides stats about the bot.")
                 .Do(async e =>
                 {
@@ -66,6 +70,7 @@ namespace Wycademy
                 });
                 cgb.CreateCommand("about")
                 .MinPermissions((int)PermissionLevels.User)
+                .UseGlobalBlacklist()
                 .Description("Provides information about the bot.")
                 .Do(async e =>
                 {
@@ -88,6 +93,7 @@ namespace Wycademy
                 {
                     igb.CreateCommand("lock")
                     .MinPermissions((int)PermissionLevels.BotOwner)
+                    .UseGlobalBlacklist()
                     .Description("Locks the bot, preventing it from responding to commands.")
                     .Do(async e =>
                     {
@@ -104,6 +110,7 @@ namespace Wycademy
                     });
                     igb.CreateCommand("shutdown")
                     .MinPermissions((int)PermissionLevels.BotOwner)
+                    .UseGlobalBlacklist()
                     .Description("Shuts down the bot by closing the application.")
                     .Do(e =>
                     {
@@ -118,32 +125,37 @@ namespace Wycademy
                 {
                     igb.CreateCommand("add")
                     .MinPermissions((int)PermissionLevels.BotOwner)
+                    .UseGlobalBlacklist()
                     .Description("Adds a user to the blacklist.")
                     .Parameter("User", ParameterType.Required)
                     .Do(async e =>
                     {
-                        WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
-                        await WycademySettings.UpdateBlacklist();
+                        _client.BlacklistUser(ulong.Parse(e.GetArg("User")));
+                        //WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
+                        await WycademySettings.UpdateBlacklist(_client);
                         await e.Channel.SendMessage($"ID {e.GetArg("User")} added to blacklist.");
                     });
                     igb.CreateCommand("remove")
                     .MinPermissions((int)PermissionLevels.BotOwner)
+                    .UseGlobalBlacklist()
                     .Description("Removes a user from the blacklist.")
                     .Parameter("User", ParameterType.Required)
                     .Do(async e =>
                     {
-                        WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
-                        await WycademySettings.UpdateBlacklist();
+                        _client.UnBlacklistUser(ulong.Parse(e.GetArg("User")));
+                        //WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
+                        await WycademySettings.UpdateBlacklist(_client);
                         await e.Channel.SendMessage($"ID {e.GetArg("User")} removed from blacklist.");
                     });
                     igb.CreateCommand("list")
                     .MinPermissions((int)PermissionLevels.BotOwner)
+                    .UseGlobalBlacklist()
                     .Description("Lists all users on the blacklist.")
                     .Do(async e =>
                     {
                         StringBuilder sb = new StringBuilder();
-                        sb.AppendLine($"There are {WycademySettings.Blacklist.Count} users on the blacklist:");
-                        foreach (var id in WycademySettings.Blacklist)
+                        sb.AppendLine($"There are {_client.GetBlacklistedUserIds().Count()} users on the blacklist:");
+                        foreach (var id in _client.GetBlacklistedUserIds())
                         {
                             sb.AppendLine(id.ToString());
                         }

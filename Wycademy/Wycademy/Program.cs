@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.Commands.Permissions.Levels;
+using Discord.Commands.Permissions.Userlist;
 using Discord.Modules;
 using System;
 using System.Collections.Generic;
@@ -35,18 +36,19 @@ namespace Wycademy
                 x.ErrorHandler = CommandError;
             })
             .UsingPermissionLevels((u, c) => (int)GetPermissions(u, c)) // Pass User, Channel to GetPermissions and then cast the returned PermissionLevels to int.
-            .UsingModules();
+            .UsingModules()
+            .UsingGlobalBlacklist(WycademySettings.Blacklist.ToArray());
 
             //Set up message logging
             _client.MessageReceived += (s, e) =>
             {
                 if (e.Message.IsAuthor)
                 {
-                    _client.Log.Info(">>Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")} by {e.User.Name}: {e.Message}");
+                    _client.Log.Info(">>Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")}: {e.Message}");
                 }
                 else if (!e.Message.IsAuthor)
                 {
-                    _client.Log.Info("<<Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")} by {e.User.Name}: {e.Message}");
+                    _client.Log.Info("<<Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")}: {e.Message}");
                 }
             };
 
@@ -98,7 +100,7 @@ namespace Wycademy
                 // Only allows access to BotOwner level commands if I call them
                 return PermissionLevels.BotOwner;
             }
-            else if (u.IsBot || WycademySettings.Blacklist.Contains(u.Id))
+            else if (u.IsBot)
             {
                 // Ignores all bots and people on the blacklist
                 return PermissionLevels.Ignored;
