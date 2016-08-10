@@ -95,10 +95,7 @@ namespace Wycademy
         public static string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
         public static string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
 
-        // Contains all the IDs of users that are not allowed to use the bot.
-        public static List<ulong> Blacklist = InitializeBlacklist();
-
-        private static List<ulong> InitializeBlacklist()
+        public static List<ulong> InitializeBlacklist()
         {
             // Populate the blacklist with the IDs stored in blacklist.txt
             using (StreamReader sr = new StreamReader("blacklist.txt"))
