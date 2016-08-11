@@ -17,7 +17,7 @@ namespace Wycademy
         // Json deserialization is cpu-bound work, so commands must use Task.Run to get a MonsterInfo without blocking.
         public static MonsterInfo GetMonsterInfo(string monster, string category)
         {
-            if (WycademySettings.MONSTER_LIST.Contains("Monster", StringComparer.InvariantCultureIgnoreCase))
+            if (WycademySettings.MONSTER_LIST.Contains(monster, StringComparer.InvariantCultureIgnoreCase))
             {
                 // Read the content of a json file into a JObject
                 JObject parsed;

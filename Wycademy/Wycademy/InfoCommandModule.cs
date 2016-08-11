@@ -38,7 +38,7 @@ namespace Wycademy
                             {
                                 MonsterInfo hitzoneInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Hitzones"));
 
-                                await e.Channel.SendMessage(GenerateMessage(hitzoneInfo, "Hitzones"));
+                                await e.Channel.SendMessage(GenerateMessage(hitzoneInfo, e.GetArg("Monster")));
                             }
                             catch (ArgumentException)
                             {
@@ -59,7 +59,7 @@ namespace Wycademy
                             {
                                 MonsterInfo staggerInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Stagger/Sever"));
 
-                                await e.Channel.SendMessage(GenerateMessage(staggerInfo, "Stagger/Sever"));
+                                await e.Channel.SendMessage(GenerateMessage(staggerInfo, e.GetArg("Monster")));
                             }
                             catch (ArgumentException)
                             {
@@ -79,7 +79,7 @@ namespace Wycademy
                             {
                                 MonsterInfo statusInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Status"));
 
-                                await e.Channel.SendMessage(GenerateMessage(statusInfo, "Status"));
+                                await e.Channel.SendMessage(GenerateMessage(statusInfo, e.GetArg("Monster")));
                             }
                             catch (ArgumentException)
                             {
@@ -100,7 +100,7 @@ namespace Wycademy
                             {
                                 MonsterInfo itemInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Item Effects"));
 
-                                await e.Channel.SendMessage(GenerateMessage(itemInfo, "Item Effects"));
+                                await e.Channel.SendMessage(GenerateMessage(itemInfo, e.GetArg("Monster")));
                             }
                             catch (ArgumentException)
                             {
