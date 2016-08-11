@@ -5,6 +5,7 @@ using Discord.Commands.Permissions.Userlist;
 using Discord.Modules;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,7 +64,10 @@ namespace Wycademy
                         sb.AppendLine($"Uptime: {timeDifference.Days} days, {timeDifference.Hours} hours, {timeDifference.Minutes} minutes and {timeDifference.Seconds} seconds.");
                         sb.AppendLine($"Queries: {MonsterInfoBuilder.Queries}");
                         sb.AppendLine($"Connected servers: {_client.Servers.Count()}");
-                        sb.AppendLine($"Heap size: {(GC.GetTotalMemory(false) / 1024f) / 1024f} MB");
+                        using (Process p = Process.GetCurrentProcess())
+                        {
+                            sb.AppendLine($"Memory used: {(p.PrivateMemorySize64 / 1024f / 1024f).ToString()} MB");
+                        }
 
                         await e.Channel.SendMessage(sb.ToString());
                     }
@@ -112,10 +116,11 @@ namespace Wycademy
                     .MinPermissions((int)PermissionLevels.BotOwner)
                     .UseGlobalBlacklist()
                     .Description("Shuts down the bot by closing the application.")
-                    .Do(e =>
+                    .Do(async e =>
                     {
                         if (Program.locked)
                         {
+                            await e.Channel.SendMessage("Shutting down...");
                             Environment.Exit(0);
                         }
                     });
