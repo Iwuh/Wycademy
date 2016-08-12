@@ -106,9 +106,13 @@ namespace Wycademy
                 // Ignores all bots and people on the blacklist
                 return PermissionLevels.Ignored;
             }
-            else if (u == c.Server.Owner || u.Roles.Select(x => x.Name.ToLower()).Contains("moderator"))
+            else if (c.Server != null)
             {
-                return PermissionLevels.ServerModerator;
+                // Prevents a NullReferenceException if the command was called from a direct message.
+                if (u == c.Server.Owner || u.Roles.Select(x => x.Name.ToLower()).Contains("moderator"))
+                {
+                    return PermissionLevels.ServerModerator;
+                }
             }
             // Otherwise it allows access to regular commands
             return PermissionLevels.User;
