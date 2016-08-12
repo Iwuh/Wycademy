@@ -197,7 +197,7 @@ namespace Wycademy
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{info.Category} info about {monsterName}:");
-            sb.AppendLine("```");
+            sb.AppendLine("```XL");
             // Add blank spaces in the upper-left corner.
             sb.Append(' ', rowTitleWidth);
             // Add column titles followed by a newline
