@@ -11,12 +11,12 @@ namespace Wycademy
 {
     static class WycademySettings
     {
-        public static char WYCADEMY_PREFIX = '<';
-        public static ulong OWNER_ID = 176775302897336331;
-        public static string JSON_PATH = @".\..\..\Data\json";
-        public static string INVALID_MONSTER_NAME = "is not a valid choice. Try `<info list` for the list of choices.";
+        public const char WYCADEMY_PREFIX = '<';
+        public const ulong OWNER_ID = 176775302897336331;
+        public const string JSON_PATH = @".\..\..\Data\json";
+        public const string INVALID_MONSTER_NAME = "is not a valid choice. Try `<info list` for the list of choices.";
 
-        public static string[] MONSTER_LIST = new string[71] 
+        public static readonly string[] MONSTER_LIST = new string[71] 
         {
             "Great_Maccao",
             "Velocidrome",
@@ -90,10 +90,10 @@ namespace Wycademy
             "Nakarkos",
             "Alatreon"
         };
-        public static string[] HITZONE_COLUMN_NAMES = new string[] { "Cut", "Impact", "Shot", "Fire", "Water", "Ice", "Thunder", "Dragon" };
-        public static string[] STAGGER_COLUMN_NAMES = new string[] { "Stagger Value", "Sever Value", "Extract Colour" };
-        public static string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
-        public static string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
+        public static readonly string[] HITZONE_COLUMN_NAMES = new string[] { "Cut", "Impact", "Shot", "Fire", "Water", "Ice", "Thunder", "Dragon" };
+        public static readonly string[] STAGGER_COLUMN_NAMES = new string[] { "Stagger Value", "Sever Value", "Extract Colour" };
+        public static readonly string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
+        public static readonly string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
 
         public static List<ulong> InitializeBlacklist()
         {
@@ -102,12 +102,7 @@ namespace Wycademy
             {
                 if (sr.ReadToEnd() != string.Empty)
                 {
-                    List<ulong> _blacklist = new List<ulong>();
-                    foreach (var id in sr.ReadToEnd().Split(','))
-                    {
-                        _blacklist.Add(ulong.Parse(id));
-                    }
-                    return _blacklist;
+                    return sr.ReadToEnd().Split(',').Select(x => ulong.Parse(x)).ToList();
                 }
                 return new List<ulong>();
             }
