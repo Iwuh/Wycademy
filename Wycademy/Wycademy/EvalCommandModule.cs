@@ -18,6 +18,7 @@ namespace Wycademy
         private DiscordClient _client;
         private ModuleManager _manager;
 
+        // Add references to mscorlib, system.core, and Discord.Net's assemblies. Import various essential namespaces.
         ScriptOptions evalOptions = ScriptOptions.Default
             .WithReferences(typeof(System.Object).Assembly, typeof(System.Linq.Enumerable).Assembly, typeof(Discord.Server).Assembly, typeof(Discord.Commands.CommandEventArgs).Assembly)
             .WithImports("System", "System.Collections.Generic", "System.Linq", "System.Text", "System.Threading.Tasks", "Discord", "Discord.Commands");
@@ -38,13 +39,13 @@ namespace Wycademy
                 {
                     try
                     {
+                        // We use an instance of ScriptHost to allow the expression to access the current client and event args.
                         object result = await CSharpScript.EvaluateAsync(e.GetArg("Expression"), options: evalOptions, globals: new ScriptHost(_client, e));
 
                         await e.Channel.SendMessage(result.ToString());
                     }
                     catch (CompilationErrorException ex)
                     {
-
                         await e.Channel.SendMessage(ex.Message);
                     }
                 });
@@ -54,6 +55,7 @@ namespace Wycademy
 
     public class ScriptHost
     {
+        // Provides a class to pass as a global when evaluating expressions.
         public DiscordClient Client { get; set; }
         public CommandEventArgs Args { get; set; }
 
