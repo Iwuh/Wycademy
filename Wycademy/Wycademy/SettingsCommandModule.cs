@@ -202,6 +202,16 @@ namespace Wycademy
                     await Task.Delay(4000);
                     await response.Delete();
                 });
+
+                cgb.CreateCommand("invite")
+                .MinPermissions((int)PermissionLevels.User)
+                .UseGlobalBlacklist()
+                .Description("Provides an invite link for Wycademy.")
+                .Do(async e =>
+                {
+                    await e.Channel.SendMessage("So you want Wycademy on your server? Just click the link below to add it to a server you own.\n" +
+                        "https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=3072");
+                });
             });
         }
     }

@@ -169,6 +169,7 @@
     <Compile Include="InfoCommandModule.cs" />
     <Compile Include="MonsterInfo.cs" />
     <Compile Include="MonsterInfoBuilder.cs" />
+    <Compile Include="OtherCommandModule.cs" />
     <Compile Include="PermissionLevels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
