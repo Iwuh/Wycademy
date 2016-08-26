@@ -22,6 +22,7 @@ namespace Wycademy
         }
         public QueueDictionary(int capacity)
         {
+            // Sets the maximum capacity of the instance.
             _capacity = capacity;
         }
         #endregion
@@ -45,6 +46,12 @@ namespace Wycademy
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
+            if (_items.Count >= Capacity)
+            {
+                _items.RemoveAt(0);
+                _items.Add(item);
+                return;
+            }
             _items.Add(item);
         }
 
@@ -84,21 +91,44 @@ namespace Wycademy
         {
             get { return _capacity; }
         }
+        public IEnumerable<TKey> Keys
+        {
+            get { return _items.Select(x => x.Key); }
+        }
+        public IEnumerable<TValue> Values
+        {
+            get { return _items.Select(x => x.Value); }
+        }
         #endregion
 
         #region Methods
         public bool ContainsKey(TKey key)
         {
+            // Returns true if any keys in the list match the argument.
             return _items.Select(x => x.Key).Contains(key);
         }
         public void Add(TKey key, TValue value)
         {
+            if (_items.Count >= _capacity)
+            {
+                _items.RemoveAt(0);
+                _items.Add(new KeyValuePair<TKey, TValue>(key, value));
+                return;
+            }
             _items.Add(new KeyValuePair<TKey, TValue>(key, value));
         }
         public void RemoveByKey(TKey key)
         {
             var itemToRemove = _items.FirstOrDefault(x => x.Key == key);
-            _items.Remove(itemToRemove);
+            if (itemToRemove.Equals(default(KeyValuePair<TKey, TValue>)))
+            {
+                // Throws an exception if the found item is the default value of a KeyValuePair (i.e.: The key was not found in _items).
+                throw new ArgumentException("The specified key was not found in the list.");
+            }
+            else
+            {
+                _items.Remove(itemToRemove);
+            }
         }
         #endregion
 
