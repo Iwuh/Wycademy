@@ -42,11 +42,13 @@ namespace Wycademy
                         // We use an instance of ScriptHost to allow the expression to access the current client and event args.
                         object result = await CSharpScript.EvaluateAsync(e.GetArg("Expression"), options: evalOptions, globals: new ScriptHost(_client, e));
 
-                        await e.Channel.SendMessage(result.ToString());
+                        Message m = await e.Channel.SendMessage(result.ToString());
+                        Program.MessageCache.Add(e.Message, m);
                     }
                     catch (CompilationErrorException ex)
                     {
-                        await e.Channel.SendMessage(ex.Message);
+                        Message m = await e.Channel.SendMessage(ex.Message);
+                        Program.MessageCache.Add(e.Message, m);
                     }
                 });
             });

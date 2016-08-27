@@ -31,7 +31,8 @@ namespace Wycademy
                 .Hide()
                 .Do(async e =>
                 {
-                    await e.Channel.SendMessage(":eyes:");
+                    Message m = await e.Channel.SendMessage(":eyes:");
+                    Program.MessageCache.Add(e.Message, m);
                 });
 
                 cgb.CreateCommand("stats")
@@ -53,7 +54,8 @@ namespace Wycademy
                             sb.AppendLine($"Memory used: {(p.PrivateMemorySize64 / 1024f / 1024f).ToString()} MB");
                         }
 
-                        await e.Channel.SendMessage(sb.ToString());
+                        Message m = await e.Channel.SendMessage(sb.ToString());
+                        Program.MessageCache.Add(e.Message, m);
                     }
                 });
                 cgb.CreateCommand("about")
@@ -73,7 +75,8 @@ namespace Wycademy
                         sb.AppendLine("Data taken from Kiranico.");
                         sb.AppendLine("Monster Hunter and the Wycademy are © CAPCOM.");
 
-                        await e.Channel.SendMessage(sb.ToString());
+                        Message m = await e.Channel.SendMessage(sb.ToString());
+                        Program.MessageCache.Add(e.Message, m);
                     }
                 });
 
@@ -83,8 +86,9 @@ namespace Wycademy
                 .Description("Provides an invite link for Wycademy.")
                 .Do(async e =>
                 {
-                    await e.Channel.SendMessage("So you want Wycademy on your server? Just click the link below to add it to a server you own.\n" +
+                    Message m = await e.Channel.SendMessage("So you want Wycademy on your server? Just click the link below to add it to a server you own.\n" +
                         "https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=3072");
+                    Program.MessageCache.Add(e.Message, m);
                 });
             });
         }

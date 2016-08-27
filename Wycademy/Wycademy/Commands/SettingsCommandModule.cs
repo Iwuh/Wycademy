@@ -61,12 +61,14 @@ namespace Wycademy
                         if (Program.locked)
                         {
                             Program.locked = false;
-                            await e.Channel.SendMessage("Bot has been unlocked and will now respond to commands.");
+                            Message m = await e.Channel.SendMessage("Bot has been unlocked and will now respond to commands.");
+                            Program.MessageCache.Add(e.Message, m);
                         }
                         else
                         {
                             Program.locked = true;
-                            await e.Channel.SendMessage("Bot has been locked and will no longer respond to commands.");
+                            Message m = await e.Channel.SendMessage("Bot has been locked and will no longer respond to commands.");
+                            Program.MessageCache.Add(e.Message, m);
                         }
                     });
                     igb.CreateCommand("shutdown")
@@ -95,7 +97,8 @@ namespace Wycademy
                         _client.BlacklistUser(ulong.Parse(e.GetArg("User")));
                         //WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist(_client);
-                        await e.Channel.SendMessage($"ID {e.GetArg("User")} added to blacklist.");
+                        Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} added to blacklist.");
+                        Program.MessageCache.Add(e.Message, m);
                     });
                     igb.CreateCommand("remove")
                     .MinPermissions((int)PermissionLevels.BotOwner)
@@ -107,7 +110,8 @@ namespace Wycademy
                         _client.UnBlacklistUser(ulong.Parse(e.GetArg("User")));
                         //WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist(_client);
-                        await e.Channel.SendMessage($"ID {e.GetArg("User")} removed from blacklist.");
+                        Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} removed from blacklist.");
+                        Program.MessageCache.Add(e.Message, m);
                     });
                     igb.CreateCommand("list")
                     .MinPermissions((int)PermissionLevels.BotOwner)
@@ -121,7 +125,8 @@ namespace Wycademy
                         {
                             sb.AppendLine(id.ToString());
                         }
-                        await e.Channel.SendMessage(sb.ToString());
+                        Message m = await e.Channel.SendMessage(sb.ToString());
+                        Program.MessageCache.Add(e.Message, m);
                     });
                 });
 

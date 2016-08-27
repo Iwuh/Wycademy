@@ -123,12 +123,34 @@ namespace Wycademy
             if (itemToRemove.Equals(default(KeyValuePair<TKey, TValue>)))
             {
                 // Throws an exception if the found item is the default value of a KeyValuePair (i.e.: The key was not found in _items).
-                throw new ArgumentException("The specified key was not found in the list.");
+                throw new ArgumentException("The specified key was not found.");
             }
             else
             {
                 _items.Remove(itemToRemove);
             }
+        }
+        #endregion
+
+        #region Indexers
+        public TValue this[TKey key]
+        {
+            get
+            {
+                var pair = _items.FirstOrDefault(x => x.Key == key);
+                if (pair.Equals(default(KeyValuePair<TKey, TValue>)))
+                {
+                    throw new ArgumentException("The specified key was not found.");
+                }
+                else
+                {
+                    return pair.Value;
+                }
+            }
+        }
+        public TValue this[int index]
+        {
+            get { return _items[index].Value; }
         }
         #endregion
 

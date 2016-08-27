@@ -19,6 +19,7 @@ namespace Wycademy
         private DiscordClient _client;
         public static DateTime startTime = DateTime.Now;
         public static bool locked = false;
+        public static QueueDictionary<Message, Message> MessageCache = new QueueDictionary<Message, Message>(500);
 
         public void Start()
         {
@@ -49,6 +50,14 @@ namespace Wycademy
                 else if (!e.Message.IsAuthor)
                 {
                     _client.Log.Info("<<Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")}: {e.Message}");
+                }
+            };
+            _client.MessageDeleted += async (s, e) =>
+            {
+                if (MessageCache.ContainsKey(e.Message))
+                {
+                    await MessageCache[e.Message].Delete();
+                    MessageCache.RemoveByKey(e.Message);
                 }
             };
 
