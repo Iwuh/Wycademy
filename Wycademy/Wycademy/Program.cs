@@ -101,7 +101,8 @@ namespace Wycademy
         //Whenever we log data, this method is called.
         private void Log(object sender, LogMessageEventArgs e)
         {
-            Console.WriteLine($"[{e.Severity}] [{e.Source}] {e.Message}");
+            DateTime logTime = DateTime.Now;
+            Console.WriteLine($"[{logTime.Hour}:{logTime.Minute}:{logTime.Second}][{e.Severity}] [{e.Source}] {e.Message}");
         }
 
         // Used for minimum permissions on commands.
