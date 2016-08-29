@@ -31,7 +31,7 @@ namespace Wycademy
                 .Hide()
                 .Do(async e =>
                 {
-                    Message m = await e.Channel.SendMessage(":eyes:");
+                    Message m = await e.Channel.SendMessage(WycademySettings.EYE_EMOJIS[WycademySettings.RandomNumbers.Next(WycademySettings.EYE_EMOJIS.Length)]);
                     Program.MessageCache.Add(e.Message, m);
                 });
 
