@@ -102,7 +102,7 @@ namespace Wycademy
         private void Log(object sender, LogMessageEventArgs e)
         {
             DateTime logTime = DateTime.Now;
-            Console.WriteLine($"[{logTime.Hour}:{logTime.Minute}:{logTime.Second}][{e.Severity}] [{e.Source}] {e.Message}");
+            Console.WriteLine($"[{logTime.ToString("T")}][{e.Severity}] [{e.Source}] {e.Message}");
         }
 
         // Used for minimum permissions on commands.
