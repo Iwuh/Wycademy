@@ -97,7 +97,8 @@ namespace Wycademy
 
         public static readonly string[] EYE_EMOJIS = new string[] { "<:eyesFlipped:214941562096844800>", "<:eyesCross:214941564185739265>",
                                                                     "<:eyesReverse:214941566475829258>", "<:eyesCenter:214946506350919680>",
-                                                                    "<:eyesLeft:215357294987182080>", ":eyes:"};
+                                                                    "<:eyesLeft:215357294987182080>", "<:Eyenoculars:211850820315119617>",
+                                                                    "<:flippedEyes:214942499964321793>",":eyes:" };
 
         public static Random RandomNumbers = new Random();
 
