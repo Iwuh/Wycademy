@@ -12,15 +12,15 @@ namespace Wycademy
     /// </summary>
     /// <typeparam name="TKey">Represents the type of the keys.</typeparam>
     /// <typeparam name="TValue">Represents the type of the values.</typeparam>
-    class QueueDictionary<TKey, TValue> : ICollection<KeyValuePair<TKey, TValue>>
+    class LimitedDictionary<TKey, TValue> : ICollection<KeyValuePair<TKey, TValue>>
         where TKey : class
         where TValue : class
     {
         #region Constructors
-        public QueueDictionary() : this(200)
+        public LimitedDictionary() : this(200)
         {
         }
-        public QueueDictionary(int capacity)
+        public LimitedDictionary(int capacity)
         {
             // Sets the maximum capacity of the instance.
             _capacity = capacity;

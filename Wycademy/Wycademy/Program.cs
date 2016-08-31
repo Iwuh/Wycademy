@@ -19,7 +19,7 @@ namespace Wycademy
         private DiscordClient _client;
         public static DateTime startTime = DateTime.Now;
         public static bool locked = false;
-        public static QueueDictionary<Message, Message> MessageCache = new QueueDictionary<Message, Message>(500);
+        public static LimitedDictionary<Message, Message> MessageCache = new LimitedDictionary<Message, Message>(500);
 
         public void Start()
         {
