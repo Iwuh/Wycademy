@@ -13,8 +13,6 @@ namespace Wycademy
     /// <typeparam name="TKey">Represents the type of the keys.</typeparam>
     /// <typeparam name="TValue">Represents the type of the values.</typeparam>
     class LimitedDictionary<TKey, TValue> : ICollection<KeyValuePair<TKey, TValue>>
-        where TKey : class
-        where TValue : class
     {
         #region Constructors
         public LimitedDictionary() : this(200)
@@ -119,7 +117,7 @@ namespace Wycademy
         }
         public void RemoveByKey(TKey key)
         {
-            var itemToRemove = _items.FirstOrDefault(x => x.Key == key);
+            var itemToRemove = _items.FirstOrDefault(x => x.Key.Equals(key));
             if (itemToRemove.Equals(default(KeyValuePair<TKey, TValue>)))
             {
                 // Throws an exception if the found item is the default value of a KeyValuePair (i.e.: The key was not found in _items).
@@ -137,7 +135,7 @@ namespace Wycademy
         {
             get
             {
-                var pair = _items.FirstOrDefault(x => x.Key == key);
+                var pair = _items.FirstOrDefault(x => x.Key.Equals(key));
                 if (pair.Equals(default(KeyValuePair<TKey, TValue>)))
                 {
                     throw new ArgumentException("The specified key was not found.");
