@@ -19,7 +19,7 @@ namespace Wycademy
         private DiscordClient _client;
         public static DateTime startTime = DateTime.Now;
         public static bool locked = false;
-        public static LimitedDictionary<Message, Message> MessageCache = new LimitedDictionary<Message, Message>(500);
+        public static LimitedDictionary<ulong, ulong> MessageCache = new LimitedDictionary<ulong, ulong>(500);
 
         public void Start()
         {
@@ -54,10 +54,10 @@ namespace Wycademy
             };
             _client.MessageDeleted += async (s, e) =>
             {
-                if (MessageCache.ContainsKey(e.Message))
+                if (MessageCache.ContainsKey(e.Message.Id))
                 {
-                    await MessageCache[e.Message].Delete();
-                    MessageCache.RemoveByKey(e.Message);
+                    await e.Channel.GetMessage(MessageCache[e.Message.Id]).Delete();
+                    MessageCache.RemoveByKey(e.Message.Id);
                 }
             };
 

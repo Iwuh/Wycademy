@@ -39,12 +39,12 @@ namespace Wycademy
                                 MonsterInfo hitzoneInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Hitzones"));
 
                                 Message m = await e.Channel.SendMessage(GenerateMessage(hitzoneInfo, e.GetArg("Monster")));
-                                Program.MessageCache.Add(e.Message, m);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                             catch (ArgumentException)
                             {
                                 Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
-                                Program.MessageCache.Add(e.Message, m);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                         }
                     });
@@ -66,7 +66,7 @@ namespace Wycademy
                             catch (ArgumentException)
                             {
                                 Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
-                                Program.MessageCache.Add(e.Message, m);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                         }
                     });
@@ -83,12 +83,12 @@ namespace Wycademy
                                 MonsterInfo statusInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Status"));
 
                                 Message m = await e.Channel.SendMessage(GenerateMessage(statusInfo, e.GetArg("Monster")));
-                                Program.MessageCache.Add(e.Message, m);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                             catch (ArgumentException)
                             {
                                 Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
-                                Program.MessageCache.Add(e.Message, m);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                         }
                     });
@@ -106,12 +106,12 @@ namespace Wycademy
                                 MonsterInfo itemInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Item Effects"));
 
                                 Message m = await e.Channel.SendMessage(GenerateMessage(itemInfo, e.GetArg("Monster")));
-                                Program.MessageCache.Add(e.Message, m);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                             catch (ArgumentException)
                             {
                                 Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
-                                Program.MessageCache.Add(e.Message, m);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                         }
                     });
@@ -132,7 +132,7 @@ namespace Wycademy
                             }
                             sb.AppendLine("```");
                             Message m = await e.User.SendMessage(sb.ToString());
-                            Program.MessageCache.Add(e.Message, m);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
                     });
                     info.CreateCommand("help")
@@ -141,7 +141,7 @@ namespace Wycademy
                     .Do(async e =>
                     {
                         Message m = await e.Channel.SendMessage("Try <help [command] instead.");
-                        Program.MessageCache.Add(e.Message, m);
+                        Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
                 });
             });

@@ -62,13 +62,13 @@ namespace Wycademy
                         {
                             Program.locked = false;
                             Message m = await e.Channel.SendMessage("Bot has been unlocked and will now respond to commands.");
-                            Program.MessageCache.Add(e.Message, m);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
                         else
                         {
                             Program.locked = true;
                             Message m = await e.Channel.SendMessage("Bot has been locked and will no longer respond to commands.");
-                            Program.MessageCache.Add(e.Message, m);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
                     });
                     igb.CreateCommand("shutdown")
@@ -98,7 +98,7 @@ namespace Wycademy
                         //WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist(_client);
                         Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} added to blacklist.");
-                        Program.MessageCache.Add(e.Message, m);
+                        Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
                     igb.CreateCommand("remove")
                     .MinPermissions((int)PermissionLevels.BotOwner)
@@ -111,7 +111,7 @@ namespace Wycademy
                         //WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist(_client);
                         Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} removed from blacklist.");
-                        Program.MessageCache.Add(e.Message, m);
+                        Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
                     igb.CreateCommand("list")
                     .MinPermissions((int)PermissionLevels.BotOwner)
@@ -126,7 +126,7 @@ namespace Wycademy
                             sb.AppendLine(id.ToString());
                         }
                         Message m = await e.Channel.SendMessage(sb.ToString());
-                        Program.MessageCache.Add(e.Message, m);
+                        Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
                 });
 

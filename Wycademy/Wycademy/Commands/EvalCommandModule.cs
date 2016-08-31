@@ -43,12 +43,12 @@ namespace Wycademy
                         object result = await CSharpScript.EvaluateAsync(e.GetArg("Expression"), options: evalOptions, globals: new ScriptHost(_client, e));
 
                         Message m = await e.Channel.SendMessage(result.ToString());
-                        Program.MessageCache.Add(e.Message, m);
+                        Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
                     catch (CompilationErrorException ex)
                     {
                         Message m = await e.Channel.SendMessage(ex.Message);
-                        Program.MessageCache.Add(e.Message, m);
+                        Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
                 });
             });
