@@ -80,6 +80,7 @@ namespace Wycademy
                         if (Program.locked)
                         {
                             await e.Channel.SendMessage("Shutting down...");
+                            await Task.Delay(5000);
                             Environment.Exit(0);
                         }
                     });
