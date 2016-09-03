@@ -62,12 +62,14 @@ namespace Wycademy
                         {
                             Program.locked = false;
                             Message m = await e.Channel.SendMessage("Bot has been unlocked and will now respond to commands.");
+                            await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
                         else
                         {
                             Program.locked = true;
                             Message m = await e.Channel.SendMessage("Bot has been locked and will no longer respond to commands.");
+                            await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
                     });
@@ -99,6 +101,7 @@ namespace Wycademy
                         //WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist(_client);
                         Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} added to blacklist.");
+                        await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
                     igb.CreateCommand("remove")
@@ -112,6 +115,7 @@ namespace Wycademy
                         //WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
                         await WycademySettings.UpdateBlacklist(_client);
                         Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} removed from blacklist.");
+                        await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
                     igb.CreateCommand("list")
@@ -127,6 +131,7 @@ namespace Wycademy
                             sb.AppendLine(id.ToString());
                         }
                         Message m = await e.Channel.SendMessage(sb.ToString());
+                        await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
                 });

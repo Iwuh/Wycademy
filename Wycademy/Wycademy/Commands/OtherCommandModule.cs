@@ -32,6 +32,7 @@ namespace Wycademy
                 .Do(async e =>
                 {
                     Message m = await e.Channel.SendMessage(WycademySettings.EYE_EMOJIS[WycademySettings.RandomNumbers.Next(WycademySettings.EYE_EMOJIS.Length)]);
+                    await Task.Delay(1000);
                     Program.MessageCache.Add(e.Message.Id, m.Id);
                 });
 
@@ -55,6 +56,7 @@ namespace Wycademy
                         }
 
                         Message m = await e.Channel.SendMessage(sb.ToString());
+                        await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
                 });
@@ -76,6 +78,7 @@ namespace Wycademy
                         sb.AppendLine("Monster Hunter and the Wycademy are © CAPCOM.");
 
                         Message m = await e.Channel.SendMessage(sb.ToString());
+                        await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
                 });
@@ -88,6 +91,7 @@ namespace Wycademy
                 {
                     Message m = await e.Channel.SendMessage("So you want Wycademy on your server? Just click the link below to add it to a server you own.\n" +
                         "https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=3072");
+                    await Task.Delay(1000);
                     Program.MessageCache.Add(e.Message.Id, m.Id);
                 });
             });
