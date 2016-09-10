@@ -101,29 +101,5 @@ namespace Wycademy
                                                                     "<:flippedEyes:214942499964321793>",":eyes:" };
 
         public static Random RandomNumbers = new Random();
-
-        public static ulong[] InitializeBlacklist()
-        {
-            // Populate the blacklist with the IDs stored in blacklist.txt
-            using (StreamReader sr = new StreamReader("blacklist.txt"))
-            {
-                if (sr.ReadToEnd() != string.Empty)
-                {
-                    return sr.ReadToEnd().Split(',').Select(x => ulong.Parse(x)).ToArray();
-                }
-                return new ulong[0];
-            }
-        }
-
-        public static async Task UpdateBlacklist(DiscordClient _client)
-        {
-            // Converts Blacklist to a string and then writes it to a file.
-            string blacklistString = string.Join(",", _client.GetBlacklistedUserIds());
-
-            using (StreamWriter sw = new StreamWriter("blacklist.txt", false))
-            {
-                await sw.WriteAsync(blacklistString);
-            }
-        }
     }
 }

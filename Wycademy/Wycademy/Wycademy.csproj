@@ -190,6 +190,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\SettingsCommandModule.cs" />
+    <Compile Include="WycademyBlacklist.cs" />
     <Compile Include="WycademySettings.cs" />
   </ItemGroup>
   <ItemGroup>

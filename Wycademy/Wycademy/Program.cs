@@ -38,7 +38,7 @@ namespace Wycademy
             })
             .UsingPermissionLevels((u, c) => (int)GetPermissions(u, c)) // Pass User, Channel to GetPermissions and then cast the returned PermissionLevels to int.
             .UsingModules()
-            .UsingGlobalBlacklist(WycademySettings.InitializeBlacklist());
+            .UsingGlobalBlacklist(WycademyBlacklist.InitializeUserBlacklist());
 
             //Set up message logging
             _client.MessageReceived += (s, e) =>
@@ -58,6 +58,21 @@ namespace Wycademy
                 {
                     await e.Channel.GetMessage(MessageCache[e.Message.Id]).Delete();
                     MessageCache.RemoveByKey(e.Message.Id);
+                }
+            };
+            _client.ServerAvailable += async (s, e) =>
+            {
+                if (WycademyBlacklist.ServerBlacklist.Contains(e.Server.Id))
+                {
+                    await e.Server.DefaultChannel.SendMessage("This server has been blacklisted. Wycademy will now leave.");
+                    await Task.Delay(2000);
+                    await e.Server.Leave();
+                }
+                else if (WycademyBlacklist.ServerOwnerBlacklist.Contains(e.Server.Owner.Id))
+                {
+                    await e.Server.DefaultChannel.SendMessage($"All servers owned by {e.Server.Owner} have been blacklisted. Wycademy will now leave.");
+                    await Task.Delay(2000);
+                    await e.Server.Leave();
                 }
             };
 

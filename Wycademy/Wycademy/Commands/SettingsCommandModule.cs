@@ -90,33 +90,98 @@ namespace Wycademy
 
                 cgb.CreateGroup("blacklist", igb =>
                 {
-                    igb.CreateCommand("add")
-                    .MinPermissions((int)PermissionLevels.BotOwner)
-                    .UseGlobalBlacklist()
-                    .Description("Adds a user to the blacklist.")
-                    .Parameter("User", ParameterType.Required)
-                    .Do(async e =>
+                    igb.CreateGroup("add", ab =>
                     {
-                        _client.BlacklistUser(ulong.Parse(e.GetArg("User")));
-                        //WycademySettings.Blacklist.Add(ulong.Parse(e.GetArg("User")));
-                        await WycademySettings.UpdateBlacklist(_client);
-                        Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} added to blacklist.");
-                        await Task.Delay(1000);
-                        Program.MessageCache.Add(e.Message.Id, m.Id);
+                        ab.CreateCommand("user")
+                        .MinPermissions((int)PermissionLevels.BotOwner)
+                        .UseGlobalBlacklist()
+                        .Description("Adds a user to the blacklist.")
+                        .Parameter("User", ParameterType.Required)
+                        .Do(async e =>
+                        {
+                            _client.BlacklistUser(ulong.Parse(e.GetArg("User")));
+                            await WycademyBlacklist.UpdateUserBlacklist(_client);
+                            Message m = await e.Channel.SendMessage($"User with ID {e.GetArg("User")} added to blacklist.");
+                            await Task.Delay(1000);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
+                        });
+                        ab.CreateCommand("server")
+                        .MinPermissions((int)PermissionLevels.BotOwner)
+                        .UseGlobalBlacklist()
+                        .Description("Adds a server to the blacklist.")
+                        .Parameter("Server", ParameterType.Required)
+                        .Do(async e =>
+                        {
+                            WycademyBlacklist.ServerBlacklist.Add(ulong.Parse(e.GetArg("Server")));
+                            await WycademyBlacklist.UpdateServerBlacklist();
+                            Message m = await e.Channel.SendMessage($"Server with ID {e.GetArg("Server")} added to blacklist.");
+                            Server s = _client.GetServer(ulong.Parse(e.GetArg("Server")));
+                            await s.DefaultChannel.SendMessage("This server has been blacklisted. Wycademy will now leave.");
+                            await s.Leave();
+                            await Task.Delay(1000);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
+                        });
+                        ab.CreateCommand("serverowner")
+                        .MinPermissions((int)PermissionLevels.BotOwner)
+                        .UseGlobalBlacklist()
+                        .Description("Adds a server owner to the blacklist.")
+                        .Parameter("ServerOwner", ParameterType.Required)
+                        .Do(async e =>
+                        {
+                            WycademyBlacklist.ServerOwnerBlacklist.Add(ulong.Parse(e.GetArg("ServerOwner")));
+                            await WycademyBlacklist.UpdateServerOwnerBlacklist();
+                            Message m = await e.Channel.SendMessage($"Server owner with ID {e.GetArg("ServerOwner")} added to blacklist.");
+                            IEnumerable<Server> serversToLeave = _client.Servers.Where(x => x.Owner.Id == ulong.Parse(e.GetArg("ServerOwner")));
+                            foreach (var s in serversToLeave)
+                            {
+                                await s.DefaultChannel.SendMessage("The server owner has been blacklisted. Wycademy will now leave.");
+                                await s.Leave();
+                            }
+                            await Task.Delay(1000);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
+                        });
                     });
-                    igb.CreateCommand("remove")
-                    .MinPermissions((int)PermissionLevels.BotOwner)
-                    .UseGlobalBlacklist()
-                    .Description("Removes a user from the blacklist.")
-                    .Parameter("User", ParameterType.Required)
-                    .Do(async e =>
+                    igb.CreateGroup("remove", rb =>
                     {
-                        _client.UnBlacklistUser(ulong.Parse(e.GetArg("User")));
-                        //WycademySettings.Blacklist.Remove(ulong.Parse(e.GetArg("User")));
-                        await WycademySettings.UpdateBlacklist(_client);
-                        Message m = await e.Channel.SendMessage($"ID {e.GetArg("User")} removed from blacklist.");
-                        await Task.Delay(1000);
-                        Program.MessageCache.Add(e.Message.Id, m.Id);
+                        rb.CreateCommand("user")
+                        .MinPermissions((int)PermissionLevels.BotOwner)
+                        .UseGlobalBlacklist()
+                        .Description("Removes a user from the blacklist.")
+                        .Parameter("User", ParameterType.Required)
+                        .Do(async e =>
+                        {
+                            _client.UnBlacklistUser(ulong.Parse(e.GetArg("User")));
+                            await WycademyBlacklist.UpdateUserBlacklist(_client);
+                            Message m = await e.Channel.SendMessage($"User with ID {e.GetArg("User")} removed from blacklist.");
+                            await Task.Delay(1000);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
+                        });
+                        rb.CreateCommand("server")
+                        .MinPermissions((int)PermissionLevels.BotOwner)
+                        .UseGlobalBlacklist()
+                        .Description("Removes a server from the blacklist.")
+                        .Parameter("Server", ParameterType.Required)
+                        .Do(async e =>
+                        {
+                            WycademyBlacklist.ServerBlacklist.Remove(ulong.Parse(e.GetArg("Server")));
+                            await WycademyBlacklist.UpdateServerBlacklist();
+                            Message m = await e.Channel.SendMessage($"Server with ID {e.GetArg("Server")} removed from blacklist.");
+                            await Task.Delay(1000);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
+                        });
+                        rb.CreateCommand("serverowner")
+                        .MinPermissions((int)PermissionLevels.BotOwner)
+                        .UseGlobalBlacklist()
+                        .Description("Removes a server owner from the blacklist.")
+                        .Parameter("ServerOwner", ParameterType.Required)
+                        .Do(async e =>
+                        {
+                            WycademyBlacklist.ServerOwnerBlacklist.Remove(ulong.Parse(e.GetArg("Server")));
+                            await WycademyBlacklist.UpdateServerOwnerBlacklist();
+                            Message m = await e.Channel.SendMessage($"Server owner with ID {e.GetArg("Server")} removed from blacklist.");
+                            await Task.Delay(1000);
+                            Program.MessageCache.Add(e.Message.Id, m.Id);
+                        });
                     });
                     igb.CreateCommand("list")
                     .MinPermissions((int)PermissionLevels.BotOwner)
@@ -125,10 +190,18 @@ namespace Wycademy
                     .Do(async e =>
                     {
                         StringBuilder sb = new StringBuilder();
-                        sb.AppendLine($"There are {_client.GetBlacklistedUserIds().Count()} users on the blacklist:");
+                        sb.AppendLine($"There are {_client.GetBlacklistedUserIds().Count() + WycademyBlacklist.ServerBlacklist.Count + WycademyBlacklist.ServerOwnerBlacklist.Count} IDs on the blacklist:");
                         foreach (var id in _client.GetBlacklistedUserIds())
                         {
-                            sb.AppendLine(id.ToString());
+                            sb.AppendLine(id.ToString() + "(User)");
+                        }
+                        foreach (var id in WycademyBlacklist.ServerBlacklist)
+                        {
+                            sb.AppendLine(id.ToString() + "(Server)");
+                        }
+                        foreach (var id in WycademyBlacklist.ServerOwnerBlacklist)
+                        {
+                            sb.AppendLine(id.ToString() + "(Server Owner)");
                         }
                         Message m = await e.Channel.SendMessage(sb.ToString());
                         await Task.Delay(1000);
