@@ -102,16 +102,16 @@ namespace Wycademy
 
         public static Random RandomNumbers = new Random();
 
-        public static List<ulong> InitializeBlacklist()
+        public static ulong[] InitializeBlacklist()
         {
             // Populate the blacklist with the IDs stored in blacklist.txt
             using (StreamReader sr = new StreamReader("blacklist.txt"))
             {
                 if (sr.ReadToEnd() != string.Empty)
                 {
-                    return sr.ReadToEnd().Split(',').Select(x => ulong.Parse(x)).ToList();
+                    return sr.ReadToEnd().Split(',').Select(x => ulong.Parse(x)).ToArray();
                 }
-                return new List<ulong>();
+                return new ulong[0];
             }
         }
 

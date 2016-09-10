@@ -38,7 +38,7 @@ namespace Wycademy
             })
             .UsingPermissionLevels((u, c) => (int)GetPermissions(u, c)) // Pass User, Channel to GetPermissions and then cast the returned PermissionLevels to int.
             .UsingModules()
-            .UsingGlobalBlacklist(WycademySettings.InitializeBlacklist().ToArray());
+            .UsingGlobalBlacklist(WycademySettings.InitializeBlacklist());
 
             //Set up message logging
             _client.MessageReceived += (s, e) =>
