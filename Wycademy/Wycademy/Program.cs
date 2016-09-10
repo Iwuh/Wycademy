@@ -73,7 +73,7 @@ namespace Wycademy
             //Connect to all guilds that the bot is part of and then block until the bot is manually exited.
             _client.ExecuteAndWait(async () =>
             {
-                await _client.Connect(token);
+                await _client.Connect(token, TokenType.Bot);
             });
         }
 
