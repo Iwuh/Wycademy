@@ -42,7 +42,8 @@ namespace Wycademy
                         // We use an instance of ScriptHost to allow the expression to access the current client and event args.
                         object result = await CSharpScript.EvaluateAsync(e.GetArg("Expression"), options: evalOptions, globals: new ScriptHost(_client, e));
 
-                        Message m = await e.Channel.SendMessage(result.ToString());
+                        // If result is not null we call ToString(), otherwise we just send the string "null".
+                        Message m = await e.Channel.SendMessage($"Evaluated Successfully:\n```\n{result.ToString() ?? "null"}\n```");
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
