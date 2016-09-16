@@ -21,7 +21,7 @@ namespace Wycademy
         // Add references to mscorlib, system.core, and Discord.Net's assemblies. Import various essential namespaces.
         ScriptOptions evalOptions = ScriptOptions.Default
             .WithReferences(typeof(System.Object).Assembly, typeof(System.Linq.Enumerable).Assembly, typeof(Discord.Server).Assembly, typeof(Discord.Commands.CommandEventArgs).Assembly)
-            .WithImports("System", "System.Collections.Generic", "System.Linq", "System.Text", "System.Threading.Tasks", "Discord", "Discord.Commands");
+            .WithImports("System", "System.Collections.Generic", "System.Linq", "System.Text", "System.Threading.Tasks", "Discord", "Discord.Commands", "System.Text", "System.IO");
 
         void IModule.Install(ModuleManager manager)
         {
@@ -43,7 +43,7 @@ namespace Wycademy
                         object result = await CSharpScript.EvaluateAsync(e.GetArg("Expression"), options: evalOptions, globals: new ScriptHost(_client, e));
 
                         // If result is not null we call ToString(), otherwise we just send the string "null".
-                        Message m = await e.Channel.SendMessage($"Evaluated Successfully:\n```\n{result.ToString() ?? "null"}\n```");
+                        Message m = await e.Channel.SendMessage($"Evaluated Successfully:\n```\n{result?.ToString() ?? "null"}\n```");
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
