@@ -19,9 +19,10 @@ namespace Wycademy
             // Populate the user blacklist
             using (StreamReader sr = new StreamReader("userblacklist.txt"))
             {
-                if (sr.ReadToEnd() != string.Empty)
+                string text = sr.ReadToEnd();
+                if (text != string.Empty)
                 {
-                    return sr.ReadToEnd().Split(',').Select(x => ulong.Parse(x)).ToArray();
+                    return text.Split(',').Select(x => ulong.Parse(x)).ToArray();
                 }
                 return new ulong[0];
             }
@@ -43,9 +44,10 @@ namespace Wycademy
             // Populate the server blacklist
             using (StreamReader sr = new StreamReader("serverblacklist.txt"))
             {
-                if (sr.ReadToEnd() != string.Empty)
+                string text = sr.ReadToEnd();
+                if (text != string.Empty)
                 {
-                    return sr.ReadToEnd().Split(',').Select(x => ulong.Parse(x)).ToList();
+                    return text.Split(',').Select(x => ulong.Parse(x)).ToList();
                 }
                 return new List<ulong>();
             }
@@ -67,9 +69,10 @@ namespace Wycademy
             // Populate the server blacklist
             using (StreamReader sr = new StreamReader("serverownerblacklist.txt"))
             {
-                if (sr.ReadToEnd() != string.Empty)
+                string text = sr.ReadToEnd();
+                if (text != string.Empty)
                 {
-                    return sr.ReadToEnd().Split(',').Select(x => ulong.Parse(x)).ToList();
+                    return text.Split(',').Select(x => ulong.Parse(x)).ToList();
                 }
                 return new List<ulong>();
             }
