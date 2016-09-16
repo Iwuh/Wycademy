@@ -71,7 +71,7 @@ namespace Wycademy
                         StringBuilder sb = new StringBuilder();
                         sb.AppendLine("Language: C# running on .NET Framework 4.6.1");
                         sb.AppendLine("Library: Discord.Net 0.9.4");
-                        sb.AppendLine("Created by DerpDargon (https://github.com/Iwuh/Wycademy)");
+                        sb.AppendLine("Created by DerpDargon (https://github.com/Iwuh/Wycademy). A ☆ would be much appreciated!");
                         sb.AppendLine("Special thanks to my brother for helping me gather data on 71 monsters.");
                         sb.AppendLine("Icon by @thechewer on Instagram.");
                         sb.AppendLine("Data taken from Kiranico.");
@@ -90,7 +90,7 @@ namespace Wycademy
                 .Do(async e =>
                 {
                     Message m = await e.Channel.SendMessage("So you want Wycademy on your server? Just click the link below to add it to a server you own.\n" +
-                        "https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=3072");
+                        "https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=3072. If you like the bot, give it a ☆ on GitHub!");
                     await Task.Delay(1000);
                     Program.MessageCache.Add(e.Message.Id, m.Id);
                 });
