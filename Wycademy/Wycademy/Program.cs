@@ -43,11 +43,14 @@ namespace Wycademy
             //Set up message logging
             _client.MessageReceived += async (s, e) =>
             {
-                if (e.Server.Id == 110373943822540800 /* Discord Bots */ || e.Server.Id == 204376423752925184 /* Private testing server */)
+                if (e.Server != null)
                 {
-                    if (e.Message.RawText == "(╯°□°）╯︵ ┻━┻" && !e.User.IsBot)
+                    if (e.Server.Id == 110373943822540800 /* Discord Bots */ || e.Server.Id == 204376423752925184 /* Private testing server */)
                     {
-                        await e.Channel.SendMessage("┬─┬﻿ ノ( ゜-゜ノ)<:mhProwler:209473033210036234> Please respect tables, hunter.");
+                        if (e.Message.RawText == "(╯°□°）╯︵ ┻━┻" && !e.User.IsBot)
+                        {
+                            await e.Channel.SendMessage("┬─┬﻿ ノ( ゜-゜ノ)<:mhProwler:209473033210036234> Please respect tables, hunter.");
+                        }
                     }
                 }
                 if (e.Message.IsAuthor)
