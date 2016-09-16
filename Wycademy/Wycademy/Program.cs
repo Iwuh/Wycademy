@@ -41,8 +41,15 @@ namespace Wycademy
             .UsingGlobalBlacklist(WycademyBlacklist.InitializeUserBlacklist());
 
             //Set up message logging
-            _client.MessageReceived += (s, e) =>
+            _client.MessageReceived += async (s, e) =>
             {
+                if (e.Server.Id == 110373943822540800 /* Discord Bots */ || e.Server.Id == 204376423752925184 /* Private testing server */)
+                {
+                    if (e.Message.RawText == "(╯°□°）╯︵ ┻━┻" && !e.User.IsBot)
+                    {
+                        await e.Channel.SendMessage("┬─┬﻿ ノ( ゜-゜ノ)<:mhProwler:209473033210036234> Please respect tables, hunter.");
+                    }
+                }
                 if (e.Message.IsAuthor)
                 {
                     _client.Log.Info(">>Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")}: {e.Message}");
