@@ -162,6 +162,13 @@ namespace Wycademy
         }
         #endregion
 
+        #region Properties
+        public int MaxCapacity
+        {
+            get { return _capacity; }
+        }
+        #endregion
+
         #region Indexers
         public ulong this[ulong key]
         {
