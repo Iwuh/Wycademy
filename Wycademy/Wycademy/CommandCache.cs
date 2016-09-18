@@ -19,6 +19,7 @@ namespace Wycademy
         public CommandCache() : this(200)
         {
         }
+
         /// <summary>
         /// Create a new instance with the specified capacity.
         /// </summary>
@@ -134,6 +135,7 @@ namespace Wycademy
             }
             _items.Add(new KeyValuePair<ulong, ulong>(command, response));
         }
+
         /// <summary>
         /// Checks whether the cache contains a specific key.
         /// </summary>
@@ -143,6 +145,7 @@ namespace Wycademy
         {
             return _items.Select(x => x.Key).Contains(key);
         }
+
         /// <summary>
         /// Removes an item from the cache by key.
         /// </summary>
@@ -170,6 +173,11 @@ namespace Wycademy
         #endregion
 
         #region Indexers
+        /// <summary>
+        /// Provides the response messaged ID associated with the given command message ID.
+        /// </summary>
+        /// <param name="key">The command key to search with.</param>
+        /// <returns>ulong representing the ID of the response message.</returns>
         public ulong this[ulong key]
         {
             get
