@@ -35,6 +35,7 @@ namespace Wycademy
                 x.PrefixChar = WycademySettings.WYCADEMY_PREFIX;
                 x.HelpMode = HelpMode.Private;
                 x.ErrorHandler = CommandError;
+                x.AllowMentionPrefix = true;
             })
             .UsingPermissionLevels((u, c) => (int)GetPermissions(u, c)) // Pass User, Channel to GetPermissions and then cast the returned PermissionLevels to int.
             .UsingModules()
