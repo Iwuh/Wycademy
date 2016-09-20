@@ -183,6 +183,7 @@
     <Compile Include="CommandCache.cs" />
     <Compile Include="Commands\EvalCommandModule.cs" />
     <Compile Include="Commands\InfoCommandModule.cs" />
+    <Compile Include="DiscordExtensions.cs" />
     <Compile Include="Monster Info\MonsterInfo.cs" />
     <Compile Include="Monster Info\MonsterInfoBuilder.cs" />
     <Compile Include="Commands\OtherCommandModule.cs" />

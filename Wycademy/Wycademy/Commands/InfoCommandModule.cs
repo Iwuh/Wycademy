@@ -38,13 +38,13 @@ namespace Wycademy
                             {
                                 MonsterInfo hitzoneInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Hitzones"));
 
-                                Message m = await e.Channel.SendMessage(GenerateMessage(hitzoneInfo, e.GetArg("Monster")));
+                                Message m = await e.Channel.SendMessageZWSP(GenerateMessage(hitzoneInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                             catch (ArgumentException)
                             {
-                                Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
+                                Message m = await e.Channel.SendMessageZWSP($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
@@ -63,13 +63,13 @@ namespace Wycademy
                             {
                                 MonsterInfo staggerInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Stagger/Sever"));
 
-                                Message m = await e.Channel.SendMessage(GenerateMessage(staggerInfo, e.GetArg("Monster")));
+                                Message m = await e.Channel.SendMessageZWSP(GenerateMessage(staggerInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                             catch (ArgumentException)
                             {
-                                Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
+                                Message m = await e.Channel.SendMessageZWSP($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
@@ -87,13 +87,13 @@ namespace Wycademy
                             {
                                 MonsterInfo statusInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Status"));
 
-                                Message m = await e.Channel.SendMessage(GenerateMessage(statusInfo, e.GetArg("Monster")));
+                                Message m = await e.Channel.SendMessageZWSP(GenerateMessage(statusInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                             catch (ArgumentException)
                             {
-                                Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
+                                Message m = await e.Channel.SendMessageZWSP($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
@@ -112,13 +112,13 @@ namespace Wycademy
                             {
                                 MonsterInfo itemInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Item Effects"));
 
-                                Message m = await e.Channel.SendMessage(GenerateMessage(itemInfo, e.GetArg("Monster")));
+                                Message m = await e.Channel.SendMessageZWSP(GenerateMessage(itemInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                             catch (ArgumentException)
                             {
-                                Message m = await e.Channel.SendMessage($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
+                                Message m = await e.Channel.SendMessageZWSP($"'{e.GetArg("Monster")}' {WycademySettings.INVALID_MONSTER_NAME}");
                                 await Task.Delay(1000);
                                 Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
@@ -140,7 +140,7 @@ namespace Wycademy
                                 sb.AppendLine(monster);
                             }
                             sb.AppendLine("```");
-                            Message m = await e.User.SendMessage(sb.ToString());
+                            Message m = await e.User.SendMessageZWSP(sb.ToString());
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
@@ -150,7 +150,7 @@ namespace Wycademy
                     .Description("Points users to the correct help function.")
                     .Do(async e =>
                     {
-                        Message m = await e.Channel.SendMessage("Try <help [command] instead.");
+                        Message m = await e.Channel.SendMessageZWSP("Try <help [command] instead.");
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     });

@@ -43,13 +43,13 @@ namespace Wycademy
                         object result = await CSharpScript.EvaluateAsync(e.GetArg("Expression"), options: evalOptions, globals: new ScriptHost(_client, e));
 
                         // If result is not null we call ToString(), otherwise we just send the string "null".
-                        Message m = await e.Channel.SendMessage($"Evaluated Successfully:\n```\n{result?.ToString() ?? "null"}\n```");
+                        Message m = await e.Channel.SendMessageZWSP($"Evaluated Successfully:\n```\n{result?.ToString() ?? "null"}\n```");
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
                     catch (CompilationErrorException ex)
                     {
-                        Message m = await e.Channel.SendMessage(ex.Message);
+                        Message m = await e.Channel.SendMessageZWSP(ex.Message);
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }

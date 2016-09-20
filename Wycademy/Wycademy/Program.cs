@@ -49,7 +49,7 @@ namespace Wycademy
                     {
                         if (e.Message.RawText == "(╯°□°）╯︵ ┻━┻" && !e.User.IsBot)
                         {
-                            await e.Channel.SendMessage("┬─┬﻿ ノ( ゜-゜ノ)<:mhProwler:209473033210036234> Please respect tables, hunter.");
+                            await e.Channel.SendMessageZWSP("┬─┬﻿ ノ( ゜-゜ノ)<:mhProwler:209473033210036234> Please respect tables, hunter.");
                         }
                     }
                 }
@@ -74,13 +74,13 @@ namespace Wycademy
             {
                 if (WycademyBlacklist.ServerBlacklist.Contains(e.Server.Id))
                 {
-                    await e.Server.DefaultChannel.SendMessage("This server has been blacklisted. Wycademy will now leave.");
+                    await e.Server.DefaultChannel.SendMessageZWSP("This server has been blacklisted. Wycademy will now leave.");
                     await Task.Delay(2000);
                     await e.Server.Leave();
                 }
                 else if (WycademyBlacklist.ServerOwnerBlacklist.Contains(e.Server.Owner.Id))
                 {
-                    await e.Server.DefaultChannel.SendMessage($"All servers owned by {e.Server.Owner} have been blacklisted. Wycademy will now leave.");
+                    await e.Server.DefaultChannel.SendMessageZWSP($"All servers owned by {e.Server.Owner} have been blacklisted. Wycademy will now leave.");
                     await Task.Delay(2000);
                     await e.Server.Leave();
                 }
@@ -108,17 +108,17 @@ namespace Wycademy
             switch (e.ErrorType)
             {
                 case CommandErrorType.Exception:
-                    await e.Channel.SendMessage($":interrobang: Error: An exception occurred and has been logged to the console. If this error happens again, contact DerpDargon.");
+                    await e.Channel.SendMessageZWSP($":interrobang: Error: An exception occurred and has been logged to the console. If this error happens again, contact DerpDargon.");
                     _client.Log.Error("Command Error", e.Exception);
                     break;
                 case CommandErrorType.BadPermissions:
-                    await e.Channel.SendMessage(":no_entry: You don't have the required permissions to use this command!");
+                    await e.Channel.SendMessageZWSP(":no_entry: You don't have the required permissions to use this command!");
                     break;
                 case CommandErrorType.InvalidInput:
-                    await e.Channel.SendMessage("Error: Invalid input.");
+                    await e.Channel.SendMessageZWSP("Error: Invalid input.");
                     break;
                 case CommandErrorType.BadArgCount:
-                    await e.Channel.SendMessage("Error: Invalid argument count. Try <help [command].");
+                    await e.Channel.SendMessageZWSP("Error: Invalid argument count. Try <help [command].");
                     break;
             }
         }

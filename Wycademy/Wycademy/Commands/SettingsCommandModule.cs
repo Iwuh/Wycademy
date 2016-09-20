@@ -61,14 +61,14 @@ namespace Wycademy
                         if (Program.locked)
                         {
                             Program.locked = false;
-                            Message m = await e.Channel.SendMessage("Bot has been unlocked and will now respond to commands.");
+                            Message m = await e.Channel.SendMessageZWSP("Bot has been unlocked and will now respond to commands.");
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
                         else
                         {
                             Program.locked = true;
-                            Message m = await e.Channel.SendMessage("Bot has been locked and will no longer respond to commands.");
+                            Message m = await e.Channel.SendMessageZWSP("Bot has been locked and will no longer respond to commands.");
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
@@ -81,7 +81,7 @@ namespace Wycademy
                     {
                         if (Program.locked)
                         {
-                            await e.Channel.SendMessage("Shutting down...");
+                            await e.Channel.SendMessageZWSP("Shutting down...");
                             await Task.Delay(5000);
                             Environment.Exit(0);
                         }
@@ -101,7 +101,7 @@ namespace Wycademy
                         {
                             _client.BlacklistUser(ulong.Parse(e.GetArg("User")));
                             await WycademyBlacklist.UpdateUserBlacklist(_client);
-                            Message m = await e.Channel.SendMessage($"User with ID {e.GetArg("User")} added to blacklist.");
+                            Message m = await e.Channel.SendMessageZWSP($"User with ID {e.GetArg("User")} added to blacklist.");
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         });
@@ -114,9 +114,9 @@ namespace Wycademy
                         {
                             WycademyBlacklist.ServerBlacklist.Add(ulong.Parse(e.GetArg("Server")));
                             await WycademyBlacklist.UpdateServerBlacklist();
-                            Message m = await e.Channel.SendMessage($"Server with ID {e.GetArg("Server")} added to blacklist.");
+                            Message m = await e.Channel.SendMessageZWSP($"Server with ID {e.GetArg("Server")} added to blacklist.");
                             Server s = _client.GetServer(ulong.Parse(e.GetArg("Server")));
-                            await s.DefaultChannel.SendMessage("This server has been blacklisted. Wycademy will now leave.");
+                            await s.DefaultChannel.SendMessageZWSP("This server has been blacklisted. Wycademy will now leave.");
                             await s.Leave();
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
@@ -130,11 +130,11 @@ namespace Wycademy
                         {
                             WycademyBlacklist.ServerOwnerBlacklist.Add(ulong.Parse(e.GetArg("ServerOwner")));
                             await WycademyBlacklist.UpdateServerOwnerBlacklist();
-                            Message m = await e.Channel.SendMessage($"Server owner with ID {e.GetArg("ServerOwner")} added to blacklist.");
+                            Message m = await e.Channel.SendMessageZWSP($"Server owner with ID {e.GetArg("ServerOwner")} added to blacklist.");
                             IEnumerable<Server> serversToLeave = _client.Servers.Where(x => x.Owner.Id == ulong.Parse(e.GetArg("ServerOwner")));
                             foreach (var s in serversToLeave)
                             {
-                                await s.DefaultChannel.SendMessage("The server owner has been blacklisted. Wycademy will now leave.");
+                                await s.DefaultChannel.SendMessageZWSP("The server owner has been blacklisted. Wycademy will now leave.");
                                 await s.Leave();
                             }
                             await Task.Delay(1000);
@@ -152,7 +152,7 @@ namespace Wycademy
                         {
                             _client.UnBlacklistUser(ulong.Parse(e.GetArg("User")));
                             await WycademyBlacklist.UpdateUserBlacklist(_client);
-                            Message m = await e.Channel.SendMessage($"User with ID {e.GetArg("User")} removed from blacklist.");
+                            Message m = await e.Channel.SendMessageZWSP($"User with ID {e.GetArg("User")} removed from blacklist.");
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         });
@@ -165,7 +165,7 @@ namespace Wycademy
                         {
                             WycademyBlacklist.ServerBlacklist.Remove(ulong.Parse(e.GetArg("Server")));
                             await WycademyBlacklist.UpdateServerBlacklist();
-                            Message m = await e.Channel.SendMessage($"Server with ID {e.GetArg("Server")} removed from blacklist.");
+                            Message m = await e.Channel.SendMessageZWSP($"Server with ID {e.GetArg("Server")} removed from blacklist.");
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         });
@@ -178,7 +178,7 @@ namespace Wycademy
                         {
                             WycademyBlacklist.ServerOwnerBlacklist.Remove(ulong.Parse(e.GetArg("Server")));
                             await WycademyBlacklist.UpdateServerOwnerBlacklist();
-                            Message m = await e.Channel.SendMessage($"Server owner with ID {e.GetArg("Server")} removed from blacklist.");
+                            Message m = await e.Channel.SendMessageZWSP($"Server owner with ID {e.GetArg("Server")} removed from blacklist.");
                             await Task.Delay(1000);
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         });
@@ -203,7 +203,7 @@ namespace Wycademy
                         {
                             sb.AppendLine(id.ToString() + "(Server Owner)");
                         }
-                        Message m = await e.Channel.SendMessage(sb.ToString());
+                        Message m = await e.Channel.SendMessageZWSP(sb.ToString());
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     });
@@ -237,8 +237,8 @@ namespace Wycademy
                             requests = 0;
                         }
                     }
-                    // SendMessage returns a Task<Message> so we can save it to a variable and manipulate it later.
-                    Message response = await e.Channel.SendMessage($"Successfully deleted {messagesDeleted} messages.");
+                    // SendMessageZWSP returns a Task<Message> so we can save it to a variable and manipulate it later.
+                    Message response = await e.Channel.SendMessageZWSP($"Successfully deleted {messagesDeleted} messages.");
                     // Wait 4 seconds and then delete the response.
                     await Task.Delay(4000);
                     await response.Delete();

@@ -31,7 +31,7 @@ namespace Wycademy
                 .Hide()
                 .Do(async e =>
                 {
-                    Message m = await e.Channel.SendMessage(WycademySettings.EYE_EMOJIS[WycademySettings.RandomNumbers.Next(WycademySettings.EYE_EMOJIS.Length)]);
+                    Message m = await e.Channel.SendMessageZWSP(WycademySettings.EYE_EMOJIS[WycademySettings.RandomNumbers.Next(WycademySettings.EYE_EMOJIS.Length)]);
                     await Task.Delay(1000);
                     Program.MessageCache.Add(e.Message.Id, m.Id);
                 });
@@ -56,7 +56,7 @@ namespace Wycademy
                             sb.AppendLine($"Memory used: {(p.PrivateMemorySize64 / 1024f / 1024f).ToString()} MB");
                         }
 
-                        Message m = await e.Channel.SendMessage(sb.ToString());
+                        Message m = await e.Channel.SendMessageZWSP(sb.ToString());
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
@@ -78,7 +78,7 @@ namespace Wycademy
                         sb.AppendLine("Data taken from Kiranico.");
                         sb.AppendLine("Monster Hunter and the Wycademy are © CAPCOM.");
 
-                        Message m = await e.Channel.SendMessage(sb.ToString());
+                        Message m = await e.Channel.SendMessageZWSP(sb.ToString());
                         await Task.Delay(1000);
                         Program.MessageCache.Add(e.Message.Id, m.Id);
                     }
@@ -90,7 +90,7 @@ namespace Wycademy
                 .Description("Provides an invite link for Wycademy.")
                 .Do(async e =>
                 {
-                    Message m = await e.Channel.SendMessage("So you want Wycademy on your server? Just click the link below to add it to a server you own.\n" +
+                    Message m = await e.Channel.SendMessageZWSP("So you want Wycademy on your server? Just click the link below to add it to a server you own.\n" +
                         "https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=3072. If you like the bot, give it a ☆ on GitHub!");
                     await Task.Delay(1000);
                     Program.MessageCache.Add(e.Message.Id, m.Id);
