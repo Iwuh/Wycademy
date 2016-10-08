@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Wycademy
@@ -28,6 +29,7 @@ namespace Wycademy
         {
             _items = new List<KeyValuePair<ulong, ulong>>();
             _capacity = capacity;
+            _pruneOldMessageTimer = new Timer(PruneOldMessages, null, 0, 7200000);
         }
         #endregion
 
@@ -163,6 +165,24 @@ namespace Wycademy
                 _items.Remove(itemToRemove);
             }
         }
+        public void DisposeTimer()
+        {
+            _pruneOldMessageTimer.Dispose();
+        }
+
+        private void PruneOldMessages(object state)
+        {
+            foreach (var pair in _items)
+            {
+                DateTimeOffset timestamp = DateTimeOffset.FromUnixTimeMilliseconds((long)((pair.Key >> 22) + 1420070400000UL));
+                TimeSpan difference = DateTimeOffset.UtcNow - timestamp;
+
+                if (difference.TotalHours >= 2)
+                {
+                    _items.Remove(pair);
+                }
+            }
+        }
         #endregion
 
         #region Properties
@@ -195,6 +215,7 @@ namespace Wycademy
         #region Private Members
         private List<KeyValuePair<ulong, ulong>> _items;
         private int _capacity;
+        private Timer _pruneOldMessageTimer;
         #endregion
     }
 }
