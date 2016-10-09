@@ -172,16 +172,25 @@ namespace Wycademy
 
         private void PruneOldMessages(object state)
         {
-            foreach (var pair in _items)
+            lock (_items)
             {
-                DateTimeOffset timestamp = DateTimeOffset.FromUnixTimeMilliseconds((long)((pair.Key >> 22) + 1420070400000UL));
-                TimeSpan difference = DateTimeOffset.UtcNow - timestamp;
+                var itemsToRemove = _items.Where(x => ConvertIDToHours(x.Key) > 2);
 
-                if (difference.TotalHours >= 2)
+                foreach (var pair in itemsToRemove)
                 {
                     _items.Remove(pair);
                 }
             }
+        }
+        private double ConvertIDToHours(ulong id)
+        {
+            // Convert the ID into a timestamp by getting the bytes that represent the timestamp, and adding the Discord Epoch
+            // (which is Jan 1, 2015 12 AM UTC) as a unix timestamp. It then combines them into a unix timestamp and converts it to a 
+            // DateTimeOffset.
+            DateTimeOffset timestamp = DateTimeOffset.FromUnixTimeMilliseconds((long)((id >> 22) + 1420070400000UL));
+            TimeSpan difference = DateTimeOffset.UtcNow - timestamp;
+
+            return difference.TotalHours;
         }
         #endregion
 
