@@ -174,7 +174,7 @@ namespace Wycademy
         {
             lock (_items)
             {
-                var itemsToRemove = _items.Where(x => ConvertIDToHours(x.Key) > 2);
+                var itemsToRemove = _items.Where(x => ConvertIDToHours(x.Key) > 2).ToList();
 
                 foreach (var pair in itemsToRemove)
                 {
