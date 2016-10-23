@@ -100,14 +100,17 @@ namespace Wycademy
                 .MinPermissions((int)PermissionLevels.User)
                 .UseGlobalBlacklist()
                 .Description("Calculates the time taken for the bot to recieve and respond to the command message.")
+                .Alias("pang", "peng", "pong", "pung", "pyng")
                 .Do(async e =>
                 {
-                    Message m = await e.Channel.SendMessageZWSP("Ping: [...]ms.");
+                    Message m = await e.Channel.SendMessageZWSP("[...]");
 
-                    TimeSpan timeDifference = m.Timestamp - e.Message.Timestamp;
+                    await Task.Delay(1000);
+
+                    TimeSpan timeDifference = TimeZoneInfo.ConvertTimeToUtc(m.Timestamp) - e.Message.Timestamp;
                     double milliseconds = timeDifference.TotalMilliseconds;
 
-                    await m.Edit($"\x200bPing: {milliseconds}ms.");
+                    await m.Edit($"\x200bP{WycademySettings.VOWELS[WycademySettings.RandomNumbers.Next(6)]}ng: {milliseconds}ms.");
                 });
             });
         }

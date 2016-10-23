@@ -100,6 +100,8 @@ namespace Wycademy
                                                                     "<:eyesLeft:215357294987182080>", "<:Eyenoculars:211850820315119617>",
                                                                     "<:flippedEyes:214942499964321793>",":eyes:" };
 
+        public static readonly string[] VOWELS = new string[] { "a", "e", "i", "o", "u", "y" };
+
         public static Random RandomNumbers = new Random();
     }
 }
