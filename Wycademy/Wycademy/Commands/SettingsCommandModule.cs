@@ -82,6 +82,7 @@ namespace Wycademy
                         if (Program.locked)
                         {
                             await e.Channel.SendMessageZWSP("Shutting down...");
+                            await _client.Disconnect();
                             Program.MessageCache.DisposeTimer();
                             await Task.Delay(5000);
                             Environment.Exit(0);
