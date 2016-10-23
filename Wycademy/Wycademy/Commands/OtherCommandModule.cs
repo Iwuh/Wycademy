@@ -95,6 +95,20 @@ namespace Wycademy
                     await Task.Delay(1000);
                     Program.MessageCache.Add(e.Message.Id, m.Id);
                 });
+
+                cgb.CreateCommand("ping")
+                .MinPermissions((int)PermissionLevels.User)
+                .UseGlobalBlacklist()
+                .Description("Calculates the time taken for the bot to recieve and respond to the command message.")
+                .Do(async e =>
+                {
+                    Message m = await e.Channel.SendMessageZWSP("Ping: [...]ms.");
+
+                    TimeSpan timeDifference = m.Timestamp - e.Message.Timestamp;
+                    int milliseconds = timeDifference.Milliseconds;
+
+                    await m.Edit($"\x200bPing: {milliseconds}ms.");
+                });
             });
         }
     }
