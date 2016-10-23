@@ -71,7 +71,7 @@ namespace Wycademy
                     {
                         StringBuilder sb = new StringBuilder();
                         sb.AppendLine("Language: C# running on .NET Framework 4.6.1");
-                        sb.AppendLine("Library: Discord.Net 0.9.4");
+                        sb.AppendLine("Library: Discord.Net 0.9.6");
                         sb.AppendLine("Created by DerpDargon (https://github.com/Iwuh/Wycademy). A ☆ would be much appreciated!");
                         sb.AppendLine("Special thanks to my brother for helping me gather data on 71 monsters.");
                         sb.AppendLine("Icon by @thechewer on Instagram.");
