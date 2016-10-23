@@ -165,6 +165,9 @@ namespace Wycademy
                 _items.Remove(itemToRemove);
             }
         }
+        /// <summary>
+        /// Disposes the private System.Threading.Timer contained in this object.
+        /// </summary>
         public void DisposeTimer()
         {
             _pruneOldMessageTimer.Dispose();
@@ -174,7 +177,7 @@ namespace Wycademy
         {
             lock (_items)
             {
-                var itemsToRemove = _items.Where(x => ConvertIDToHours(x.Key) > 2).ToList();
+                var itemsToRemove = _items.Where(x => ConvertIDToHours(x.Key) > 2.0).ToList();
 
                 foreach (var pair in itemsToRemove)
                 {
