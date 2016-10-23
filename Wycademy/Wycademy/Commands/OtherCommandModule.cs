@@ -105,7 +105,7 @@ namespace Wycademy
                     Message m = await e.Channel.SendMessageZWSP("Ping: [...]ms.");
 
                     TimeSpan timeDifference = m.Timestamp - e.Message.Timestamp;
-                    int milliseconds = timeDifference.Milliseconds;
+                    double milliseconds = timeDifference.TotalMilliseconds;
 
                     await m.Edit($"\x200bPing: {milliseconds}ms.");
                 });
