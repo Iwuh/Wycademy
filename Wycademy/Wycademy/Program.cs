@@ -57,7 +57,7 @@ namespace Wycademy
 
                 if (e.Message.IsMentioningMe())
                 {
-                    await WycademyReactions.SendReaction(WycademyReactions.GetReactionURL(e.Server.Id, e.Message.Id, "👀"));
+                    await WycademyReactions.SendReaction(WycademyReactions.GetReactionURL(e.Channel.Id, e.Message.Id, "👀"));
                 }
 
                 if (e.Message.IsAuthor)

@@ -15,15 +15,15 @@ namespace Wycademy
     /// </summary>
     static class WycademyReactions
     {
-        public static string GetReactionURL(ulong server, ulong message, string emoji)
+        public static string GetReactionURL(ulong channel, ulong message, string emoji)
         {
             string formattedEmoji = HttpUtility.UrlEncode(emoji);
-            return $"https://canary.discordapp.com/api/v6/channels/{server}/messages/{message}/reactions/{formattedEmoji}/@me";
+            return $"https://canary.discordapp.com/api/v6/channels/{channel}/messages/{message}/reactions/{formattedEmoji}/@me";
         }
-        public static string GetReactionURL(ulong server, ulong message, Server.Emoji emoji)
+        public static string GetReactionURL(ulong channel, ulong message, Server.Emoji emoji)
         {
             string formattedEmoji = $"<:{emoji.Name}:{emoji.Id}>";
-            return $"https://canary.discordapp.com/api/v6/channels/{server}/messages/{message}/reactions/{formattedEmoji}/@me";
+            return $"https://canary.discordapp.com/api/v6/channels/{channel}/messages/{message}/reactions/{formattedEmoji}/@me";
         }
 
         public static async Task SendReaction(string URI)
