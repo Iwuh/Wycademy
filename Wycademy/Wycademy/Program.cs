@@ -54,6 +54,12 @@ namespace Wycademy
                         }
                     }
                 }
+
+                if (e.Message.IsMentioningMe())
+                {
+                    await WycademyReactions.SendReaction(WycademyReactions.GetReactionURL(e.Server.Id, e.Message.Id, "👀"));
+                }
+
                 if (e.Message.IsAuthor)
                 {
                     _client.Log.Info(">>Message", $"{((e.Server != null) ? e.Server.Name : "Private")}/#{((!e.Channel.IsPrivate) ? e.Channel.Name : "")}: {e.Message}");
