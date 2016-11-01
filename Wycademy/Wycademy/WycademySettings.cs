@@ -14,7 +14,7 @@ namespace Wycademy
         public const char WYCADEMY_PREFIX = '<';
         public const ulong OWNER_ID = 176775302897336331;
         public const string JSON_PATH = @".\..\..\Data\json";
-        public const string INVALID_MONSTER_NAME = "is not a valid choice. Try `<info list` for the list of choices.";
+        public const string INVALID_MONSTER_NAME = "is not a valid choice. Try `<info monsterlist` for the list of valid names.";
 
         public static readonly string[] MONSTER_LIST = new string[71] 
         {

@@ -124,7 +124,7 @@ namespace Wycademy
                             }
                         }
                     });
-                    info.CreateCommand("list")
+                    info.CreateCommand("monsterlist")
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Provides a list of all monsters you can get info from.")
                     .Do(async e =>
