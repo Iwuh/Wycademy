@@ -38,7 +38,7 @@ namespace Wycademy
                         {
                             try
                             {
-                                MonsterInfo hitzoneInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Hitzones"));
+                                MonsterInfo hitzoneInfo = await Task.Run(() => InfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Hitzones"));
 
                                 Message m = await e.Channel.SendMessageZWSP(GenerateMessage(hitzoneInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);
@@ -64,7 +64,7 @@ namespace Wycademy
                         {
                             try
                             {
-                                MonsterInfo staggerInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Stagger/Sever"));
+                                MonsterInfo staggerInfo = await Task.Run(() => InfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Stagger/Sever"));
 
                                 Message m = await e.Channel.SendMessageZWSP(GenerateMessage(staggerInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);
@@ -89,7 +89,7 @@ namespace Wycademy
                         {
                             try
                             {
-                                MonsterInfo statusInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Status"));
+                                MonsterInfo statusInfo = await Task.Run(() => InfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Status"));
 
                                 Message m = await e.Channel.SendMessageZWSP(GenerateMessage(statusInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);
@@ -115,7 +115,7 @@ namespace Wycademy
                         {
                             try
                             {
-                                MonsterInfo itemInfo = await Task.Run(() => MonsterInfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Item Effects"));
+                                MonsterInfo itemInfo = await Task.Run(() => InfoBuilder.GetMonsterInfo(e.GetArg("Monster"), "Item Effects"));
 
                                 Message m = await e.Channel.SendMessageZWSP(GenerateMessage(itemInfo, e.GetArg("Monster")));
                                 await Task.Delay(1000);

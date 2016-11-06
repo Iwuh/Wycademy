@@ -48,7 +48,7 @@ namespace Wycademy
                         StringBuilder sb = new StringBuilder();
                         sb.AppendLine("Statistics about the Wycademy:");
                         sb.AppendLine($"Uptime: {timeDifference.Days} days, {timeDifference.Hours} hours, {timeDifference.Minutes} minutes and {timeDifference.Seconds} seconds.");
-                        sb.AppendLine($"Queries: {MonsterInfoBuilder.Queries}");
+                        sb.AppendLine($"Queries: {InfoBuilder.Queries}");
                         sb.AppendLine($"Cached messages: {Program.MessageCache.Count} / {Program.MessageCache.MaxCapacity}");
                         sb.AppendLine($"Connected servers: {_client.Servers.Count()}");
                         using (Process p = Process.GetCurrentProcess())

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Wycademy
 {
-    static class MonsterInfoBuilder
+    static class InfoBuilder
     {
         // Used for statistics
         public static int Queries { get; private set; }

@@ -185,8 +185,8 @@
     <Compile Include="Commands\EvalCommandModule.cs" />
     <Compile Include="Commands\InfoCommandModule.cs" />
     <Compile Include="DiscordExtensions.cs" />
-    <Compile Include="Monster Info\MonsterInfo.cs" />
-    <Compile Include="Monster Info\MonsterInfoBuilder.cs" />
+    <Compile Include="Info\MonsterInfo.cs" />
+    <Compile Include="Info\InfoBuilder.cs" />
     <Compile Include="Commands\OtherCommandModule.cs" />
     <Compile Include="PermissionLevels.cs" />
     <Compile Include="Program.cs" />
