@@ -1,0 +1,39 @@
+SWORD AND SHIELD
+Sword Oils: last 120 seconds (180 seconds with the Item Use Up skill)
+Affinity Oil = +30% affinity
+Stamina Oil = 10 exhaust and 8 KO per hit
+Mind`s Eye Oil = Prevents bouncing
+Destroyer Oil = Damage to monster parts × 1.2 (only break and stagger limits are affected, actual damage does not increase)
+Sharpness modifier = 1.06 for all sword attacks
+Motion Values:
+Draw Slash/Rush Slash (X+A) = 18 (gives 3 seconds of Super armor)
+Up slash (R+X) = 14
+Down Slash (X1) = 14
+Side Slash (X2) = 13
+Shield Combo (X3 DO NOT USE THIS PLEASE!!!) = 10 + 20
+Strong Side slash (A1) = 21
+Strong Up slash (A2) = 19
+Round Slash (A3) = 24
+Shield attack (->A1) = 8 (deals 15 exhaust and 10 KO)
+Shield Bash (->A2) = 16 (deals 25 exhaust and 15 KO)
+Charged Slash (back+hold A) = 20+34 (first hit deals 25 exhaust and 15 KO)
+Guard Slash (R+A) = 14
+Jump attack (X in the air) = 20
+Rising jump attack (X+A on a slope) = 18
+Aerial Style:
+Aerial rising slash (automatic after a vault) = 25
+Aerial downward slash (X in the air) = 20
+Adept Style:
+Adept counter (X after adept dodge) = 21 + 19 (deals mounting status)
+Adept rush in counter (X+A after adept dodge) = 18 + 20 (deals mounting status)
+Adept attack from back step adept dodge (back + A after a move) = 42
+Hunter Arts:
+Sword Dance I (costs 830) = 25 + 14 + 15 + 15 + 40 = 109 total
+Sword Dance II (costs 920) = 25 + 14 + 15 + 15 + 14 + 15 + 40 = 138 total
+Sword Dance III (costs 1250) = 25 + 14 + 15 + 15 + 14 + 15 + 20 + 7 + 45 = 170 total
+Round Force I (costs 250) = 30
+Round Force II (costs 250) = 20 + 30
+Round Force III (costs 250) = 20 + 20 + 30
+Shoryugeki I = 15 + 55 = 70 total (0 + 70 exhaust, 0 + 75 KO)
+Shoryugeki II = 15 + 30 + 60 = 105 total (0 + 50 + 40 exhaust, 0 + 100 + 50 KO)
+Shoryugeki III = 15 + 30 + 60 + 30 = 135 total (0 + 50 + 40 + 40 exhaust, 0 + 100 + 50 + 50 KO)

@@ -1,0 +1,40 @@
+LONG SWORD
+Spirit aura boosts:
+-> no aura = 1.00
+-> white aura = 1.05 (lasts 5 minutes)
+-> yellow aura = 1.10 (lasts 3 minutes)
+-> red aura = 1.20 (lasts 1 minute)
+Full Spirit gauge boost (when flashing) = 1.13
+Motion Values:
+Draw slash/Step Slash = 26
+Overhead Slash (X1) = 26
+Thrust (A1) = 14
+Rising Slash (X after A1) = 18
+Fade Slash (X+A) = 24
+Charge-in hit after Fade Slash (R after X+A) = 30 (18 with empty spirit gauge)
+Draw Spirit Slash (R+X+A) = 28
+Spirit Slash 1 (R) = 28 (16 with empty spirit gauge)
+Spirit Slash 2 (R2) = 32
+Spirit Slash 3 (R3) = 12 + 14 + 34
+Spirit Finisher (R4) = 42 (levels up your aura)
+Draw into Spirit 1 (R+X+A) = 30 (18 with empty spirit gauge)
+Jump attack (X in the air) = 26
+Jumping Spirit attack 1 (R in the air with no aura) = 30 (16 with empty spirit gauge)
+Jumping Spirit attack 2 (R in the air with white aura or higher) = 12 + 36 (8 + 20 with empty spirit gauge)
+Aerial style:
+Aerial attack (X in the air) = 10 + 25
+Aerial Spirit Slash 1 (R in the air with no aura) = 30 (16 with empty spirit gauge)
+Aerial Spirit Slash 3 (R in the air with white aura or higher) = 12 + 14 + 34 (6 + 6 + 15 with empty spirit gauge)
+Adept style:
+Adept slash (X after adept evade) = 25
+Adept Spirit combo (R after Adept slash) = 30 + 80 (levels up your aura)
+Hunter arts:
+Sakura Slash I (costs 670) = 10 + 40 + 40 + 40 = 130 total (levels up aura)
+Sakura Slash II (costs 750) = 10 + 40 + 20 + 40 + 40 = 150 total (levels up aura)
+Sakura Slash III (costs 830) = 10 + 40 + 15 + 15 + 15 + 15 + 40 + 40 = 190 total (levels up aura)
+Unhinged Spirit I (costs 420) = 42 (lasts 30 seconds)
+Unhinged Spirit II (costs 500) = 42 (lasts 60 seconds)
+Unhinged Spirit III (costs 580) = 42 (lasts 90 seconds)
+Critical Juncture I (costs 1080) = 100
+Critical Juncture II (costs 1170) = 140
+Critical Juncture III (costs 1250) = 180

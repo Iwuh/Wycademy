@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.Commands.Permissions.Levels;
+using Discord.Commands.Permissions.Userlist;
 using Discord.Modules;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace Wycademy
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Provides hitzone information about a monster.")
                     .Parameter("Monster", ParameterType.Required)
+                    .UseGlobalBlacklist()
                     .Do(async e =>
                     {
                         if (!Program.locked)
@@ -55,6 +57,7 @@ namespace Wycademy
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Provides stagger, sever, and extract colour information about a monster. Aliases are 'sever', 'break', and 'extract'.")
                     .Parameter("Monster", ParameterType.Required)
+                    .UseGlobalBlacklist()
                     .Do(async e =>
                     {
                         if (!Program.locked)
@@ -79,6 +82,7 @@ namespace Wycademy
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Provides status information about a monster.")
                     .Parameter("Monster", ParameterType.Required)
+                    .UseGlobalBlacklist()
                     .Do(async e =>
                     {
                         if (!Program.locked)
@@ -104,6 +108,7 @@ namespace Wycademy
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Provides flash bomb and trap information about a monster. Alias is 'item'.")
                     .Parameter("Monster", ParameterType.Required)
+                    .UseGlobalBlacklist()
                     .Do(async e =>
                     {
                         if (!Program.locked)
@@ -127,6 +132,7 @@ namespace Wycademy
                     info.CreateCommand("monsterlist")
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Provides a list of all monsters you can get info from.")
+                    .UseGlobalBlacklist()
                     .Do(async e =>
                     {
                         if (!Program.locked)
@@ -145,9 +151,24 @@ namespace Wycademy
                             Program.MessageCache.Add(e.Message.Id, m.Id);
                         }
                     });
+
+                    info.CreateCommand("motionvalues")
+                    .MinPermissions((int)PermissionLevels.User)
+                    .Description("Sends a text file containing all the motion values for a specific weapon type.")
+                    .Alias("mv")
+                    .UseGlobalBlacklist()
+                    .Do(async e =>
+                    {
+                        if (!Program.locked)
+                        {
+
+                        }
+                    });
+
                     info.CreateCommand("help")
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Points users to the correct help function.")
+                    .UseGlobalBlacklist()
                     .Do(async e =>
                     {
                         Message m = await e.Channel.SendMessageZWSP("Try <help [command] instead.");

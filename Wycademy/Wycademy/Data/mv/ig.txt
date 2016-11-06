@@ -1,0 +1,34 @@
+INSECT GLAIVE
+Extract boosts:
+Red extract = +0% (only increases number of hits)
+Red + White = +15% attack (needs further testing)
+Red + White + Orange = +20% attack (needs further testing)
+Motion values:
+Draw attack/Jump slam (->A) = 25
+Forward thrust (->X) = 12 (18 + 12 with red extract)
+Rising slashes (X1) = 23 + 17 (25 + 13 +15 with red extract)
+Side slashes (X2) = 21 (13 + 23 with red extract)
+Spinning slashes (X3) = 15 + 21 (13 + 11 + 25 with red extract)
+Left side sweep (A1) = 23 (15 + 27 with red extract)
+Linking hit between A1 and X1 = 25
+Slam/Right side sweep (A2) = 27 (21 + 35 with red extract)
+Backflip (<-A) = 17
+Marker slash (R mid-combo) = 10
+Marker shot (R) = 0
+Kinsect shot (R+X) = 22 (16 KO on blunt types)
+Charged Kinsect shot = 60 (40 KO on blunt types, element × 1.5)
+Jump Attack (X in the air) = 21 (17 + 7 with red extract)
+Aerial Style:
+Aerial attack = 17 + 7 (17 × n with red extract where n = up to 4 hits)
+Adept Style:
+Adept counter attack = 30
+Hunter Arts
+Extract Hunter I (costs 700) = 70 (extracts last 30 seconds)
+Extract Hunter II (costs 900) = 70 (extracts last 60 seconds)
+Extract Hunter III (costs 1000) = 70 (extracts last 90 seconds)
+Swarm I (costs 1000) = 5 per hit for 90 seconds, slow hit rate (red extract = power × 1.2, white extract = hit rate × 1.2, orange extract = stagger/break damage × 1.2)
+Swarm II (costs 1080) = 5 per hit for 90 seconds, medium hit rate (red extract = power × 1.2, white extract = hit rate × 1.2, orange extract = stagger/break damage × 1.2)
+Swarm III (costs 1250) = 5 per hit for 90 seconds, fast hit rate (red extract = power × 1.2, white extract = hit rate × 1.2, orange extract = stagger/break damage × 1.2)
+Bug Blow I (costs 580) = 10 + 10 + 80 (deals extra damage with Swarm active: I = +90, II = +120, III = +150)
+Bug Blow II (costs 670) = 10 + 105 (deals extra damage with Swarm active: I = +90, II = +120, III = +150)
+Bug Blow III (costs 750) = 10 + 120 (deals extra damage with Swarm active: I = +90, II = +120, III = +150)
