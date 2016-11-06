@@ -54,9 +54,11 @@ namespace Wycademy
 
         private static string ShortenWeaponNames(string name)
         {
-            if (!WycademySettings.WEAPON_NAMES.Contains(name, StringComparer.InvariantCultureIgnoreCase))
+            string lowercaseName = name.ToLower();
+
+            if (!WycademySettings.WEAPON_NAMES.Select(x => x.ToLower()).Contains(lowercaseName, StringComparer.InvariantCultureIgnoreCase))
             {
-                switch (name.ToLower())
+                switch (lowercaseName)
                 {
                     case "great sword":
                     case "great_sword":
@@ -76,11 +78,15 @@ namespace Wycademy
                     case "dual_blades":
                         return "DB";
 
+                    case "lance":
+                        return "Lance";
+
                     case "gunlance":
                     case "gun_lance":
                     case "gun lance":
                         return "GL";
 
+                    case "hammer":
                     case "hemr":
                     case "hemmr":
                         return "Hammer";
@@ -102,6 +108,9 @@ namespace Wycademy
                     case "chargeblade":
                         return "CB";
 
+                    case "ammo":
+                        return "Ammo";
+
                     case "light bowgun":
                     case "light_bowgun":
                         return "LBG";
@@ -109,6 +118,12 @@ namespace Wycademy
                     case "heavy bowgun":
                     case "heavy_bowgun":
                         return "HBG";
+
+                    case "bow":
+                        return "Bow";
+
+                    case "prowler":
+                        return "Prowler";
 
                     default:
                         throw new ArgumentException();

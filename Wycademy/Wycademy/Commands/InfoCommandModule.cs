@@ -155,13 +155,28 @@ namespace Wycademy
                     info.CreateCommand("motionvalues")
                     .MinPermissions((int)PermissionLevels.User)
                     .Description("Sends a text file containing all the motion values for a specific weapon type.")
+                    .Parameter("Weapon", ParameterType.Unparsed)
                     .Alias("mv")
                     .UseGlobalBlacklist()
                     .Do(async e =>
                     {
                         if (!Program.locked)
                         {
-
+                            try
+                            {
+                                using (FileStream fs = InfoBuilder.GetMotionValueStream(e.GetArg("Weapon")))
+                                {
+                                    Message m = await e.Channel.SendFile(fs.Name, fs);
+                                    await Task.Delay(1000);
+                                    Program.MessageCache.Add(e.Message.Id, m.Id);
+                                }
+                            }
+                            catch (ArgumentException)
+                            {
+                                Message m = await e.Channel.SendMessageZWSP($"{e.GetArg("Weapon")} is not a recognised weapon name.");
+                                await Task.Delay(1000);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
+                            }
                         }
                     });
 
