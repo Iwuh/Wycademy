@@ -95,6 +95,8 @@ namespace Wycademy
         public static readonly string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
         public static readonly string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
 
+        public static readonly string[] WEAPON_NAMES = new string[] { "GS", "LS", "SnS", "DB", "Lance", "GL", "Hammer", "HH", "SA", "CB", "Ammo", "LBG", "HBG", "Bow", "Prowler" };
+
         public static readonly string[] EYE_EMOJIS = new string[] { "<:eyesFlipped:214941562096844800>", "<:eyesCross:214941564185739265>",
                                                                     "<:eyesReverse:214941566475829258>", "<:eyesCenter:214946506350919680>",
                                                                     "<:eyesLeft:215357294987182080>", "<:Eyenoculars:211850820315119617>",
