@@ -162,20 +162,29 @@ namespace Wycademy
                     {
                         if (!Program.locked)
                         {
-                            try
+                            if (e.Message.RawText.Contains("👀"))
                             {
-                                using (FileStream fs = InfoBuilder.GetMotionValueStream(e.GetArg("Weapon")))
+                                Message m = await e.Channel.SendMessageZWSP("👀");
+                                await Task.Delay(1000);
+                                Program.MessageCache.Add(e.Message.Id, m.Id);
+                            }
+                            else
+                            {
+                                try
                                 {
-                                    Message m = await e.Channel.SendFile(fs.Name, fs);
+                                    using (FileStream fs = InfoBuilder.GetMotionValueStream(e.GetArg("Weapon")))
+                                    {
+                                        Message m = await e.Channel.SendFile(fs.Name, fs);
+                                        await Task.Delay(1000);
+                                        Program.MessageCache.Add(e.Message.Id, m.Id);
+                                    }
+                                }
+                                catch (ArgumentException)
+                                {
+                                    Message m = await e.Channel.SendMessageZWSP($"{e.GetArg("Weapon")} is not a recognised weapon name.");
                                     await Task.Delay(1000);
                                     Program.MessageCache.Add(e.Message.Id, m.Id);
                                 }
-                            }
-                            catch (ArgumentException)
-                            {
-                                Message m = await e.Channel.SendMessageZWSP($"{e.GetArg("Weapon")} is not a recognised weapon name.");
-                                await Task.Delay(1000);
-                                Program.MessageCache.Add(e.Message.Id, m.Id);
                             }
                         }
                     });
