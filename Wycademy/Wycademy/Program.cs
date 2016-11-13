@@ -100,7 +100,11 @@ namespace Wycademy
             _client.AddModule<OtherCommandModule>("Misc. Commands", ModuleFilter.None);
 
             //Bot token is stored in an environment variable so that nobody sees it when I push to GitHub :D
+#if BETA
+            string token = Environment.GetEnvironmentVariable("WYCADEMY_BETA_TOKEN", EnvironmentVariableTarget.User);
+#else
             string token = Environment.GetEnvironmentVariable("WYCADEMY_TOKEN", EnvironmentVariableTarget.User);
+#endif
 
             //Connect to all guilds that the bot is part of and then block until the bot is manually exited.
             _client.ExecuteAndWait(async () =>
