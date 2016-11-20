@@ -1,14 +1,13 @@
-﻿{
+{
   "version": "1.0.0-*",
   "buildOptions": {
     "emitEntryPoint": true
   },
 
   "dependencies": {
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.1"
-    }
+    "Discord.Net.Commands": "1.0.0-beta2-00478",
+    "Discord.Net.WebSocket": "1.0.0-beta2-00478",
+    "Microsoft.NETCore.App": "1.1.0"
   },
 
   "frameworks": {
