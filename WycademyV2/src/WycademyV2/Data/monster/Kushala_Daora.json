@@ -1,0 +1,43 @@
+{
+    "Status": {
+        "Poison": "150 50 350 120sec 5/10sec 10",
+        "Sleep": "200 50 450 40sec 5/10sec 0",
+        "Paralysis": "200 125 700 10sec 5/10sec 0",
+        "KO": "150 75 450 10sec 5/10sec 0",
+        "Exhaust": "180 75 480 0sec 5/10sec 0",
+        "Jump": "50 75 500 0sec 0/0sec 0",
+        "Mount": "60 90 800 0sec 5/0sec 0",
+        "Blast": "70 60 1090 0sec 0/0sec 100"
+    },
+    "Item Effects": {
+        "Flash Bomb": "15sec 15sec 15sec",
+        "Pitfall Trap": "0sec 0sec 0sec",
+        "Shock Trap": "0sec 0sec 0sec"
+    },
+    "Stagger/Sever": {
+        "Head": "260 260 Red",
+        "Torso": "100 N/A Orange",
+        "Tail": "180 180 Green",
+        "Legs (Left)": "150 N/A White",
+        "Legs (Right)": "150 N/A White",
+        "Wings": "90 N/A White"
+    },
+    "Hitzone": {
+        "Head": "50 45 40 10 5 0 30 35 100 100",
+        "Head (Black Wind)": "45 40 35 15 5 0 35 40 100 100",
+        "Neck": "45 40 30 10 5 0 20 25 0 100",
+        "Neck (Black Wind)": "40 40 30 10 5 0 25 35 0 100",
+        "Stomach": "35 50 25 10 5 0 15 20 0 100",
+        "Stomach (Black Wind)": "25 40 25 5 0 0 20 10 0 100",
+        "Torso (Back)": "20 25 30 10 5 0 15 20 0 100",
+        "Torso (Back) (Black Wind)": "20 25 20 5 0 0 20 10 0 100",
+        "Tail": "35 30 40 10 5 0 30 30 0 100",
+        "Tail (Black Wind)": "35 30 40 5 0 0 30 40 0 100",
+        "Forelegs": "35 30 20 10 5 0 20 20 0 100",
+        "Forelegs (Black Wind)": "30 25 20 5 0 0 25 10 0 100",
+        "Hind Legs": "35 35 25 10 5 0 15 20 0 100",
+        "Hind Legs (Black Wind)": "30 30 25 5 0 0 20 10 0 100",
+        "Wings": "20 15 20 10 5 0 15 20 0 100",
+        "Wings (Black Wind)": "20 15 20 5 0 0 20 10 0 100"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Status": {
+        "Poison": "100 50 300 60sec 5/10sec 5 ",
+        "Sleep": "150 40 270 40sec 5/10sec 0 ",
+        "Paralysis": "150 30 300 10sec 5/10sec 0 ",
+        "KO": "120 20 240 8sec 5/10sec 0 ",
+        "Exhaust": "180 75 480 0sec 5/10sec 0 ",
+        "Jump": "30 50 330 0sec 0/0sec 0 ",
+        "Mount": "50 80 800 0sec 0/0sec 150 ",
+        "Blast": "50 40 1015 0sec 0/0sec 100 "
+    },
+    "Item Effects": {
+        "Flash Bomb": "20sec 20sec 30sec ",
+        "Pitfall Trap": "15sec 15sec 25sec ",
+        "Shock Trap": "12sec 12sec 20sec "
+    },
+    "Stagger/Sever": {
+        "Head": "180 180 Red",
+        "Feet": "60 60 White",
+        "Stomach": "100 100 Orange"
+    },
+    "Hitzone": {
+        "Head": "50 55 70 20 10 10 25 0 100 100 ",
+        "Horn": "35 35 35 15 5 5 20 0 100 100 ",
+        "Claws": "42 42 45 10 5 5 15 0 0 100 ",
+        "Feet": "45 45 50 10 5 5 15 0 0 100 ",
+        "Torso": "65 55 80 25 15 15 35 0 0 100 "
+    }
+}

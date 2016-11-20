@@ -1,0 +1,37 @@
+{
+    "Status": {
+        "Poison": "400 100 1000 60sec 5/5sec 5 ",
+        "Sleep": "0 0 0 0sec 0/0sec 0 ",
+        "Paralysis": "0 0 0 0sec 0/0sec 0 ",
+        "KO": "0 0 0 0sec 0/0sec 0 ",
+        "Exhaust": "0 0 0 0sec 0/0sec 0 ",
+        "Jump": "0 0 0 0sec 0/0sec 0 ",
+        "Mount": "0 0 0 0sec 0/0sec 0 ",
+        "Blast": "70 55 1445 0sec 0/0sec 150 "
+    },
+    "Item Effects": {
+        "Flash Bomb": "0sec 0sec 0sec ",
+        "Pitfall Trap": "0sec 0sec 0sec ",
+        "Shock Trap": "0sec 0sec 0sec "
+    },
+    "Stagger/Sever": {
+        "Left Feeler": "150 150 Red",
+        "Right Feeler": "150 150 Red",
+        "Torso (Back)": "300 N/A Orange",
+        "Left Blowhole": "300 N/A Orange",
+        "Right Blowhole": "300 N/A Orange",
+        "Shell Exposure": "180 N/A Green",
+        "Head": "500 500 Red",
+        "Fin / Body": "350 N/A White"
+    },
+    "Hitzone": {
+        "Torso (Back)": "30 30 10 10 0 0 5 15 0 0 ",
+        "Shell": "15 15 10 5 0 0 0 5 0 0 ",
+        "Head": "65 65 40 15 0 0 10 20 0 0 ",
+        "Head (Covered)": "30 30 15 0 0 0 0 0 0 0 ",
+        "Fin": "22 22 15 5 0 0 0 10 0 0 ",
+        "Body": "15 15 10 0 0 0 0 0 0 0 ",
+        "Blowhole": "38 38 20 5 0 0 0 10 0 0 ",
+        "Back Weakness": "70 70 70 20 0 0 10 30 0 0 "
+    }
+}

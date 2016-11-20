@@ -1,0 +1,43 @@
+{
+    "Status": {
+        "Poison": "180 100 630 50sec 5/10sec 10",
+        "Sleep": "150 200 980 25sec 5/10sec 0",
+        "Paralysis": "150 200 840 15sec 5/10sec 0",
+        "KO": "210 150 900 15sec 5/10sec 0",
+        "Exhaust": "270 75 600 0sec 5/10sec 0",
+        "Jump": "210 120 480 0sec 0/0sec 0",
+        "Mount": "70 90 800 0sec 0/0sec 150",
+        "Blast": "100 80 900 0sec 0/0sec 150"
+    },
+    "Item Effects": {
+        "Flash Bomb": "18sec 18sec 30sec",
+        "Pitfall Trap": "12sec 12sec 25sec",
+        "Shock Trap": "8sec 8sec 15sec"
+    },
+    "Stagger/Sever": {
+        "Head": "240 N/A Red",
+        "Trunk": "270 N/A Red",
+        "Foreleg (Left)": "300 300 White",
+        "Foreleg (Right)": "300 300 White",
+        "Hind Leg (Left)": "300 300 Orange",
+        "Hind Leg (Right)": "300 300 Orange",
+        "Tail": "200 200 White",
+        "Torso": "450 N/A Green"
+    },
+    "Hitzone": {
+        "Head": "55 60 40 10 0 0 15 0 100 100",
+        "Trunk": "63 54 45 25 5 0 10 0 0 100",
+        "Trunk (Broken)": "55 50 40 15 5 0 5 0 0 100",
+        "Foreleg (Left)": "36 38 35 5 5 0 10 0 0 100",
+        "Foreleg (Left) (Snow Covered)": "24 30 24 25 0 0 0 0 0 100",
+        "Foreleg (Right)": "36 38 35 5 5 0 10 0 0 100",
+        "Foreleg (Right) (Snow Covered)": "24 30 24 25 0 0 0 0 0 100",
+        "Hind Leg (Left)": "36 38 35 5 5 0 10 0 0 100",
+        "Hind Leg (Left) (Snow Covered)": "24 30 24 25 0 0 0 0 0 100",
+        "Hind Leg (Right)": "36 38 35 5 5 0 10 0 0 100",
+        "Hind Leg (Right) (Snow Covered)": "24 30 24 25 0 0 0 0 0 100",
+        "Tail": "40 35 38 5 5 0 10 0 0 100",
+        "Tail (Snow Covered)": "24 30 24 25 0 0 0 0 0 100",
+        "Torso": "25 34 19 5 0 0 5 0 0 100"
+    }
+}
