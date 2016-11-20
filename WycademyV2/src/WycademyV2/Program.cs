@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Commands;
 using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace WycademyV2
         public static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
 
         private DiscordSocketClient _client;
+        private CommandHandler _handler;
 
         public async Task Start()
         {
@@ -42,13 +44,47 @@ namespace WycademyV2
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.ConnectAsync();
 
+            // Add the client to the DependencyMap that will be used during command execution.
+            DependencyMap map = new DependencyMap();
+            map.Add(_client);
+
+            // Initialize and add the CommandHandler to the map.
+            _handler = new CommandHandler();
+            await _handler.Install(map, Log);
+
             // Asynchronously block until the bot is exited.
             await Task.Delay(-1);
         }
 
         private Task Log(LogMessage msg)
         {
+            switch (msg.Severity)
+            {
+                case LogSeverity.Critical:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+                case LogSeverity.Error:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case LogSeverity.Warning:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case LogSeverity.Info:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case LogSeverity.Verbose:
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case LogSeverity.Debug:
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+            }
+
             Console.WriteLine(msg.ToString());
+            Console.ForegroundColor = ConsoleColor.White;
             // Represents a completed Task for methods that have to return Task but don't do any asynchronous work.
             return Task.CompletedTask;
         }
