@@ -1,7 +1,8 @@
 {
   "version": "1.0.0-*",
   "buildOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "define": [ "BETA" ]
   },
 
   "dependencies": {
@@ -14,5 +15,9 @@
     "netcoreapp1.0": {
       "imports": "dnxcore50"
     }
+  },
+
+  "runtimes": {
+    "win10-x64": {}
   }
 }
