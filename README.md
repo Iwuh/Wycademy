@@ -1,4 +1,4 @@
-# Wycademy
+# Wycademy
 This is a Discord bot that provides information about monsters from Capcom's Monster Hunter series of video games.
 
 # Adding the bot
