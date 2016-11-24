@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace WycademyV2
+namespace WycademyV2.Commands
 {
     public class CommandHandler
     {
