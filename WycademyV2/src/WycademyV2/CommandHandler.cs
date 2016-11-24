@@ -24,9 +24,10 @@ namespace WycademyV2
             _commands = new CommandService();
             map.Add(_commands);
             _map = map;
+            // Set the method for error logging.
             _errorLog = log;
 
-            // Add all modules in the assembly to the CommandSercice.
+            // Add all modules in the assembly to the CommandService.
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
 
             _client.MessageReceived += HandleCommand;
@@ -48,8 +49,31 @@ namespace WycademyV2
 
                 if (!result.IsSuccess)
                 {
-                    await userMessage.Channel.SendMessageAsync(":interrobang: An error has occurred and been logged to the console. If this happens again, contact Iwuh#6351.");
-                    await _errorLog(new LogMessage(LogSeverity.Error, "Command Error!", result.ErrorReason));
+                    switch (result.Error)
+                    {
+                        case CommandError.BadArgCount:
+                            await msg.Channel.SendMessageAsync("Error: Invalid argument count. Try `<help [command]`.");
+                            break;
+                        case CommandError.Exception:
+                            if (msg.Author.Id == WycademyConst.OWNER_ID)
+                            {
+                                // If the command was called by the owner show the full exception message.
+                                await msg.Channel.SendMessageAsync("Exception: " + result.ErrorReason);
+                            }
+                            else
+                            {
+                                // Otherwise show a generic message and log to the console.
+                                await msg.Channel.SendMessageAsync(":interrobang: An exception occured and has been logged to the console. If this happens again, contact Iwuh#6351.");
+                                await _errorLog(new LogMessage(LogSeverity.Error, "Command Error", result.ErrorReason));
+                            }
+                            break;
+                        case CommandError.ParseFailed:
+                            await msg.Channel.SendMessageAsync("Error: Invalid input. Double check your quotation marks and numbers.");
+                            break;
+                        case CommandError.UnmetPrecondition:
+                            await msg.Channel.SendMessageAsync("A requirement to execute this command was not met: " + result.ErrorReason);
+                            break;
+                    }
                 }
             }
         }
