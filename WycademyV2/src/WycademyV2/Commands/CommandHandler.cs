@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands
 {
@@ -26,6 +27,8 @@ namespace WycademyV2.Commands
             _map = map;
             // Set the method for error logging.
             _errorLog = log;
+            // Add services to the dependency map.
+            await AddServices(_map);
 
             // Add all modules in the assembly to the CommandService.
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
@@ -76,6 +79,13 @@ namespace WycademyV2.Commands
                     }
                 }
             }
+        }
+
+        private Task AddServices(IDependencyMap map)
+        {
+            map.Add(new MonsterInfoService());
+            map.Add(new LockerService());
+            return Task.CompletedTask;
         }
     }
 }

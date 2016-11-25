@@ -48,6 +48,9 @@ namespace WycademyV2.Commands.Services
             columnTitleWidth = columnNames.Max(x => x.Length);
             rowTitleWidth = Data.Keys.Max(x => x.Length);
 
+            // Add a title to the table.
+            infoBuilder.AppendLine($"{category} info for {monsterName}:");
+
             // Open the code block.
             infoBuilder.AppendLine("```xl");
 
@@ -97,7 +100,7 @@ namespace WycademyV2.Commands.Services
         private Dictionary<string, string[]> GetDictionaryFromJson(string key, string filename)
         {
             // Parse the json data in a file into a JObject.
-            JObject parsed = JObject.Parse(File.ReadAllText($"{WycademyConst.DATA_FOLDER}\\{filename}.json"));
+            JObject parsed = JObject.Parse(File.ReadAllText($"Data\\monster\\{filename}.json"));
 
             // Get the requested subsection and cast it to an IDictionary.
             var rawData = parsed[key] as IDictionary<string, JToken>;
