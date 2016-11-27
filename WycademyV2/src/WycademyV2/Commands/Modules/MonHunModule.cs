@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Preconditions;
 using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
@@ -23,6 +24,7 @@ namespace WycademyV2.Commands.Modules
         [Command("hitzone")]
         [Alias("hitzones")]
         [Summary("Gets the hitzone data for the specified monster.")]
+        [RequireUnlocked]
         public async Task GetHitzoneData([Remainder, Summary("The monster to search for.")] string monster)
         {
             try
@@ -38,6 +40,7 @@ namespace WycademyV2.Commands.Modules
 
         [Command("status")]
         [Summary("Gets the status effect data for the specified monster.")]
+        [RequireUnlocked]
         public async Task GetStatusData([Remainder, Summary("The monster to search for.")] string monster)
         {
             try
@@ -54,6 +57,7 @@ namespace WycademyV2.Commands.Modules
         [Command("staggersever")]
         [Alias("stagger", "sever", "break", "extract")]
         [Summary("Gets the stagger/sever/extract colour data for the specified monster.")]
+        [RequireUnlocked]
         public async Task GetStaggerSeverData([Remainder, Summary("The monster to search for.")] string monster)
         {
             try
@@ -70,6 +74,7 @@ namespace WycademyV2.Commands.Modules
         [Command("itemeffects")]
         [Alias("item", "items", "trap", "traps")]
         [Summary("Gets the item effect data for the specified monster.")]
+        [RequireUnlocked]
         public async Task GetItemData([Remainder, Summary("The monster to search for.")] string monster)
         {
             try
@@ -85,6 +90,7 @@ namespace WycademyV2.Commands.Modules
 
         [Command("monsterlist")]
         [Summary("Provides a list of all monster names that are recognised by the bot.")]
+        [RequireUnlocked]
         public async Task GetMonsterList()
         {
             var dm = await Context.User.GetDMChannelAsync();
