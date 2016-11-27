@@ -14,8 +14,17 @@ namespace WycademyV2.Commands.Services
     /// </summary>
     public class MonsterInfoService
     {
+        /// <summary>
+        /// Used for statistics.
+        /// </summary>
         public int Queries { get; private set; }
 
+        /// <summary>
+        /// Gets a table containing the requested data about the requested monster.
+        /// </summary>
+        /// <param name="category">The category of data to find.</param>
+        /// <param name="monsterName">The name of the monster to find data for.</param>
+        /// <returns>Task(string)</returns>
         public async Task<string> GetMonsterInfo(string category, string monsterName)
         {
             // Deserialise the json on a threadpool to avoid blocking while reading from disk.
@@ -97,6 +106,12 @@ namespace WycademyV2.Commands.Services
             return infoBuilder.ToString();
         }
 
+        /// <summary>
+        /// Deserialize json data into a dictionary.
+        /// </summary>
+        /// <param name="key">The key to get the values under.</param>
+        /// <param name="filename">The filename to open.</param>
+        /// <returns>Dictionary(string, string[])</returns>
         private Dictionary<string, string[]> GetDictionaryFromJson(string key, string filename)
         {
             // Parse the json data in a file into a JObject.
@@ -108,6 +123,12 @@ namespace WycademyV2.Commands.Services
             return rawData.ToDictionary(pair => pair.Key, pair => ((string)pair.Value).Split(' '));
         }
 
+        /// <summary>
+        /// Pads both sides of a string with spaces to get the requested total length.
+        /// </summary>
+        /// <param name="stringToPad">The string to pad.</param>
+        /// <param name="totalLength">The length of the returned string.</param>
+        /// <returns>string</returns>
         private string PadCenter(string stringToPad, int totalLength)
         {
             // Finds the total amount of spaces to pad.
