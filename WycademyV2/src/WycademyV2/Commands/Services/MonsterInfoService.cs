@@ -19,6 +19,85 @@ namespace WycademyV2.Commands.Services
         /// </summary>
         public int Queries { get; private set; }
 
+        private readonly string[] HITZONE_COLUMN_NAMES = new string[] { "Cut", "Impact", "Shot", "Fire", "Water", "Ice", "Thunder", "Dragon" };
+        private readonly string[] STAGGER_COLUMN_NAMES = new string[] { "Stagger Value", "Sever Value", "Extract Colour" };
+        private readonly string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
+        private readonly string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
+        private readonly string[] MONSTER_LIST = new string[71]
+        {
+            "Great_Maccao",
+            "Velocidrome",
+            "Bulldrome",
+            "Seltas",
+            "Arzuros",
+            "Redhelm_Arzuros",
+            "Gendrome",
+            "Cephadrome",
+            "Yian_Kut-Ku",
+            "Iodrome",
+            "Kecha_Wacha",
+            "Lagombi",
+            "Snowbaron_Lagombi",
+            "Gypceros",
+            "Tetsucabra",
+            "Drilltusk_Tetsucabra",
+            "Daimyo_Hermitaur",
+            "Stonefist_Hermitaur",
+            "Volvidon",
+            "Royal_Ludroth",
+            "Malfestio",
+            "Zamtrios",
+            "Khezu",
+            "Rathian",
+            "Gold_Rathian",
+            "Dreadqueen_Rathian",
+            "Nibelsnarf",
+            "Plesioth",
+            "Blagonga",
+            "Lavasioth",
+            "Shogun_Ceanataur",
+            "Najarala",
+            "Nargacuga",
+            "Silverwind_Nargacuga",
+            "Yian_Garuga",
+            "Deadeye_Yian_Garuga",
+            "Uragaan",
+            "Crystalbeard_Uragaan",
+            "Seltas_Queen",
+            "Rathalos",
+            "Silver_Rathalos",
+            "Dreadking_Rathalos",
+            "Lagiacrus",
+            "Zinogre",
+            "Thunderlord_Zinogre",
+            "Mizutsune",
+            "Astalos",
+            "Gammoth",
+            "Glavenus",
+            "Hellblade_Glavenus",
+            "Agnaktor",
+            "Gore_Magala",
+            "Seregios",
+            "Duramboros",
+            "Tigrex",
+            "Grimclaw_Tigrex",
+            "Kirin",
+            "Brachydios",
+            "Shagaru_Magala",
+            "Rajang",
+            "Furious_Rajang",
+            "Deviljho",
+            "Savage_Deviljho",
+            "Kushala_Daora",
+            "Chameleos",
+            "Teostra",
+            "Akantor",
+            "Ukanlos",
+            "Amatsu",
+            "Nakarkos",
+            "Alatreon"
+        };
+
         /// <summary>
         /// Gets a table containing the requested data about the requested monster.
         /// </summary>
@@ -39,16 +118,16 @@ namespace WycademyV2.Commands.Services
             switch (category)
             {
                 case "Hitzone":
-                    columnNames = WycademyConst.HITZONE_COLUMN_NAMES;
+                    columnNames = HITZONE_COLUMN_NAMES;
                     break;
                 case "Status":
-                    columnNames = WycademyConst.STATUS_COLUMN_NAMES;
+                    columnNames = STATUS_COLUMN_NAMES;
                     break;
                 case "Stagger/Sever":
-                    columnNames = WycademyConst.STAGGER_COLUMN_NAMES;
+                    columnNames = STAGGER_COLUMN_NAMES;
                     break;
                 case "Item Effects":
-                    columnNames = WycademyConst.ITEMEFFECTS_COLUMN_NAMES;
+                    columnNames = ITEMEFFECTS_COLUMN_NAMES;
                     break;
                 default:
                     throw new ArgumentException($"{category} is not a valid category.");
@@ -104,6 +183,11 @@ namespace WycademyV2.Commands.Services
             Queries++;
 
             return infoBuilder.ToString();
+        }
+
+        public string GetMonsterNames()
+        {
+            return "```\n" + string.Join("\n", MONSTER_LIST) + "```";
         }
 
         /// <summary>

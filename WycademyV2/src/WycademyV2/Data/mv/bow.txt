@@ -1,0 +1,86 @@
+BOW
+Distance modifiers:
+Shot type............100% modifier.....150% modifier.....100% modifier.....80% modifier.....50% modifier
+Rapid......................0-3 hops..............3-5 hops..............5-6 hops...........6-12 hops........12-15 hops
+Pierce Lv1-3...........0-3 hops..............3-6 hops..............6-8 hops............8-9 hops...........9-13 hops
+Pierce Lv4-5...........0-3 hops..............3-8 hops..............8-10 hops.........10-11 hops.......11-15 hops
+Spread....................0-3 hops..............3-4 hops..............4-5 hops............5-9 hops...........9-12 hops
+Heavy......................0-3 hops.............3-15 hops
+Triple Volley HA.......0-3 hops.............3-10 hops...........10-14 hops.........14-16 hops.......16-18 hops
+Blade Wire HA.........0-3 hops.............3-5 hops...............5-6 hops............6-12 hops........12-15 hops
+Charge level modifiers:
+Charge level..........Attack modifier....Element modifier....Poison....Para....Sleep
+Charge Lv1.....................0.4....................... 0.7.................0.5.........0.5.......0.5
+Charge Lv2.....................1.0...................... 0.85................1.0.........1.0.......1.0
+Charge Lv3.....................1.5....................... 1.0.................1.5.........1.3.......1.3
+Charge Lv4.....................1.7..................... 1.125...............1.5.........1.3.......1.3
+Coating modifiers:
+Power Coating Lv1 = 1.35 attack
+Power Coating Lv2 = 1.50 attack
+C.Range Coating = gives the critical distance modifier (1.50) when too close and gives white sharpness to the melee attack
+Elem Coating Lv1 = 1.35 element
+Elem Coating Lv2 = 1.50 element
+Coating Boost:
+Coating effects × 1.50
+Shot Type Up armor skills:
+Rapid Up = 1.10 modifier for Rapid arrows
+Pierce Up = 1.10 modifer for Pierce arrows
+Spread Up = 1.30 modifier for Spread arrows
+Heavy Up = 1.10 modifier for Heavy arrows
+Food Skills:
+Felyne Temper = 1.05 modifier for all shot types but causes deviation
+Motion Values:
+Rapid Lv1 = 12 (13 status)
+Rapid Lv2 = 12 + 4 (7 + 7 status)
+Rapid Lv3 = 12 + 4 + 3 (5 + 5 + 5 status)
+Rapid Lv4 = 12 + 4 + 3 + 2 (4 + 4 + 4 + 4 status)
+Rapid Lv5 = 12 + 4 + 3 + 3 (4 + 4 + 4 + 4 status)
+Pierce Lv1 = 4 × 3 hits (3 × 5 status)
+Pierce Lv2 = 4 × 4 hits (4 × 4 status)
+Pierce Lv3 = 4 × 5 hits (4 × 5 status)
+Pierce Lv4 = 4 × 5 hits (4 × 5 status)
+Pierce Lv5 = 4 × 5 hits (4 × 5 status)
+Spread Lv1 = 4 + 5 + 4 (5 + 5 + 5 status)
+Spread Lv2 = 5 + 6 + 5 (6 + 6 + 6 status)
+Spread Lv3 = 4 + 5 + 5 + 5 + 4 (4 + 4 + 4 + 4 + 4 status)
+Spread Lv4 = 4 + 5 + 6 + 5 + 4 (4 + 4 + 4 + 4 + 4 status)
+Spread Lv5 = 5 + 5 + 6 + 5 + 5 (4 + 4 + 4 + 4 + 4 status)
+Heavy Lv1 = 11 (14 status)
+Heavy Lv2 = 14 (15 status)
+Heavy Lv3 = 17 (16 status)
+Heavy Lv4 = 19 (17 status)
+Heavy Lv5 = 20 (18 status)
+Arrow melee attack 1 (A1) = 10 cutting
+Arrow melee attack 2 (A2) = 24 cutting
+Arc Shots:
+Arc Shot: Focus = 6 + 7×5 hits (4 + 4×5 status, 3×5 KO)
+Arc Shot: Wide = 6 + 7×5 hits (4 + 4×5 status, 3×5 KO)
+Arc Shot: Blast = 6 + 35 (13 + 13 status, 0 + 20 KO)
+Power Shot:
+Fires a shot with a charge one level above your current charge level.
+Aerial Style:
+All shots during a vault become Lv2 charge and get critical distance.
+Adept Style:
+Charges to max level by pressing X after an adept evade.
+Hunter Arts:
+Triple Volley I (costs 580) = 7×3 + 7×3 + 17×5 = 127 total
+Triple Volley II (costs 670) = 10×3 + 10×3 + 20×5 = 160 total
+Triple Volley III (costs 750) = 14×3 + 14×3 + 23×5 = 199 total
+Haste Rain I (costs 830) = 0 (Increases movement and charge speed for 30 seconds)
+Haste Rain II (costs 1000) = 0 (Increases movement and charge speed for 60 seconds)
+Haste Rain III (costs 1080) = 0 (Increases movement and charge speed for 90 seconds)
+Blade Wire I (costs 420) = lasts 30 seconds, deals cutting damage
+- Charge Lv1 = 4 × 3 hits
+- Charge Lv2 = 5 × 3 hits
+- Charge Lv3 = 6 × 3 hits
+- Charge Lv4 = 7 × 3 hits
+Blade Wire II (costs 500) = lasts 60 seconds, deals cutting damage
+- Charge Lv1 = 4 × 3 hits
+- Charge Lv2 = 5 × 3 hits
+- Charge Lv3 = 6 × 3 hits
+- Charge Lv4 = 7 × 3 hits
+Blade Wire III (costs 670) = lasts 90 seconds, deals cutting damage
+- Charge Lv1 = 4 × 3 hits
+- Charge Lv2 = 5 × 3 hits
+- Charge Lv3 = 6 × 3 hits
+- Charge Lv4 = 7 × 3 hits

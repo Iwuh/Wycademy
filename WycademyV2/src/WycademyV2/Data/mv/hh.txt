@@ -1,0 +1,37 @@
+HUNTING HORN
+Songs:
+Attack Boost (S) = +10% attack
+Attack Boost (S) ecore = +15% attack
+Attack Boost (L) = +15% attack
+Attack Boost (L) encore = +20% attack
+Elem. Attack Boost = +8% element
+Elem. Attack Boost encore = +10% element
+Motion values:
+Draw attack/Forward Slam (-> X or X2) = 33 (20 KO, 20 exhaust)
+Left Swing (X1) = 30 (20 KO, 15 exhaust)
+Right Swing (A1) = 30 (20 KO, 15 exhaust)
+Right Dual Swing (A2) = 12+15 (6+8 KO, 6+8 exhaust)
+Super Slam (-> X+A) = 15+45 (5+15 KO, 5+45 exhaust)
+Backward Strike (X+A) = 45 (25 KO, 20 exhaust)
+Hilt Stab (Special Attack) = 10 cutting
+Recital Right Side Swing (R while idle) = 20 (15 KO, 22 exhaust)
+Recital Kick Up Horn (R after -> X) = 25 (22 KO, 22 exhaust)
+Recital Backward Swing (R after X+A) = 30 (22 KO, 25 exhaust)
+Encore Backwards (R2 while idle) = 30+40 (22+25 KO, 25+22 exhaust)
+Encore Left (R2 while holding left) = 30+35 (22+22 KO, 25+22 exhaust)
+Encore Right (R2 while holding right) = 30+35 (22+22 KO, 25+22 exhaust)
+Jump attack (X in the air) = 36 (20 KO, 20 exhaust)
+Aerial Style:
+Aerial Double Swing (X, A or X+A after a vault) = 12+22 (10+10 KO, 10+10 exhaust)
+Adept Style:
+Adept combo (X, A or X+A after an adept evade) = 15+20+30 (15+15+20 KO, 5+5+5 exhaust)
+Hunter Arts:
+Euphony I (costs 670) = 0 (plays all melodies for 7 seconds)
+Euphony II (costs 670) = 0 (plays all melodies for 5.5 seconds)
+Euphony III (costs 670) = 0 (plays all melodies for 4 seconds)
+Sonic Smash I (costs 830) = 5+5 + 80 neutral damage (5+20+10 KO, 5+5+10 exhaust)
+Sonic Smash II (costs 1000) = 5+5 + 100 neutral damage (10+20+10 KO, 10+10+10 exhaust)
+Sonic Smash III (costs 1170) = 5+5+5+5 + 150 neutral damage (15+15+15+20+10 KO, 15+15+15+15+10 exhaust)
+Harmonize I (costs 420) = 0 (all notes become double notes for 60 seconds)
+Harmonize II (costs 580) = 0 (all notes become double notes for 90 seconds)
+Harmonize III (costs 670) = 0 (all notes become double notes for 120 seconds)

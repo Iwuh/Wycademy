@@ -1,0 +1,43 @@
+GUNLANCE
+Heat Gauge:
+- yellow = 1.00 modifier
+- orange = 1.15 modifier
+- red = 1.20 modifier
+Motion Values:
+Draw attack/Running Up Swing (-> X) = 28
+Forward thrust (X1 and X2) = 21
+Up Swing (X+A) = 25
+Guard Thrust (R+X or X after X+A) = 16
+Slam (X3) = 36
+Jump Thrust (X in the air when sheathed) = 22
+Jump Slam (-> X off a ledge) = 36
+Jump Slam reload (-> X off a ledge when shells are not full) = 39 + reloads 1 shell
+Striker Style:
+Forward Thrust 3 (X3) = 24
+Aerial Style:
+Aerial Slam (X after a vault) = 36
+Aerial Reload Slam (X after a valut when shells are not full) = 39 + reloads 1 shell
+Adept Style:
+Reload Up Swing (after Adept guard) = 40 (reloads all shells)
+Strong Slam (X after Adept guard) = 50
+Shelling Damage:
+Shell Type: ...............Normal Type.....Long Type.........Wide Type
+Lv. 1...........................10 + 4 fire........15 + 9 fire..........20 + 6 fire
+Lv. 2...........................14 + 5 fire........20 + 11 fire........30 + 8 fire
+Lv. 3...........................18 + 6 fire........28 + 14 fire........40 + 10 fire
+Lv. 4...........................21 + 7 fire........32 + 16 fire........44 + 11 fire
+Lv. 5...........................24 + 8 fire........36 + 18 fire........48 + 12 fire
+Sharpness cost................2...................... 2........................3 (1 with Razor Sharp)
+Charged shot boost........1.20.................1.20....................1.45
+Full Burst modifier...........1.10.................1.00....................0.90
+Shells loaded....................5.......................3........................2
+Hunter Arts:
+Dragon Blast I (costs 830) = 94 + 3×12 = 130 total neutral damage
+Dragon Blast II (costs 1000) = 98 + 6×12 = 170 total neutral damage
+Dragon Blast III (costs 1250) = 102 + 9×12 = 210 neutral damage
+Blast Dash I (costs 250) = 24 + 50
+Blast Dash II (costs 290) = 24 + 50
+Blast Dash III (costs 330) = 24 + 50
+Dragon Breath I (1080) = shell neutral damage +10, shell fire damage +10 (lasts 60 seconds)
+Dragon Breath II (1170) = shell neutral damage +10, shell fire damage +10 (lasts 120 seconds)
+Dragon Breath III (1250) = shell neutral damage +10, shell fire damage +10 (lasts 180 seconds)

@@ -12,13 +12,15 @@ namespace WycademyV2.Commands.Modules
 {
     public class MonHunModule : ModuleBase
     {
-        private MonsterInfoService _monhun;
+        private MonsterInfoService _minfo;
         private LockerService _locker;
+        private MotionValueService _mv;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv)
         {
-            _monhun = mis;
+            _minfo = mis;
             _locker = ls;
+            _mv = mv;
         }
 
         [Command("hitzone")]
@@ -29,7 +31,7 @@ namespace WycademyV2.Commands.Modules
         {
             try
             {
-                string table = await _monhun.GetMonsterInfo("Hitzone", monster);
+                string table = await _minfo.GetMonsterInfo("Hitzone", monster);
                 await ReplyAsync(table);
             }
             catch (FileNotFoundException)
@@ -45,7 +47,7 @@ namespace WycademyV2.Commands.Modules
         {
             try
             {
-                string table = await _monhun.GetMonsterInfo("Status", monster);
+                string table = await _minfo.GetMonsterInfo("Status", monster);
                 await ReplyAsync(table);
             }
             catch (FileNotFoundException)
@@ -62,7 +64,7 @@ namespace WycademyV2.Commands.Modules
         {
             try
             {
-                string table = await _monhun.GetMonsterInfo("Stagger/Sever", monster);
+                string table = await _minfo.GetMonsterInfo("Stagger/Sever", monster);
                 await ReplyAsync(table);
             }
             catch (FileNotFoundException)
@@ -79,7 +81,7 @@ namespace WycademyV2.Commands.Modules
         {
             try
             {
-                string table = await _monhun.GetMonsterInfo("Item Effects", monster);
+                string table = await _minfo.GetMonsterInfo("Item Effects", monster);
                 await ReplyAsync(table);
             }
             catch (FileNotFoundException)
@@ -93,13 +95,34 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetMonsterList()
         {
-            var dm = await Context.User.GetDMChannelAsync();
-            if (dm == null)
+            var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
+            await dm.SendMessageAsync(_minfo.GetMonsterNames());
+        }
+
+        [Command("motionvalue")]
+        [Alias("motionvalues", "movementvalue", "movementvalues", "mv")]
+        [Summary("Gets the motion values for a specific weapon.")]
+        [RequireUnlocked]
+        public async Task GetMV([Remainder, Summary("The weapon to find motion values for.")] string weapon)
+        {
+            var mvStream = _mv.GetMotionValueStream(weapon);
+            try
             {
-                dm = await Context.User.CreateDMChannelAsync();
+                await Context.Channel.SendFileAsync(mvStream, mvStream.Name);
             }
-            await Task.Delay(1000);
-            await dm.SendMessageAsync("```\n" + string.Join("\n", WycademyConst.MONSTER_LIST) + "```");
+            catch (ArgumentException)
+            {
+                await ReplyAsync("Weapon name not recognised. Try <weaponlist for a list of options.");
+            }
+        }
+
+        [Command("weaponlist")]
+        [Summary("Gets a list of weapon names recognised by `<motionvalue`.")]
+        [RequireUnlocked]
+        public async Task GetWeaponList()
+        {
+            var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
+            await dm.SendMessageAsync(_mv.GetWeaponNames());
         }
     }
 }

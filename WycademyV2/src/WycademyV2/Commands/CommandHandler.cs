@@ -59,7 +59,7 @@ namespace WycademyV2.Commands
                             await msg.Channel.SendMessageAsync("Error: Invalid argument count. Try `<help [command]`.");
                             break;
                         case CommandError.Exception:
-                            if (msg.Author.Id == WycademyConst.OWNER_ID)
+                            if (msg.Author.Id == (await _client.GetApplicationInfoAsync()).Owner.Id)
                             {
                                 // If the command was called by the owner show the full exception message.
                                 await msg.Channel.SendMessageAsync("Exception: " + result.ErrorReason);

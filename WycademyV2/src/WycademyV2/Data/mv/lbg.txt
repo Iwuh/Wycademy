@@ -1,0 +1,13 @@
+LIGHT BOWGUN
+Motion Values:
+Melee Attack (Special attack) = 2 neutral damage
+Hunter Arts:
+Bullet Geyser I (costs 300) = 20 neutral damage + 10 fire
+Bullet Geyser II (costs 500) = 3 × (13 neutral damage + 10 fire)
+Bullet Geyser III (costs 650) = 6 × (10 neutral damage + 10 fire)
+Full House I (costs 250) = 0 (slowly reloads all ammo expect ammo that can be rapid fired)
+Full House II (costs 250) = 0 (quickly reloads all ammo except ammo that can be rapid fired)
+Full House III (costs 250) = 0 (quickly reloads all ammo)
+Rapid Fire Rain I = 0 (quickly rapid fires 15 shots)
+Rapid Fire Rain II = 0 (quickly rapid fires 18 shots)
+Rapid Fire Rain II = 0 (quickly rapid fires 21 shots)

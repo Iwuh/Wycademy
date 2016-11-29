@@ -1,0 +1,36 @@
+PROWLER
+Motion Values:
+Draw Attack = 14 (+8 gauge)
+Right Side Slash (X1) = 10 (+5 gauge)
+Left Side Slash (X2) = 14 (+5 gauge)
+Jumping Overhead Slash (X3) = 16 (+6 gauge)
+Jumping Up Slash (X4) = 18 (+10 gauge)
+Jumping Spinning Slash (X5) = 12 per hit (+8 gauge per hit)
+Forward Lunge (X after A) = 20 (+16 gauge)
+Boomerang throw (A1) = 8 (+6 gauge)
+Charged Boomerang (hold A) = 9 (+10 gauge)
+Follow Up Boomerang (A2) = 8 (+6 gauge) or 9 (+10 gauge) if charged
+Boomerang melee spin combo (A3) = 26+8 (+12 gauge)
+Jump Attack (X in the air) = 24 (+24 gauge)
+Big Boomerangs:
+- Boomerang throw (A1) = 12
+- Charged Boomerang (hold A) = 14
+- Boomerang melee spin combo (A3) = 38
+Piercing Boomerangs:
+- Boomerang throw (A1) = 10 + 3×n (n = number of hits up to 2)
+- Charged Boomerang (A2) = 11 + 3×n
+- Boomerang melee spin combo (A3) = 50
+Big Boomerangs + Piercing Boomerangs:
+- Boomerang throw (A1) = 15 + 4×n
+- Charged Boomerang (hold A) = 18 + 4×n
+- Boomerang melee spin combo (A3) = 62
+Piercing Boomerang Elemental damage modifiers:
+- 1st hit = 150% element
+- 2nd hit = 50% element
+- 3rd hit = 50% element
+Felyne Hurler food skill: = +10% Boomerang damage
+Felyne Fury mode:
++30% affinity
+Rock Steady skill (knockback and tripping protection + Earplugs + Wind Res (Lo))
+Support gauge fills faster
+Furr-ious Flurry (X+A, X, X, X... X+A) = 8×n + 30 (+5×n + 12 gauge)
