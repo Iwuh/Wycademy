@@ -41,6 +41,7 @@ namespace WycademyV2.Commands
             // If userMessage is null, then it's a system message that should just be ignored.
             var userMessage = msg as SocketUserMessage;
             if (userMessage == null) return;
+            // Ignore any bot messages.
             if (userMessage.Author.IsBot) return;
 
             // The character index to start parsing the command at.
