@@ -86,6 +86,7 @@ namespace WycademyV2.Commands
         {
             map.Add(new MonsterInfoService());
             map.Add(new LockerService());
+            map.Add(new MotionValueService());
             return Task.CompletedTask;
         }
     }
