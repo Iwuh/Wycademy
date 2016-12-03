@@ -28,7 +28,7 @@ namespace WycademyV2.Commands.Services
         /// <returns>Task(FileStream)</returns>
         public FileStream GetMotionValueStream(string name)
         {
-            string fileName = @".\Data\mv\" + AliasWeaponNames(name);
+            string fileName = @".\Data\mv\" + AliasWeaponNames(name) + ".txt";
 
             return File.Open(fileName, FileMode.Open);
         }
