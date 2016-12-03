@@ -15,12 +15,14 @@ namespace WycademyV2.Commands.Modules
         private MonsterInfoService _minfo;
         private LockerService _locker;
         private MotionValueService _mv;
+        private CommandCacheService _cache;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs)
         {
             _minfo = mis;
             _locker = ls;
             _mv = mv;
+            _cache = ccs;
         }
 
         [Command("hitzone")]
@@ -32,11 +34,11 @@ namespace WycademyV2.Commands.Modules
             try
             {
                 string table = await _minfo.GetMonsterInfo("Hitzone", monster);
-                await ReplyAsync(table);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: table, prependZWSP: true);
             }
             catch (FileNotFoundException)
             {
-                await ReplyAsync(monster + WycademyConst.INVALID_MONSTER_NAME);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: monster + WycademyConst.INVALID_MONSTER_NAME, prependZWSP: true);
             }
         }
 
@@ -48,11 +50,11 @@ namespace WycademyV2.Commands.Modules
             try
             {
                 string table = await _minfo.GetMonsterInfo("Status", monster);
-                await ReplyAsync(table);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: table, prependZWSP: true);
             }
             catch (FileNotFoundException)
             {
-                await ReplyAsync(monster + WycademyConst.INVALID_MONSTER_NAME);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: monster + WycademyConst.INVALID_MONSTER_NAME, prependZWSP: true);
             }
         }
 
@@ -65,11 +67,11 @@ namespace WycademyV2.Commands.Modules
             try
             {
                 string table = await _minfo.GetMonsterInfo("Stagger/Sever", monster);
-                await ReplyAsync(table);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: table, prependZWSP: true);
             }
             catch (FileNotFoundException)
             {
-                await ReplyAsync(monster + WycademyConst.INVALID_MONSTER_NAME);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: monster + WycademyConst.INVALID_MONSTER_NAME, prependZWSP: true);
             }
         }
 
@@ -82,11 +84,11 @@ namespace WycademyV2.Commands.Modules
             try
             {
                 string table = await _minfo.GetMonsterInfo("Item Effects", monster);
-                await ReplyAsync(table);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: table, prependZWSP: true);
             }
             catch (FileNotFoundException)
             {
-                await ReplyAsync(monster + WycademyConst.INVALID_MONSTER_NAME);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: monster + WycademyConst.INVALID_MONSTER_NAME, prependZWSP: true);
             }
         }
 
@@ -108,11 +110,11 @@ namespace WycademyV2.Commands.Modules
             var mvStream = _mv.GetMotionValueStream(weapon);
             try
             {
-                await Context.Channel.SendFileAsync(mvStream, mvStream.Name);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, file: mvStream, fileName: mvStream.Name);
             }
             catch (ArgumentException)
             {
-                await ReplyAsync("Weapon name not recognised. Try <weaponlist for a list of options.");
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: weapon + WycademyConst.INVALID_WEAPON_NAME, prependZWSP: true);
             }
         }
 
