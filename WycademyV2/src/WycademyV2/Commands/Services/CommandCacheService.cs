@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Discord.Commands;
+using Discord.WebSocket;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,23 @@ namespace WycademyV2.Commands.Services
         /// Initialize the class, with a maximum capacity for the cache.
         /// </summary>
         /// <param name="capacity">The maximum amount of command messages to cache at once.</param>
-        public CommandCacheService(int capacity = 200)
+        public CommandCacheService(IDependencyMap map, int capacity = 200)
         {
             _maxCapacity = capacity;
             _cache = new List<KeyValuePair<ulong, ulong>>();
+
+            map.Get<DiscordSocketClient>().MessageDeleted += async (id, msg) =>
+            {
+                var deletedMessage = msg.GetValueOrDefault();
+                if (ContainsKey(id))
+                {
+                    var responseMessage = await deletedMessage.Channel.GetMessageAsync(this[id]);
+                    if (responseMessage != null)
+                    {
+                        await responseMessage.DeleteAsync();
+                    }
+                }
+            };
         }
 
         /// <summary>

@@ -22,7 +22,8 @@ namespace WycademyV2
             // Initialize the DiscordSocketClient and set the LogLevel.
             _client = new DiscordSocketClient(new DiscordSocketConfig()
             {
-                LogLevel = LogSeverity.Info
+                LogLevel = LogSeverity.Info,
+                MessageCacheSize = 1000
             });
 
             // Hook up a method that prints all logs to the console.
