@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,9 +50,11 @@ namespace WycademyV2.Commands.Modules
 
                 .AddField(x => x.WithName("Cached Messages:").WithValue($"{_cache.Count} / {_cache.MaxCapacity}").WithIsInline(true))
 
-                .AddField(async x => x.WithName("Connected Servers").WithValue((await Context.Client.GetGuildsAsync()).Count().ToString()).WithIsInline(true))
+                .AddField(x => x.WithName("Connected Servers").WithValue((Context.Client as DiscordSocketClient).Guilds.Count.ToString()).WithIsInline(true))
 
                 .AddField(x => x.WithName("Memory Use:").WithValue((p.PrivateMemorySize64 / 1024.0f / 1024.0f).ToString() + " MB").WithIsInline(true))
+
+                .AddField(x => x.WithName("Total Users:").WithValue((Context.Client as DiscordSocketClient).Guilds.Sum(g => g.Users.Count).ToString()))
 
                 .WithFooter(new EmbedFooterBuilder() { Text = DateTime.Now.ToUniversalTime().ToString("R") });
             }
