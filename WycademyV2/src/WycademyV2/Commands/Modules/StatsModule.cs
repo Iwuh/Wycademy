@@ -33,27 +33,28 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetStatistics()
         {
-            var appInfo = await Context.Client.GetApplicationInfoAsync();
-
+            EmbedBuilder statsEmbed;
             using (Process p = Process.GetCurrentProcess())
             {
-                var statsEmbed = new EmbedBuilder()
+                statsEmbed = new EmbedBuilder()
                 .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", IconUrl = Context.Client.CurrentUser.AvatarUrl, Url = @"https://i.ytimg.com/vi/IRMFU3ZSvTc/hqdefault.jpg" })
                 .WithColor(new Color((byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256)))
                 .WithTitle("Statistics about the Wycademy:")
-                .AddField(x => x.WithName("Uptime:").WithValue(GetUptime(p)))
-                .AddField(x => x.WithName("Queries:").WithValue($"{_moninfo.Queries + _mv.Queries}"))
-                .AddField(x => x.WithName("Cached Messages:").WithValue($"{_cache.Count} / {_cache.MaxCapacity}"))
-                .AddField(async x => x.WithName("Connected Servers").WithValue((await Context.Client.GetGuildsAsync()).Count().ToString()))
-                .AddField(x => x.WithName("Memory Use:").WithValue(p.PrivateMemorySize64.ToString()));
+                .AddField(x => x.WithName("Uptime:").WithValue(GetUptime()))
+                .AddField(x => x.WithName("Queries:").WithValue($"{_moninfo.Queries + _mv.Queries}").WithIsInline(true))
+                .AddField(x => x.WithName("Cached Messages:").WithValue($"{_cache.Count} / {_cache.MaxCapacity}").WithIsInline(true))
+                .AddField(async x => x.WithName("Connected Servers").WithValue((await Context.Client.GetGuildsAsync()).Count().ToString()).WithIsInline(true))
+                .AddField(x => x.WithName("Memory Use:").WithValue((p.PrivateMemorySize64 / 1024.0f / 1024.0f).ToString() + " MB").WithIsInline(true));
             }
+
+            await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, embed: statsEmbed);
         }
 
-        private string GetUptime(Process p)
+        private string GetUptime()
         {
-            TimeSpan uptime = DateTime.Now - p.StartTime;
+            TimeSpan uptime = DateTime.Now - WycademyConst.START_TIME;
 
-            return uptime.ToString(@"dd\.hh\:mm\:fff");
+            return uptime.ToString(@"dd\.hh\:mm\:ss\:fff");
         }
     }
 }

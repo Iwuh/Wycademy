@@ -21,12 +21,12 @@ namespace WycademyV2
         /// <param name="file">A Stream to be uploaded with the message.</param>
         /// <param name="fileName">The name to use for the uploaded stream.</param>
         /// <returns>A Task containing an IUserMessage.</returns>
-        public static async Task<IUserMessage> SendCachedMessageAsync(this IMessageChannel channel, ulong commandID, CommandCacheService cache, string text = "", bool prependZWSP = false, Stream file = null, string fileName = "No Name")
+        public static async Task<IUserMessage> SendCachedMessageAsync(this IMessageChannel channel, ulong commandID, CommandCacheService cache, string text = "", bool prependZWSP = false, Stream file = null, string fileName = "No Name", EmbedBuilder embed = null)
         {
             IUserMessage m;
             if (file == null)
             {
-                m = await channel.SendMessageAsync(prependZWSP ? "\x200b" + text : text);
+                m = await channel.SendMessageAsync(prependZWSP ? "\x200b" + text : text, embed: embed);
             }
             else
             {

@@ -9,5 +9,7 @@ namespace WycademyV2
     {
         public const string INVALID_MONSTER_NAME = " is not a valid monster name. Try `<monsterlist` for a list of recognised names.";
         public const string INVALID_WEAPON_NAME = " is not a recognized weapon name. Try `<weaponlist` for a list of names.";
+
+        public static readonly DateTime START_TIME = DateTime.Now;
     }
 }
