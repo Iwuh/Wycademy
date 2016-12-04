@@ -43,7 +43,7 @@ namespace WycademyV2.Commands.Modules
 
                 .WithTitle("Statistics about the Wycademy:")
 
-                .AddField(x => x.WithName("Uptime:").WithValue(GetUptime()))
+                .AddField(x => x.WithName("Uptime:").WithValue(GetUptime()).WithIsInline(true))
 
                 .AddField(x => x.WithName("Queries:").WithValue($"{_moninfo.Queries + _mv.Queries}").WithIsInline(true))
 
