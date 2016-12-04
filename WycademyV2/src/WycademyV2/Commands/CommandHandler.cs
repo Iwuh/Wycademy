@@ -89,6 +89,7 @@ namespace WycademyV2.Commands
             map.Add(new LockerService());
             map.Add(new MotionValueService());
             map.Add(new CommandCacheService(map, 500));
+            map.Add(new RandomNumberService());
             return Task.CompletedTask;
         }
     }
