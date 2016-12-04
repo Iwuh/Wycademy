@@ -18,16 +18,16 @@ namespace WycademyV2.Commands.Services
         /// <summary>
         /// Sets the lock to true.
         /// </summary>
-        public Task Lock()
+        public void Lock()
         {
-            return Task.FromResult(IsLocked = true);
+            IsLocked = true;
         }
         /// <summary>
         /// Sets the lock to false.
         /// </summary>
-        public Task Unlock()
+        public void Unlock()
         {
-            return Task.FromResult(IsLocked = false);
+            IsLocked = false;
         }
     }
 }

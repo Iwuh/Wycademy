@@ -22,16 +22,18 @@ namespace WycademyV2.Commands.Modules
 
             [Command("lock")]
             [Summary("Locks the bot, preventing it from responding to commands. If the bot is already locked, unlocks it.")]
-            public async Task SetLocked()
+            public Task SetLocked()
             {
                 if (_locker.IsLocked)
                 {
-                    await _locker.Unlock();
+                    _locker.Unlock();
                 }
                 else
                 {
-                    await _locker.Lock();
+                    _locker.Lock();
                 }
+
+                return Task.CompletedTask;
             }
         }
     }
