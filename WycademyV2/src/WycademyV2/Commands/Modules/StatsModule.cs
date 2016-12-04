@@ -37,7 +37,7 @@ namespace WycademyV2.Commands.Modules
             using (Process p = Process.GetCurrentProcess())
             {
                 statsEmbed = new EmbedBuilder()
-                .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", IconUrl = "https://discordapp.com/api/users/207172354101608448/avatars/67bb079bde2e9ed142ad824e4a31d5af.jpg", Url = @"https://i.ytimg.com/vi/IRMFU3ZSvTc/hqdefault.jpg" })
+                .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", IconUrl = "https://discordapp.com/api/users/207172354101608448/avatars/67bb079bde2e9ed142ad824e4a31d5af.jpg", Url = @"https://github.com/Iwuh/Wycademy" })
 
                 .WithColor(new Color((byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256)))
 
