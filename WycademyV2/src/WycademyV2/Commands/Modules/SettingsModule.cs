@@ -65,5 +65,30 @@ namespace WycademyV2.Commands.Modules
                 }
             }
         }
+
+        [Group("set")]
+        public class SetGroup : ModuleBase
+        {
+            [Command("nick")]
+            [Summary("Set the nickname of the bot for the current server.")]
+            [RequireOwner]
+            [RequireUnlocked]
+            [RequireContext(ContextType.Guild)]
+            public async Task SetNickname([Remainder] string name)
+            {
+                var botUser = await Context.Guild.GetCurrentUserAsync();
+
+                await botUser.ModifyAsync(x => x.Nickname = name == "DEFAULT" ? null : name);
+            }
+
+            [Command("game")]
+            [Summary("Sets the current game to show the bot as playing.")]
+            [RequireOwner]
+            [RequireUnlocked]
+            public async Task SetGame([Remainder] string game)
+            {
+                await (Context.Client as DiscordSocketClient).SetGame(game);
+            }
+        }
     }
 }
