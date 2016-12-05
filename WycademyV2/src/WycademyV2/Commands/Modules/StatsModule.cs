@@ -13,6 +13,7 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
+    [Summary("Stats Commands")]
     public class StatsModule : ModuleBase
     {
         private LockerService _locker;

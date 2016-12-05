@@ -10,6 +10,7 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
+    [Summary("Monster Hunter Commands")]
     public class MonHunModule : ModuleBase
     {
         private MonsterInfoService _minfo;

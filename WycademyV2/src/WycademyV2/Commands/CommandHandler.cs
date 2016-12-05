@@ -46,8 +46,11 @@ namespace WycademyV2.Commands
 
             // The character index to start parsing the command at.
             int argPos = 0;
-
+#if BETA
+            if (userMessage.HasStringPrefix("<<", ref argPos) || userMessage.HasMentionPrefix(_client.CurrentUser, ref argPos))
+#else
             if (userMessage.HasCharPrefix('<', ref argPos) || userMessage.HasMentionPrefix(_client.CurrentUser, ref argPos))
+#endif
             {
                 var context = new CommandContext(_client, userMessage);
                 var result = await _commands.ExecuteAsync(context, argPos, _map);

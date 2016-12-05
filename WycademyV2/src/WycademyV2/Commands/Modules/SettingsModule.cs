@@ -9,86 +9,76 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
-
-    public class SettingsModule
+    [Group("sys")]
+    [Summary("Settings Commands")]
+    [RequireOwner]
+    public class SettingsModule : ModuleBase
     {
-        [Group("sys")]
-        public class SystemGroup : ModuleBase
+        private LockerService _locker;
+        private CommandCacheService _cache;
+
+        public SettingsModule(LockerService locker, CommandCacheService ccs)
         {
-            private LockerService _locker;
-            private CommandCacheService _cache;
+            _locker = locker;
+            _cache = ccs;
+        }
 
-            public SystemGroup(LockerService locker, CommandCacheService ccs)
+        [Command("lock")]
+        [Summary("Locks the bot, preventing it from responding to commands. If the bot is already locked, unlocks it.")]
+        public Task SetLocked()
+        {
+            if (_locker.IsLocked)
             {
-                _locker = locker;
-                _cache = ccs;
+                _locker.Unlock();
+            }
+            else
+            {
+                _locker.Lock();
             }
 
-            [Command("lock")]
-            [Summary("Locks the bot, preventing it from responding to commands. If the bot is already locked, unlocks it.")]
-            [RequireOwner]
-            public Task SetLocked()
-            {
-                if (_locker.IsLocked)
-                {
-                    _locker.Unlock();
-                }
-                else
-                {
-                    _locker.Lock();
-                }
+            return Task.CompletedTask;
+        }
 
-                return Task.CompletedTask;
+        [Command("shutdown")]
+        [Summary("Disconnects and closes the bot.")]
+        public async Task Shutdown()
+        {
+            if (!_locker.IsLocked)
+            {
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: "Commands must be locked in order to shut down.", prependZWSP: true);
             }
-
-            [Command("shutdown")]
-            [Summary("Disconnects and closes the bot.")]
-            [RequireOwner]
-            public async Task Shutdown()
+            else
             {
-                if (!_locker.IsLocked)
-                {
-                    await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: "Commands must be locked in order to shut down.", prependZWSP: true);
-                }
-                else
-                {
-                    await ReplyAsync("Shutting down...");
-                    await Task.Delay(1000);
+                await ReplyAsync("Shutting down...");
+                await Task.Delay(1000);
 
-                    var client = Context.Client as DiscordSocketClient;
+                var client = Context.Client as DiscordSocketClient;
 
-                    await client.DisconnectAsync();
-                    await client.LogoutAsync();
-                    client.Dispose();
+                await client.DisconnectAsync();
+                await client.LogoutAsync();
+                client.Dispose();
 
-                    Environment.Exit(0);
-                }
+                Environment.Exit(0);
             }
         }
 
-        [Group("set")]
-        public class SetGroup : ModuleBase
+        [Command("setnick")]
+        [Summary("Set the nickname of the bot for the current server.")]
+        [RequireUnlocked]
+        [RequireContext(ContextType.Guild)]
+        public async Task SetNickname([Remainder] string name)
         {
-            [Command("nick")]
-            [Summary("Set the nickname of the bot for the current server.")]
-            [RequireOwner]
-            [RequireUnlocked]
-            [RequireContext(ContextType.Guild)]
-            public async Task SetNickname([Remainder] string name)
-            {
-                var botUser = await Context.Guild.GetCurrentUserAsync();
+            var botUser = await Context.Guild.GetCurrentUserAsync();
 
-                await botUser.ModifyAsync(x => x.Nickname = name == "DEFAULT" ? null : name);
-            }
+            await botUser.ModifyAsync(x => x.Nickname = name == "DEFAULT" ? null : name);
+        }
 
-            [Command("game")]
-            [Summary("Sets the current game to show the bot as playing.")]
-            [RequireOwner]
-            [RequireUnlocked]
-            public async Task SetGame([Remainder] string game)
-            {
-                await (Context.Client as DiscordSocketClient).SetGame(game);
-            }
+        [Command("setgame")]
+        [Summary("Sets the current game to show the bot as playing.")]
+        [RequireUnlocked]
+        public async Task SetGame([Remainder] string game)
+        {
+            await (Context.Client as DiscordSocketClient).SetGame(game);
         }
     }
 }
