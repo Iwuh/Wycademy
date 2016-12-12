@@ -66,5 +66,37 @@ namespace WycademyV2.Commands.Modules
             var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
             await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: string.Join("\n", helpMessages), prependZWSP: true);
         }
+
+        [Command("help")]
+        [Summary("...")]
+        [RequireUnlocked]
+        public async Task GetCommandHelp([Remainder, Summary("The commands to search for.")] string query)
+        {
+            var result = _commands.Search(Context, query);
+
+            var helpBuilder = new StringBuilder();
+
+            if (result.Commands.Count >= 1)
+            {
+                foreach (var command in result.Commands.OrderByDescending(x => x.Priority))
+                {
+                    helpBuilder.AppendLine($"{Format.Bold(command.Name)} ({(command.Summary != null ? command.Summary : "There is no summary available for this command.")})");
+                    if (command.Aliases.Count >= 1)
+                    {
+                        helpBuilder.AppendLine(Format.Italics($"Aliases: {string.Join(" ", command.Aliases)}"));
+                    }
+
+                    foreach (var parameter in command.Parameters)
+                    {
+                        helpBuilder.AppendLine($"{(parameter.IsOptional ? "(Optional) " : "")}{parameter.Name} - {(parameter.Summary != null ? parameter.Summary : "There is no summary available for this parameter.")}");
+                    }
+
+                    helpBuilder.AppendLine();
+                }
+            }
+
+            var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
+            await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: helpBuilder.ToString(), prependZWSP: true);  
+        }
     }
 }
