@@ -30,7 +30,7 @@ namespace WycademyV2.Commands.Modules
         public async Task GetGeneralHelp()
         {
             var helpMessages = new List<string>();
-            foreach (var module in _commands.Modules)
+            foreach (ModuleInfo module in _commands.Modules)
             {
                 // Used to not show the category if none of the commands are available to the user.
                 bool anyCommandsMatched = false;
@@ -43,7 +43,7 @@ namespace WycademyV2.Commands.Modules
 
                 var moduleBuilder = new StringBuilder();
                 moduleBuilder.AppendLine($"{module.Summary}:");
-                foreach (var command in module.Commands)
+                foreach (CommandInfo command in module.Commands)
                 {
                     // Check the preconditions to make sure that the user is allowed to use this command.
                     var result = await command.CheckPreconditionsAsync(Context, _map);
@@ -63,6 +63,8 @@ namespace WycademyV2.Commands.Modules
                 }
             }
 
+            string message = string.Join("\n", helpMessages) + "To see help for an individual command, do `<help [command]` where `[command]` is the command you want info about.";
+
             var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
             await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: string.Join("\n", helpMessages), prependZWSP: true);
         }
@@ -78,7 +80,7 @@ namespace WycademyV2.Commands.Modules
 
             if (result.Commands.Count >= 1)
             {
-                foreach (var command in result.Commands.OrderByDescending(x => x.Priority))
+                foreach (CommandInfo command in result.Commands.OrderByDescending(x => x.Priority))
                 {
                     helpBuilder.AppendLine($"{Format.Bold(command.Name)} ({(command.Summary != null ? command.Summary : "There is no summary available for this command.")})");
                     if (command.Aliases.Count >= 1)
@@ -86,7 +88,7 @@ namespace WycademyV2.Commands.Modules
                         helpBuilder.AppendLine(Format.Italics($"Aliases: {string.Join(" ", command.Aliases)}"));
                     }
 
-                    foreach (var parameter in command.Parameters)
+                    foreach (ParameterInfo parameter in command.Parameters)
                     {
                         helpBuilder.AppendLine($"{(parameter.IsOptional ? "(Optional) " : "")}{parameter.Name} - {(parameter.Summary != null ? parameter.Summary : "There is no summary available for this parameter.")}");
                     }
