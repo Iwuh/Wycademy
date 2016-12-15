@@ -15,7 +15,7 @@ namespace WycademyV2.Commands.Modules
         [Alias("clear")]
         [Summary("Downloads the last 100 messages in the channel and deletes any from the bot.")]
         [RequireContext(ContextType.Guild)]
-        [RequireUserPermission(GuildPermission.ManageMessages)]
+        [RequireUserPermissionOrOwner(GuildPermission.ManageMessages)]
         [RequireUnlocked]
         public async Task CleanBotMessages()
         {
@@ -24,6 +24,7 @@ namespace WycademyV2.Commands.Modules
 
             // Select the messages that are by the bot.
             var messagesToDelete = messages.Where(m => m.Author.Id == Context.Client.CurrentUser.Id);
+            int deletedMessageCount = messagesToDelete.Count();
 
             // Delete each one.
             foreach (IMessage message in messagesToDelete)
@@ -32,6 +33,12 @@ namespace WycademyV2.Commands.Modules
                 // Delay for 200ms after each deletion to avoid hitting ratelimits.
                 await Task.Delay(200);
             }
+
+            // Respond with how many messages were cleaned.
+            IUserMessage response = await ReplyAsync($"{deletedMessageCount} messages deleted.");
+            await Task.Delay(5000);
+            // Wait 5 seconds and then delete the response.
+            await response.DeleteAsync();
         }
     }
 }
