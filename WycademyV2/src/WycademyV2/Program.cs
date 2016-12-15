@@ -26,6 +26,9 @@ namespace WycademyV2
                 MessageCacheSize = 1000
             });
 
+            // Initialize values in WycademyConst.
+            WycademyConst.InitializeValues();
+
             // Hook up a method that prints all logs to the console.
             _client.Log += Log;
 
