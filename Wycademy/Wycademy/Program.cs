@@ -73,8 +73,14 @@ namespace Wycademy
             {
                 if (MessageCache.ContainsKey(e.Message.Id))
                 {
-                    await e.Channel.GetMessage(MessageCache[e.Message.Id]).Delete();
-                    MessageCache.RemoveByKey(e.Message.Id);
+                    var message = e.Channel.GetMessage(MessageCache[e.Message.Id]);
+
+                    if (message != null)
+                    {
+                        // Avoid a NullReferenceException by trying to delete a message that was already removed earlier by a mod.
+                        await message.Delete();
+                        MessageCache.RemoveByKey(e.Message.Id);
+                    }
                 }
             };
             _client.ServerAvailable += async (s, e) =>
