@@ -34,7 +34,25 @@ namespace WycademyV2
 
             _client.MessageReceived += async message =>
             {
+                // Log any recieved messages to the console.
                 await Log(new LogMessage(LogSeverity.Info, message.Author.Id == _client.CurrentUser.Id ? ">>Message" : "<<Message", GetUserLogMessage(message)));
+            };
+            _client.MessageReceived += async message =>
+            {
+                // If userMessage is null then it's a system message, which should be ignored.
+                var userMessage = message as SocketUserMessage;
+                if (userMessage == null) return;
+
+                // To save on processing, only check if the bot was mentioned if there is at least one mention.
+                if (userMessage.MentionedUsers.Count > 0)
+                {
+                    // If the message is mentioning the bot...
+                    if (userMessage.MentionedUsers.Select(x => x.Id).Contains(_client.CurrentUser.Id))
+                    {
+                        // React with eyes.
+                        await userMessage.AddReactionAsync("👀");
+                    }
+                }
             };
 
             // Set token to either that of Wycademy or Wycademy Beta depending on whether or not the BETA flag is defined in the build options.
