@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Commands;
 using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,168 @@ namespace WycademyV2.Commands.Services
         }
 
         /// <summary>
+        /// Send a damage calculator message to the channel.
+        /// </summary>
+        /// <param name="context">The command context, used for constructing the message.</param>
+        /// <param name="raw">The raw damage of the weapon.</param>
+        /// <param name="element">The elemental or status damage of the weapon.</param>
+        /// <param name="affinity">The affinity of the weapon.</param>
+        /// <param name="sharpness">The sharpness of the weapon.</param>
+        /// <param name="weapon">The type of the weapon.</param>
+        /// <param name="cache">The optional CommandCacheService to add the message to.</param>
+        /// <returns>The sent message.</returns>
+        public async Task<IUserMessage> SendDamageCalculatorMessageAsync(CommandContext context, float raw, float element, float affinity, SharpnessType sharpness, WeaponType weapon, CommandCacheService cache = null)
+        {
+            const string initialMessage = "Please confirm which game you'd like to calculate for by selecting a reaction below.";
+
+            // Create the calculator message.
+            var calculatorMessage = new DamageCalculatorMessage(context.User, raw, element, affinity, sharpness, weapon);
+
+            // Send the message (optionally caching it)
+            IUserMessage message;
+            if (cache != null)
+            {
+                message = await context.Channel.SendCachedMessageAsync(context.Message.Id, cache, text: initialMessage, prependZWSP: true);
+            }
+            else
+            {
+                message = await context.Channel.SendMessageAsync($"\x200b{initialMessage}");
+            }
+
+            // Add reaction choices.
+            await message.AddReactionAsync(FOUR);
+            await message.AddReactionAsync(G);
+
+            // Add the message ID (and associated data) to the dictionary.
+            _messages.Add(message.Id, calculatorMessage);
+
+            // Finally, return the message.
+            return message;
+        }
+
+        /// <summary>
+        /// Checks if the input is a valid sharpness type.
+        /// </summary>
+        /// <param name="input">The string to verify.</param>
+        /// <returns>The SharpnessType version of the input if it's valid, otherwise null.</returns>
+        public SharpnessType? ValidateSharpness(string input)
+        {
+            switch (input.ToLower())
+            {
+                case "red":
+                case "r":
+                    return SharpnessType.Red;
+                case "orange":
+                case "o":
+                    return SharpnessType.Orange;
+                case "yellow":
+                case "y":
+                    return SharpnessType.Yellow;
+                case "green":
+                case "g":
+                    return SharpnessType.Green;
+                case "blue":
+                case "b":
+                    return SharpnessType.Blue;
+                case "white":
+                case "w":
+                    return SharpnessType.White;
+                case "purple":
+                case "p":
+                    return SharpnessType.Purple;
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the input is a valid weapon type.
+        /// </summary>
+        /// <param name="input">The string to verify.</param>
+        /// <returns>The WeaponType version of the input if it's valid, otherwise null.</returns>
+        public WeaponType? ValidateWeapon(string input)
+        {
+            switch (input.ToLower())
+            {
+                case "greatsword":
+                case "great_sword":
+                case "gs":
+                    return WeaponType.GS;
+
+                case "longsword":
+                case "long_sword":
+                case "ls":
+                    return WeaponType.LS;
+
+                case "swordandshield":
+                case "sword_and_shield":
+                case "sword&shield":
+                case "s&s":
+                case "sns":
+                    return WeaponType.SnS;
+
+                case "dualblades":
+                case "dual_blades":
+                case "db":
+                    return WeaponType.DB;
+
+                case "lance":
+                    return WeaponType.Lance;
+
+                case "gunlance":
+                case "gun_lance":
+                case "gl":
+                    return WeaponType.GL;
+
+                case "hemmer":
+                case "hemmr":
+                case "hammer":
+                    return WeaponType.Hammer;
+
+                case "huntinghorn":
+                case "hunting_horn":
+                case "doot":
+                case "hh":
+                    return WeaponType.HH;
+
+                case "switch_axe":
+                case "switchaxe":
+                case "swaxe":
+                case "sa":
+                    return WeaponType.SA;
+
+                case "charge_blade":
+                case "chargeblade":
+                case "cb":
+                    return WeaponType.CB;
+
+                case "lightbowgun":
+                case "light_bowgun":
+                case "lbg":
+                    return WeaponType.LBG;
+
+                case "heavybowgun":
+                case "heavy_bowgun":
+                case "hbg":
+                    return WeaponType.HBG;
+
+                case "bow":
+                    return WeaponType.Bow;
+
+                case "prowler":
+                    return WeaponType.Prowler;
+
+                case "insectglaive":
+                case "insect_glaive":
+                case "ig":
+                    return WeaponType.IG;
+
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
         /// Process reactions added to a message.
         /// </summary>
         /// <param name="id">The id of the message that the reaction was added to.</param>
@@ -74,14 +237,17 @@ namespace WycademyV2.Commands.Services
                         if (calcMessage.Weapon == WeaponType.Prowler)
                         {
                             await message.ModifyAsync(x => x.Content = "Nice try, but Prowlers aren't in 4U.");
+                            _messages.Remove(id);
                         }
                         else
                         {
                             await message.ModifyAsync(x => x.Content = GetResponseMessage4U(calcMessage));
+                            _messages.Remove(id);
                         }
                         break;
                     case G:
                         await message.ModifyAsync(x => x.Content = GetResponseMessageGen(calcMessage));
+                        _messages.Remove(id);
                         break;
                     default:
                         // If a different reaction was added, then just ignore it.
@@ -90,6 +256,11 @@ namespace WycademyV2.Commands.Services
             }
         }
 
+        /// <summary>
+        /// Calculates and makes a string out of the inputted message, using Monster Hunter Generations numbers.
+        /// </summary>
+        /// <param name="message">The data message to calculate from.</param>
+        /// <returns>The message to show the user.</returns>
         private string GetResponseMessageGen(DamageCalculatorMessage message)
         {
             var modifiers = message.GetSharpnessModifiers();
@@ -111,6 +282,11 @@ namespace WycademyV2.Commands.Services
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Calculates and makes a string out of the inputted message, using Monster Hunter 4 Ultimate numbers (i.e. converts display raw to true).
+        /// </summary>
+        /// <param name="message">The data message to calculate from.</param>
+        /// <returns>The messag to show the user.</returns>
         private string GetResponseMessage4U(DamageCalculatorMessage message)
         {
             var modifiers = message.GetSharpnessModifiers();
@@ -138,7 +314,7 @@ namespace WycademyV2.Commands.Services
             public SharpnessType Sharpness { get; private set; }
             public WeaponType Weapon { get; private set; }
 
-            public DamageCalculatorMessage(IUser user, int dmg, int ele, int aff, SharpnessType sharpness, WeaponType weapon)
+            public DamageCalculatorMessage(IUser user, float dmg, float ele, float aff, SharpnessType sharpness, WeaponType weapon)
             {
                 User = user;
                 RawDamage = dmg;
