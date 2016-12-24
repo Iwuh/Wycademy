@@ -83,14 +83,17 @@ namespace WycademyV2.Commands.Modules
                 foreach (CommandInfo command in result.Commands.OrderByDescending(x => x.Priority))
                 {
                     helpBuilder.AppendLine($"{Format.Bold(command.Name)} ({(command.Summary != null ? command.Summary : "There is no summary available for this command.")})");
+                    helpBuilder.AppendLine();
                     if (command.Aliases.Count >= 1)
                     {
                         helpBuilder.AppendLine(Format.Italics($"Aliases: {string.Join(" ", command.Aliases)}"));
                     }
+                    helpBuilder.AppendLine();
 
                     foreach (ParameterInfo parameter in command.Parameters)
                     {
-                        helpBuilder.AppendLine($"{(parameter.IsOptional ? "(Optional) " : "")}{parameter.Name} - {(parameter.Summary != null ? parameter.Summary : "There is no summary available for this parameter.")}");
+                        helpBuilder.AppendLine($"{(parameter.IsOptional ? "(Optional) " : "")}`{parameter.Name}` - {(parameter.Summary != null ? parameter.Summary : "There is no summary available for this parameter.")}");
+                        helpBuilder.AppendLine();
                     }
 
                     helpBuilder.AppendLine();
