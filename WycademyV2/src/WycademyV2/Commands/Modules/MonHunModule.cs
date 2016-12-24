@@ -131,6 +131,7 @@ namespace WycademyV2.Commands.Modules
         }
 
         [Command("damagecalculator")]
+        [Alias("dc")]
         [Summary("Finds the expected raw and element for a weapon based on the inputted data.")]
         [RequireUnlocked]
         public async Task DamageCalculator([Summary("The weapon to calculate for. Can be either the full name or an abbreviation, but must be one word. ex. greatsword/great_sword/gs.")] string weapon,
