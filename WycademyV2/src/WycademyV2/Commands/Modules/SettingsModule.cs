@@ -11,6 +11,7 @@ namespace WycademyV2.Commands.Modules
 {
     [Group("sys")]
     [Summary("Settings Commands")]
+    [Remarks("group")]
     [RequireOwner]
     public class SettingsModule : ModuleBase
     {

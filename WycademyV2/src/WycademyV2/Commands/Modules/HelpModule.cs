@@ -53,7 +53,15 @@ namespace WycademyV2.Commands.Modules
 
                     // If it gets this far, then at least one command has passed.
                     anyCommandsMatched = true;
-                    moduleBuilder.AppendLine($"`{command.Name}` - {command.Summary}");
+
+                    if (module.Remarks != null)
+                    {
+                        if (module.Remarks.Contains("group")) moduleBuilder.AppendLine($"`{module.Name} {command.Name}` - {command.Summary}");
+                    }
+                    else
+                    {
+                        moduleBuilder.AppendLine($"`{command.Name}` - {command.Summary}");
+                    }
                 }
 
                 if (anyCommandsMatched)
