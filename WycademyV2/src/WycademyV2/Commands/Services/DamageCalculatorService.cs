@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Enums;
 
 namespace WycademyV2.Commands.Services
 {
