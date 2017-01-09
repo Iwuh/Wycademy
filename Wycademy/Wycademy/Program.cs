@@ -50,7 +50,7 @@ namespace Wycademy
                     {
                         if (e.Message.RawText == "(╯°□°）╯︵ ┻━┻" && !e.User.IsBot)
                         {
-                            await e.Channel.SendMessageZWSP("┬─┬﻿ ノ( ゜-゜ノ)<:mhProwler:209473033210036234> Please respect tables, hunter.");
+                            await e.Channel.SendMessageZWSP("┬─┬﻿ ノ( ゜-゜ノ)<:mhProwler:263441541496963072> Please respect tables, hunter.");
                         }
                     }
                 }
