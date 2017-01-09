@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using WycademyV2.Commands.Enums;
 using WycademyV2.Commands.Services;
+using WycademyV2.Commands.TypeReaders;
 
 namespace WycademyV2.Commands
 {
@@ -30,6 +31,7 @@ namespace WycademyV2.Commands
             _errorLog = log;
             // Add services to the dependency map.
             await AddServices(_map);
+            _commands.AddTypeReader<BlacklistTypeReader>(new BlacklistTypeReader());
 
             // Add all modules in the assembly to the CommandService.
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
@@ -97,6 +99,7 @@ namespace WycademyV2.Commands
             map.Add(new CommandCacheService(map, 500));
             map.Add(new RandomNumberService());
             map.Add(new DamageCalculatorService(map.Get<DiscordSocketClient>()));
+            map.Add(new BlacklistService());
             return Task.CompletedTask;
         }
     }

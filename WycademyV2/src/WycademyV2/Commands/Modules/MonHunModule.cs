@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Enums;
 using WycademyV2.Commands.Preconditions;
 using WycademyV2.Commands.Services;
 
