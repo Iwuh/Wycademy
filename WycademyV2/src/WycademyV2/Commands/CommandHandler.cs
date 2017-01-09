@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Enums;
 using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands
@@ -43,6 +44,8 @@ namespace WycademyV2.Commands
             if (userMessage == null) return;
             // Ignore any bot messages.
             if (userMessage.Author.IsBot) return;
+            // Ignore any users on the blacklist.
+            if (_map.Get<BlacklistService>().CheckBlacklist(msg.Author.Id, BlacklistType.User)) return;
 
             // The character index to start parsing the command at.
             int argPos = 0;

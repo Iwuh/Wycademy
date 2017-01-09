@@ -8,7 +8,7 @@ namespace WycademyV2.Commands.Enums
     public enum BlacklistType
     {
         User,
-        Server,
-        ServerOwner
+        Guild,
+        GuildOwner
     }
 }

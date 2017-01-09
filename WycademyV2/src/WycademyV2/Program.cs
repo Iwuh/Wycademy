@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WycademyV2.Commands;
+using WycademyV2.Commands.Enums;
+using WycademyV2.Commands.Services;
 
 namespace WycademyV2
 {
@@ -16,6 +18,7 @@ namespace WycademyV2
 
         private DiscordSocketClient _client;
         private CommandHandler _handler;
+        private DependencyMap _map;
 
         public async Task Start()
         {
@@ -54,6 +57,25 @@ namespace WycademyV2
                     }
                 }
             };
+            _client.JoinedGuild += async guild =>
+            {
+                BlacklistService blacklist = _map.Get<BlacklistService>();
+
+                if (blacklist.CheckBlacklist(guild.Id, BlacklistType.Guild))
+                {
+                    var channel = await guild.GetDefaultChannelAsync();
+                    await channel.SendMessageAsync("This guild has been blacklisted. Wycademy will now leave.");
+                    await Task.Delay(5000);
+                    await guild.LeaveAsync();
+                }
+                else if (blacklist.CheckBlacklist(guild.OwnerId, BlacklistType.GuildOwner))
+                {
+                    var channel = await guild.GetDefaultChannelAsync();
+                    await channel.SendMessageAsync($"This guild's owner has been blacklisted. Wycademy will now leave, and cannot be added to any other guilds owned by {await guild.GetOwnerAsync()}.");
+                    await Task.Delay(5000);
+                    await guild.LeaveAsync();
+                }
+            };
 
             // Set token to either that of Wycademy or Wycademy Beta depending on whether or not the BETA flag is defined in the build options.
             string token;
@@ -68,12 +90,12 @@ namespace WycademyV2
             await _client.ConnectAsync();
 
             // Add the client to the DependencyMap that will be used during command execution.
-            DependencyMap map = new DependencyMap();
-            map.Add(_client);
+            _map = new DependencyMap();
+            _map.Add(_client);
 
             // Initialize and add the CommandHandler to the map.
             _handler = new CommandHandler();
-            await _handler.Install(map, Log);
+            await _handler.Install(_map, Log);
 
             // Asynchronously block until the bot is exited.
             await Task.Delay(-1);
