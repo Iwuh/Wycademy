@@ -20,15 +20,15 @@ namespace WycademyV2.Commands.Modules
         private MonsterInfoService _moninfo;
         private MotionValueService _mv;
         private CommandCacheService _cache;
-        private UtilityService _rand;
+        private UtilityService _utility;
 
-        public StatsModule(LockerService ls, MonsterInfoService mis, MotionValueService mvs, CommandCacheService ccs, UtilityService rns)
+        public StatsModule(LockerService ls, MonsterInfoService mis, MotionValueService mvs, CommandCacheService ccs, UtilityService u)
         {
             _locker = ls;
             _moninfo = mis;
             _mv = mvs;
             _cache = ccs;
-            _rand = rns;
+            _utility = u;
         }
 
         [Command("stats")]
@@ -42,7 +42,7 @@ namespace WycademyV2.Commands.Modules
                 statsEmbed = new EmbedBuilder()
                 .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", IconUrl = "https://discordapp.com/api/users/207172354101608448/avatars/67bb079bde2e9ed142ad824e4a31d5af.jpg", Url = @"https://github.com/Iwuh/Wycademy" })
 
-                .WithColor(new Color((byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256)))
+                .WithColor(new Color((byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256)))
 
                 .WithTitle("Statistics about the Wycademy:")
 
@@ -73,7 +73,7 @@ namespace WycademyV2.Commands.Modules
             EmbedBuilder aboutEmbed = new EmbedBuilder()
                 .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", IconUrl = "https://discordapp.com/api/users/207172354101608448/avatars/67bb079bde2e9ed142ad824e4a31d5af.jpg", Url = @"https://github.com/Iwuh/Wycademy" })
 
-                .WithColor(new Color((byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256), (byte)_rand.GetRandomNumber(0, 256)))
+                .WithColor(new Color((byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256)))
 
                 .WithTitle("About the Wycademy")
 
@@ -95,7 +95,7 @@ namespace WycademyV2.Commands.Modules
 
         private string GetUptime()
         {
-            TimeSpan uptime = DateTime.Now - _rand.StartTime;
+            TimeSpan uptime = DateTime.Now - _utility.StartTime;
 
             return uptime.ToString(@"dd\.hh\:mm\:ss\:fff");
         }
