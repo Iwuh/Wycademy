@@ -12,10 +12,10 @@ namespace WycademyV2.Commands.Modules
     [Summary("Misc. Commands")]
     public class OtherModule : ModuleBase
     {
-        private RandomNumberService _random;
+        private UtilityService _random;
         private CommandCacheService _cache;
 
-        public OtherModule(RandomNumberService rand, CommandCacheService cache)
+        public OtherModule(UtilityService rand, CommandCacheService cache)
         {
             _random = rand;
             _cache = cache;

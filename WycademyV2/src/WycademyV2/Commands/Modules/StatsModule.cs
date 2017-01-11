@@ -20,9 +20,9 @@ namespace WycademyV2.Commands.Modules
         private MonsterInfoService _moninfo;
         private MotionValueService _mv;
         private CommandCacheService _cache;
-        private RandomNumberService _rand;
+        private UtilityService _rand;
 
-        public StatsModule(LockerService ls, MonsterInfoService mis, MotionValueService mvs, CommandCacheService ccs, RandomNumberService rns)
+        public StatsModule(LockerService ls, MonsterInfoService mis, MotionValueService mvs, CommandCacheService ccs, UtilityService rns)
         {
             _locker = ls;
             _moninfo = mis;

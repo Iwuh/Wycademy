@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Services
 {
-    public class RandomNumberService
+    public class UtilityService
     {
         private Random rand;
 
-        public RandomNumberService()
+        public UtilityService()
         {
             rand = new Random();
         }

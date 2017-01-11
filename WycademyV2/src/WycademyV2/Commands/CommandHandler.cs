@@ -97,7 +97,7 @@ namespace WycademyV2.Commands
             map.Add(new LockerService());
             map.Add(new MotionValueService());
             map.Add(new CommandCacheService(map, 500));
-            map.Add(new RandomNumberService());
+            map.Add(new UtilityService());
             map.Add(new DamageCalculatorService(map.Get<DiscordSocketClient>()));
             map.Add(new BlacklistService());
             return Task.CompletedTask;
