@@ -95,7 +95,7 @@ namespace WycademyV2.Commands.Modules
 
         private string GetUptime()
         {
-            TimeSpan uptime = DateTime.Now - WycademyConst.START_TIME;
+            TimeSpan uptime = DateTime.Now - _rand.StartTime;
 
             return uptime.ToString(@"dd\.hh\:mm\:ss\:fff");
         }

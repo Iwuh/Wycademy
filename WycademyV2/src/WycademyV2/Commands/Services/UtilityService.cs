@@ -9,9 +9,12 @@ namespace WycademyV2.Commands.Services
     {
         private Random rand;
 
+        public DateTime StartTime { get; private set; }
+
         public UtilityService()
         {
             rand = new Random();
+            StartTime = DateTime.Now;
         }
 
         public int GetRandomNumber()
