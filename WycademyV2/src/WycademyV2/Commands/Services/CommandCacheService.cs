@@ -25,6 +25,8 @@ namespace WycademyV2.Commands.Services
             map.Get<DiscordSocketClient>().MessageDeleted += async (id, msg) =>
             {
                 var deletedMessage = msg.GetValueOrDefault();
+                // If the message is null then it isn't cached, and we can't find what channel it was in.
+                if (deletedMessage == null) return;
                 if (ContainsKey(id))
                 {
                     var responseMessage = await deletedMessage.Channel.GetMessageAsync(this[id]);
