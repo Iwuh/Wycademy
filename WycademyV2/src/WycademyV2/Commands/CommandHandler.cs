@@ -100,6 +100,7 @@ namespace WycademyV2.Commands
             map.Add(new UtilityService());
             map.Add(new DamageCalculatorService(map.Get<DiscordSocketClient>()));
             map.Add(new BlacklistService());
+            map.Add(new ToastTimerService(map.Get<DiscordSocketClient>()));
             return Task.CompletedTask;
         }
     }
