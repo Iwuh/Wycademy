@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.Net;
 using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,8 @@ namespace WycademyV2.Commands.Services
             await m.AddReactionAsync(RESTART);
             await m.AddReactionAsync(CANCEL);
 
+            await Task.Delay(1000);
+
             _messages.Add(m.Id, new ToastTimerMessage(context.User, context.Channel, m, AutoDeleteCallback));
 
             return m;
@@ -106,9 +109,20 @@ namespace WycademyV2.Commands.Services
             var toastMessage = state as ToastTimerMessage;
             if (toastMessage == null) return;
 
-            await toastMessage.Cancel();
-            toastMessage.Dispose();
-            _messages.Remove(toastMessage.Message.Id);
+            try
+            {
+                await toastMessage.Cancel();
+            }
+            catch (HttpException)
+            {
+                // If this exception is thrown, the message was already deleted beforehand by somebody with manage messages.
+                // There's nothing we can do, so we just move on.
+            }
+            finally
+            {
+                toastMessage.Dispose();
+                _messages.Remove(toastMessage.Message.Id);
+            }
         }
 
         private class ToastTimerMessage : IDisposable
@@ -137,8 +151,9 @@ namespace WycademyV2.Commands.Services
                 Channel = c;
                 Message = m;
                 _autoDeleteCallback = autodelete;
-                _toastTimer = new Timer(ToastTimerCallback, null, 0, 90000);
-                _autoDeleteTimer = new Timer(_autoDeleteCallback, this, 0, 1200000);
+                // Initialize the nova timer but don't start it.
+                _toastTimer = new Timer(ToastTimerCallback, null, Timeout.Infinite, Timeout.Infinite);
+                _autoDeleteTimer = new Timer(_autoDeleteCallback, this, 10000, 0);
             }
 
             /// <summary>
@@ -167,7 +182,7 @@ namespace WycademyV2.Commands.Services
             public async Task StartTimer()
             {
                 await Channel.SendMessageAsync("Timer started. You will be notified in 90 seconds.");
-                _toastTimer.Change(0, 90000);
+                _toastTimer.Change(90000, 0);
             }
 
             /// <summary>
@@ -176,7 +191,7 @@ namespace WycademyV2.Commands.Services
             public async Task StopTimer()
             {
                 await Channel.SendMessageAsync("Timer stopped. Note: pressing start will reset it to 0.");
-                _toastTimer.Change(0, Timeout.Infinite);
+                _toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
             }
 
             /// <summary>
@@ -185,8 +200,8 @@ namespace WycademyV2.Commands.Services
             public async Task ResetTimer()
             {
                 await Channel.SendMessageAsync("Timer reset to 0. You will be notified in 90 seconds.");
-                _toastTimer.Change(0, Timeout.Infinite);
-                _toastTimer.Change(0, 90000);
+                _toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                _toastTimer.Change(90000, 0);
             }
 
             /// <summary>
@@ -202,7 +217,7 @@ namespace WycademyV2.Commands.Services
                 // Notify the user after 90 seconds.
                 await Channel.SendMessageAsync($"{User.Mention}, nova coming in ~10 seconds!");
                 // Disable the timer until it's started again.
-                _toastTimer.Change(0, Timeout.Infinite);
+                _toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
             }
         }
     }
