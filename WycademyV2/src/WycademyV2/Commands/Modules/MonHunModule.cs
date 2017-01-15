@@ -19,14 +19,16 @@ namespace WycademyV2.Commands.Modules
         private MotionValueService _mv;
         private CommandCacheService _cache;
         private DamageCalculatorService _damagecalc;
+        private ToastTimerService _toast;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts)
         {
             _minfo = mis;
             _locker = ls;
             _mv = mv;
             _cache = ccs;
             _damagecalc = dcs;
+            _toast = tts;
         }
 
         [Command("hitzone")]
@@ -165,6 +167,15 @@ namespace WycademyV2.Commands.Modules
 
             // If everything is good, then send the message.
             await _damagecalc.SendDamageCalculatorMessageAsync(Context, raw, element, affinity, sType.Value, wType.Value, _cache);
+        }
+
+        [Command("toasttimer")]
+        [Alias("toast", "tost")]
+        [Summary("Sends a timer menu to help you keep track of Teostra novas.")]
+        [RequireUnlocked]
+        public async Task ToastTimer()
+        {
+            await _toast.SendToastTimerMessageAsync(Context, _cache);
         }
     }
 }
