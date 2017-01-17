@@ -153,7 +153,7 @@ namespace WycademyV2.Commands.Services
                 _autoDeleteCallback = autodelete;
                 // Initialize the nova timer but don't start it.
                 _toastTimer = new Timer(ToastTimerCallback, null, Timeout.Infinite, Timeout.Infinite);
-                _autoDeleteTimer = new Timer(_autoDeleteCallback, this, 10000, 0);
+                _autoDeleteTimer = new Timer(_autoDeleteCallback, this, 1200000, 0);
             }
 
             /// <summary>
