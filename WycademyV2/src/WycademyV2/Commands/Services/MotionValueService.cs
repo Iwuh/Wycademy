@@ -30,6 +30,8 @@ namespace WycademyV2.Commands.Services
         {
             string fileName = @".\Data\mv\" + AliasWeaponNames(name) + ".txt";
 
+            Queries++;
+
             return File.Open(fileName, FileMode.Open);
         }
 
