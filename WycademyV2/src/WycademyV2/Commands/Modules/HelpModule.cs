@@ -42,7 +42,6 @@ namespace WycademyV2.Commands.Modules
                 }
 
                 var moduleBuilder = new StringBuilder();
-                moduleBuilder.AppendLine($"{module.Summary}:");
                 foreach (CommandInfo command in module.Commands)
                 {
                     // Check the preconditions to make sure that the user is allowed to use this command.
@@ -90,11 +89,12 @@ namespace WycademyV2.Commands.Modules
             {
                 foreach (CommandInfo command in result.Commands.OrderByDescending(x => x.Priority))
                 {
+                    helpBuilder.AppendLine(Format.Underline(command.Module.Summary));
                     helpBuilder.AppendLine($"{Format.Bold(command.Name)} ({(command.Summary != null ? command.Summary : "There is no summary available for this command.")})");
                     helpBuilder.AppendLine();
                     if (command.Aliases.Count >= 1)
                     {
-                        helpBuilder.AppendLine(Format.Italics($"Aliases: {string.Join(" ", command.Aliases)}"));
+                        helpBuilder.AppendLine(Format.Italics($"Aliases: {string.Join(" ", command.Aliases.Where(a => a != command.Name))}"));
                     }
                     helpBuilder.AppendLine();
 
