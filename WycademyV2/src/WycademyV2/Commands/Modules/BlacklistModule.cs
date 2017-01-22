@@ -35,7 +35,7 @@ namespace WycademyV2.Commands.Modules
         [Summary("Removes an ID from a blacklist.")]
         public async Task RemoveFromBlacklist([Summary("The ID to remove.")] ulong id, [Summary("The blacklist to remove from (parsed into a BlacklistType).")] BlacklistType category)
         {
-            bool result = _blacklist.RemoveFromBlacklist(id, category);
+            bool result = await _blacklist.RemoveFromBlacklist(id, category);
             string message = result ? $"ID {id} successfully removed from blacklist." : "The ID could not be removed.";
             await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: message, prependZWSP: true);
         }

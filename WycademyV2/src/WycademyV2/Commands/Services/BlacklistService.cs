@@ -50,7 +50,7 @@ namespace WycademyV2.Commands.Services
         /// <param name="id">The ID to remove.</param>
         /// <param name="category">The blacklist to remove it from.</param>
         /// <returns>Whether or not the operation was successful.</returns>
-        public bool RemoveFromBlacklist(ulong id, BlacklistType category)
+        public async Task<bool> RemoveFromBlacklist(ulong id, BlacklistType category)
         {
             List<ulong> blacklistToCheck = null;
 
@@ -68,7 +68,9 @@ namespace WycademyV2.Commands.Services
             }
 
             // Category always has to be one of the 3 blacklist types, so we don't need to worry about blacklistToCheck being null.
-            return blacklistToCheck.Remove(id);
+            var success = blacklistToCheck.Remove(id);
+            await SaveAsync();
+            return success;
         }
 
         /// <summary>
