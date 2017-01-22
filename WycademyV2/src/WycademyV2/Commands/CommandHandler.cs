@@ -91,17 +91,25 @@ namespace WycademyV2.Commands
             }
         }
 
-        private Task AddServices(IDependencyMap map)
+        private async Task AddServices(IDependencyMap map)
         {
             map.Add(new MonsterInfoService());
+
             map.Add(new LockerService());
+
             map.Add(new MotionValueService());
+
             map.Add(new CommandCacheService(map, 500));
+
             map.Add(new UtilityService());
+
             map.Add(new DamageCalculatorService(map.Get<DiscordSocketClient>()));
-            map.Add(new BlacklistService());
+
+            var blacklist = new BlacklistService();
+            await blacklist.LoadAsync();
+            map.Add(blacklist);
+
             map.Add(new ToastTimerService(map.Get<DiscordSocketClient>()));
-            return Task.CompletedTask;
         }
     }
 }

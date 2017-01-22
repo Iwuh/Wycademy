@@ -27,7 +27,7 @@ namespace WycademyV2.Commands.Modules
         [Summary("Adds an ID to a blacklist.")]
         public async Task AddToBlacklist([Summary("The ID to add.")] ulong id, [Summary("The blacklist to add to (parsed into a BlacklistType).")] BlacklistType category)
         {
-            _blacklist.AddToBlacklist(id, category);
+            await _blacklist.AddToBlacklist(id, category);
             await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: $"ID {id} successfully added to blacklist.", prependZWSP: true);
         }
 

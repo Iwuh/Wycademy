@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace WycademyV2.Commands.Services
         /// </summary>
         /// <param name="id">The ID to add.</param>
         /// <param name="category">The category to add the ID to.</param>
-        public void AddToBlacklist(ulong id, BlacklistType category)
+        public async Task AddToBlacklist(ulong id, BlacklistType category)
         {
             switch (category)
             {
@@ -39,6 +40,8 @@ namespace WycademyV2.Commands.Services
                     if (!CheckBlacklist(id, BlacklistType.GuildOwner)) _guildOwnerBlacklist.Add(id);
                     break;
             }
+
+            await SaveAsync();
         }
 
         /// <summary>
@@ -113,6 +116,52 @@ namespace WycademyV2.Commands.Services
             sb.AppendLine(string.Join(" ", _guildOwnerBlacklist));
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Populate the blacklists with the contents of the files.
+        /// </summary>
+        public async Task LoadAsync()
+        {
+            using (FileStream userBlacklist = File.Open(@".\userblacklist.txt", FileMode.OpenOrCreate))
+            using (FileStream guildBlacklist = File.Open(@".\guildblacklist.txt", FileMode.OpenOrCreate))
+            using (FileStream guildOwnerBlacklist = File.Open(@".\guildownerblacklist.txt", FileMode.OpenOrCreate))
+            {
+                // Create a byte array for each file.
+                byte[] userBytes = new byte[userBlacklist.Length];
+                byte[] guildBytes = new byte[guildBlacklist.Length];
+                byte[] guildOwnerBytes = new byte[guildOwnerBlacklist.Length];
+
+                // Read into each byte array.
+                await userBlacklist.ReadAsync(userBytes, 0, (int)userBlacklist.Length);
+                await guildBlacklist.ReadAsync(guildBytes, 0, (int)guildBlacklist.Length);
+                await guildOwnerBlacklist.ReadAsync(guildOwnerBytes, 0, (int)guildOwnerBlacklist.Length);
+
+                // Convert the byte arrays into List<ulong>s and assign them to the blacklists.
+                UnicodeEncoding unicode = new UnicodeEncoding();
+                _userBlacklist = unicode.GetString(userBytes, 0, userBytes.Length).Split(' ').Select(n => ulong.Parse(n)).ToList();
+                _guildBlacklist = unicode.GetString(guildBytes, 0, guildBytes.Length).Split(' ').Select(n => ulong.Parse(n)).ToList();
+                _guildOwnerBlacklist = unicode.GetString(guildOwnerBytes, 0, guildOwnerBytes.Length).Split(' ').Select(n => ulong.Parse(n)).ToList();
+            }
+        }
+
+        private async Task SaveAsync()
+        {
+            using (FileStream userBlacklist = File.Open(@".\userblacklist.txt", FileMode.OpenOrCreate))
+            using (FileStream guildBlacklist = File.Open(@".\guildblacklist.txt", FileMode.OpenOrCreate))
+            using (FileStream guildOwnerBlacklist = File.Open(@".\guildownerblacklist.txt", FileMode.OpenOrCreate))
+            {
+                // Join each blacklist into a string separated by spaces then convert to a byte array.
+                UnicodeEncoding unicode = new UnicodeEncoding();
+                byte[] userBytes = unicode.GetBytes(string.Join(" ", _userBlacklist));
+                byte[] guildBytes = unicode.GetBytes(string.Join(" ", _guildBlacklist));
+                byte[] guildOwnerBytes = unicode.GetBytes(string.Join(" ", _guildOwnerBlacklist));
+
+                // Write to the files.
+                await userBlacklist.WriteAsync(userBytes, 0, userBytes.Length);
+                await guildBlacklist.WriteAsync(guildBytes, 0, guildBytes.Length);
+                await guildOwnerBlacklist.WriteAsync(guildOwnerBytes, 0, guildOwnerBytes.Length);
+            }
         }
     }
 }
