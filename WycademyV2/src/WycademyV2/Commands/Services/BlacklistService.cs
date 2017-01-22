@@ -139,9 +139,9 @@ namespace WycademyV2.Commands.Services
 
                 // Convert the byte arrays into List<ulong>s and assign them to the blacklists.
                 UnicodeEncoding unicode = new UnicodeEncoding();
-                _userBlacklist = unicode.GetString(userBytes, 0, userBytes.Length).Split(' ').Select(n => ulong.Parse(n)).ToList();
-                _guildBlacklist = unicode.GetString(guildBytes, 0, guildBytes.Length).Split(' ').Select(n => ulong.Parse(n)).ToList();
-                _guildOwnerBlacklist = unicode.GetString(guildOwnerBytes, 0, guildOwnerBytes.Length).Split(' ').Select(n => ulong.Parse(n)).ToList();
+                _userBlacklist = unicode.GetString(userBytes, 0, userBytes.Length).Split(' ').Select(n => VerifyId(n)).ToList();
+                _guildBlacklist = unicode.GetString(guildBytes, 0, guildBytes.Length).Split(' ').Select(n => VerifyId(n)).ToList();
+                _guildOwnerBlacklist = unicode.GetString(guildOwnerBytes, 0, guildOwnerBytes.Length).Split(' ').Select(n => VerifyId(n)).ToList();
             }
         }
 
@@ -162,6 +162,18 @@ namespace WycademyV2.Commands.Services
                 await guildBlacklist.WriteAsync(guildBytes, 0, guildBytes.Length);
                 await guildOwnerBlacklist.WriteAsync(guildOwnerBytes, 0, guildOwnerBytes.Length);
             }
+        }
+
+        /// <summary>
+        /// Tries to convert a string to a Discord ID.
+        /// </summary>
+        /// <param name="input">The input string to try to convert.</param>
+        /// <returns>0 if the string could not be converted, otherwise the ID as a ulong.</returns>
+        private ulong VerifyId(string input)
+        {
+            ulong parsed;
+            ulong.TryParse(input, out parsed);
+            return parsed;
         }
     }
 }
