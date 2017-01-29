@@ -46,7 +46,7 @@ namespace WycademyV2
         /// <returns>True if the predicate matched nothing.</returns>
         public static bool None<TSource>(this IEnumerable<TSource> enumerable, Func<TSource, bool> predicate)
         {
-            return !enumerable.All(predicate);
+            return !enumerable.Any(predicate);
         }
     }
 }
