@@ -24,7 +24,7 @@ namespace WycademyV2.Commands.Preconditions
             GuildPermission = null;
         }
 
-        public async override Task<PreconditionResult> CheckPermissions(CommandContext context, CommandInfo command, IDependencyMap map)
+        public async override Task<PreconditionResult> CheckPermissions(ICommandContext context, CommandInfo command, IDependencyMap map)
         {
             // Always succeed if the calling user is the bot owner.
             if (context.User.Id == (await context.Client.GetApplicationInfoAsync()).Owner.Id) return PreconditionResult.FromSuccess();
