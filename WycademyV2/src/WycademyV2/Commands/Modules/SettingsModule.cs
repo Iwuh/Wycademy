@@ -79,7 +79,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task SetGame([Remainder] string game)
         {
-            await (Context.Client as DiscordSocketClient).SetGame(game);
+            await (Context.Client as DiscordSocketClient).SetGameAsync(game);
         }
     }
 }

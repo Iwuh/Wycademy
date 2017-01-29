@@ -9,7 +9,7 @@ namespace WycademyV2.Commands.Preconditions
 {
     public class RequireUnlockedAttribute : PreconditionAttribute
     {
-        public override Task<PreconditionResult> CheckPermissions(CommandContext context, CommandInfo command, IDependencyMap map)
+        public override Task<PreconditionResult> CheckPermissions(ICommandContext context, CommandInfo command, IDependencyMap map)
         {
             var locker = map.Get<LockerService>();
 

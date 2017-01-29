@@ -96,7 +96,7 @@ namespace WycademyV2.Commands.Modules
         [Command("help")]
         [Summary("...")]
         [RequireUnlocked]
-        public async Task GetCommandHelp([Remainder, Summary("The commands to search for.")] string query)
+        public async Task GetCommandHelp([Remainder, Summary("The command to search for.")] string query)
         {
             var result = _commands.Search(Context, query);
 
@@ -104,7 +104,7 @@ namespace WycademyV2.Commands.Modules
 
             if (result.Commands.Count >= 1)
             {
-                foreach (CommandInfo command in result.Commands.OrderByDescending(x => x.Priority))
+                foreach (CommandInfo command in result.Commands.Select(x => x.Command))
                 {
                     helpBuilder.AppendLine(Format.Underline(command.Module.Summary));
                     helpBuilder.AppendLine($"{Format.Bold(command.Name)} ({(command.Summary != null ? command.Summary : "There is no summary available for this command.")})");

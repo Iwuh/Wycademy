@@ -60,15 +60,15 @@ namespace WycademyV2
 
                 if (blacklist.CheckBlacklist(guild.Id, BlacklistType.Guild))
                 {
-                    var channel = await guild.GetDefaultChannelAsync();
+                    var channel = guild.DefaultChannel;
                     await channel.SendMessageAsync("This guild has been blacklisted. Wycademy will now leave.");
                     await Task.Delay(5000);
                     await guild.LeaveAsync();
                 }
                 else if (blacklist.CheckBlacklist(guild.OwnerId, BlacklistType.GuildOwner))
                 {
-                    var channel = await guild.GetDefaultChannelAsync();
-                    await channel.SendMessageAsync($"This guild's owner has been blacklisted. Wycademy will now leave, and cannot be added to any other guilds owned by {await guild.GetOwnerAsync()}.");
+                    var channel = guild.DefaultChannel;
+                    await channel.SendMessageAsync($"This guild's owner has been blacklisted. Wycademy will now leave, and cannot be added to any other guilds owned by {guild.Owner}.");
                     await Task.Delay(5000);
                     await guild.LeaveAsync();
                 }

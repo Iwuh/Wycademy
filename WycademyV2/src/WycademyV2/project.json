@@ -6,8 +6,8 @@
   },
 
   "dependencies": {
-    "Discord.Net.Commands": "1.0.0-beta2-00497",
-    "Discord.Net.WebSocket": "1.0.0-beta2-00497",
+    "Discord.Net.Commands": "1.0.0-rc-00585",
+    "Discord.Net.WebSocket": "1.0.0-rc-00585",
     "Microsoft.NETCore.App": "1.1.0"
   },
 
