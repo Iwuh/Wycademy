@@ -110,6 +110,8 @@ namespace WycademyV2.Commands
             map.Add(blacklist);
 
             map.Add(new ToastTimerService(map.Get<DiscordSocketClient>()));
+
+            map.Add(new EvalService());
         }
     }
 }
