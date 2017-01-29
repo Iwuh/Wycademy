@@ -36,5 +36,17 @@ namespace WycademyV2
             cache.Add(commandID, m.Id);
             return m;
         }
+
+        /// <summary>
+        /// Checks that none of the elements of an IEnumerable match a predicate.
+        /// </summary>
+        /// <typeparam name="TSource">The element type of the collection</typeparam>
+        /// <param name="enumerable">The enumerable to check.</param>
+        /// <param name="predicate">The condition to check for.</param>
+        /// <returns>True if the predicate matched nothing.</returns>
+        public static bool None<TSource>(this IEnumerable<TSource> enumerable, Func<TSource, bool> predicate)
+        {
+            return !enumerable.All(predicate);
+        }
     }
 }

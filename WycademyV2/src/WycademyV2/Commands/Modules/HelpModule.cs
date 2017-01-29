@@ -29,51 +29,68 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetGeneralHelp()
         {
-            var helpMessages = new List<string>();
+            // NB: I put "group" in the remarks if the module uses GroupAttribute.
+
+            var helpBuilder = new StringBuilder();
+            // Used to prevent a command from being listed twice.
+            var listedCommands = new List<CommandInfo>();
             foreach (ModuleInfo module in _commands.Modules)
             {
-                // Used to not show the category if none of the commands are available to the user.
-                bool anyCommandsMatched = false;
-
-                // Skip over any modules marked hidden.
-                if (module.Remarks != null)
+                // Skip the module if none of the commands are usable by the user in the current context.
+                if (module.Commands.None(c =>
                 {
-                    if (module.Remarks.Contains("hidden")) continue;
+                    var result = c.CheckPreconditionsAsync(Context, _map).Result;
+                    return result.IsSuccess;
+                })) continue;
+
+                // Skip the module if it's marked hidden.
+                if (module.Remarks != null && module.Remarks.Contains("hidden")) continue;
+
+                foreach (ModuleInfo submodule in module.Submodules)
+                {
+                    foreach (CommandInfo command in submodule.Commands)
+                    {
+                        // If the module uses a special group name, add it.
+                        if (module.Remarks != null && module.Remarks.Contains("group"))
+                        {
+                            helpBuilder.Append($"`{module.Name}` ");
+                        }
+
+                        // If the submodule uses a special group name, add it.
+                        if (submodule.Remarks != null && submodule.Remarks.Contains("group"))
+                        {
+                            helpBuilder.Append($"`{submodule.Name}` ");
+                        }
+
+                        // Add the command name and its summary.
+                        helpBuilder.AppendLine($"`{command.Name}` - {command.Summary ?? "There is no summary for this command."}");
+                        helpBuilder.AppendLine();
+
+                        // Add the command to a list of used commands so that the same command isn't added twice.
+                        listedCommands.Add(command);
+                    }
                 }
 
-                var moduleBuilder = new StringBuilder();
                 foreach (CommandInfo command in module.Commands)
                 {
-                    // Check the preconditions to make sure that the user is allowed to use this command.
-                    var result = await command.CheckPreconditionsAsync(Context, _map);
+                    // Skip over any commands that have already been processed in the submodule check.
+                    if (listedCommands.Contains(command)) continue;
 
-                    // Move to the next command if it didn't pass the checks.
-                    if (!result.IsSuccess) continue;
-
-                    // If it gets this far, then at least one command has passed.
-                    anyCommandsMatched = true;
-
-                    if (module.Remarks != null)
+                    // If the module uses a special name, add it.
+                    if (module.Remarks != null && module.Remarks.Contains("group"))
                     {
-                        if (module.Remarks.Contains("group")) moduleBuilder.AppendLine($"`{module.Name} {command.Name}` - {command.Summary}");
+                        helpBuilder.Append($"`{module.Name}` ");
                     }
-                    else
-                    {
-                        moduleBuilder.AppendLine($"`{command.Name}` - {command.Summary}");
-                    }
-                }
 
-                if (anyCommandsMatched)
-                {
-                    // Only add the help for that module if at least one command will be shown.
-                    helpMessages.Add(moduleBuilder.ToString());
+                    helpBuilder.AppendLine($"`{command.Name}` - {command.Summary ?? "There is no summary for this command."}");
+                    helpBuilder.AppendLine();
                 }
             }
 
-            string message = string.Join("\n", helpMessages) + "To see help for an individual command, do `<help [command]` where `[command]` is the command you want info about.";
+            helpBuilder.AppendLine("To see help for an individual command, do `<help [command]` where `[command]` is the command you want info about. ex. `<help hitzone`");
 
             var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
-            await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: string.Join("\n", helpMessages), prependZWSP: true);
+            await dm.SendMessageAsync(helpBuilder.ToString());
         }
 
         [Command("help")]
