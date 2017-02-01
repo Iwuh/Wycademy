@@ -14,13 +14,16 @@ namespace WycademyV2.Commands.Services
 {
     public class EvalService
     {
-        private ScriptOptions evalOptions;
+        private ScriptOptions _evalOptions;
+        private DiscordSocketClient _client;
 
-        public EvalService()
+        public EvalService(DiscordSocketClient client)
         {
+            _client = client;
+
             // Create script options with references to the core library assemblies, as well as certain Discord.Net assemblies.
             // Also add imports for various essential namespaces.
-            evalOptions = ScriptOptions.Default
+            _evalOptions = ScriptOptions.Default
             .WithReferences(typeof(object).GetTypeInfo().Assembly, typeof(Enumerable).GetTypeInfo().Assembly, typeof(Embed).GetTypeInfo().Assembly,
                 typeof(CommandContext).GetTypeInfo().Assembly, typeof(DiscordSocketClient).GetTypeInfo().Assembly)
             .WithImports("System", "System.Linq", "System.Threading.Tasks", "System.Collections.Generic", "System.Text", "System.IO", "Discord", "Discord.Commands", "Discord.WebSocket");
@@ -34,7 +37,7 @@ namespace WycademyV2.Commands.Services
             try
             {
                 // Evaluate the input, using the current client and context as global variables.
-                object result = await CSharpScript.EvaluateAsync(input, options: evalOptions, globals: new ScriptHost(client, context));
+                object result = await CSharpScript.EvaluateAsync(input, options: _evalOptions, globals: new ScriptHost(client, context));
 
                 successful = true;
                 output = result?.ToString() ?? "null";
@@ -48,7 +51,7 @@ namespace WycademyV2.Commands.Services
             return new EvalResult(successful, output);
         }
 
-        private class ScriptHost
+        public class ScriptHost
         {
             public DiscordSocketClient Client { get; set; }
             public CommandContext Context { get; set; }

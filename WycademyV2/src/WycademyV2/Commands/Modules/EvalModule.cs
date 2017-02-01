@@ -19,6 +19,9 @@ namespace WycademyV2.Commands.Modules
             _eval = eval;
         }
 
+        [Command("eval")]
+        [Summary("Evaluates a C# expression using the Roslyn scripting API.")]
+        [RequireOwner]
         public async Task EvaluateExpression([Remainder, Summary("The C# expression to evaluate.")] string expr)
         {
             var result = await _eval.EvaluateAsync(expr, Context.Client as DiscordSocketClient, Context);
