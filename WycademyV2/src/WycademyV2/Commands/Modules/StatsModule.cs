@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,8 @@ namespace WycademyV2.Commands.Modules
                 " You can invite it to your server [here](https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=52224) and view the source code [here](https://github.com/Iwuh/Wycademy)." +
                 " If you enjoy the bot, a star would be much appreciated! The icon was created by [@thechewer on Instagram](https://www.instagram.com/p/BH42dbZjiYt/?taken-by=thechewer) and the data is taken from Kiranico." +
                 " Special thanks to my brother for helping me gather the monster data. Monster Hunter is © CAPCOM.")
+
+                .AddField(x => x.WithName("Version:").WithValue(Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion).WithIsInline(true))
 
                 .AddField(x => x.WithName("Author:").WithValue($"{appInfo.Owner} (ID: {appInfo.Owner.Id})").WithIsInline(true))
 
