@@ -15,7 +15,7 @@ namespace WycademyV2.Commands.Utilities
 
         public int GetHashCode(IUser obj)
         {
-            return obj.GetHashCode();
+            return obj.Id.GetHashCode();
         }
     }
 }
