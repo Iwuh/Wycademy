@@ -48,5 +48,26 @@ namespace WycademyV2
         {
             return !enumerable.Any(predicate);
         }
+
+        /// <summary>
+        /// Converts a collection of strings to Discord IDs, ignoring any that are invalid.
+        /// </summary>
+        /// <param name="text">The collection to convert.</param>
+        /// <returns>A collection of IDs.</returns>
+        public static IEnumerable<ulong> ParseIDs(this IEnumerable<string> text)
+        {
+            List<ulong> ids = new List<ulong>();
+
+            foreach (string item in text)
+            {
+                ulong parsed;
+                if (ulong.TryParse(item, out parsed))
+                {
+                    ids.Add(parsed);
+                }
+            }
+
+            return ids;
+        }
     }
 }
