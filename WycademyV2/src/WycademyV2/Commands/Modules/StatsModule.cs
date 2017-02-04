@@ -67,6 +67,7 @@ namespace WycademyV2.Commands.Modules
 
         [Command("about")]
         [Summary("Gets information about the bot.")]
+        [RequireUnlocked]
         public async Task GetInfo()
         {
             var appInfo = await Context.Client.GetApplicationInfoAsync();

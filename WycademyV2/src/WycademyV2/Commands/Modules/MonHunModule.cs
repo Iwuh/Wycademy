@@ -113,9 +113,9 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetMV([Remainder, Summary("The weapon to find motion values for.")] string weapon)
         {
-            var mvStream = _mv.GetMotionValueStream(weapon);
             try
             {
+                var mvStream = _mv.GetMotionValueStream(weapon);
                 await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, file: mvStream, fileName: mvStream.Name);
             }
             catch (ArgumentException)

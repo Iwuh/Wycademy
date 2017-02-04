@@ -106,8 +106,19 @@ namespace WycademyV2.Commands.Services
         /// <returns>Task(string)</returns>
         public async Task<string> GetMonsterInfo(string category, string monsterName)
         {
+            string newName;
+            var split = monsterName.Split(' ');
+            if (split.Length > 1)
+            {
+                newName = string.Join("_", split);
+            }
+            else
+            {
+                newName = monsterName;
+            }
+
             // Deserialise the json on a threadpool to avoid blocking while reading from disk.
-            Dictionary<string, string[]> Data = await Task.Run(() => GetDictionaryFromJson(category, monsterName));
+            Dictionary<string, string[]> Data = await Task.Run(() => GetDictionaryFromJson(category, newName));
 
             StringBuilder infoBuilder = new StringBuilder();
             int columnTitleWidth;
