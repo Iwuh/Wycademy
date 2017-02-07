@@ -100,10 +100,10 @@ namespace WycademyV2.Commands.Modules
         {
             var result = _commands.Search(Context, query);
 
-            var helpBuilder = new StringBuilder();
-
-            if (result.Commands.Count >= 1)
+            if (result.Commands != null)
             {
+                var helpBuilder = new StringBuilder();
+
                 foreach (CommandInfo command in result.Commands.Select(x => x.Command))
                 {
                     helpBuilder.AppendLine(Format.Underline(command.Module.Summary));
@@ -123,10 +123,10 @@ namespace WycademyV2.Commands.Modules
 
                     helpBuilder.AppendLine();
                 }
-            }
 
-            var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
-            await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: helpBuilder.ToString(), prependZWSP: true);  
+                var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
+                await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: helpBuilder.ToString(), prependZWSP: true);
+            }
         }
     }
 }
