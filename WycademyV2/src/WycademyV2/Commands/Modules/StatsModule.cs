@@ -80,9 +80,10 @@ namespace WycademyV2.Commands.Modules
                 .WithTitle("About the Wycademy")
 
                 .WithDescription("Wycademy is a Monster Hunter info bot, to help you with your hunting without you needing to leave Discord! Check out what it can do by using the `<help` command." +
-                " You can invite it to your server [here](https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=52224) and view the source code [here](https://github.com/Iwuh/Wycademy)." +
-                " If you enjoy the bot, a star would be much appreciated! The icon was created by [@thechewer on Instagram](https://www.instagram.com/p/BH42dbZjiYt/?taken-by=thechewer) and the data is taken from Kiranico." +
-                " Special thanks to my brother for helping me gather the monster data. Monster Hunter is © CAPCOM.")
+                " You can invite it to your server [here](https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=52224), view the source code [here](https://github.com/Iwuh/Wycademy), and" +
+                " join the development/feature request/bug report server [here](https://discord.gg/R8g3BCS).  If you enjoy the bot, a star would be much appreciated! The icon was created by" +
+                " [@thechewer on Instagram](https://www.instagram.com/p/BH42dbZjiYt/?taken-by=thechewer) and the data is taken from Kiranico. Special thanks to my brother for helping me gather the monster data. Monster Hunter is © CAPCOM.")
+
 
                 .AddField(x => x.WithName("Version:").WithValue(Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion).WithIsInline(true))
 
