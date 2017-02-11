@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Entities;
 using WycademyV2.Commands.Utilities;
 
 namespace WycademyV2.Commands.Services
