@@ -144,14 +144,14 @@ namespace WycademyV2.Commands.Modules
             [Summary("The sharpness colour of the weapon. Can be the full name or just the first letter. ex. r/red.")] string sharpness)
         {
             // Validate the weapon type.
-            CalculatorWeaponType? wType = _damagecalc.ValidateWeapon(weapon);
+            WeaponType? wType = _damagecalc.ValidateWeapon(weapon);
             if (wType == null)
             {
                 await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: weapon + WycademyConst.INVALID_DC_WEAPON_NAME, prependZWSP: true);
                 return;
             }
             // Show a notice if the weapon type is currently not supported.
-            else if (wType == CalculatorWeaponType.LBG || wType == CalculatorWeaponType.HBG || wType == CalculatorWeaponType.Bow || wType == CalculatorWeaponType.Prowler)
+            else if (wType == WeaponType.LBG || wType == WeaponType.HBG || wType == WeaponType.Bow || wType == WeaponType.Prowler)
             {
                 await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: WycademyConst.DC_WEAPON_TYPE_NOT_SUPPORTED, prependZWSP: true);
                 return;

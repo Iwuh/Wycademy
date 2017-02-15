@@ -16,7 +16,7 @@ namespace WycademyV2.Commands.Services
         private const string FOUR = "4⃣";
         private const string G = "🇬";
         // Weapon modifiers to find true raw.
-        private readonly Dictionary<CalculatorWeaponType, float> WEAPON_MODIFIERS;
+        private readonly Dictionary<WeaponType, float> WEAPON_MODIFIERS;
         
         // Message IDs and the user to accept responses from.
         private Dictionary<ulong, DamageCalculatorMessage> _messages;
@@ -25,22 +25,22 @@ namespace WycademyV2.Commands.Services
         public DamageCalculatorService(DiscordSocketClient c)
         {
             _messages = new Dictionary<ulong, DamageCalculatorMessage>();
-            WEAPON_MODIFIERS = new Dictionary<CalculatorWeaponType, float>()
+            WEAPON_MODIFIERS = new Dictionary<WeaponType, float>()
             {
-                { CalculatorWeaponType.Hammer, 5.2f },
-                { CalculatorWeaponType.HH,     5.2f },
-                { CalculatorWeaponType.SA,     5.4f },
-                { CalculatorWeaponType.GS,     4.8f },
-                { CalculatorWeaponType.CB,     3.6f },
-                { CalculatorWeaponType.LS,     3.3f },
-                { CalculatorWeaponType.IG,     3.1f },
-                { CalculatorWeaponType.Lance,  2.3f },
-                { CalculatorWeaponType.GL,     2.3f },
-                { CalculatorWeaponType.HBG,    1.5f },
-                { CalculatorWeaponType.SnS,    1.4f },
-                { CalculatorWeaponType.DB,     1.4f },
-                { CalculatorWeaponType.LBG,    1.3f },
-                { CalculatorWeaponType.Bow,    1.2f }
+                { WeaponType.Hammer, 5.2f },
+                { WeaponType.HH,     5.2f },
+                { WeaponType.SA,     5.4f },
+                { WeaponType.GS,     4.8f },
+                { WeaponType.CB,     3.6f },
+                { WeaponType.LS,     3.3f },
+                { WeaponType.IG,     3.1f },
+                { WeaponType.Lance,  2.3f },
+                { WeaponType.GL,     2.3f },
+                { WeaponType.HBG,    1.5f },
+                { WeaponType.SnS,    1.4f },
+                { WeaponType.DB,     1.4f },
+                { WeaponType.LBG,    1.3f },
+                { WeaponType.Bow,    1.2f }
             };
             _client = c;
             _client.ReactionAdded += OnReactionAdded;
@@ -57,7 +57,7 @@ namespace WycademyV2.Commands.Services
         /// <param name="weapon">The type of the weapon.</param>
         /// <param name="cache">The optional CommandCacheService to add the message to.</param>
         /// <returns>The sent message.</returns>
-        public async Task<IUserMessage> SendDamageCalculatorMessageAsync(CommandContext context, float raw, float element, float affinity, SharpnessType sharpness, CalculatorWeaponType weapon, CommandCacheService cache = null)
+        public async Task<IUserMessage> SendDamageCalculatorMessageAsync(CommandContext context, float raw, float element, float affinity, SharpnessType sharpness, WeaponType weapon, CommandCacheService cache = null)
         {
             const string initialMessage = "Please confirm which game you'd like to calculate for by selecting a reaction below.";
 
@@ -126,82 +126,82 @@ namespace WycademyV2.Commands.Services
         /// </summary>
         /// <param name="input">The string to verify.</param>
         /// <returns>The WeaponType version of the input if it's valid, otherwise null.</returns>
-        public CalculatorWeaponType? ValidateWeapon(string input)
+        public WeaponType? ValidateWeapon(string input)
         {
             switch (input.ToLower())
             {
                 case "greatsword":
                 case "great_sword":
                 case "gs":
-                    return CalculatorWeaponType.GS;
+                    return WeaponType.GS;
 
                 case "longsword":
                 case "long_sword":
                 case "ls":
-                    return CalculatorWeaponType.LS;
+                    return WeaponType.LS;
 
                 case "swordandshield":
                 case "sword_and_shield":
                 case "sword&shield":
                 case "s&s":
                 case "sns":
-                    return CalculatorWeaponType.SnS;
+                    return WeaponType.SnS;
 
                 case "dualblades":
                 case "dual_blades":
                 case "db":
-                    return CalculatorWeaponType.DB;
+                    return WeaponType.DB;
 
                 case "lance":
-                    return CalculatorWeaponType.Lance;
+                    return WeaponType.Lance;
 
                 case "gunlance":
                 case "gun_lance":
                 case "gl":
-                    return CalculatorWeaponType.GL;
+                    return WeaponType.GL;
 
                 case "hemmer":
                 case "hemmr":
                 case "hammer":
-                    return CalculatorWeaponType.Hammer;
+                    return WeaponType.Hammer;
 
                 case "huntinghorn":
                 case "hunting_horn":
                 case "doot":
                 case "hh":
-                    return CalculatorWeaponType.HH;
+                    return WeaponType.HH;
 
                 case "switch_axe":
                 case "switchaxe":
                 case "swaxe":
                 case "sa":
-                    return CalculatorWeaponType.SA;
+                    return WeaponType.SA;
 
                 case "charge_blade":
                 case "chargeblade":
                 case "cb":
-                    return CalculatorWeaponType.CB;
+                    return WeaponType.CB;
 
                 case "lightbowgun":
                 case "light_bowgun":
                 case "lbg":
-                    return CalculatorWeaponType.LBG;
+                    return WeaponType.LBG;
 
                 case "heavybowgun":
                 case "heavy_bowgun":
                 case "hbg":
-                    return CalculatorWeaponType.HBG;
+                    return WeaponType.HBG;
 
                 case "bow":
-                    return CalculatorWeaponType.Bow;
+                    return WeaponType.Bow;
 
                 case "prowler":
-                    return CalculatorWeaponType.Prowler;
+                    return WeaponType.Prowler;
 
                 case "insectglaive":
                 case "insect_glaive":
                 case "ig":
-                    return CalculatorWeaponType.IG;
+                    return WeaponType.IG;
 
                 default:
                     return null;
@@ -235,7 +235,7 @@ namespace WycademyV2.Commands.Services
                 switch (reaction.Emoji.Name)
                 {
                     case FOUR:
-                        if (calcMessage.Weapon == CalculatorWeaponType.Prowler)
+                        if (calcMessage.Weapon == WeaponType.Prowler)
                         {
                             await message.ModifyAsync(x => x.Content = "Nice try, but Prowlers aren't in 4U.");
                             _messages.Remove(id);
@@ -313,9 +313,9 @@ namespace WycademyV2.Commands.Services
             public float ElementDamage { get; private set; }
             public float Affinity { get; private set; }
             public SharpnessType Sharpness { get; private set; }
-            public CalculatorWeaponType Weapon { get; private set; }
+            public WeaponType Weapon { get; private set; }
 
-            public DamageCalculatorMessage(IUser user, float dmg, float ele, float aff, SharpnessType sharpness, CalculatorWeaponType weapon)
+            public DamageCalculatorMessage(IUser user, float dmg, float ele, float aff, SharpnessType sharpness, WeaponType weapon)
             {
                 User = user;
                 RawDamage = dmg;
