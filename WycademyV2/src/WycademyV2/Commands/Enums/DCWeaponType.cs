@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Enums
 {
-    public enum WeaponType
+    public enum DCWeaponType
     {
         GS,
         LS,
