@@ -76,5 +76,11 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         [JsonProperty("strings")]
         public List<WeaponString> Strings { get; set; }
+
+        /// <summary>
+        /// Each level of the weapon and it's stats.
+        /// </summary>
+        [JsonProperty("levels")]
+        public List<WeaponLevel> Levels { get; set; }
     }
 }
