@@ -112,6 +112,8 @@ namespace WycademyV2.Commands
             map.Add(new ToastTimerService(map.Get<DiscordSocketClient>()));
 
             map.Add(new EvalService(map.Get<DiscordSocketClient>()));
+
+            map.Add(new WeaponInfoService());
         }
     }
 }

@@ -15,7 +15,7 @@ namespace WycademyV2.Commands.Utilities
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var input = (int)reader.Value;
+            var input = (long)reader.Value;
 
             switch (input)
             {

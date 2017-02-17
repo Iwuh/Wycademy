@@ -63,13 +63,13 @@ namespace WycademyV2.Commands.Entities
         /// The weapon line that this weapon upgrades from.
         /// </summary>
         [JsonProperty("upgrades_from")]
-        public int UpgradesFrom { get; set; }
+        public int? UpgradesFrom { get; set; }
 
         /// <summary>
         /// The level this weapon upgrades from the previous one at.
         /// </summary>
         [JsonProperty("upgrades_from_level")]
-        public int UpgradesFromLevel { get; set; }
+        public int? UpgradesFromLevel { get; set; }
 
         /// <summary>
         /// The weapon names and descriptions for all languages.
