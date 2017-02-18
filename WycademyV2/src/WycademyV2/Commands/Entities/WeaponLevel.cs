@@ -49,5 +49,11 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         [JsonProperty("sharpness")]
         public List<WeaponSharpness> Sharpness { get; set; }
+
+        /// <summary>
+        /// The element values for the level.
+        /// </summary>
+        [JsonProperty("elements")]
+        public List<WeaponElement> Elements { get; set; }
     }
 }
