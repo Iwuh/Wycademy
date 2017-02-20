@@ -55,5 +55,11 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         [JsonProperty("elements")]
         public List<WeaponElement> Elements { get; set; }
+
+        /// <summary>
+        /// The Hunting Horn notes (empty if the weapon is not a Hunting Horn).
+        /// </summary>
+        [JsonProperty("hhnotes")]
+        public List<WeaponNotes> Notes { get; set; }
     }
 }
