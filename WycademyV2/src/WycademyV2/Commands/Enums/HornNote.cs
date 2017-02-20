@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Enums
 {
-    public enum WeaponNote
+    public enum HornNote
     {
         White = 1,
         Purple = 2,
