@@ -61,5 +61,11 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         [JsonProperty("hhnotes")]
         public List<WeaponNotes> Notes { get; set; }
+
+        /// <summary>
+        /// The Gunlance shot types and levels (empty if the weapon is not a Gunlance).
+        /// </summary>
+        [JsonProperty("shots")]
+        public List<WeaponShots> Shots { get; set; }
     }
 }

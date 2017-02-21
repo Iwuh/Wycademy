@@ -13,24 +13,24 @@ namespace WycademyV2.Commands.Entities
         /// <summary>
         /// The first note (always white or purple).
         /// </summary>
-        public WeaponNote Note1 { get; set; }
+        public HornNote Note1 { get; set; }
 
         /// <summary>
         /// The second note.
         /// </summary>
-        public WeaponNote Note2 { get; set; }
+        public HornNote Note2 { get; set; }
 
         /// <summary>
         /// The third note.
         /// </summary>
-        public WeaponNote Note3 { get; set; }
+        public HornNote Note3 { get; set; }
 
         [JsonConstructor]
         public WeaponNotes(int color_1, int color_2, int color_3)
         {
-            Note1 = (WeaponNote)color_1;
-            Note2 = (WeaponNote)color_2;
-            Note3 = (WeaponNote)color_3;
+            Note1 = (HornNote)color_1;
+            Note2 = (HornNote)color_2;
+            Note3 = (HornNote)color_3;
         }
     }
 }
