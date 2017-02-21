@@ -67,5 +67,11 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         [JsonProperty("shots")]
         public List<WeaponShots> Shots { get; set; }
+
+        /// <summary>
+        /// The Switch Axe / Charge Blade phials (empty if the weapon is not a Switch Axe or Charge Blade).
+        /// </summary>
+        [JsonProperty("phials")]
+        public List<WeaponPhials> Phials { get; set; }
     }
 }
