@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Enums;
 
 namespace WycademyV2.Commands.Entities
 {
@@ -73,5 +75,44 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         [JsonProperty("phials")]
         public List<WeaponPhials> Phials { get; set; }
+
+        /// <summary>
+        /// The usable Bow coatings (empty if the weapon is not a bow)
+        /// </summary>
+        public List<int> Coatings { get; private set; }
+
+        /// <summary>
+        /// The arc shot type of the bow.
+        /// </summary>
+        public BowArcShot? ArcShot { get; private set; }
+
+        /// <summary>
+        /// The available charge shots.
+        /// </summary>
+        [JsonProperty("cshots")]
+        public List<WeaponChargeShots> ChargeShots { get; set; }
+
+        [JsonConstructor]
+        public WeaponLevel(JObject coatings, JArray ashots)
+        {
+            var enabledCoatings = new List<int>();
+            if (coatings != null)
+            {
+                for (int i = 0; i <= 10; i++)
+                {
+                    enabledCoatings.Append((int)coatings[$"bottle_enable_{i}"]);
+                }
+            }
+            Coatings = enabledCoatings;
+
+            if (ashots.Count > 0)
+            {
+                ArcShot = (BowArcShot)((int)ashots[0]["pivot"]["ashot_id"]);
+            }
+            else
+            {
+                ArcShot = null;
+            }
+        }
     }
 }
