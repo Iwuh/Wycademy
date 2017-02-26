@@ -8,16 +8,16 @@ using WycademyV2.Commands.Enums;
 
 namespace WycademyV2.Commands.Entities
 {
-    public class WeaponShots
+    public class WeaponShells
     {
-        public GunlanceShot ShotType { get; set; }
+        public GunlanceShellType ShotType { get; set; }
 
         public int Level { get; set; }
 
         [JsonConstructor]
-        public WeaponShots(JObject pivot)
+        public WeaponShells(JObject pivot)
         {
-            ShotType = (GunlanceShot)((int)pivot["shot_id"]);
+            ShotType = (GunlanceShellType)((int)pivot["shot_id"]);
             Level = (int)pivot["level"];
         }
     }

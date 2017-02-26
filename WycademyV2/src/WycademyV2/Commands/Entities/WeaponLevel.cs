@@ -62,24 +62,24 @@ namespace WycademyV2.Commands.Entities
         /// The Hunting Horn notes (empty if the weapon is not a Hunting Horn).
         /// </summary>
         [JsonProperty("hhnotes")]
-        public List<WeaponNotes> Notes { get; set; }
+        public List<WeaponNotes> HHNotes { get; set; }
 
         /// <summary>
         /// The Gunlance shot types and levels (empty if the weapon is not a Gunlance).
         /// </summary>
         [JsonProperty("shots")]
-        public List<WeaponShots> Shots { get; set; }
+        public List<WeaponShells> GLShells { get; set; }
 
         /// <summary>
         /// The Switch Axe / Charge Blade phials (empty if the weapon is not a Switch Axe or Charge Blade).
         /// </summary>
         [JsonProperty("phials")]
-        public List<WeaponPhials> Phials { get; set; }
+        public List<WeaponPhials> SACBPhials { get; set; }
 
         /// <summary>
         /// The usable Bow coatings (empty if the weapon is not a bow)
         /// </summary>
-        public List<int> Coatings { get; private set; }
+        public List<int> BowCoatings { get; private set; }
 
         /// <summary>
         /// The arc shot type of the bow.
@@ -103,7 +103,7 @@ namespace WycademyV2.Commands.Entities
                     enabledCoatings.Append((int)coatings[$"bottle_enable_{i}"]);
                 }
             }
-            Coatings = enabledCoatings;
+            BowCoatings = enabledCoatings;
 
             if (ashots.Count > 0)
             {

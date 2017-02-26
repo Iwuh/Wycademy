@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Enums
 {
-    public enum GunlanceShot
+    public enum GunlanceShellType
     {
         Normal = 1,
         Wide = 2,
