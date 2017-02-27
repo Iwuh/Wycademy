@@ -82,18 +82,23 @@ namespace WycademyV2.Commands.Entities
         public List<int> BowCoatings { get; private set; }
 
         /// <summary>
-        /// The arc shot type of the bow.
+        /// The arc shot type of the bow (null if the weapon is not a bow).
         /// </summary>
         public BowArcShot? ArcShot { get; private set; }
 
         /// <summary>
-        /// The available charge shots.
+        /// The available charge shots (empty if the weapon is not a bow).
         /// </summary>
         [JsonProperty("cshots")]
         public List<WeaponChargeShots> ChargeShots { get; set; }
 
+        /// <summary>
+        /// A list of all shot types, their magazine sizes, and whether or not they can be loaded by default (empty if the weapon is not a LBG/HBG).
+        /// </summary>
+        public List<WeaponShot> GunShots { get; private set; }
+
         [JsonConstructor]
-        public WeaponLevel(JObject coatings, JArray ashots)
+        public WeaponLevel(JObject coatings, JArray ashots, JObject shells)
         {
             var enabledCoatings = new List<int>();
             if (coatings != null)
@@ -113,6 +118,19 @@ namespace WycademyV2.Commands.Entities
             {
                 ArcShot = null;
             }
+
+            var shots = new List<WeaponShot>();
+            // The json refers to LBG/HBG bullets as shells and Gunlance blasts as shots, but it should be the other way around.
+            if (shells != null)
+            {
+                for (int i = 0; i <= 31; i++)
+                {
+                    shots.Add(new WeaponShot((GunShotType)i,
+                                             (int)shells[$"shell_count_{i}"],
+                                             Convert.ToBoolean((int)shells[$"shell_enable_{i}"])));
+                }
+            }
+            GunShots = shots;
         }
     }
 }
