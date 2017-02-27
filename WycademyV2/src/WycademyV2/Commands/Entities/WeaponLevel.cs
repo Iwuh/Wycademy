@@ -97,8 +97,19 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         public List<WeaponShot> GunShots { get; private set; }
 
+        /// <summary>
+        /// The level's internal shots (empty if the weapon is not a LBG/HBG).
+        /// </summary>
+        [JsonProperty("uniqueshells")]
+        public List<WeaponInternalShot> InternalShots { get; set; }
+
+        /// <summary>
+        /// Gun statistics (recoil, deviation, reload speed). Null if the weapon is not a LBG/HBG.
+        /// </summary>
+        public WeaponGunStats GunStats { get; private set; }
+
         [JsonConstructor]
-        public WeaponLevel(JObject coatings, JArray ashots, JObject shells)
+        public WeaponLevel(JObject coatings, JArray ashots, JObject shells, JArray reloadspeeds, JArray recoils, JArray deviations)
         {
             var enabledCoatings = new List<int>();
             if (coatings != null)
@@ -131,6 +142,18 @@ namespace WycademyV2.Commands.Entities
                 }
             }
             GunShots = shots;
+
+            // Only do gun related things if the weapon is a gun.
+            if (reloadspeeds.Count > 0 && recoils.Count > 0 && deviations.Count > 0)
+            {
+                GunStats = new WeaponGunStats((int)reloadspeeds[0]["id"],
+                                              (int)recoils[0]["id"],
+                                              (int)deviations[0]["id"]);
+            }
+            else
+            {
+                GunStats = null;
+            }
         }
     }
 }
