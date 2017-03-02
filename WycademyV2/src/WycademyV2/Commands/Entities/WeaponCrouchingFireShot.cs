@@ -7,30 +7,23 @@ using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Entities
 {
-    public class WeaponInternalShot
+    public class WeaponCrouchingFireShot
     {
         /// <summary>
-        /// The shot name in each language.
+        /// The shot name in all languages.
         /// </summary>
         public Dictionary<string, string> Names { get; private set; }
 
         /// <summary>
-        /// The total amount of the shot given.
+        /// How many shots can be fired in a single crouching fire.
         /// </summary>
-        public int Total { get; private set; }
-
-        /// <summary>
-        /// The magazine size of the internal shot.
-        /// </summary>
-        public int Size { get; private set; }
+        public int ClipSize { get; private set; }
 
         [JsonConstructor]
-        public WeaponInternalShot(JObject pivot, JArray strings)
+        public WeaponCrouchingFireShot(JObject pivot, JArray strings)
         {
-            Total = (int)pivot["total"];
-            Size = (int)pivot["count"];
+            ClipSize = (int)pivot["capacity"];
 
-            Names = new Dictionary<string, string>();
             foreach (JObject item in strings)
             {
                 Names.Add((string)item["loc"], (string)item["name"]);

@@ -108,6 +108,18 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         public WeaponGunStats GunStats { get; private set; }
 
+        /// <summary>
+        /// All the shots that can be rapidfired by the current level. Empty if the weapon is not a LBG.
+        /// </summary>
+        [JsonProperty("rapidshots")]
+        public List<WeaponRapidfireShot> RapidfireShots { get; set; }
+
+        /// <summary>
+        /// All the shots that can be used in crouching fire mode. Empty if the weapon is not a HBG.
+        /// </summary>
+        [JsonProperty("squatshots")]
+        public List<WeaponCrouchingFireShot> CrouchingFireShots { get; private set; }
+
         [JsonConstructor]
         public WeaponLevel(JObject coatings, JArray ashots, JObject shells, JArray reloadspeeds, JArray recoils, JArray deviations)
         {
