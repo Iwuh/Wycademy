@@ -24,6 +24,7 @@ namespace WycademyV2.Commands.Entities
         {
             ClipSize = (int)pivot["capacity"];
 
+            Names = new Dictionary<string, string>();
             foreach (JObject item in strings)
             {
                 Names.Add((string)item["loc"], (string)item["name"]);

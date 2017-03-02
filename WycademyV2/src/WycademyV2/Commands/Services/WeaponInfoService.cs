@@ -10,11 +10,19 @@ namespace WycademyV2.Commands.Services
 {
     public class WeaponInfoService
     {
+        private readonly string[] FILENAMES = new string[] { "bow", "chargeblade", "dualblades", "greatsword", "gunlance", "hammer", "heavybowgun", "huntinghorn", "insectglaive", "lance", "lightbowgun", "longsword", "switchaxe", "swordshield" };
+
         private List<WeaponInfo> _weapons;
 
         public WeaponInfoService()
         {
-            _weapons = JsonConvert.DeserializeObject<List<WeaponInfo>>(File.ReadAllText(@"Data\weapon\greatsword.json"));
+            var deserialized = new List<List<WeaponInfo>>();
+            foreach (var name in FILENAMES)
+            {
+                deserialized.Add(JsonConvert.DeserializeObject<List<WeaponInfo>>(File.ReadAllText($"{WycademyConst.DATA_LOCATION}\\weapon\\{name}.json")));
+            }
+            // Flatten the list of lists into a single list.
+            _weapons = deserialized.SelectMany(x => x).ToList();
         }
     }
 }
