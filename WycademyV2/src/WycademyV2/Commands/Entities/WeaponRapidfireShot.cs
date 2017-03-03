@@ -43,5 +43,10 @@ namespace WycademyV2.Commands.Entities
             Multiplier = (int)pivot["multiplier"];
             Wait = (RapidfireWaitTime)((int)pivot["rapidshotwait_id"]);
         }
+
+        public override string ToString()
+        {
+            return $"{Names["en"]} - {Number} shots / {Multiplier}% multiplier / {Wait} wait time";
+        }
     }
 }

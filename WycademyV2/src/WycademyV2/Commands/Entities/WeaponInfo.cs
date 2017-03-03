@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Enums;
 using WycademyV2.Commands.Utilities;
 
 namespace WycademyV2.Commands.Entities
@@ -18,8 +19,7 @@ namespace WycademyV2.Commands.Entities
         /// <summary>
         /// What weapon class the weapon belongs to.
         /// </summary>
-        [JsonProperty("weapontype_id")]
-        public int WeaponTypeID { get; set; }
+        public WeaponType Weapon { get; set; }
 
         /// <summary>
         /// The maximum level the weapon can be upgraded to.
@@ -82,5 +82,11 @@ namespace WycademyV2.Commands.Entities
         /// </summary>
         [JsonProperty("levels")]
         public List<WeaponLevel> Levels { get; set; }
+
+        [JsonConstructor]
+        public WeaponInfo(int weapontype_id)
+        {
+            Weapon = (WeaponType)weapontype_id;
+        }
     }
 }

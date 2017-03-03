@@ -25,11 +25,7 @@ namespace WycademyV2.Commands.Entities
             };
         }
 
-        /// <summary>
-        /// Gets the highest sharpness.
-        /// </summary>
-        /// <returns>A string representation of the sharpness colour.</returns>
-        public string GetHighestSharpnessColour()
+        public override string ToString()
         {
             var ordered = _values.OrderByDescending(p => (int)p.Key);
             var highest = ordered.FirstOrDefault(p => p.Value > 0);

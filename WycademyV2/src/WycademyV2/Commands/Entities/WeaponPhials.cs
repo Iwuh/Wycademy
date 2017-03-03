@@ -20,5 +20,10 @@ namespace WycademyV2.Commands.Entities
             PhialType = (SaCbPhial)((int)pivot["phial_id"]);
             Value = (int)pivot["value"];
         }
+
+        public override string ToString()
+        {
+            return $"Phial Type: {PhialType} / Value: {Value}";
+        }
     }
 }

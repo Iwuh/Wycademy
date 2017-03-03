@@ -20,5 +20,10 @@ namespace WycademyV2.Commands.Entities
             ShotType = (GunlanceShellType)((int)pivot["shot_id"]);
             Level = (int)pivot["level"];
         }
+
+        public override string ToString()
+        {
+            return $"{ShotType} lv{Level}";
+        }
     }
 }

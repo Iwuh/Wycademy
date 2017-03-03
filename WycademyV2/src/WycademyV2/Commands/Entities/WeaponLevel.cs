@@ -77,9 +77,9 @@ namespace WycademyV2.Commands.Entities
         public List<WeaponPhials> SACBPhials { get; set; }
 
         /// <summary>
-        /// The usable Bow coatings (empty if the weapon is not a bow)
+        /// The usable Bow coatings (empty if the weapon is not a bow).
         /// </summary>
-        public List<int> BowCoatings { get; private set; }
+        public List<BowCoating> BowCoatings { get; private set; }
 
         /// <summary>
         /// The arc shot type of the bow (null if the weapon is not a bow).
@@ -123,12 +123,16 @@ namespace WycademyV2.Commands.Entities
         [JsonConstructor]
         public WeaponLevel(JObject coatings, JArray ashots, JObject shells, JArray reloadspeeds, JArray recoils, JArray deviations)
         {
-            var enabledCoatings = new List<int>();
+            var enabledCoatings = new List<BowCoating>();
             if (coatings != null)
             {
                 for (int i = 0; i <= 10; i++)
                 {
-                    enabledCoatings.Append((int)coatings[$"bottle_enable_{i}"]);
+                    int current = (int)coatings[$"bottle_enable_{i}"];
+                    if (Convert.ToBoolean(current))
+                    {
+                        enabledCoatings.Add((BowCoating)current);
+                    }
                 }
             }
             BowCoatings = enabledCoatings;

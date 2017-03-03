@@ -26,5 +26,10 @@ namespace WycademyV2.Commands.Entities
             Count = count;
             Enabled = enabled;
         }
+
+        public override string ToString()
+        {
+            return $"{ShotType} ({Count})";
+        }
     }
 }

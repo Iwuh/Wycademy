@@ -36,5 +36,10 @@ namespace WycademyV2.Commands.Entities
                 Names.Add((string)item["loc"], (string)item["name"]);
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Names["en"]} - {Total} ({Size})";
+        }
     }
 }

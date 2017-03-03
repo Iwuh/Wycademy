@@ -27,5 +27,10 @@ namespace WycademyV2.Commands.Entities
             Effect = (WeaponEffect)((int)pivot["element_id"]);
             Amount = (int)pivot["value"];
         }
+
+        public override string ToString()
+        {
+            return $"{Amount} {Effect}";
+        }
     }
 }

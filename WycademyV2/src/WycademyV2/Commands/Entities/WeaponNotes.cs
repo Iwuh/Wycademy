@@ -32,5 +32,10 @@ namespace WycademyV2.Commands.Entities
             Note2 = (HornNote)color_2;
             Note3 = (HornNote)color_3;
         }
+
+        public override string ToString()
+        {
+            return $"{Note1} / {Note2} / {Note3}";
+        }
     }
 }
