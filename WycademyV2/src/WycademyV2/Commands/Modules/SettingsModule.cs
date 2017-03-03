@@ -55,7 +55,7 @@ namespace WycademyV2.Commands.Modules
 
                 var client = Context.Client as DiscordSocketClient;
 
-                await client.DisconnectAsync();
+                await client.StopAsync();
                 await Task.Delay(1000);
                 await client.LogoutAsync();
                 await Task.Delay(1000);

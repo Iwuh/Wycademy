@@ -1,4 +1,5 @@
 ﻿using Discord.Commands;
+using Discord.Net;
 using Discord.WebSocket;
 using System;
 using System.Collections;
@@ -17,23 +18,25 @@ namespace WycademyV2.Commands.Services
         /// Initialize the class, with a maximum capacity for the cache.
         /// </summary>
         /// <param name="capacity">The maximum amount of command messages to cache at once.</param>
-        public CommandCacheService(IDependencyMap map, int capacity = 200)
+        public CommandCacheService(DiscordSocketClient client, int capacity = 200)
         {
             _maxCapacity = capacity;
             _cache = new List<KeyValuePair<ulong, ulong>>();
 
-            map.Get<DiscordSocketClient>().MessageDeleted += async (id, msg) =>
+            client.MessageDeleted += async (cacheable, channel) =>
             {
-                var deletedMessage = msg.GetValueOrDefault();
-                // If the message is null then it isn't cached, and we can't find what channel it was in.
-                if (deletedMessage == null) return;
-                if (ContainsKey(id))
+                var message = await channel.GetMessageAsync(this[cacheable.Id]);
+                try
                 {
-                    var responseMessage = await deletedMessage.Channel.GetMessageAsync(this[id]);
-                    if (responseMessage != null)
-                    {
-                        await responseMessage.DeleteAsync();
-                    }
+                    await message.DeleteAsync();
+                }
+                catch (HttpException)
+                {
+                    // If we get here, the message was already deleted. There's nothing to do, so just move on.
+                }
+                finally
+                {
+                    Remove(cacheable.Id);
                 }
             };
         }

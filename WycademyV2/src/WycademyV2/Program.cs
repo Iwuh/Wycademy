@@ -84,7 +84,7 @@ namespace WycademyV2
 
             // Log in and connect.
             await _client.LoginAsync(TokenType.Bot, token);
-            await _client.ConnectAsync();
+            await _client.StartAsync();
 
             // Add the client to the DependencyMap that will be used during command execution.
             _map = new DependencyMap();

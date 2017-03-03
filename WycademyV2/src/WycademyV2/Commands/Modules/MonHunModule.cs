@@ -24,7 +24,7 @@ namespace WycademyV2.Commands.Modules
         private WeaponInfoService _weapon;
         private PaginationService _paginator;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, PaginationService paginator)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, PaginationService ps)
         {
             _minfo = mis;
             _locker = ls;
@@ -33,6 +33,7 @@ namespace WycademyV2.Commands.Modules
             _damagecalc = dcs;
             _toast = tts;
             _weapon = wis;
+            _paginator = ps;
         }
 
         [Command("hitzone")]

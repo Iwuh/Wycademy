@@ -100,7 +100,7 @@ namespace WycademyV2.Commands
 
             map.Add(new MotionValueService());
 
-            map.Add(new CommandCacheService(map, 500));
+            map.Add(new CommandCacheService(_client, 500));
 
             map.Add(new UtilityService());
 

@@ -214,17 +214,15 @@ namespace WycademyV2.Commands.Services
         /// <param name="id">The id of the message that the reaction was added to.</param>
         /// <param name="userMessage">The message object itself.</param>
         /// <param name="reaction">The reaction added.</param>
-        private async Task OnReactionAdded(ulong id, Optional<SocketUserMessage> userMessage, SocketReaction reaction)
+        private async Task OnReactionAdded(Cacheable<IUserMessage, ulong> cacheable, ISocketMessageChannel channel, SocketReaction reaction)
         {
-            var message = userMessage.GetValueOrDefault();
-            // If message is null then we can't check anything so just return.
-            if (message == null) return;
+            var message = await cacheable.GetOrDownloadAsync();
             // If the reaction doesn't have a user associated with it assume it's the incorrect user.
             if (!reaction.User.IsSpecified) return;
 
             // Make sure the reaction is added to a DamageCalculatorMessage and not something else.
             DamageCalculatorMessage calcMessage;
-            if (_messages.TryGetValue(id, out calcMessage))
+            if (_messages.TryGetValue(cacheable.Id, out calcMessage))
             {
                 // Don't trigger anything when the bot is originally adding the reactions.
                 if (_client.CurrentUser.Id == reaction.UserId) return;
@@ -238,17 +236,17 @@ namespace WycademyV2.Commands.Services
                         if (calcMessage.Weapon == WeaponType.Prowler)
                         {
                             await message.ModifyAsync(x => x.Content = "Nice try, but Prowlers aren't in 4U.");
-                            _messages.Remove(id);
+                            _messages.Remove(cacheable.Id);
                         }
                         else
                         {
                             await message.ModifyAsync(x => x.Content = GetResponseMessage4U(calcMessage));
-                            _messages.Remove(id);
+                            _messages.Remove(cacheable.Id);
                         }
                         break;
                     case G:
                         await message.ModifyAsync(x => x.Content = GetResponseMessageGen(calcMessage));
-                        _messages.Remove(id);
+                        _messages.Remove(cacheable.Id);
                         break;
                     default:
                         // If a different reaction was added, then just ignore it.

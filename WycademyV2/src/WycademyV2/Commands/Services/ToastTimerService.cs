@@ -36,7 +36,7 @@ namespace WycademyV2.Commands.Services
         public async Task<IUserMessage> SendToastTimerMessageAsync(CommandContext context, CommandCacheService cache = null)
         {
             var embed = new EmbedBuilder()
-                .WithAuthor(new EmbedAuthorBuilder() { IconUrl = _client.CurrentUser.AvatarUrl, Name = _client.CurrentUser.Username })
+                .WithAuthor(new EmbedAuthorBuilder() { IconUrl = _client.CurrentUser.GetAvatarUrl(), Name = _client.CurrentUser.Username })
                 .WithColor(new Color(255, 0, 0))
                 .WithTitle("Toast Timer")
                 .WithDescription($"A timer to help you toast. Click {START} to start the timer, {STOP} to stop the timer, {RESTART} to restart the timer, and {CANCEL} to close this message. It will automatically delete itself after 20 minutes.")
@@ -64,17 +64,15 @@ namespace WycademyV2.Commands.Services
             return m;
         }
 
-        private async Task OnReactionAdded(ulong id, Optional<SocketUserMessage> message, SocketReaction reaction)
+        private async Task OnReactionAdded(Cacheable<IUserMessage, ulong> cacheable, ISocketMessageChannel channel, SocketReaction reaction)
         {
-            var userMessage = message.GetValueOrDefault();
-            // If userMessage is null, then the message isn't cached and we can't do anything with it.
-            if (userMessage == null) return;
+            var userMessage = await cacheable.GetOrDownloadAsync();
             // If the reaction's user isn't specified assume it's not the right one.
             if (!reaction.User.IsSpecified) return;
 
             // Make sure the message is in the dictionary.
             ToastTimerMessage toastMessage;
-            if (_messages.TryGetValue(id, out toastMessage))
+            if (_messages.TryGetValue(cacheable.Id, out toastMessage))
             {
                 // Don't trigger anything when the bot is originally adding the reactions.
                 if (reaction.UserId == _client.CurrentUser.Id) return;
@@ -95,7 +93,7 @@ namespace WycademyV2.Commands.Services
                     case CANCEL:
                         await toastMessage.Cancel();
                         toastMessage.Dispose();
-                        _messages.Remove(id);
+                        _messages.Remove(cacheable.Id);
                         break;
                     default:
                         break;
