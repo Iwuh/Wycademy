@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord.Addons.Paginator;
+using Discord.Commands;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,8 +21,10 @@ namespace WycademyV2.Commands.Modules
         private CommandCacheService _cache;
         private DamageCalculatorService _damagecalc;
         private ToastTimerService _toast;
+        private WeaponInfoService _weapon;
+        private PaginationService _paginator;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, PaginationService paginator)
         {
             _minfo = mis;
             _locker = ls;
@@ -29,6 +32,7 @@ namespace WycademyV2.Commands.Modules
             _cache = ccs;
             _damagecalc = dcs;
             _toast = tts;
+            _weapon = wis;
         }
 
         [Command("hitzone")]
@@ -176,6 +180,30 @@ namespace WycademyV2.Commands.Modules
         public async Task ToastTimer()
         {
             await _toast.SendToastTimerMessageAsync(Context, _cache);
+        }
+
+        [Command("weaponinfo")]
+        [Summary("Gets the info for a specific weapon.")]
+        [RequireUnlocked]
+        public async Task GetWeaponInfo([Remainder, Summary("All or part of the weapons name.")] string name)
+        {
+            var results = _weapon.SearchWeaponInfo(name);
+            if (results.Count() == 0)
+            {
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: $"No weapon was found containing the string \"{name}\"", prependZWSP: true);
+            }
+            else if (results.Count() > 1)
+            {
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, prependZWSP: true,
+                    text: $"Multiple matches were found:\n{string.Join("\n", results.Select(r => r.Name))}");
+            }
+            else
+            {
+                var pages = _weapon.BuildWeaponInfoPages(results.First());
+                var message = await _paginator.SendPaginatedMessageAsync(Context.Channel, new PaginatedMessage(pages));
+                await Task.Delay(1000);
+                _cache.Add(Context.Message.Id, message.Id);
+            }
         }
     }
 }

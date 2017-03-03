@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Addons.Paginator;
 using Discord.Commands;
 using Discord.WebSocket;
 using System;
@@ -114,6 +115,8 @@ namespace WycademyV2.Commands
             map.Add(new EvalService(map.Get<DiscordSocketClient>()));
 
             map.Add(new WeaponInfoService());
+
+            map.Add(new PaginationService(_map.Get<DiscordSocketClient>(), _errorLog));
         }
     }
 }
