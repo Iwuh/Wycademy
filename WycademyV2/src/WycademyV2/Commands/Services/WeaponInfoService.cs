@@ -46,16 +46,14 @@ namespace WycademyV2.Commands.Services
         /// </summary>
         /// <param name="id">The weapon's ID.</param>
         /// <returns>The WeaponInfo with the requested ID, or null if not found.</returns>
-        /// <exception cref="KeyNotFoundException">Thrown if no WeaponInfo matching the id is found.</exception>
-        public WeaponInfo GetWeaponInfoById(int id)
+        public WeaponInfo GetWeaponInfoById(int? id)
         {
-            var weapon = _weapons.FirstOrDefault(w => w.ID == id);
+            return _weapons.FirstOrDefault(w => w.ID == id);
+        }
 
-            if (weapon == null)
-            {
-                throw new KeyNotFoundException($"No WeaponInfo matching the id {id} was found.");
-            }
-            return weapon;
+        public List<string> BuildWeaponInfoPages(WeaponInfo info)
+        {
+            return new WeaponInfoBuilder().Build(info, GetWeaponInfoById(info.UpgradesFrom));
         }
     }
 }
