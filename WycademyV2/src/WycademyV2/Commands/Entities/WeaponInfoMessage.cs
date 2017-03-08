@@ -13,15 +13,16 @@ namespace WycademyV2.Commands.Entities
         private const string PREV_PAGE = "⬅";
         private const string BEGIN = "⏮";
         private const string END = "⏭";
-        private const string CLOSE = "❌";
 
         private List<string> _pages;
         private int _pageIndex;
         private IUserMessage _message;
+        private int _startIndex;
 
-        public WeaponInfoMessage(IUser user, List<string> pages) : base(user)
+        public WeaponInfoMessage(IUser user, List<string> pages, int start = 0) : base(user)
         {
             _pages = pages;
+            _startIndex = start;
         }
 
         public async override Task HandleReaction(SocketReaction reaction)
@@ -31,6 +32,7 @@ namespace WycademyV2.Commands.Entities
                 case BEGIN:
                     // Don't do anything if it's already on the first page.
                     if (_pageIndex == 0) break;
+                    _pageIndex = 0;
                     await _message.ModifyAsync(m => m.Content = MakeCodeBlock(_pages[0]) );
                     break;
 
@@ -49,30 +51,31 @@ namespace WycademyV2.Commands.Entities
                 case END:
                     // Don't do anything if it's already on the last page.
                     if (_pageIndex == _pages.Count - 1) break;
+                    _pageIndex = _pages.Count - 1;
                     await _message.ModifyAsync(m => m.Content = MakeCodeBlock(_pages[_pages.Count - 1 ]) );
-                    break;
-
-                case CLOSE:
-                    await _message.DeleteAsync();
                     break;
             }
         }
 
         public async override Task<IUserMessage> CreateMessageAsync(IMessageChannel channel)
         {
-            var message = await channel.SendMessageAsync(MakeCodeBlock(_pages[0]));
             _pageIndex = 0;
+            var message = await channel.SendMessageAsync(MakeCodeBlock(_pages[_startIndex]));
 
             await message.AddReactionAsync(BEGIN);
             await message.AddReactionAsync(PREV_PAGE);
             await message.AddReactionAsync(NEXT_PAGE);
             await message.AddReactionAsync(END);
-            await message.AddReactionAsync(CLOSE);
 
             _message = message;
             return message;
         }
 
-        private string MakeCodeBlock(string input) => $"```{input}```";
+        public async override Task CloseMenuAsync()
+        {
+            await _message.DeleteAsync();
+        }
+
+        private string MakeCodeBlock(string input) => $"```{input}\nPage {_pageIndex + 1} / {_pages.Count}```";
     }
 }

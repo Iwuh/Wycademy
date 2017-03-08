@@ -34,5 +34,11 @@ namespace WycademyV2.Commands.Entities
         /// <param name="channel">The channel to send the message to.</param>
         /// <returns>An awaitable Task containing an IUserMessage.</returns>
         public abstract Task<IUserMessage> CreateMessageAsync(IMessageChannel channel);
+
+        /// <summary>
+        /// Stop the reaction menu, using a user defined implementation.
+        /// </summary>
+        /// <returns>An awaitable task.</returns>
+        public abstract Task CloseMenuAsync();
     }
 }

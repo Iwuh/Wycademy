@@ -25,13 +25,16 @@ namespace WycademyV2.Commands.Entities
 
             // Add name, weapon type, rarity, max level, what it upgrades from, and its special ability (if any).
             AddLine($"{info.Name} - {info.Weapon} (RARE {(info.IsDeviant ? "X" : info.RareLevel.ToString())})");
-            AddLine($"Max level: {info.MaxLevel} Upgrades from: {(upgradeFrom == null ? "None" : GetUpgradeFromString(info.UpgradesFromLevel.Value, upgradeFrom))} Special Ability: {info.SpecialAbility}");
+            AddLine($"Max level: {info.MaxLevel} / Upgrades from: {(upgradeFrom == null ? "None" : GetUpgradeFromString(info.UpgradesFromLevel.Value, upgradeFrom))} / Special Ability: {info.SpecialAbility}");
+            AddLine();
 
             // Add in progress name, final name, description, and final description.
             var en = info.Strings.First(s => s.Language == "en");
-            AddLine($"Name: {en.Name} Final Name: {en.FinalName}");
+            AddLine($"Name: {en.Name}");
+            AddLine($"Final Name: {en.FinalName}");
             AddLine($"Description: {en.Description}");
             AddLine($"Final Description: {en.FinalDescription}");
+            ForceNewPage();
 
             // Add generic level info + special info depending on the weapon type.
             foreach (WeaponLevel level in info.Levels)
@@ -51,10 +54,9 @@ namespace WycademyV2.Commands.Entities
                 AddLine($"{GetSlotsString(level)} / {level.Price}z");
                 // Add info that's only on certain weapon types.
                 AddWeaponSpecificInfo(level, info.Weapon);
+                ForceNewPage();
             }
 
-            // Add whatever's on the current page and return all the pages.
-            _pages.Add(_currentPage.ToString());
             return _pages;
         }
 
@@ -68,7 +70,7 @@ namespace WycademyV2.Commands.Entities
         {
             if (level.Elements.Count == 0)
             {
-                return "No Element/Status";
+                return "None";
             }
             else
             {
@@ -102,7 +104,6 @@ namespace WycademyV2.Commands.Entities
                     AddLine(string.Join(" ", level.InternalShots.Select(s => s.ToString())));
                     AddLine("Rapidfire shots:");
                     AddLine(string.Join(" ", level.RapidfireShots.Select(s => s.ToString())));
-                    AddLine(string.Join(" ", level.CrouchingFireShots.Select(s => s.ToString())));
                     AddLine($"Stats: {level.GunStats.ReloadSpeed} Reload Speed / {level.GunStats.Recoil} Recoil / {level.GunStats.Deviation} Deviation");
                     break;
 
@@ -141,6 +142,17 @@ namespace WycademyV2.Commands.Entities
             {
                 _currentPage.AppendLine(line);
             }
+        }
+
+        private void AddLine()
+        {
+            _currentPage.AppendLine();
+        }
+
+        private void ForceNewPage()
+        {
+            _pages.Add(_currentPage.ToString());
+            _currentPage.Clear();
         }
     }
 }

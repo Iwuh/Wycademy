@@ -1,15 +1,15 @@
-﻿using Discord.WebSocket;
-using System;
+﻿using Discord;
+using Discord.WebSocket;
 using System.Collections.Generic;
-using System.Text;
-using WycademyV2.Commands.Entities;
-using Discord;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Entities;
 
 namespace WycademyV2.Commands.Services
 {
     public class ReactionMenuService
     {
+        private const string CLOSE = "❌";
+
         private Dictionary<ulong, ReactionMenuMessage> _messages;
         private DiscordSocketClient _client;
 
@@ -24,6 +24,8 @@ namespace WycademyV2.Commands.Services
         {
             // Send the message, using the implementation defined by the reaction menu message.
             var message = await menu.CreateMessageAsync(channel);
+            // Add the button to close the menu.
+            await message.AddReactionAsync(CLOSE);
 
             // Add the message to the cache.
             _messages.Add(message.Id, menu);
@@ -45,7 +47,17 @@ namespace WycademyV2.Commands.Services
                 // Ignore any reactions that aren't by the user that used the command.
                 if (reaction.UserId != menu.User.Id) return;
 
-                await menu.HandleReaction(reaction);
+                // If the close reaction is used, end the reaction menu. Otherwise, handle the reaction.
+                if (reaction.Emoji.Name == CLOSE)
+                {
+                    await menu.CloseMenuAsync();
+                    _messages.Remove(message.Id);
+                    return;
+                }
+                else
+                {
+                    await menu.HandleReaction(reaction);
+                }
 
                 // Remove the user's reaction if the message is in a guild and the bot has the Manage Messages permission.
                 var guildAuthor = message.Author as SocketGuildUser;
