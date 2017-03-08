@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Entities;
 using WycademyV2.Commands.Enums;
 using WycademyV2.Commands.Preconditions;
 using WycademyV2.Commands.Services;
@@ -23,8 +24,9 @@ namespace WycademyV2.Commands.Modules
         private ToastTimerService _toast;
         private WeaponInfoService _weapon;
         private PaginationService _paginator;
+        private ReactionMenuService _reactions;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, PaginationService ps)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, PaginationService ps, ReactionMenuService rms)
         {
             _minfo = mis;
             _locker = ls;
@@ -34,6 +36,7 @@ namespace WycademyV2.Commands.Modules
             _toast = tts;
             _weapon = wis;
             _paginator = ps;
+            _reactions = rms;
         }
 
         [Command("hitzone")]
@@ -201,7 +204,7 @@ namespace WycademyV2.Commands.Modules
             else
             {
                 var pages = _weapon.BuildWeaponInfoPages(results[0]);
-                var message = await _paginator.SendPaginatedMessageAsync(Context.Channel, new PaginatedMessage(pages));
+                var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, new WeaponInfoMessage(Context.User, pages));
                 await Task.Delay(1000);
                 _cache.Add(Context.Message.Id, message.Id);
             }

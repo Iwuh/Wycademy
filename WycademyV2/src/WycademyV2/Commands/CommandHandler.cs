@@ -117,6 +117,8 @@ namespace WycademyV2.Commands
             map.Add(new WeaponInfoService());
 
             map.Add(new PaginationService(_map.Get<DiscordSocketClient>(), _errorLog));
+
+            map.Add(new ReactionMenuService(_map.Get<DiscordSocketClient>()));
         }
     }
 }

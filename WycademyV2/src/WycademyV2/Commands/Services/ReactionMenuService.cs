@@ -23,13 +23,7 @@ namespace WycademyV2.Commands.Services
         public async Task<IUserMessage> SendReactionMenuMessageAsync(IMessageChannel channel, ReactionMenuMessage menu)
         {
             // Send the message, using the implementation defined by the reaction menu message.
-            var message = await menu.SendMessage(channel);
-
-            // Add all the emojis listed by the reaction menu message.
-            foreach (string button in menu.Buttons)
-            {
-                await message.AddReactionAsync(button);
-            }
+            var message = await menu.CreateMessageAsync(channel);
 
             // Add the message to the cache.
             _messages.Add(message.Id, menu);
@@ -57,7 +51,14 @@ namespace WycademyV2.Commands.Services
                 var guildAuthor = message.Author as SocketGuildUser;
                 if (guildAuthor.GuildPermissions.ManageMessages)
                 {
-                    await message.RemoveReactionAsync(reaction.Emoji, menu.User);
+                    if (reaction.Emoji.Id == null) // Unicode emoji
+                    {
+                        await message.RemoveReactionAsync(reaction.Emoji.Name, menu.User);
+                    }
+                    else // Discord emoji
+                    {
+                        await message.RemoveReactionAsync(reaction.Emoji, menu.User);
+                    }
                 }
             }
         }
