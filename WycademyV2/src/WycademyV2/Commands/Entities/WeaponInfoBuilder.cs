@@ -37,7 +37,19 @@ namespace WycademyV2.Commands.Entities
             foreach (WeaponLevel level in info.Levels)
             {
                 AddLine($"Level {level.Level}: {level.RawDamage} / {GetElementString(level)} / {level.Affinity}%");
-                AddLine($"+{level.DefenseBoost} Defense / {level.Sharpness[0].ToString()} sharpness / {GetSlotsString(level)} / {level.Price}z");
+                //AddLine($"+{level.DefenseBoost} Defense / {level.Sharpness[0].ToString()} sharpness / {GetSlotsString(level)} / {level.Price}z");
+                if (level.DefenseBoost > 0)
+                {
+                    // Only add the defense boost if there actually is one.
+                    AddLine($"+{level.DefenseBoost} defense");
+                }
+                if (level.Sharpness.Count > 0)
+                {
+                    // Only add sharpness if the weapon is blademaster.
+                    AddLine($"Sharpnesses: {level.Sharpness[0]} (base) / {level.Sharpness[1]} (+1) / {level.Sharpness[2]} (+2)");
+                }
+                AddLine($"{GetSlotsString(level)} / {level.Price}z");
+                // Add info that's only on certain weapon types.
                 AddWeaponSpecificInfo(level, info.Weapon);
             }
 

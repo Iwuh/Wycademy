@@ -189,18 +189,18 @@ namespace WycademyV2.Commands.Modules
         public async Task GetWeaponInfo([Remainder, Summary("All or part of the weapons name.")] string name)
         {
             var results = _weapon.SearchWeaponInfo(name);
-            if (results.Count() == 0)
+            if (results.Count == 0)
             {
                 await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: $"No weapon was found containing the string \"{name}\"", prependZWSP: true);
             }
-            else if (results.Count() > 1)
+            else if (results.Count > 1)
             {
                 await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, prependZWSP: true,
                     text: $"Multiple matches were found:\n{string.Join("\n", results.Select(r => r.Name))}");
             }
             else
             {
-                var pages = _weapon.BuildWeaponInfoPages(results.First());
+                var pages = _weapon.BuildWeaponInfoPages(results[0]);
                 var message = await _paginator.SendPaginatedMessageAsync(Context.Channel, new PaginatedMessage(pages));
                 await Task.Delay(1000);
                 _cache.Add(Context.Message.Id, message.Id);

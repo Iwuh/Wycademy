@@ -36,9 +36,10 @@ namespace WycademyV2.Commands.Services
         /// </summary>
         /// <param name="searchTerm">The string to search names for.</param>
         /// <returns>0 or more search results.</returns>
-        public IEnumerable<WeaponInfo> SearchWeaponInfo(string searchTerm)
+        public List<WeaponInfo> SearchWeaponInfo(string searchTerm)
         {
-            return _weapons.Where(w => w.Name.Contains(searchTerm));
+            var lowerTerm = searchTerm.ToLower();
+            return _weapons.Where(w => w.Name.ToLower().Contains(searchTerm)).ToList();
         }
 
         /// <summary>
