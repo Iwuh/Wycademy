@@ -25,18 +25,21 @@ namespace WycademyV2.Commands.Services
 
             client.MessageDeleted += async (cacheable, channel) =>
             {
-                var message = await channel.GetMessageAsync(this[cacheable.Id]);
-                try
+                if (ContainsKey(cacheable.Id))
                 {
-                    await message.DeleteAsync();
-                }
-                catch (HttpException)
-                {
-                    // If we get here, the message was already deleted. There's nothing to do, so just move on.
-                }
-                finally
-                {
-                    Remove(cacheable.Id);
+                    var message = await channel.GetMessageAsync(this[cacheable.Id]);
+                    try
+                    {
+                        await message.DeleteAsync();
+                    }
+                    catch (HttpException)
+                    {
+                        // If we get here, the message was already deleted. There's nothing to do, so just move on.
+                    }
+                    finally
+                    {
+                        Remove(cacheable.Id);
+                    }
                 }
             };
         }
