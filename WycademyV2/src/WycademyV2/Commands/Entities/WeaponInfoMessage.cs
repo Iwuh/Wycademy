@@ -19,7 +19,7 @@ namespace WycademyV2.Commands.Entities
         private IUserMessage _message;
         private int _startIndex;
 
-        public WeaponInfoMessage(IUser user, List<string> pages, int start = 0) : base(user)
+        public WeaponInfoMessage(IUser user, List<string> pages, int start) : base(user)
         {
             _pages = pages;
             _startIndex = start;
@@ -59,8 +59,9 @@ namespace WycademyV2.Commands.Entities
 
         public async override Task<IUserMessage> CreateMessageAsync(IMessageChannel channel)
         {
-            _pageIndex = 0;
-            var message = await channel.SendMessageAsync(MakeCodeBlock(_pages[_startIndex]));
+            _pageIndex = _startIndex < _pages.Count ? _startIndex : 0;
+            // Send the starting page, at the specified index (if said index is within the range of pages).
+            var message = await channel.SendMessageAsync( MakeCodeBlock( _pages[_pageIndex] ) );
 
             await message.AddReactionAsync(BEGIN);
             await message.AddReactionAsync(PREV_PAGE);

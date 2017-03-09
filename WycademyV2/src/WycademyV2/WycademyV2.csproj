@@ -16,7 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Addons.Paginator" Version="2.1.1" />
     <PackageReference Include="Discord.Net.Commands" Version="1.0.0-rc-00614" />
     <PackageReference Include="Discord.Net.WebSocket" Version="1.0.0-rc-00614" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.0.0-rc4" />

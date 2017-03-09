@@ -1,5 +1,4 @@
-﻿using Discord.Addons.Paginator;
-using Discord.Commands;
+﻿using Discord.Commands;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,10 +22,9 @@ namespace WycademyV2.Commands.Modules
         private DamageCalculatorService _damagecalc;
         private ToastTimerService _toast;
         private WeaponInfoService _weapon;
-        private PaginationService _paginator;
         private ReactionMenuService _reactions;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, PaginationService ps, ReactionMenuService rms)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, ReactionMenuService rms)
         {
             _minfo = mis;
             _locker = ls;
@@ -35,7 +33,6 @@ namespace WycademyV2.Commands.Modules
             _damagecalc = dcs;
             _toast = tts;
             _weapon = wis;
-            _paginator = ps;
             _reactions = rms;
         }
 
@@ -189,12 +186,14 @@ namespace WycademyV2.Commands.Modules
         [Command("weaponinfo")]
         [Summary("Gets the info for a specific weapon.")]
         [RequireUnlocked]
-        public async Task GetWeaponInfo([Remainder, Summary("All or part of the weapons name.")] string name)
+        public async Task GetWeaponInfo([Remainder, Summary("All or part of the weapons name. |<number> after the name lets you optionally specify a starting level.")] string query)
         {
-            var results = _weapon.SearchWeaponInfo(name);
+            var split = query.Split('|');
+
+            var results = _weapon.SearchWeaponInfo(split[0]);
             if (results.Count == 0)
             {
-                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: $"No weapon was found containing the string \"{name}\"", prependZWSP: true);
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: $"No weapon was found containing the string \"{split[0]}\"", prependZWSP: true);
             }
             else if (results.Count > 1)
             {
@@ -204,9 +203,23 @@ namespace WycademyV2.Commands.Modules
             else
             {
                 var pages = _weapon.BuildWeaponInfoPages(results[0]);
-                var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, new WeaponInfoMessage(Context.User, pages));
+                var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, 
+                    new WeaponInfoMessage(Context.User, pages, ValidatePageNumber()));
                 await Task.Delay(1000);
                 _cache.Add(Context.Message.Id, message.Id);
+            }
+
+            int ValidatePageNumber()
+            {
+                // Return 0 (default page) if no page is specified.
+                if (split.Length == 1) return 0;
+
+                // Return the page index if it can be parsed, otherwise 0.
+                if (int.TryParse(split[1], out int result))
+                {
+                    return result;
+                }
+                return 0;
             }
         }
     }
