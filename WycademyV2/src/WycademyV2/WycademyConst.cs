@@ -14,9 +14,9 @@ namespace WycademyV2
         public const string DC_WEAPON_TYPE_NOT_SUPPORTED = "Sorry, but that weapon type is not supported yet. It will be, sometime in the near future. Thank you for your understanding.";
 
 #if BETA
-        public const string DATA_LOCATION = @"D:\Documents\Visual Studio 2015\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\Data";
+        public const string DATA_LOCATION = @"D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\Data";
 #else
-        public const string DATA_LOCATION = @"C:\Users\Discord\Source\Repos\Wycademy\WycademyV2\src\WycademyV2\Data";
+        public const string DATA_LOCATION = @"C:\Users\Discord\Documents\Visual Studio 2017\Projects\Wycademy\WycademyV2\src\WycademyV2\Data";
 #endif
     }
 }

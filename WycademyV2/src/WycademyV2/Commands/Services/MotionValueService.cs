@@ -28,7 +28,7 @@ namespace WycademyV2.Commands.Services
         /// <returns>Task(FileStream)</returns>
         public FileStream GetMotionValueStream(string name)
         {
-            string fileName = @"..\..\..\..\Data\mv\" + AliasWeaponNames(name) + ".txt";
+            string fileName = $"{WycademyConst.DATA_LOCATION}\\mv\\{AliasWeaponNames(name)}.txt";
 
             Queries++;
 
