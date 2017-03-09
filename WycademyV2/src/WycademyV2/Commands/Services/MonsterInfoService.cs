@@ -210,7 +210,7 @@ namespace WycademyV2.Commands.Services
         private Dictionary<string, string[]> GetDictionaryFromJson(string key, string filename)
         {
             // Parse the json data in a file into a JObject.
-            JObject parsed = JObject.Parse(File.ReadAllText($"{WycademyConst.DATA_LOCATION}\\{filename}.json"));
+            JObject parsed = JObject.Parse(File.ReadAllText($"{WycademyConst.DATA_LOCATION}\\monster\\{filename}.json"));
 
             // Get the requested subsection and cast it to an IDictionary.
             var rawData = parsed[key] as IDictionary<string, JToken>;
