@@ -131,7 +131,7 @@ namespace WycademyV2.Commands.Entities
                     int current = (int)coatings[$"bottle_enable_{i}"];
                     if (Convert.ToBoolean(current))
                     {
-                        enabledCoatings.Add((BowCoating)current);
+                        enabledCoatings.Add((BowCoating)i);
                     }
                 }
             }
