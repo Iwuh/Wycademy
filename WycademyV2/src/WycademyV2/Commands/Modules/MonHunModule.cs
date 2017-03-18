@@ -20,18 +20,16 @@ namespace WycademyV2.Commands.Modules
         private MotionValueService _mv;
         private CommandCacheService _cache;
         private DamageCalculatorService _damagecalc;
-        private ToastTimerService _toast;
         private WeaponInfoService _weapon;
         private ReactionMenuService _reactions;
 
-        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, ToastTimerService tts, WeaponInfoService wis, ReactionMenuService rms)
+        public MonHunModule(MonsterInfoService mis, LockerService ls, MotionValueService mv, CommandCacheService ccs, DamageCalculatorService dcs, WeaponInfoService wis, ReactionMenuService rms)
         {
             _minfo = mis;
             _locker = ls;
             _mv = mv;
             _cache = ccs;
             _damagecalc = dcs;
-            _toast = tts;
             _weapon = wis;
             _reactions = rms;
         }

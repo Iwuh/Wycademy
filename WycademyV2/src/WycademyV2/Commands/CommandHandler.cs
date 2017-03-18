@@ -109,8 +109,6 @@ namespace WycademyV2.Commands
             await blacklist.LoadAsync();
             map.Add(blacklist);
 
-            map.Add(new ToastTimerService(map.Get<DiscordSocketClient>()));
-
             map.Add(new EvalService(map.Get<DiscordSocketClient>()));
 
             map.Add(new WeaponInfoService());
