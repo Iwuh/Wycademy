@@ -180,7 +180,8 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task ToastTimer()
         {
-            await _toast.SendToastTimerMessageAsync(Context, _cache);
+            //await _toast.SendToastTimerMessageAsync(Context, _cache);
+            var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, new ToastTimerMessage(Context.User));
         }
 
         [Command("weaponinfo")]
