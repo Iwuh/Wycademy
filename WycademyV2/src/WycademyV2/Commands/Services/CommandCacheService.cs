@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Services
@@ -13,6 +14,7 @@ namespace WycademyV2.Commands.Services
     {
         private int _maxCapacity;
         private List<KeyValuePair<ulong, ulong>> _cache;
+        private Timer _purgeOldMessages;
 
         /// <summary>
         /// Initialize the class, with a maximum capacity for the cache.
@@ -22,6 +24,22 @@ namespace WycademyV2.Commands.Services
         {
             _maxCapacity = capacity;
             _cache = new List<KeyValuePair<ulong, ulong>>();
+
+            _purgeOldMessages = new Timer(_ =>
+            {
+                foreach (var pair in _cache)
+                {
+                    // The timestamp of a message can be calculated by getting the leftmost 42 bits of the ID, then
+                    // adding January 1, 2015 as a Unix timestamp.
+                    DateTimeOffset timestamp = DateTimeOffset.FromUnixTimeMilliseconds((long)((pair.Key >> 22) + 1420070400000UL));
+                    TimeSpan difference = DateTimeOffset.UtcNow - timestamp;
+
+                    if (difference.TotalHours >= 2.0)
+                    {
+                        _cache.Remove(pair);
+                    }
+                }
+            }, null, 7200000, 7200000);
 
             client.MessageDeleted += async (cacheable, channel) =>
             {
