@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Services
@@ -11,10 +12,13 @@ namespace WycademyV2.Commands.Services
 
         public DateTime StartTime { get; private set; }
 
-        public UtilityService()
+        public CancellationTokenSource Shutdown { get; private set; }
+
+        public UtilityService(CancellationTokenSource cancel)
         {
             rand = new Random();
             StartTime = DateTime.Now;
+            Shutdown = cancel;
         }
 
         public int GetRandomNumber()

@@ -3,6 +3,7 @@ using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using WycademyV2.Commands.Preconditions;
 using WycademyV2.Commands.Services;
@@ -17,11 +18,13 @@ namespace WycademyV2.Commands.Modules
     {
         private LockerService _locker;
         private CommandCacheService _cache;
+        private UtilityService _utility;
 
-        public SettingsModule(LockerService locker, CommandCacheService ccs)
+        public SettingsModule(LockerService locker, CommandCacheService ccs, UtilityService us)
         {
             _locker = locker;
             _cache = ccs;
+            _utility = us;
         }
 
         [Command("lock")]
@@ -53,14 +56,19 @@ namespace WycademyV2.Commands.Modules
                 await ReplyAsync("Shutting down...");
                 await Task.Delay(1000);
 
-                var client = Context.Client as DiscordSocketClient;
+                // Cancel the infinite delay then dispose the token source.
+                _utility.Shutdown.Cancel();
+                _utility.Shutdown.Dispose();
 
+                // Disconnect, log out, and dispose.
+                var client = Context.Client as DiscordSocketClient;
                 await client.StopAsync();
                 await Task.Delay(1000);
                 await client.LogoutAsync();
                 await Task.Delay(1000);
                 client.Dispose();
 
+                // Finally, exit the console application.
                 Environment.Exit(0);
             }
         }

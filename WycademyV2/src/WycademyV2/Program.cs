@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using WycademyV2.Commands;
 using WycademyV2.Commands.Enums;
@@ -90,12 +91,22 @@ namespace WycademyV2
             _map = new DependencyMap();
             _map.Add(_client);
 
+            // Create a CancellationTokenSource to cancel the infinite delay when shutting down.
+            var shutdown = new CancellationTokenSource();
+
             // Initialize and add the CommandHandler to the map.
             _handler = new CommandHandler();
-            await _handler.Install(_map, Log);
+            await _handler.Install(_map, Log, shutdown);
 
-            // Asynchronously block until the bot is exited.
-            await Task.Delay(-1);
+            try
+            {
+                // Asynchronously block until the bot is exited.
+                await Task.Delay(-1, shutdown.Token);
+            }
+            catch (TaskCanceledException)
+            {
+                // When the infinite delay is cancelled a TaskCancelledException is thrown, so just ignore it.
+            }
         }
 
         private Task Log(LogMessage msg)

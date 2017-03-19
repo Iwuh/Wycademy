@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using WycademyV2.Commands.Enums;
 using WycademyV2.Commands.Services;
@@ -18,17 +19,24 @@ namespace WycademyV2.Commands
         private CommandService _commands;
         private IDependencyMap _map;
         private Func<LogMessage, Task> _errorLog;
+        private CancellationTokenSource _shutdownToken;
 
-        public async Task Install(IDependencyMap map, Func<LogMessage, Task> log)
+        public async Task Install(IDependencyMap map, Func<LogMessage, Task> log, CancellationTokenSource shutdown)
         {
             // Extract the client from the dependency map.
             _client = map.Get<DiscordSocketClient>();
+
             // Initialize the CommandService and add it to the map.
             _commands = new CommandService();
             map.Add(_commands);
+
             _map = map;
+
             // Set the method for error logging.
             _errorLog = log;
+
+            _shutdownToken = shutdown;
+
             // Add services to the dependency map.
             await AddServices(_map);
             _commands.AddTypeReader<BlacklistTypeReader>(new BlacklistTypeReader());
@@ -101,7 +109,7 @@ namespace WycademyV2.Commands
 
             map.Add(new CommandCacheService(_client, 500));
 
-            map.Add(new UtilityService());
+            map.Add(new UtilityService(_shutdownToken));
 
             map.Add(new DamageCalculatorService(map.Get<DiscordSocketClient>()));
 
