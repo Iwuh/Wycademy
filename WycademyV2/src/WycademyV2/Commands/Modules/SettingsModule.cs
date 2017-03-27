@@ -56,6 +56,9 @@ namespace WycademyV2.Commands.Modules
                 await ReplyAsync("Shutting down...");
                 await Task.Delay(1000);
 
+                // Dispose of the command cache.
+                _cache.Dispose();
+
                 // Cancel the infinite delay then dispose the token source.
                 _utility.Shutdown.Cancel();
                 _utility.Shutdown.Dispose();

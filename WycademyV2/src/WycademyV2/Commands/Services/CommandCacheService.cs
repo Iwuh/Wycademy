@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Services
 {
-    public class CommandCacheService : IDictionary<ulong, ulong>
+    public class CommandCacheService : IDictionary<ulong, ulong>, IDisposable
     {
         private int _maxCapacity;
         private List<KeyValuePair<ulong, ulong>> _cache;
@@ -264,6 +264,15 @@ namespace WycademyV2.Commands.Services
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        /// <summary>
+        /// Safely disposes of the internal timer that clears old messages from the cache.
+        /// </summary>
+        public void Dispose()
+        {
+            _purgeOldMessages.Dispose();
+            _purgeOldMessages = null;
         }
     }
 }
