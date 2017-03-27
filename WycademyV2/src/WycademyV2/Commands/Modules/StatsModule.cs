@@ -55,7 +55,7 @@ namespace WycademyV2.Commands.Modules
 
                 .AddField(x => x.WithName("Connected Servers").WithValue((Context.Client as DiscordSocketClient).Guilds.Count.ToString()).WithIsInline(true))
 
-                .AddField(x => x.WithName("Memory Use:").WithValue((p.PrivateMemorySize64 / 1024.0f / 1024.0f).ToString() + " MB").WithIsInline(true))
+                .AddField(x => x.WithName("Heap Size:").WithValue((GC.GetTotalMemory(false) / 1024.0f / 1024.0f).ToString() + " MB").WithIsInline(true))
 
                 .AddField(x => x.WithName("Total Users:").WithValue((Context.Client as DiscordSocketClient).Guilds.Sum(g => g.Users.Count).ToString()).WithIsInline(true))
 
