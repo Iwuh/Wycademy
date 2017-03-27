@@ -26,9 +26,8 @@ namespace WycademyV2.Commands
             // Extract the client from the dependency map.
             _client = map.Get<DiscordSocketClient>();
 
-            // Initialize the CommandService and add it to the map.
+            // Initialize the CommandService.
             _commands = new CommandService();
-            map.Add(_commands);
 
             _map = map;
 
