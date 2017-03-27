@@ -1,4 +1,27 @@
 {
+    "Hitzone": {
+        "Head": "55 55 40 0 20 10 10 10 100 100",
+        "Head (Red Hot)": "63 63 40 0 10 25 5 5 100 100",
+        "Throat": "63 63 45 0 25 15 15 15 0 100",
+        "Throat (Red Hot)": "70 70 50 0 15 25 10 10 0 100",
+        "Dorsal Horns": "36 36 50 0 20 10 5 5 0 100",
+        "Torso": "25 25 20 0 15 10 5 5 0 100",
+        "Forelegs": "41 41 20 0 15 5 5 5 0 100",
+        "Hind Legs": "25 25 20 0 10 5 5 5 0 100",
+        "Tail (Base)": "36 36 20 0 15 10 10 10 0 100",
+        "Tail (Base) (Overheated)": "36 36 20 0 10 15 5 5 0 100",
+        "Tail (Blade)": "55 55 40 0 30 10 10 10 0 100",
+        "Tail (Blade) (Overheated)": "63 63 40 0 10 30 10 10 0 100"
+    },
+    "Stagger/Sever": {
+        "Head": "350 350 Red",
+        "Torso (Back)": "300 N/A Orange",
+        "Torso": "200 N/A Orange",
+        "Forelegs": "200 N/A Green",
+        "Hind Leg (Left)": "180 N/A White",
+        "Hind Leg (Right)": "180 N/A White",
+        "Tail": "300 300 Red"
+    },
     "Status": {
         "Poison": "100 100 600 50sec 10/10sec 8",
         "Sleep": "180 200 980 60sec 10/10sec 0",
@@ -13,28 +36,5 @@
         "Flash Bomb": "15sec 15sec 30sec",
         "Pitfall Trap": "12sec 10sec 20sec",
         "Shock Trap": "12sec 10sec 15sec"
-    },
-    "Stagger/Sever": {
-        "Head": "350 350 Red",
-        "Torso (Back)": "300 N/A Orange",
-        "Torso": "200 N/A Orange",
-        "Forelegs": "200 N/A Green",
-        "Hind Leg (Left)": "180 N/A White",
-        "Hind Leg (Right)": "180 N/A White",
-        "Tail": "300 300 Red"
-    },
-    "Hitzone": {
-        "Head": "55 55 40 0 20 10 10 10 100 100",
-        "Head (Red Hot)": "63 63 40 0 10 25 5 5 100 100",
-        "Throat": "63 63 45 0 25 15 15 15 0 100",
-        "Throat (Red Hot)": "70 70 50 0 15 25 10 10 0 100",
-        "Dorsal Horns": "36 36 50 0 20 10 5 5 0 100",
-        "Torso": "25 25 20 0 15 10 5 5 0 100",
-        "Forelegs": "41 41 20 0 15 5 5 5 0 100",
-        "Hind Legs": "25 25 20 0 10 5 5 5 0 100",
-        "Tail (Base)": "36 36 20 0 15 10 10 10 0 100",
-        "Tail (Base) (Overheated)": "36 36 20 0 10 15 5 5 0 100",
-        "Tail (Blade)": "55 55 40 0 30 10 10 10 0 100",
-        "Tail (Blade) (Overheated)": "63 63 40 0 10 30 10 10 0 100"
     }
 }

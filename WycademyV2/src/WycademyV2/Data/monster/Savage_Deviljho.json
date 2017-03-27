@@ -1,4 +1,26 @@
 {
+    "Hitzone": {
+        "Head": "28 31 25 20 20 20 30 20 120 100 ",
+        "Head (Rage)": "69 76 55 0 0 0 0 0 120 100 ",
+        "Torso": "69 69 55 15 15 15 25 15 0 100 ",
+        "Torso (Rage)": "48 45 45 15 15 15 25 15 0 100 ",
+        "Torso (Back)": "21 21 21 20 20 20 30 20 0 100 ",
+        "Torso (Back) (Rage)": "20 20 15 20 20 20 30 20 0 100 ",
+        "Forelegs": "25 25 30 15 15 15 25 15 0 100 ",
+        "Hind Legs": "28 28 20 20 20 20 30 20 0 100 ",
+        "Hind Legs (Rage)": "27 27 20 20 20 20 30 20 0 100 ",
+        "Tail": "26 22 25 20 20 20 35 20 0 100 ",
+        "Tail (Rage)": "24 21 25 20 20 20 35 20 0 100 "
+    },
+    "Stagger/Sever": {
+        "Head": "450 N/A Red",
+        "Stomach": "360 N/A Red",
+        "Torso": "200 N/A Orange",
+        "Forelegs": "150 N/A Green",
+        "Hind Leg (Left)": "300 N/A White",
+        "Hind Leg (Right)": "300 N/A White",
+        "Tail": "180 180 Green"
+    },
     "Status": {
         "Poison": "100 50 600 45sec 10/10sec 8 ",
         "Sleep": "180 200 980 60sec 10/10sec 0 ",
@@ -13,27 +35,5 @@
         "Flash Bomb": "15sec 15sec 30sec ",
         "Pitfall Trap": "10sec 10sec 20sec ",
         "Shock Trap": "5sec 5sec 15sec "
-    },
-    "Stagger/Sever": {
-        "Head": "450 N/A Red",
-        "Stomach": "360 N/A Red",
-        "Torso": "200 N/A Orange",
-        "Forelegs": "150 N/A Green",
-        "Hind Leg (Left)": "300 N/A White",
-        "Hind Leg (Right)": "300 N/A White",
-        "Tail": "180 180 Green"
-    },
-    "Hitzone": {
-        "Head": "28 31 25 20 20 20 30 20 120 100 ",
-        "Head (Rage)": "69 76 55 0 0 0 0 0 120 100 ",
-        "Torso": "69 69 55 15 15 15 25 15 0 100 ",
-        "Torso (Rage)": "48 45 45 15 15 15 25 15 0 100 ",
-        "Torso (Back)": "21 21 21 20 20 20 30 20 0 100 ",
-        "Torso (Back) (Rage)": "20 20 15 20 20 20 30 20 0 100 ",
-        "Forelegs": "25 25 30 15 15 15 25 15 0 100 ",
-        "Hind Legs": "28 28 20 20 20 20 30 20 0 100 ",
-        "Hind Legs (Rage)": "27 27 20 20 20 20 30 20 0 100 ",
-        "Tail": "26 22 25 20 20 20 35 20 0 100 ",
-        "Tail (Rage)": "24 21 25 20 20 20 35 20 0 100 "
     }
 }

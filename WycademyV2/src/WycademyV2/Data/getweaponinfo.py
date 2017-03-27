@@ -13,6 +13,6 @@ for weapon in weapons:
 
     substring = response.text[start_index:end_index]
 
-    with open(r"./weapon/%s.json" % weapon, "w+") as f:
+    with open(r"./weapon/%s.json" % weapon, "w+", encoding="utf-8") as f:
         json_from_string = json.loads(substring)
         json.dump(json_from_string, f, indent=4)

@@ -1,4 +1,16 @@
 {
+    "Hitzone": {
+        "Head": "50 55 70 20 10 10 25 0 100 100 ",
+        "Horn": "35 35 35 15 5 5 20 0 100 100 ",
+        "Claws": "42 42 45 10 5 5 15 0 0 100 ",
+        "Feet": "45 45 50 10 5 5 15 0 0 100 ",
+        "Torso": "65 55 80 25 15 15 35 0 0 100 "
+    },
+    "Stagger/Sever": {
+        "Head": "180 180 Red",
+        "Feet": "60 60 White",
+        "Stomach": "100 100 Orange"
+    },
     "Status": {
         "Poison": "100 50 300 60sec 5/10sec 5 ",
         "Sleep": "150 40 270 40sec 5/10sec 0 ",
@@ -13,17 +25,5 @@
         "Flash Bomb": "20sec 20sec 30sec ",
         "Pitfall Trap": "15sec 15sec 25sec ",
         "Shock Trap": "12sec 12sec 20sec "
-    },
-    "Stagger/Sever": {
-        "Head": "180 180 Red",
-        "Feet": "60 60 White",
-        "Stomach": "100 100 Orange"
-    },
-    "Hitzone": {
-        "Head": "50 55 70 20 10 10 25 0 100 100 ",
-        "Horn": "35 35 35 15 5 5 20 0 100 100 ",
-        "Claws": "42 42 45 10 5 5 15 0 0 100 ",
-        "Feet": "45 45 50 10 5 5 15 0 0 100 ",
-        "Torso": "65 55 80 25 15 15 35 0 0 100 "
     }
 }

@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Hammer",
@@ -636,6 +637,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Iron Hammer",
@@ -1256,6 +1258,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Hammer",
@@ -1876,6 +1879,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Spiked Hammer",
@@ -2428,6 +2432,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Bludgeon",
@@ -2912,6 +2917,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 102,
         "strings": [
             {
                 "name": "Revenge Hammer",
@@ -3328,6 +3334,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 97,
         "strings": [
             {
                 "name": "Ludroth Bone Mace",
@@ -3744,6 +3751,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 71,
         "strings": [
             {
                 "name": "Feather Hammer",
@@ -4160,6 +4168,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 27,
         "strings": [
             {
                 "name": "Bull Head Hammer",
@@ -4644,6 +4653,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Mallet",
@@ -5060,6 +5070,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Rusted Hammer",
@@ -5340,6 +5351,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "War Hammer",
@@ -5824,6 +5836,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Cyclo-Hammer",
@@ -6376,6 +6389,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Frozen Core",
@@ -6837,6 +6851,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Great Nova",
@@ -7298,6 +7313,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Skullcrusher",
@@ -7714,6 +7730,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 88,
         "strings": [
             {
                 "name": "Calamitous Portent",
@@ -8175,6 +8192,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 8,
         "strings": [
             {
                 "name": "Kut-Ku Pick",
@@ -8659,6 +8677,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 9,
         "strings": [
             {
                 "name": "Venom Monster",
@@ -9120,6 +9139,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 52,
         "strings": [
             {
                 "name": "Binding Bludgeon",
@@ -9581,6 +9601,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Ludroth Splashhammer",
@@ -10042,6 +10063,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 7,
         "strings": [
             {
                 "name": "Bag o' Horrors",
@@ -10503,6 +10525,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 44,
         "strings": [
             {
                 "name": "Type 42 Shellbuster",
@@ -10964,6 +10987,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 21,
         "strings": [
             {
                 "name": "Conehead Hammer",
@@ -11425,6 +11449,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 20,
         "strings": [
             {
                 "name": "Ceanataur Head Axe",
@@ -11841,6 +11866,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Dragonhead Hammer",
@@ -12257,6 +12283,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Breaker",
@@ -12673,6 +12700,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Cactus Creamer",
@@ -13057,6 +13085,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Frying Pan",
@@ -13441,6 +13470,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pumpking",
@@ -13825,6 +13855,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Airship Hammer",
@@ -14209,6 +14240,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Gaiarch",
@@ -14670,6 +14702,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "White Kitty Stamp",
@@ -15054,6 +15087,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Hammer",
@@ -15538,6 +15572,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Anvil Hammer",
@@ -15954,6 +15989,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Gun Hammer",
@@ -16415,6 +16451,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Raven Torrent",
@@ -16831,6 +16868,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 37,
         "strings": [
             {
                 "name": "Brazenclout",
@@ -17247,6 +17285,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Red Bludgeon",
@@ -17708,6 +17747,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Vortex Hammer",
@@ -18169,6 +18209,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Thunder",
@@ -18553,6 +18594,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Purity Hammer",
@@ -19091,6 +19133,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Emerald Beater",
@@ -19629,6 +19672,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Hammer",
@@ -20167,6 +20211,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Scorching Isshata",
@@ -20705,6 +20750,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Wuchtblick",
@@ -21166,6 +21212,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Matraca Hammer",
@@ -21582,6 +21629,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Striped Striker",
@@ -21930,6 +21978,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Tailhammer",
@@ -22391,6 +22440,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "Le Jugement",
@@ -22852,6 +22902,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Genie's Expanse",
@@ -23236,6 +23287,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 26,
         "strings": [
             {
                 "name": "Teostra Cratermaker",
@@ -23620,6 +23672,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Skeletal Hammer",
@@ -24081,6 +24134,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Teddybear",
@@ -24388,6 +24442,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Lobstrosity",
@@ -24772,6 +24827,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Egg Hammer",
@@ -25120,6 +25176,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Graceful Death",
@@ -25504,6 +25561,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Belt Hammer",
@@ -25852,6 +25910,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Purehammer",
@@ -26200,6 +26259,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Hammer",
@@ -26661,6 +26721,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Breath Core Hammer",
@@ -26968,6 +27029,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Fist of Fury",
@@ -27248,6 +27310,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Iron Striker",
@@ -27596,6 +27659,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 62,
         "strings": [
             {
                 "name": "Accelerated Hammer",
@@ -27980,6 +28044,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Meaty Smash",
@@ -28364,6 +28429,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Hammer",
@@ -28780,6 +28846,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Devil Masher",
@@ -29164,6 +29231,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "War Stamp",
@@ -29444,6 +29512,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Meaty Press",
@@ -29751,6 +29820,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Plesioth Head",
@@ -30135,6 +30205,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Kitty Stamp",
@@ -30442,6 +30513,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Enormous Ham",
@@ -30749,6 +30821,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "One Star Silver Pot",
@@ -31056,6 +31129,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Shot Crusher",
@@ -31363,6 +31437,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Vile Torrent",
@@ -31670,6 +31745,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 59,
         "strings": [
             {
                 "name": "Nitro Boost Hammer",
@@ -31977,6 +32053,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Vortical Hammer",
@@ -32284,6 +32361,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Hammer",
@@ -32564,6 +32642,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 43,
         "strings": [
             {
                 "name": "Jupiter's Sphere",
@@ -32844,6 +32923,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Hammer",
@@ -33151,6 +33231,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Mane Malice",
@@ -33535,6 +33616,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 35,
         "strings": [
             {
                 "name": "Devil's Due",
@@ -33842,6 +33924,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Anchor Hammer",
@@ -34149,6 +34232,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Portsmark",
@@ -34429,6 +34513,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Arluq Whammer",
@@ -34736,6 +34821,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pride of Harth",
@@ -35016,6 +35102,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Expert Hammer",
@@ -35296,6 +35383,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pulsating Core",
@@ -35603,6 +35691,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Thunder Works",
@@ -35910,6 +35999,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Demon Visage",
@@ -36190,6 +36280,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Icesteel Hammer",
@@ -36497,6 +36588,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 5,
         "strings": [
             {
                 "name": "Leonid Starcrusher",
@@ -36804,6 +36896,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 23,
         "strings": [
             {
                 "name": "Demonlord Hammer",
@@ -37111,6 +37204,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 36,
         "strings": [
             {
                 "name": "Consummate Hammer",
@@ -37418,6 +37512,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Trampler",
@@ -37725,6 +37820,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Incubus Hammer",
@@ -38032,6 +38128,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Polaris Hammer",
@@ -38339,6 +38436,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 42,
         "strings": [
             {
                 "name": "Alatreon Hammer",
@@ -38646,6 +38744,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 19,
         "strings": [
             {
                 "name": "Pincher Hammer",
@@ -39492,6 +39591,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Nightfall Hammer",
@@ -40248,6 +40348,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 38,
         "strings": [
             {
                 "name": "Geode Hammer",
@@ -41004,6 +41105,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 17,
         "strings": [
             {
                 "name": "Hardened Hammer",
@@ -41760,6 +41862,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Tomb Hammer",
@@ -42606,6 +42709,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Raiden Hammer",
@@ -43452,6 +43556,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Seize Hammer",
@@ -44208,6 +44313,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Magma Hammer",

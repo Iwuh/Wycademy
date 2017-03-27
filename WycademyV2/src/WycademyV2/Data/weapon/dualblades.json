@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Daggers",
@@ -636,6 +637,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Twin Daggers",
@@ -1256,6 +1258,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Scythes",
@@ -1876,6 +1879,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Insecticutters",
@@ -2360,6 +2364,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 71,
         "strings": [
             {
                 "name": "Dual Piercers",
@@ -2844,6 +2849,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Vprey Claws",
@@ -3260,6 +3266,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 48,
         "strings": [
             {
                 "name": "Cerulean Axes",
@@ -3744,6 +3751,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Duo",
@@ -4160,6 +4168,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hurricane",
@@ -4644,6 +4653,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Talon Carvers",
@@ -5128,6 +5138,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Twin Chainsaws",
@@ -5589,6 +5600,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 8,
         "strings": [
             {
                 "name": "Kut-Ku Pair",
@@ -6127,6 +6139,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Snow Venom",
@@ -6628,6 +6641,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 50,
         "strings": [
             {
                 "name": "Snow Slicers",
@@ -7166,6 +7180,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 9,
         "strings": [
             {
                 "name": "Dual Battleaxes",
@@ -7704,6 +7719,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 18,
         "strings": [
             {
                 "name": "Crab Horns",
@@ -8120,6 +8136,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Ludroth Pair",
@@ -8581,6 +8598,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 7,
         "strings": [
             {
                 "name": "Khezu Daggers",
@@ -9082,6 +9100,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 44,
         "strings": [
             {
                 "name": "Type 51 Macerators",
@@ -9620,6 +9639,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 20,
         "strings": [
             {
                 "name": "Bladed Edges",
@@ -10036,6 +10056,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Gemini",
@@ -10452,6 +10473,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Glutton's Tools",
@@ -10800,6 +10822,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pokke Mittens",
@@ -11184,6 +11207,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Daora Blades",
@@ -11532,6 +11556,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Daggers",
@@ -12016,6 +12041,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Dual Hatchets",
@@ -12432,6 +12458,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Sworn Rapiers",
@@ -12893,6 +12920,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Blazeblades",
@@ -13354,6 +13382,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Raven Tessen",
@@ -13770,6 +13799,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Twin Flames",
@@ -14231,6 +14261,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Twin Acrus",
@@ -14692,6 +14723,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Fulgur",
@@ -15076,6 +15108,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Morning Dawn",
@@ -15614,6 +15647,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Twin Bolts",
@@ -16152,6 +16186,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Daggers",
@@ -16690,6 +16725,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Smoldering Cities",
@@ -17228,6 +17264,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Fledderklauen",
@@ -17689,6 +17726,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Zakun Twins",
@@ -18105,6 +18143,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Rex Slicers",
@@ -18453,6 +18492,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 11,
         "strings": [
             {
                 "name": "Monarch",
@@ -18914,6 +18954,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Slicers",
@@ -19375,6 +19416,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "Les Ap\u00f4tres",
@@ -19836,6 +19878,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Rouge Flames",
@@ -20220,6 +20263,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Twin Nails",
@@ -20636,6 +20680,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Chasm Blades",
@@ -21097,6 +21142,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Qornu Waga",
@@ -21481,6 +21527,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "White Dango",
@@ -21829,6 +21876,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Addled Beers",
@@ -22213,6 +22261,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Wycademy Blades",
@@ -22597,6 +22646,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pure Yukumo Duo",
@@ -22945,6 +22995,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Twin Daggers",
@@ -23406,6 +23457,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Heroic Twins",
@@ -23754,6 +23806,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Tornado Hatchets",
@@ -24034,6 +24087,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Gelid Mind",
@@ -24341,6 +24395,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 62,
         "strings": [
             {
                 "name": "Whirlitwists",
@@ -24725,6 +24780,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 50,
         "strings": [
             {
                 "name": "Maulagombs",
@@ -25032,6 +25088,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Cleaving Jaws",
@@ -25448,6 +25505,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Plesioth Cutlasses",
@@ -25832,6 +25890,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Spicy Dango",
@@ -26139,6 +26198,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Tengu Dango",
@@ -26446,6 +26506,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Shaka Scarecrows",
@@ -26753,6 +26814,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Blades",
@@ -27169,6 +27231,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Roving Saws",
@@ -27476,6 +27539,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Insectiscythes",
@@ -27756,6 +27820,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Cool Cleavers",
@@ -28087,6 +28152,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 59,
         "strings": [
             {
                 "name": "Whirlitorture",
@@ -28394,6 +28460,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Firestorm",
@@ -28725,6 +28792,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 20,
         "strings": [
             {
                 "name": "Bladed Pincers",
@@ -29005,6 +29073,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Felyne Claws",
@@ -29285,6 +29354,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Stewbry Stirfoils",
@@ -29565,6 +29635,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Guild Knight Sabers",
@@ -29872,6 +29943,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hi Twin Daggers",
@@ -30179,6 +30251,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Wicked Tessen",
@@ -30486,6 +30559,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 41,
         "strings": [
             {
                 "name": "Flamestorm",
@@ -30793,6 +30867,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Talons",
@@ -31073,6 +31148,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Blades",
@@ -31380,6 +31456,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Suzuka Takamaru",
@@ -31764,6 +31841,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 35,
         "strings": [
             {
                 "name": "Wrath & Rancor",
@@ -32071,6 +32149,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Enduring Schism",
@@ -32378,6 +32457,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pirate Edges J",
@@ -32658,6 +32738,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Exploding Blades",
@@ -32989,6 +33070,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Baki Combat Jutsu",
@@ -33269,6 +33351,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Twin Star Blades",
@@ -33576,6 +33659,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Fan Club Fans",
@@ -33856,6 +33940,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Felyne and Melynx",
@@ -34163,6 +34248,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Light Sword Cypher",
@@ -34443,6 +34529,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Wyvern Strife",
@@ -34750,6 +34837,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 36,
         "strings": [
             {
                 "name": "Consummate Pair",
@@ -35057,6 +35145,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 30,
         "strings": [
             {
                 "name": "Akantor Blades",
@@ -35337,6 +35426,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Ruinblades",
@@ -35644,6 +35734,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Stormwind Fans",
@@ -35951,6 +36042,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Astral Gemini",
@@ -36258,6 +36350,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 49,
         "strings": [
             {
                 "name": "Crimson Daggers",
@@ -37014,6 +37107,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 51,
         "strings": [
             {
                 "name": "Blackhare Daggers",
@@ -37860,6 +37954,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 19,
         "strings": [
             {
                 "name": "Pincher Daggers",
@@ -38706,6 +38801,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Royal Daggers",
@@ -39552,6 +39648,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Nightfall Daggers",
@@ -40308,6 +40405,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 17,
         "strings": [
             {
                 "name": "Hardened Daggers",
@@ -41064,6 +41162,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Raiden Daggers",
@@ -41910,6 +42009,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Seize Slicers",
@@ -42666,6 +42766,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Enflamed Slicers",

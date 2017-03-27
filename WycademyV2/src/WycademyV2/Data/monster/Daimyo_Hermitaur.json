@@ -1,29 +1,4 @@
 {
-    "Status": {
-        "Poison": "200 75 500 60sec 10/5sec 20",
-        "Sleep": "150 100 550 30sec 5/10sec 0",
-        "Paralysis": "125 100 525 10sec 5/10sec 0",
-        "KO": "120 75 420 10sec 5/10sec 0",
-        "Exhaust": "180 75 480 0sec 5/10sec 0",
-        "Jump": "50 120 530 0sec 0/0sec 0",
-        "Mount": "50 80 600 0sec 0/0sec 150",
-        "Blast": "70 30 670 0sec 0/0sec 100"
-    },
-    "Item Effects": {
-        "Flash Bomb": "0sec 0sec 0sec",
-        "Pitfall Trap": "12sec 12sec 25sec",
-        "Shock Trap": "12sec 10sec 15sec"
-    },
-    "Stagger/Sever": {
-        "Head": "170 N/A Green",
-        "Torso": "170 N/A Green",
-        "Shell": "320 N/A Orange",
-        "Foot (Left)": "180 N/A White",
-        "Foot (Right)": "180 N/A White",
-        "Scissor (Left)": "120 N/A Red",
-        "Scissor (Right)": "120 N/A Red",
-        "Arms": "100 N/A Red"
-    },
     "Hitzone": {
         "Head": "50 60 40 30 10 20 35 0 100 100",
         "Head (Blocking)": "20 40 20 30 10 20 35 0 100 100",
@@ -38,5 +13,30 @@
         "Scissors (Blocking)": "15 20 10 35 5 10 20 0 0 100",
         "Arms": "40 45 30 15 5 10 15 0 0 100",
         "Arms (Blocking)": "20 30 15 15 5 10 15 0 0 100"
+    },
+    "Stagger/Sever": {
+        "Head": "170 N/A Green",
+        "Torso": "170 N/A Green",
+        "Shell": "320 N/A Orange",
+        "Foot (Left)": "180 N/A White",
+        "Foot (Right)": "180 N/A White",
+        "Scissor (Left)": "120 N/A Red",
+        "Scissor (Right)": "120 N/A Red",
+        "Arms": "100 N/A Red"
+    },
+    "Status": {
+        "Poison": "200 75 500 60sec 10/5sec 20",
+        "Sleep": "150 100 550 30sec 5/10sec 0",
+        "Paralysis": "125 100 525 10sec 5/10sec 0",
+        "KO": "120 75 420 10sec 5/10sec 0",
+        "Exhaust": "180 75 480 0sec 5/10sec 0",
+        "Jump": "50 120 530 0sec 0/0sec 0",
+        "Mount": "50 80 600 0sec 0/0sec 150",
+        "Blast": "70 30 670 0sec 0/0sec 100"
+    },
+    "Item Effects": {
+        "Flash Bomb": "0sec 0sec 0sec",
+        "Pitfall Trap": "12sec 12sec 25sec",
+        "Shock Trap": "12sec 10sec 15sec"
     }
 }

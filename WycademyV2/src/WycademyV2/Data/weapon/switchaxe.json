@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Axe",
@@ -708,6 +709,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Iron Axe",
@@ -1400,6 +1402,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Axe",
@@ -2092,6 +2095,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Exoskeleton Axe",
@@ -2598,6 +2602,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Wild Axe",
@@ -3136,6 +3141,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 48,
         "strings": [
             {
                 "name": "Arzuros Axe",
@@ -3674,6 +3680,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Switch Axe",
@@ -4135,6 +4142,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "The Shredder",
@@ -4641,6 +4649,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bruiser Axe",
@@ -5147,6 +5156,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 55,
         "strings": [
             {
                 "name": "Reckless Hatchet",
@@ -5685,6 +5695,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 18,
         "strings": [
             {
                 "name": "Scissor Axe",
@@ -6191,6 +6202,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 52,
         "strings": [
             {
                 "name": "Binding Roller",
@@ -6697,6 +6709,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Ludroth Axe",
@@ -7203,6 +7216,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 64,
         "strings": [
             {
                 "name": "Dream Captor",
@@ -7795,6 +7809,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Flickaxe",
@@ -8256,6 +8271,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Axe",
@@ -8717,6 +8733,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Grim Cat",
@@ -9137,6 +9154,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Rough Edge",
@@ -9598,6 +9616,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Arctic Ledge",
@@ -10018,6 +10037,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Gouda Axe",
@@ -10479,6 +10499,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Axe",
@@ -11017,6 +11038,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Elite Switch Axe",
@@ -11555,6 +11577,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Power Gasher",
@@ -12016,6 +12039,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Motor Burst",
@@ -12522,6 +12546,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 1,
         "strings": [
             {
                 "name": "Dragonmaiden Axe",
@@ -13028,6 +13053,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Rath Flame Splitter",
@@ -13534,6 +13560,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Bolt Axe",
@@ -14040,6 +14067,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Downpour",
@@ -14460,6 +14488,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Fond Farewell",
@@ -15052,6 +15081,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Voltaic Axe",
@@ -15644,6 +15674,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Axe",
@@ -16236,6 +16267,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Scorching Drafa",
@@ -16828,6 +16860,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Eisenleib",
@@ -17334,6 +17367,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Aksa Switch",
@@ -17795,6 +17829,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Rex Slasher",
@@ -18179,6 +18214,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 11,
         "strings": [
             {
                 "name": "Peal",
@@ -18685,6 +18721,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Axe",
@@ -19191,6 +19228,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "La Guillotine",
@@ -19697,6 +19735,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Daora's Farasa",
@@ -20117,6 +20156,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Waxglare Wand",
@@ -20537,6 +20577,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Skeletal Axe",
@@ -21043,6 +21084,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Wycademy Axe",
@@ -21463,6 +21505,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Infernal Axe",
@@ -21883,6 +21926,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Belt Axe",
@@ -22267,6 +22311,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Pure Axe",
@@ -22651,6 +22696,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Axe",
@@ -23157,6 +23203,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "General's Strongaxe",
@@ -23464,6 +23511,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 54,
         "strings": [
             {
                 "name": "Vavoom Axe",
@@ -23884,6 +23932,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Notched Doom",
@@ -24304,6 +24353,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Switch Axe",
@@ -24765,6 +24815,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 54,
         "strings": [
             {
                 "name": "Vavoom Vengeance",
@@ -25099,6 +25150,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Notched Tyrant",
@@ -25433,6 +25485,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Finslash",
@@ -25767,6 +25820,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Flicker Axe",
@@ -26074,6 +26128,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Volt Axe",
@@ -26408,6 +26463,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 41,
         "strings": [
             {
                 "name": "Fire Tempest",
@@ -26742,6 +26798,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Axe",
@@ -27049,6 +27106,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 43,
         "strings": [
             {
                 "name": "Heavy Divider",
@@ -27356,6 +27414,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Axe",
@@ -27690,6 +27749,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Undying Axe",
@@ -28110,6 +28170,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 35,
         "strings": [
             {
                 "name": "Tyrannos",
@@ -28417,6 +28478,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Mundus Altus",
@@ -28751,6 +28813,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Switch Fox",
@@ -29085,6 +29148,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Raikou Works",
@@ -29419,6 +29483,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pirate Axe J",
@@ -29726,6 +29791,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 26,
         "strings": [
             {
                 "name": "Teostra's Arx",
@@ -30060,6 +30126,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 5,
         "strings": [
             {
                 "name": "Rathsplicer",
@@ -30394,6 +30461,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 2,
         "strings": [
             {
                 "name": "Golden Crescent",
@@ -30728,6 +30796,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 23,
         "strings": [
             {
                 "name": "Demonlord Axe",
@@ -31062,6 +31131,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 36,
         "strings": [
             {
                 "name": "Saligia Vileaxe",
@@ -31369,6 +31439,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 30,
         "strings": [
             {
                 "name": "Akantor Switch Axe",
@@ -31676,6 +31747,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Murkham Axe",
@@ -32010,6 +32082,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Cloudburst Axe",
@@ -32344,6 +32417,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Polaris Skalvia",
@@ -32678,6 +32752,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 42,
         "strings": [
             {
                 "name": "Dark Switch Axe",
@@ -33012,6 +33087,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 49,
         "strings": [
             {
                 "name": "Crimson Axe",
@@ -33858,6 +33934,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 51,
         "strings": [
             {
                 "name": "Blackhare Axe",
@@ -34794,6 +34871,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 19,
         "strings": [
             {
                 "name": "Pincher Axe",
@@ -35730,6 +35808,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Royal Axe",
@@ -36666,6 +36745,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 56,
         "strings": [
             {
                 "name": "Pierce Axe",
@@ -37512,6 +37592,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Nightfall Axe",
@@ -38358,6 +38439,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 38,
         "strings": [
             {
                 "name": "Geode Axe",
@@ -39204,6 +39286,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Tomb Axe",
@@ -40140,6 +40223,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Raiden Axe",
@@ -41076,6 +41160,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Seize Axe",
@@ -41922,6 +42007,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Magma Axe",

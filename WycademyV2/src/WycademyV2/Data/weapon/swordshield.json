@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Sword",
@@ -636,6 +637,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hunter's Knife",
@@ -1256,6 +1258,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Kris",
@@ -1876,6 +1879,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Tabar",
@@ -2292,6 +2296,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Secta Nulo",
@@ -2776,6 +2781,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 95,
         "strings": [
             {
                 "name": "Soldier's Dagger",
@@ -3260,6 +3266,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 80,
         "strings": [
             {
                 "name": "Serpent Bite",
@@ -3744,6 +3751,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 86,
         "strings": [
             {
                 "name": "Snake Bite",
@@ -4282,6 +4290,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 81,
         "strings": [
             {
                 "name": "Viper Bite",
@@ -4743,6 +4752,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 82,
         "strings": [
             {
                 "name": "Hydra Bite",
@@ -5281,6 +5291,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Brash Buddies",
@@ -5765,6 +5776,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 97,
         "strings": [
             {
                 "name": "Ludroth's Nail",
@@ -6181,6 +6193,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 12,
         "strings": [
             {
                 "name": "Velocidrome Bite",
@@ -6597,6 +6610,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Cutter",
@@ -7013,6 +7027,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Rusted Sword",
@@ -7293,6 +7308,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hunter's Dagger",
@@ -7777,6 +7793,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Pick",
@@ -8329,6 +8346,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Frost Edge",
@@ -8713,6 +8731,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Secta Nulo (G)",
@@ -9174,6 +9193,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Secta Nulo (R)",
@@ -9635,6 +9655,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 98,
         "strings": [
             {
                 "name": "Lava Pick",
@@ -10096,6 +10117,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 9,
         "strings": [
             {
                 "name": "Poison Axe",
@@ -10634,6 +10656,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Thunderbane",
@@ -11095,6 +11118,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Royal Claw",
@@ -11556,6 +11580,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 64,
         "strings": [
             {
                 "name": "Shura Fan",
@@ -12094,6 +12119,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 7,
         "strings": [
             {
                 "name": "Khezu Razor",
@@ -12555,6 +12581,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Dual Carapace",
@@ -13016,6 +13043,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Spiked Circle",
@@ -13477,6 +13505,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Edge",
@@ -13893,6 +13922,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Tusk Gear",
@@ -14354,6 +14384,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Catspaw",
@@ -14738,6 +14769,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Kitchen Knife",
@@ -15086,6 +15118,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Chak Chak",
@@ -15434,6 +15467,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 105,
         "strings": [
             {
                 "name": "Moofah Sword",
@@ -15818,6 +15852,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Eldora Closure",
@@ -16166,6 +16201,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Sword",
@@ -16650,6 +16686,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Heavy Bang",
@@ -16998,6 +17035,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Raven Blade",
@@ -17414,6 +17452,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 37,
         "strings": [
             {
                 "name": "Gigas Club",
@@ -17830,6 +17869,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 1,
         "strings": [
             {
                 "name": "Princess Rapier",
@@ -18291,6 +18331,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Djinn",
@@ -18752,6 +18793,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Lagia Sword",
@@ -19213,6 +19255,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Firebolt",
@@ -19597,6 +19640,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Hana no Nagoriwo",
@@ -20135,6 +20179,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Verdant Rapier",
@@ -20673,6 +20718,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Tusk",
@@ -21211,6 +21257,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Burning Prominar",
@@ -21749,6 +21796,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Sucher-Ankh",
@@ -22210,6 +22258,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Naab Sword",
@@ -22626,6 +22675,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Rex Talon",
@@ -22974,6 +23024,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 11,
         "strings": [
             {
                 "name": "Kirin Bolt Ultimus",
@@ -23435,6 +23486,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Edge",
@@ -23896,6 +23948,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "Le D\u00e9tecteur",
@@ -24357,6 +24410,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Icesteel Dagger",
@@ -24741,6 +24795,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Skeletal Blade",
@@ -25202,6 +25257,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Floral Seif",
@@ -25586,6 +25642,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Belt Sword",
@@ -25934,6 +25991,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Pure Cutter",
@@ -26282,6 +26340,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Sword",
@@ -26743,6 +26802,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hero's Blade",
@@ -27159,6 +27219,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Eternal Strife",
@@ -27466,6 +27527,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Odyssey Blade",
@@ -27850,6 +27912,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 62,
         "strings": [
             {
                 "name": "Celestial Sword",
@@ -28234,6 +28297,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Sharkutter",
@@ -28618,6 +28682,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Sword",
@@ -29034,6 +29099,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Sharfin Sword",
@@ -29341,6 +29407,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Weary Finsword",
@@ -29648,6 +29715,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Melynx Tool",
@@ -29955,6 +30023,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Shining Wyvern Blade",
@@ -30303,6 +30372,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 59,
         "strings": [
             {
                 "name": "Cross Sword",
@@ -30610,6 +30680,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Corona",
@@ -30917,6 +30988,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Storm Sword",
@@ -31224,6 +31296,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Fang",
@@ -31504,6 +31577,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 43,
         "strings": [
             {
                 "name": "Baumf\u00e4ller",
@@ -31784,6 +31858,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Cutter",
@@ -32091,6 +32166,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Rajang Club",
@@ -32475,6 +32551,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Dragonseal Sword",
@@ -32782,6 +32859,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Ninja Sword",
@@ -33062,6 +33140,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Divine Exodus",
@@ -33369,6 +33448,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Inazuma Works",
@@ -33676,6 +33756,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Levindicator",
@@ -33983,6 +34064,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Star Knight Sword",
@@ -34290,6 +34372,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hero's Sword",
@@ -34570,6 +34653,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Falchion",
@@ -34877,6 +34961,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 26,
         "strings": [
             {
                 "name": "Teostra's Spada",
@@ -35184,6 +35269,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 2,
         "strings": [
             {
                 "name": "Lunatic Rose",
@@ -35491,6 +35577,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 2,
         "strings": [
             {
                 "name": "Golden Falchion",
@@ -35798,6 +35885,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 23,
         "strings": [
             {
                 "name": "Demonlord Mace",
@@ -36105,6 +36193,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 30,
         "strings": [
             {
                 "name": "Akantor Duo",
@@ -36385,6 +36474,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Soul Hatchet",
@@ -36692,6 +36782,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Ominous Treasure",
@@ -36999,6 +37090,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Astral Taurus",
@@ -37306,6 +37398,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 42,
         "strings": [
             {
                 "name": "Alatreon Sword",
@@ -37613,6 +37706,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Dreadqueen Rapier",
@@ -38459,6 +38553,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 56,
         "strings": [
             {
                 "name": "Drilltusk Truncheon",
@@ -39215,6 +39310,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Nightfall Edge",
@@ -39971,6 +40067,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 38,
         "strings": [
             {
                 "name": "Geode Mace",
@@ -40727,6 +40824,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 17,
         "strings": [
             {
                 "name": "Hardened Edge",
@@ -41483,6 +41581,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Tomb Edge",
@@ -42329,6 +42428,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Thunderlord Firebolt",
@@ -43175,6 +43275,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Grimclaw Barb",
@@ -43931,6 +44032,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Fiery Prominar",

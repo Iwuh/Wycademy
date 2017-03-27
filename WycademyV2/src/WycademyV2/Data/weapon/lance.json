@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Lance",
@@ -636,6 +637,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Iron Lance",
@@ -1256,6 +1258,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Lance",
@@ -1876,6 +1879,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Thane Lance",
@@ -2428,6 +2432,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Longhorn Spear",
@@ -2912,6 +2917,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Spiked Spear",
@@ -3328,6 +3334,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 92,
         "strings": [
             {
                 "name": "Ploshasta",
@@ -3812,6 +3819,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 97,
         "strings": [
             {
                 "name": "Ludroth Bone Spear",
@@ -4228,6 +4236,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 27,
         "strings": [
             {
                 "name": "Wild Boar Lance",
@@ -4712,6 +4721,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Lance",
@@ -5128,6 +5138,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Rusted Lance",
@@ -5408,6 +5419,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Drill Lance",
@@ -5946,6 +5958,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Estoc",
@@ -6362,6 +6375,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 76,
         "strings": [
             {
                 "name": "Dark Lance",
@@ -6823,6 +6837,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 88,
         "strings": [
             {
                 "name": "Naag Serpentblade",
@@ -7284,6 +7299,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 18,
         "strings": [
             {
                 "name": "Bone Claw Lance",
@@ -7700,6 +7716,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 52,
         "strings": [
             {
                 "name": "Volvi Stroke",
@@ -8161,6 +8178,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Spiral Lance",
@@ -8622,6 +8640,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 64,
         "strings": [
             {
                 "name": "Cross Coloris",
@@ -9083,6 +9102,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 44,
         "strings": [
             {
                 "name": "Type 43 Dragonlance",
@@ -9544,6 +9564,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 20,
         "strings": [
             {
                 "name": "Ceanataur Stinger",
@@ -9960,6 +9981,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Twistcrawl",
@@ -10421,6 +10443,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Stinger",
@@ -10837,6 +10860,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Blue Crater",
@@ -11298,6 +11322,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Frontrider Lance",
@@ -11646,6 +11671,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Native Spear",
@@ -12030,6 +12056,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Vacuum Striker",
@@ -12414,6 +12441,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Fragrance",
@@ -12798,6 +12826,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Plegis Needle",
@@ -13182,6 +13211,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Fondue Lance",
@@ -13566,6 +13596,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Blimp Lance",
@@ -13950,6 +13981,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Lance",
@@ -14434,6 +14466,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Paladin Lance",
@@ -14850,6 +14883,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Barbarian Tusk",
@@ -15266,6 +15300,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Steel Knight's Pike",
@@ -15682,6 +15717,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Incessant Raven",
@@ -16143,6 +16179,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Red Tail",
@@ -16604,6 +16641,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Acrus Lance",
@@ -17065,6 +17103,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Coming",
@@ -17449,6 +17488,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Hana mo Hana Nare",
@@ -17987,6 +18027,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Verdant Tail",
@@ -18525,6 +18566,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Jouster",
@@ -19063,6 +19105,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Svarog Blazer",
@@ -19601,6 +19644,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Eiferschild",
@@ -20062,6 +20106,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Harbah Lance",
@@ -20478,6 +20523,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Tiger Stinger",
@@ -20826,6 +20872,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 11,
         "strings": [
             {
                 "name": "Thunderspear",
@@ -21287,6 +21334,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Stinger",
@@ -21748,6 +21796,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "L'\u00c9gide",
@@ -22209,6 +22258,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Icesteel Spear",
@@ -22593,6 +22643,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Skeletal Lance",
@@ -23054,6 +23105,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Sharq Byte",
@@ -23438,6 +23490,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Alacrantze",
@@ -23822,6 +23875,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Belt Lance",
@@ -24170,6 +24224,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Purelance",
@@ -24518,6 +24573,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Lance",
@@ -24979,6 +25035,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Undertaker",
@@ -25286,6 +25343,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Squire Spear",
@@ -25634,6 +25692,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Barbaroi Tusk",
@@ -25914,6 +25973,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Growling Wyvern",
@@ -26298,6 +26358,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 54,
         "strings": [
             {
                 "name": "Expelger",
@@ -26682,6 +26743,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Carnivicious",
@@ -27066,6 +27128,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Aqua Spear",
@@ -27373,6 +27436,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Spear",
@@ -27789,6 +27853,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Babel Spear",
@@ -28069,6 +28134,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Giant Tusk",
@@ -28349,6 +28415,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Expelgouger",
@@ -28656,6 +28723,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Omnivicious",
@@ -28963,6 +29031,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Rockabye Spear",
@@ -29270,6 +29339,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 31,
         "strings": [
             {
                 "name": "Lava Cone",
@@ -29577,6 +29647,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Twisting Crawler",
@@ -29884,6 +29955,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Guardian Lance",
@@ -30164,6 +30236,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Dragon Rider Spear",
@@ -30444,6 +30517,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Incessant Evil",
@@ -30751,6 +30825,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Doris Spear",
@@ -31058,6 +31133,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 41,
         "strings": [
             {
                 "name": "Spiral Heat",
@@ -31365,6 +31441,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Lance",
@@ -31645,6 +31722,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 43,
         "strings": [
             {
                 "name": "Boros Spear",
@@ -31925,6 +32003,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Lance",
@@ -32232,6 +32311,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Demon Lance",
@@ -32616,6 +32696,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 35,
         "strings": [
             {
                 "name": "Grief Lance",
@@ -33000,6 +33081,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Expert Lance",
@@ -33307,6 +33389,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Skyscraper",
@@ -33614,6 +33697,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Brain Fox",
@@ -33921,6 +34005,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 26,
         "strings": [
             {
                 "name": "Teostra's Howl",
@@ -34228,6 +34313,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 5,
         "strings": [
             {
                 "name": "Silver Prominence",
@@ -34535,6 +34621,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 23,
         "strings": [
             {
                 "name": "Demonlord Spear",
@@ -34842,6 +34929,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Calamity",
@@ -35149,6 +35237,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Ominous Cloud",
@@ -35456,6 +35545,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Astral Capricorn",
@@ -35763,6 +35853,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 42,
         "strings": [
             {
                 "name": "Alatreon Lance",
@@ -36070,6 +36161,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 19,
         "strings": [
             {
                 "name": "Stonefist Lance",
@@ -36916,6 +37008,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Dreadqueen Thorn",
@@ -37762,6 +37855,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Gale Stinger",
@@ -38518,6 +38612,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 17,
         "strings": [
             {
                 "name": "Incessant Calamity",
@@ -39364,6 +39459,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Groad Tail",
@@ -40210,6 +40306,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Thunderlord Tenrai",
@@ -41056,6 +41153,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Rudra Stinger",
@@ -41812,6 +41910,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Svarog Boomer",

@@ -1,4 +1,28 @@
 {
+    "Hitzone": {
+        "Head (Fire)": "60 65 55 0 15 20 5 5 100 100",
+        "Head (Thunder/Ice)": "60 65 55 20 15 0 0 30 100 100",
+        "Neck (Fire)": "40 35 35 0 10 15 5 5 0 100",
+        "Neck (Thunder/Ice)": "40 35 40 15 10 0 0 20 0 100",
+        "Torso (Fire)": "35 30 20 0 10 15 5 5 0 100",
+        "Torso (Thunder/Ice)": "35 30 20 15 10 0 0 20 0 100",
+        "Wings (Fire)": "21 21 10 0 5 10 5 5 0 100",
+        "Wings (Thunder/Ice)": "25 25 15 15 5 0 0 10 0 100",
+        "Feet (Fire)": "25 25 20 0 10 15 5 5 0 100",
+        "Feet (Thunder/Ice)": "38 35 35 15 10 0 0 20 0 100",
+        "Tail (Fire)": "30 25 40 0 5 10 5 5 0 100",
+        "Tail (Thunder/Ice)": "30 30 40 15 10 0 0 20 0 100"
+    },
+    "Stagger/Sever": {
+        "Head": "400 N/A Red",
+        "Neck": "350 N/A Orange",
+        "Torso": "350 N/A Orange",
+        "Foreleg (Left)": "300 N/A White",
+        "Foreleg (Right)": "300 N/A White",
+        "Hind Leg (Left)": "250 N/A Red",
+        "Hind Leg (Right)": "250 N/A Red",
+        "Tail": "400 400 White"
+    },
     "Status": {
         "Poison": "180 200 980 15sec 5/5sec 5",
         "Sleep": "250 200 1050 60sec 5/5sec 0",
@@ -13,29 +37,5 @@
         "Flash Bomb": "7sec 7sec 0sec",
         "Pitfall Trap": "0sec 0sec 0sec",
         "Shock Trap": "0sec 0sec 0sec"
-    },
-    "Stagger/Sever": {
-        "Head": "400 N/A Red",
-        "Neck": "350 N/A Orange",
-        "Torso": "350 N/A Orange",
-        "Foreleg (Left)": "300 N/A White",
-        "Foreleg (Right)": "300 N/A White",
-        "Hind Leg (Left)": "250 N/A Red",
-        "Hind Leg (Right)": "250 N/A Red",
-        "Tail": "400 400 White"
-    },
-    "Hitzone": {
-        "Head (Fire)": "60 65 55 0 15 20 5 5 100 100",
-        "Head (Thunder/Ice)": "60 65 55 20 15 0 0 30 100 100",
-        "Neck (Fire)": "40 35 35 0 10 15 5 5 0 100",
-        "Neck (Thunder/Ice)": "40 35 40 15 10 0 0 20 0 100",
-        "Torso (Fire)": "35 30 20 0 10 15 5 5 0 100",
-        "Torso (Thunder/Ice)": "35 30 20 15 10 0 0 20 0 100",
-        "Wings (Fire)": "21 21 10 0 5 10 5 5 0 100",
-        "Wings (Thunder/Ice)": "25 25 15 15 5 0 0 10 0 100",
-        "Feet (Fire)": "25 25 20 0 10 15 5 5 0 100",
-        "Feet (Thunder/Ice)": "38 35 35 15 10 0 0 20 0 100",
-        "Tail (Fire)": "30 25 40 0 5 10 5 5 0 100",
-        "Tail (Thunder/Ice)": "30 30 40 15 10 0 0 20 0 100"
     }
 }

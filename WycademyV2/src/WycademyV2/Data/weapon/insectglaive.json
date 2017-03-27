@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Rod",
@@ -636,6 +637,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Iron Bayonet",
@@ -1256,6 +1258,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Staff",
@@ -1876,6 +1879,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hortadent",
@@ -2360,6 +2364,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 80,
         "strings": [
             {
                 "name": "Azure Bayonet",
@@ -2844,6 +2849,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 91,
         "strings": [
             {
                 "name": "Wardance Cudgel",
@@ -3382,6 +3388,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 71,
         "strings": [
             {
                 "name": "Fader Rod",
@@ -3866,6 +3873,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 83,
         "strings": [
             {
                 "name": "Sand Anchor",
@@ -4327,6 +4335,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 9,
         "strings": [
             {
                 "name": "Arcane Strike",
@@ -4865,6 +4874,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 8,
         "strings": [
             {
                 "name": "Kut-Ku Pike",
@@ -5403,6 +5413,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 82,
         "strings": [
             {
                 "name": "Crimson Fury",
@@ -5941,6 +5952,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 18,
         "strings": [
             {
                 "name": "Shell Intoner",
@@ -6357,6 +6369,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Royal Bloom",
@@ -6818,6 +6831,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 7,
         "strings": [
             {
                 "name": "Bolt Chamber",
@@ -7356,6 +7370,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 21,
         "strings": [
             {
                 "name": "Rage Cudgel",
@@ -7817,6 +7832,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Needle Ivy",
@@ -8278,6 +8294,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Scythe",
@@ -8694,6 +8711,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Acorn Rod",
@@ -9078,6 +9096,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Magia Pitareen",
@@ -9462,6 +9481,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Rod",
@@ -9946,6 +9966,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Sturdy Glaive",
@@ -10362,6 +10383,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Fox Halberd",
@@ -10900,6 +10922,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Astalos Cudgel",
@@ -11438,6 +11461,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Cudgel",
@@ -11976,6 +12000,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Flaming Teuza",
@@ -12514,6 +12539,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Leumundslist",
@@ -12975,6 +13001,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Altair",
@@ -13391,6 +13418,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 11,
         "strings": [
             {
                 "name": "Indigo Flash",
@@ -13852,6 +13880,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Rod",
@@ -14313,6 +14342,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "Le Traqueur",
@@ -14774,6 +14804,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Daora's Entom",
@@ -15158,6 +15189,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Caster's Rod",
@@ -15542,6 +15574,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Skeletal Cudgel",
@@ -16003,6 +16036,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Push Broom",
@@ -16387,6 +16421,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Deathport Staff",
@@ -16771,6 +16806,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Rod",
@@ -17232,6 +17268,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 62,
         "strings": [
             {
                 "name": "Sect Happa",
@@ -17616,6 +17653,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 54,
         "strings": [
             {
                 "name": "Mind Stick",
@@ -18000,6 +18038,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "N\u00e9v\u00e9 Rod",
@@ -18384,6 +18423,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Garia Club",
@@ -18691,6 +18731,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Sky-high Glaive",
@@ -18998,6 +19039,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Deep Blue Glaive",
@@ -19305,6 +19347,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Fin Harpoon",
@@ -19612,6 +19655,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 59,
         "strings": [
             {
                 "name": "Trim Happa",
@@ -19919,6 +19963,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 41,
         "strings": [
             {
                 "name": "Flaming Halberd",
@@ -20226,6 +20271,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Breaker",
@@ -20506,6 +20552,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Press",
@@ -20813,6 +20860,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Metal Mauler",
@@ -21197,6 +21245,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Conviction Glaive J",
@@ -21477,6 +21526,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Aladdin's Wand",
@@ -21784,6 +21834,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Spear of the Beast",
@@ -22091,6 +22142,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Heaven's Rath Glaive",
@@ -22398,6 +22450,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 23,
         "strings": [
             {
                 "name": "Demonlord Cudgel",
@@ -22705,6 +22758,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Staff",
@@ -23012,6 +23066,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Polaris Zimbal",
@@ -23319,6 +23374,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 42,
         "strings": [
             {
                 "name": "Alatreon Dragonspire",
@@ -23626,6 +23682,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 19,
         "strings": [
             {
                 "name": "Stonefist Caster",
@@ -24472,6 +24529,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Nightfall Scythe",
@@ -25228,6 +25286,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 38,
         "strings": [
             {
                 "name": "Grobo Blow",
@@ -25984,6 +26043,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Ashen Teuza",

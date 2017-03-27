@@ -1,4 +1,28 @@
 {
+    "Hitzone": {
+        "Head": "65 55 55 0 10 5 20 15 100 100 ",
+        "Head (Rage)": "70 65 60 0 10 5 20 15 130 100 ",
+        "Neck": "44 44 25 0 10 5 20 15 0 100 ",
+        "Neck (Rage)": "44 44 30 0 10 5 20 15 0 100 ",
+        "Stomach": "25 30 20 15 15 10 15 15 0 100 ",
+        "Stomach (Rage)": "30 35 20 15 15 10 15 15 0 100 ",
+        "Torso (Back)": "44 40 30 0 15 10 25 5 0 100 ",
+        "Torso (Back) (Rage)": "40 35 35 0 15 10 25 5 0 100 ",
+        "Tail": "35 30 20 0 5 0 15 15 0 100 ",
+        "Forelegs": "25 25 25 0 10 10 20 10 0 100 ",
+        "Forelegs (Rage)": "30 30 25 0 10 10 15 10 0 100 ",
+        "Hind Legs": "40 40 40 0 5 0 10 5 0 100 "
+    },
+    "Stagger/Sever": {
+        "Head": "220 N/A Red",
+        "Stomach": "180 N/A Red",
+        "Torso (Back)": "180 N/A Red",
+        "Tail": "240 240 Orange",
+        "Foreleg (Left)": "200 N/A White",
+        "Foreleg (Right)": "220 N/A White",
+        "Hind Leg (Left)": "200 N/A White",
+        "Hind Leg (Right)": "220 N/A White"
+    },
     "Status": {
         "Poison": "180 110 620 60sec 5/10sec 8 ",
         "Sleep": "180 120 660 40sec 5/10sec 0 ",
@@ -13,29 +37,5 @@
         "Flash Bomb": "20sec 20sec 30sec ",
         "Pitfall Trap": "16sec 12sec 20sec ",
         "Shock Trap": "10sec 8sec 15sec "
-    },
-    "Stagger/Sever": {
-        "Head": "220 N/A Red",
-        "Stomach": "180 N/A Red",
-        "Torso (Back)": "180 N/A Red",
-        "Tail": "240 240 Orange",
-        "Foreleg (Left)": "200 N/A White",
-        "Foreleg (Right)": "220 N/A White",
-        "Hind Leg (Left)": "200 N/A White",
-        "Hind Leg (Right)": "220 N/A White"
-    },
-    "Hitzone": {
-        "Head": "65 55 55 0 10 5 20 15 100 100 ",
-        "Head (Rage)": "70 65 60 0 10 5 20 15 130 100 ",
-        "Neck": "44 44 25 0 10 5 20 15 0 100 ",
-        "Neck (Rage)": "44 44 30 0 10 5 20 15 0 100 ",
-        "Stomach": "25 30 20 15 15 10 15 15 0 100 ",
-        "Stomach (Rage)": "30 35 20 15 15 10 15 15 0 100 ",
-        "Torso (Back)": "44 40 30 0 15 10 25 5 0 100 ",
-        "Torso (Back) (Rage)": "40 35 35 0 15 10 25 5 0 100 ",
-        "Tail": "35 30 20 0 5 0 15 15 0 100 ",
-        "Forelegs": "25 25 25 0 10 10 20 10 0 100 ",
-        "Forelegs (Rage)": "30 30 25 0 10 10 15 10 0 100 ",
-        "Hind Legs": "40 40 40 0 5 0 10 5 0 100 "
     }
 }

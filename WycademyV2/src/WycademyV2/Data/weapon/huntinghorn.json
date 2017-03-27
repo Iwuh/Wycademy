@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Horn",
@@ -724,6 +725,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Iron Horn",
@@ -1432,6 +1434,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Horn",
@@ -2140,6 +2143,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 104,
         "strings": [
             {
                 "name": "Larinoth Ocarina",
@@ -2611,6 +2615,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Sonic Glass",
@@ -3082,6 +3087,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Vicello Nulo",
@@ -3632,6 +3638,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 80,
         "strings": [
             {
                 "name": "Velociprey Balloon",
@@ -4182,6 +4189,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 86,
         "strings": [
             {
                 "name": "Giaprey Balloon",
@@ -4786,6 +4794,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 84,
         "strings": [
             {
                 "name": "Bull Grunt",
@@ -5257,6 +5266,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 48,
         "strings": [
             {
                 "name": "Zurogong Primo",
@@ -5807,6 +5817,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Flute",
@@ -6278,6 +6289,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Metal Bagpipe",
@@ -6907,6 +6919,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Vicello Nulo (G)",
@@ -7423,6 +7436,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Vicello Nulo (R)",
@@ -7939,6 +7953,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Vicello Nulo (W)",
@@ -8455,6 +8470,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 8,
         "strings": [
             {
                 "name": "Kut-Ku's Song",
@@ -9059,6 +9075,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 9,
         "strings": [
             {
                 "name": "Poisoned Capri",
@@ -9663,6 +9680,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 55,
         "strings": [
             {
                 "name": "Demon Block",
@@ -10213,6 +10231,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Droth Drone",
@@ -10817,6 +10836,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 64,
         "strings": [
             {
                 "name": "Fool's Harp",
@@ -11421,6 +11441,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 7,
         "strings": [
             {
                 "name": "Khezu Horn",
@@ -11937,6 +11958,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 44,
         "strings": [
             {
                 "name": "Type 63 Warmonica",
@@ -12541,6 +12563,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 21,
         "strings": [
             {
                 "name": "Dodotto Horn",
@@ -13057,6 +13080,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 18,
         "strings": [
             {
                 "name": "Shell Castanet",
@@ -13661,6 +13685,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Danger Call",
@@ -14177,6 +14202,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Harmonic",
@@ -14648,6 +14674,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Handmade Frog",
@@ -15076,6 +15103,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Magia Charm",
@@ -15504,6 +15532,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Swell Shell",
@@ -15896,6 +15925,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Poison Fungasax",
@@ -16324,6 +16354,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bherna Chime",
@@ -16752,6 +16783,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Airship Horn",
@@ -17180,6 +17212,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hunter's Horn",
@@ -17651,6 +17684,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Raven Shamisen",
@@ -18167,6 +18201,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 37,
         "strings": [
             {
                 "name": "Brazengaita",
@@ -18638,6 +18673,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 1,
         "strings": [
             {
                 "name": "Valkyrie Chordmaker",
@@ -19242,6 +19278,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Lagia Horn",
@@ -19758,6 +19795,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Growl",
@@ -20186,6 +20224,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Poetic Bell",
@@ -20790,6 +20829,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Emerald Flap",
@@ -21394,6 +21434,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Koto",
@@ -21998,6 +22039,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Hell Horn",
@@ -22602,6 +22644,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Kummerklang",
@@ -23118,6 +23161,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Vadya Muse",
@@ -23589,6 +23633,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Striped Dragonga",
@@ -23981,6 +24026,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Bell",
@@ -24497,6 +24543,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "La S\u00e9pulture",
@@ -25013,6 +25060,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Blessed Ocarina",
@@ -25441,6 +25489,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 26,
         "strings": [
             {
                 "name": "Teostra's Tiple",
@@ -25869,6 +25918,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Skeletal Melody",
@@ -26385,6 +26435,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Azumand Wind",
@@ -26813,6 +26864,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Cornupion",
@@ -27241,6 +27293,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Horn",
@@ -27791,6 +27844,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Pureflute",
@@ -28183,6 +28237,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Lute",
@@ -28699,6 +28754,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Heavy Bagpipe",
@@ -29091,6 +29147,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 12,
         "strings": [
             {
                 "name": "Velocidrome Balloon",
@@ -29404,6 +29461,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 54,
         "strings": [
             {
                 "name": "Kecha Whappa",
@@ -29832,6 +29890,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Horn",
@@ -30303,6 +30362,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 54,
         "strings": [
             {
                 "name": "Kecha Thumpa",
@@ -30643,6 +30703,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Poli'ahu Pipe",
@@ -31071,6 +31132,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 31,
         "strings": [
             {
                 "name": "Lava Alphorn",
@@ -31411,6 +31473,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 58,
         "strings": [
             {
                 "name": "Hazardous Call",
@@ -31751,6 +31814,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Vile Shamisen",
@@ -32091,6 +32155,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 41,
         "strings": [
             {
                 "name": "Agnakdion",
@@ -32431,6 +32496,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Warhorn",
@@ -32744,6 +32810,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 43,
         "strings": [
             {
                 "name": "Mountain Crusher",
@@ -33057,6 +33124,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Chime",
@@ -33397,6 +33465,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Denden Daiko",
@@ -33825,6 +33894,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Avenir's Music Box",
@@ -34165,6 +34235,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Blitz Works",
@@ -34505,6 +34576,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Megaphone",
@@ -34818,6 +34890,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Daora's Taus",
@@ -35158,6 +35231,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 2,
         "strings": [
             {
                 "name": "Gold Chordmaker",
@@ -35498,6 +35572,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 30,
         "strings": [
             {
                 "name": "Akantor Horn",
@@ -35811,6 +35886,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Horned Flute",
@@ -36151,6 +36227,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Autumn Lute",
@@ -36491,6 +36568,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Polaris Wraith",
@@ -36831,6 +36909,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 49,
         "strings": [
             {
                 "name": "Crimson Horn",
@@ -37697,6 +37776,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Royal Horn",
@@ -38653,6 +38733,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 56,
         "strings": [
             {
                 "name": "Pierce Horn",
@@ -39519,6 +39600,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Nightfall Horn",
@@ -40385,6 +40467,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 38,
         "strings": [
             {
                 "name": "Geode Horn",
@@ -41251,6 +41334,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 17,
         "strings": [
             {
                 "name": "Hardened Horn",
@@ -42207,6 +42291,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Tomb Horn",
@@ -43163,6 +43248,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Raiden Horn",
@@ -44119,6 +44205,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Seize Horn",
@@ -44985,6 +45072,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Magma Horn",

@@ -1,4 +1,21 @@
 {
+    "Hitzone": {
+        "Head": "55 50 45 0 30 20 15 0 100 100",
+        "Torso (Upper)": "45 45 35 0 20 15 10 0 0 100",
+        "Torso (Back)": "38 30 30 0 10 5 5 0 0 100",
+        "Forelegs": "30 30 25 0 15 10 10 0 0 100",
+        "Rear": "36 36 20 0 10 10 5 0 0 100",
+        "Stomach / Hind Legs": "75 75 10 0 0 0 0 0 0 0",
+        "Rolling": "45 45 40 0 20 15 10 0 0 100"
+    },
+    "Stagger/Sever": {
+        "Torso (Upper)": "300 N/A Red",
+        "Back": "180 N/A Orange",
+        "Forelegs": "130 N/A White",
+        "Rear": "110 N/A Orange",
+        "Stomach / Hind Legs": "130 N/A White",
+        "Rolling": "10 N/A Red"
+    },
     "Status": {
         "Poison": "150 60 300 60sec 5/10sec 5",
         "Sleep": "200 100 400 60sec 5/10sec 0",
@@ -13,22 +30,5 @@
         "Flash Bomb": "20sec 20sec 30sec",
         "Pitfall Trap": "20sec 20sec 25sec",
         "Shock Trap": "15sec 15sec 20sec"
-    },
-    "Stagger/Sever": {
-        "Torso (Upper)": "300 N/A Red",
-        "Back": "180 N/A Orange",
-        "Forelegs": "130 N/A White",
-        "Rear": "110 N/A Orange",
-        "Stomach / Hind Legs": "130 N/A White",
-        "Rolling": "10 N/A Red"
-    },
-    "Hitzone": {
-        "Head": "55 50 45 0 30 20 15 0 100 100",
-        "Torso (Upper)": "45 45 35 0 20 15 10 0 0 100",
-        "Torso (Back)": "38 30 30 0 10 5 5 0 0 100",
-        "Forelegs": "30 30 25 0 15 10 10 0 0 100",
-        "Rear": "36 36 20 0 10 10 5 0 0 100",
-        "Stomach / Hind Legs": "75 75 10 0 0 0 0 0 0 0",
-        "Rolling": "45 45 40 0 20 15 10 0 0 100"
     }
 }

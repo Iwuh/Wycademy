@@ -1,4 +1,12 @@
 {
+    "Hitzone": {
+        "Head": "85 85 80 30 30 40 30 10 100 100 ",
+        "Torso": "55 55 50 25 25 30 25 5 0 100 "
+    },
+    "Stagger/Sever": {
+        "Head": "90 N/A Red",
+        "Torso": "120 N/A White"
+    },
     "Status": {
         "Poison": "80 40 200 30sec 5/10sec 10 ",
         "Sleep": "70 40 230 40sec 5/10sec 0 ",
@@ -13,13 +21,5 @@
         "Flash Bomb": "20sec 15sec 30sec ",
         "Pitfall Trap": "18sec 15sec 25sec ",
         "Shock Trap": "15sec 12sec 18sec "
-    },
-    "Stagger/Sever": {
-        "Head": "90 N/A Red",
-        "Torso": "120 N/A White"
-    },
-    "Hitzone": {
-        "Head": "85 85 80 30 30 40 30 10 100 100 ",
-        "Torso": "55 55 50 25 25 30 25 5 0 100 "
     }
 }

@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Strongarm",
@@ -708,6 +709,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Elite Blade",
@@ -1400,6 +1402,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Blade",
@@ -2092,6 +2095,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 71,
         "strings": [
             {
                 "name": "Rogue Axe",
@@ -2707,6 +2711,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 86,
         "strings": [
             {
                 "name": "Snowy Veil",
@@ -3299,6 +3304,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 83,
         "strings": [
             {
                 "name": "Desertfall",
@@ -3891,6 +3897,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Blackguard",
@@ -4429,6 +4436,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 9,
         "strings": [
             {
                 "name": "Poison Blade",
@@ -5021,6 +5029,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 64,
         "strings": [
             {
                 "name": "Horror Zofar",
@@ -5613,6 +5622,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 44,
         "strings": [
             {
                 "name": "Type 31 Wyvernslayer",
@@ -6205,6 +6215,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 20,
         "strings": [
             {
                 "name": "Guardian Blade",
@@ -6743,6 +6754,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Cuddly Cat",
@@ -7163,6 +7175,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pizzaxe",
@@ -7624,6 +7637,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Chameleos C. Blade",
@@ -8008,6 +8022,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Strongarm",
@@ -8546,6 +8561,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Poisonous Veil",
@@ -9052,6 +9068,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 1,
         "strings": [
             {
                 "name": "Dear Lutemis",
@@ -9558,6 +9575,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Axelion Blade",
@@ -10064,6 +10082,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Lagia Storm",
@@ -10570,6 +10589,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Mizuniya Drill",
@@ -11162,6 +11182,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Axela Blade",
@@ -11754,6 +11775,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Edge",
@@ -12346,6 +12368,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Scorching Demander",
@@ -12938,6 +12961,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Elendskraft",
@@ -13444,6 +13468,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Aslat Charger",
@@ -13905,6 +13930,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Tigrex Divide",
@@ -14289,6 +14315,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Strongarm",
@@ -14795,6 +14822,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "L'Oppresseur",
@@ -15301,6 +15329,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Daora's Casca",
@@ -15721,6 +15750,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Wicked Edge",
@@ -16227,6 +16257,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Vaik Veil",
@@ -16647,6 +16678,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Mandible Blade",
@@ -17067,6 +17099,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Strongarm",
@@ -17573,6 +17606,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Sentinel Blade",
@@ -17993,6 +18027,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 62,
         "strings": [
             {
                 "name": "Schildsect",
@@ -18413,6 +18448,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Guardsqual",
@@ -18833,6 +18869,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn C. Blade",
@@ -19294,6 +19331,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "K. Captain's Blade",
@@ -19628,6 +19666,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Serrated Glace",
@@ -19962,6 +20001,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 31,
         "strings": [
             {
                 "name": "Lava's Veil",
@@ -20296,6 +20336,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 59,
         "strings": [
             {
                 "name": "Dominisect",
@@ -20630,6 +20671,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Blade",
@@ -20937,6 +20979,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Blade",
@@ -21271,6 +21314,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Demonlord Blade",
@@ -21691,6 +21735,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hero Strongarm",
@@ -21998,6 +22043,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Chrono Gear",
@@ -22332,6 +22378,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Charge Fox",
@@ -22666,6 +22713,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Legendary Anchor J",
@@ -22973,6 +23021,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Starlight Axe",
@@ -23307,6 +23356,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 26,
         "strings": [
             {
                 "name": "Teostra's Striker",
@@ -23641,6 +23691,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 5,
         "strings": [
             {
                 "name": "Hellsire Blade",
@@ -23975,6 +24026,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 2,
         "strings": [
             {
                 "name": "Luna Eostre",
@@ -24309,6 +24361,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 30,
         "strings": [
             {
                 "name": "Akantor C. Blade",
@@ -24616,6 +24669,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Altostratus Blade",
@@ -24950,6 +25004,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Gant Blade",
@@ -25284,6 +25339,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Dear Regina",
@@ -26220,6 +26276,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Dreaded Blade",
@@ -27156,6 +27213,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Rudra Divide",
@@ -28002,6 +28060,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Ashen Demander",

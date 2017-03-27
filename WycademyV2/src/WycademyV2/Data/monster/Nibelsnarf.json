@@ -1,29 +1,4 @@
 {
-    "Status": {
-        "Poison": "180 100 580 30sec 5/10sec 5",
-        "Sleep": "180 180 900 30sec 5/10sec 0",
-        "Paralysis": "180 180 900 10sec 5/10sec 0",
-        "KO": "150 100 650 10sec 5/10sec 0",
-        "Exhaust": "180 150 780 0sec 5/10sec 0",
-        "Jump": "50 100 450 0sec 0/0sec 0",
-        "Mount": "60 100 860 0sec 0/0sec 150",
-        "Blast": "70 30 670 0sec 0/0sec 100"
-    },
-    "Item Effects": {
-        "Flash Bomb": "0sec 0sec 0sec",
-        "Pitfall Trap": "0sec 0sec 0sec",
-        "Shock Trap": "8sec 8sec 15sec"
-    },
-    "Stagger/Sever": {
-        "Head": "200 200 Red",
-        "Torso / Tail": "240 N/A Orange",
-        "Foreleg (Left)": "160 N/A White",
-        "Foreleg (Right)": "160 N/A White",
-        "Hind Leg (Left)": "140 N/A White",
-        "Hind Leg (Right)": "140 N/A White",
-        "Gills": "120 N/A Green",
-        "Uvula": "150 150 Green"
-    },
     "Hitzone": {
         "Stomach (Fished Out)": "25 26 22 0 15 15 10 5 100 100",
         "Head (Fished Out)": "35 36 32 0 15 15 10 5 100 100",
@@ -38,5 +13,30 @@
         "Stomach B": "60 60 50 0 10 20 25 5 0 100",
         "Gills": "60 60 65 0 10 15 15 5 0 100",
         "Uvula": "70 70 70 0 10 10 10 5 0 100"
+    },
+    "Stagger/Sever": {
+        "Head": "200 200 Red",
+        "Torso / Tail": "240 N/A Orange",
+        "Foreleg (Left)": "160 N/A White",
+        "Foreleg (Right)": "160 N/A White",
+        "Hind Leg (Left)": "140 N/A White",
+        "Hind Leg (Right)": "140 N/A White",
+        "Gills": "120 N/A Green",
+        "Uvula": "150 150 Green"
+    },
+    "Status": {
+        "Poison": "180 100 580 30sec 5/10sec 5",
+        "Sleep": "180 180 900 30sec 5/10sec 0",
+        "Paralysis": "180 180 900 10sec 5/10sec 0",
+        "KO": "150 100 650 10sec 5/10sec 0",
+        "Exhaust": "180 150 780 0sec 5/10sec 0",
+        "Jump": "50 100 450 0sec 0/0sec 0",
+        "Mount": "60 100 860 0sec 0/0sec 150",
+        "Blast": "70 30 670 0sec 0/0sec 100"
+    },
+    "Item Effects": {
+        "Flash Bomb": "0sec 0sec 0sec",
+        "Pitfall Trap": "0sec 0sec 0sec",
+        "Shock Trap": "8sec 8sec 15sec"
     }
 }

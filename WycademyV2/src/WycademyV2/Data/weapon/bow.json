@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Bow",
@@ -732,6 +733,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hunter's Bow",
@@ -1448,6 +1450,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hunter's Stoutbow",
@@ -2164,6 +2167,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Arko Nulo (Y)",
@@ -2685,6 +2689,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Arko Nulo (W)",
@@ -3206,6 +3211,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 91,
         "strings": [
             {
                 "name": "Blango Fur Bow",
@@ -3727,6 +3733,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 71,
         "strings": [
             {
                 "name": "Plume Bow",
@@ -4283,6 +4290,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Bow",
@@ -4759,6 +4767,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Morsel Bowfish",
@@ -5235,6 +5244,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Crystalline Flower",
@@ -5756,6 +5766,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Sonic Bow",
@@ -6277,6 +6288,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 8,
         "strings": [
             {
                 "name": "Kut-Ku Stave",
@@ -6798,6 +6810,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 18,
         "strings": [
             {
                 "name": "Daimyo's Warbow",
@@ -7319,6 +7332,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 40,
         "strings": [
             {
                 "name": "Spongia Bow",
@@ -7840,6 +7854,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 7,
         "strings": [
             {
                 "name": "Khezu Bow",
@@ -8361,6 +8376,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 1,
         "strings": [
             {
                 "name": "Queen Blaster",
@@ -8793,6 +8809,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 44,
         "strings": [
             {
                 "name": "Type 64 Multibow",
@@ -9314,6 +9331,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Bow",
@@ -9710,6 +9728,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bamboo Taketori",
@@ -10186,6 +10205,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Ivory Bow",
@@ -10582,6 +10602,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Chaos Bow",
@@ -10978,6 +10999,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Felyne Bow",
@@ -11454,6 +11476,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Arachnid Bow",
@@ -11850,6 +11873,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Bow",
@@ -12326,6 +12350,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yekla Arc",
@@ -12642,6 +12667,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Crow Bow",
@@ -12958,6 +12984,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 37,
         "strings": [
             {
                 "name": "Brazencord",
@@ -13390,6 +13417,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Prominence Bow",
@@ -13822,6 +13850,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Voltsender",
@@ -14254,6 +14283,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Rumble",
@@ -14686,6 +14716,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Blessed Rain",
@@ -15118,6 +15149,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Lightning Bow",
@@ -15550,6 +15582,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Bow",
@@ -15982,6 +16015,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Ashen Wrath",
@@ -16414,6 +16448,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Entbehrung",
@@ -16846,6 +16881,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Shalya Bow",
@@ -17242,6 +17278,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Tigrex Archer",
@@ -17558,6 +17595,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Flier",
@@ -17901,6 +17939,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 26,
         "strings": [
             {
                 "name": "Bow of Hope & Valor",
@@ -18333,6 +18372,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Skeletal Bow",
@@ -18765,6 +18805,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Purebow",
@@ -19161,6 +19202,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Onyx Bow",
@@ -19593,6 +19635,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 74,
         "strings": [
             {
                 "name": "Kelbi Stingshot",
@@ -19909,6 +19952,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 62,
         "strings": [
             {
                 "name": "Heat Haze",
@@ -20225,6 +20269,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 55,
         "strings": [
             {
                 "name": "Demon Helm Bow",
@@ -20541,6 +20586,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Blue Alighter",
@@ -20884,6 +20930,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 20,
         "strings": [
             {
                 "name": "Bear Blade Bow",
@@ -21280,6 +21327,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Arca Raptora",
@@ -21676,6 +21724,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Bow",
@@ -22152,6 +22201,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Ice Cold Alighter",
@@ -22495,6 +22545,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 21,
         "strings": [
             {
                 "name": "Abominable Bow",
@@ -22927,6 +22978,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 59,
         "strings": [
             {
                 "name": "Feminine Haze",
@@ -23359,6 +23411,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Seahorse Harp",
@@ -23702,6 +23755,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 16,
         "strings": [
             {
                 "name": "Vile Bow",
@@ -24018,6 +24072,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Arrow",
@@ -24334,6 +24389,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Bow",
@@ -24677,6 +24733,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "Le Ravisseur",
@@ -25020,6 +25077,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Beast Thunderbow",
@@ -25363,6 +25421,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Angelbein",
@@ -25706,6 +25765,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Icesteel Bow",
@@ -26049,6 +26109,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Genie's Grimoire",
@@ -26365,6 +26426,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 5,
         "strings": [
             {
                 "name": "Hyperion",
@@ -26708,6 +26770,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 2,
         "strings": [
             {
                 "name": "Selene Moonbroken",
@@ -27051,6 +27114,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 23,
         "strings": [
             {
                 "name": "Archbeast Thunderbow",
@@ -27394,6 +27458,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 30,
         "strings": [
             {
                 "name": "Akantor Bow",
@@ -27737,6 +27802,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Bow",
@@ -28080,6 +28146,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Tempest Nightbow",
@@ -28423,6 +28490,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Polar Avian Bow",
@@ -28766,6 +28834,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 42,
         "strings": [
             {
                 "name": "Alatreon Bow",
@@ -29109,6 +29178,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 49,
         "strings": [
             {
                 "name": "Crimson Bow",
@@ -29985,6 +30055,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 19,
         "strings": [
             {
                 "name": "Stonefist Bow",
@@ -30951,6 +31022,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Royal Blaster",
@@ -31917,6 +31989,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 56,
         "strings": [
             {
                 "name": "Demonic Bow",
@@ -32793,6 +32866,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Silverwind Bow",
@@ -33669,6 +33743,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 38,
         "strings": [
             {
                 "name": "Grobo Arc",
@@ -34635,6 +34710,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 17,
         "strings": [
             {
                 "name": "Wicked Bow",
@@ -35511,6 +35587,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Dread Bow",
@@ -36477,6 +36554,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Rumble Bow",
@@ -37443,6 +37521,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Rudra Bow",
@@ -38319,6 +38398,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Hellish Wrath",
@@ -39285,6 +39365,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hero's Bow",

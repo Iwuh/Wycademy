@@ -1,4 +1,25 @@
 {
+    "Hitzone": {
+        "Horn": "43 24 35 10 5 5 15 5 100 100",
+        "Head": "23 21 20 35 10 20 35 0 150 100",
+        "Torso": "25 35 25 15 5 15 10 10 0 100",
+        "Hump": "60 60 35 20 5 15 0 10 0 100",
+        "Hump (Broken)": "70 70 60 30 10 20 5 20 0 120",
+        "Forelegs": "32 30 25 15 0 10 10 10 0 100",
+        "Hind Legs": "44 44 35 10 0 10 5 5 0 100",
+        "Tail": "32 40 50 10 5 5 5 10 0 100",
+        "Tail (Tip)": "24 43 40 20 5 15 5 20 0 100"
+    },
+    "Stagger/Sever": {
+        "Head": "280 N/A Orange",
+        "Torso": "400 N/A White",
+        "Hump": "380 N/A White",
+        "Forelegs": "250 N/A Orange",
+        "Hind Leg (Left)": "200 N/A Orange",
+        "Hind Leg (Right)": "200 N/A Orange",
+        "Tail": "250 N/A Orange",
+        "Tail (Tip)": "170 170 Red"
+    },
     "Status": {
         "Poison": "120 120 720 60sec 5/5sec 10",
         "Sleep": "100 150 850 30sec 5/5sec 0",
@@ -13,26 +34,5 @@
         "Flash Bomb": "20sec 20sec 25sec",
         "Pitfall Trap": "16sec 11sec 16sec",
         "Shock Trap": "12sec 10sec 15sec"
-    },
-    "Stagger/Sever": {
-        "Head": "280 N/A Orange",
-        "Torso": "400 N/A White",
-        "Hump": "380 N/A White",
-        "Forelegs": "250 N/A Orange",
-        "Hind Leg (Left)": "200 N/A Orange",
-        "Hind Leg (Right)": "200 N/A Orange",
-        "Tail": "250 N/A Orange",
-        "Tail (Tip)": "170 170 Red"
-    },
-    "Hitzone": {
-        "Horn": "43 24 35 10 5 5 15 5 100 100",
-        "Head": "23 21 20 35 10 20 35 0 150 100",
-        "Torso": "25 35 25 15 5 15 10 10 0 100",
-        "Hump": "60 60 35 20 5 15 0 10 0 100",
-        "Hump (Broken)": "70 70 60 30 10 20 5 20 0 120",
-        "Forelegs": "32 30 25 15 0 10 10 10 0 100",
-        "Hind Legs": "44 44 35 10 0 10 5 5 0 100",
-        "Tail": "32 40 50 10 5 5 5 10 0 100",
-        "Tail (Tip)": "24 43 40 20 5 15 5 20 0 100"
     }
 }

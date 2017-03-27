@@ -29,6 +29,6 @@ for i in wb.sheetnames:
         else:
             raise ValueError("Invalid category")
 
-        with open("./monster/%s.json" % i, "w+") as f:
+        with open("./monster/%s.json" % i, "w+", encoding="utf-8") as f:
             dump({"Hitzone": hitzones, "Stagger/Sever": staggersever, "Status": status, "Item Effects": itemeffects},
                  f, indent=4)

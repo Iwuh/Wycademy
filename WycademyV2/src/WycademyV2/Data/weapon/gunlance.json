@@ -16,6 +16,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Petrified Gunlance",
@@ -708,6 +709,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Iron Gunlance",
@@ -1400,6 +1402,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bone Gunlance",
@@ -2092,6 +2095,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Fiore Nulo",
@@ -2630,6 +2634,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 71,
         "strings": [
             {
                 "name": "Rogue Gunlance",
@@ -3245,6 +3250,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 13,
         "strings": [
             {
                 "name": "Genenam Lance",
@@ -3837,6 +3843,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Gunlance",
@@ -4298,6 +4305,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Striker's Gunlance",
@@ -4836,6 +4844,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Golem Gunlance",
@@ -5297,6 +5306,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Fiore Nulo (G)",
@@ -5803,6 +5813,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 93,
         "strings": [
             {
                 "name": "Fiore Nulo (R)",
@@ -6309,6 +6320,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 50,
         "strings": [
             {
                 "name": "Lagomberator",
@@ -6901,6 +6913,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 9,
         "strings": [
             {
                 "name": "Hard Hitter",
@@ -7493,6 +7506,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 55,
         "strings": [
             {
                 "name": "Red Devil Gunlance",
@@ -8031,6 +8045,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 18,
         "strings": [
             {
                 "name": "Scissor Gunlance",
@@ -8492,6 +8507,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 52,
         "strings": [
             {
                 "name": "Shattershot",
@@ -8998,6 +9014,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 7,
         "strings": [
             {
                 "name": "Full Voltage",
@@ -9504,6 +9521,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 44,
         "strings": [
             {
                 "name": "Type 62 Stormlance",
@@ -10096,6 +10114,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 91,
         "strings": [
             {
                 "name": "Hellsting",
@@ -10602,6 +10621,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 32,
         "strings": [
             {
                 "name": "Hidden Gunlance",
@@ -11063,6 +11083,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Bamboo Birdsbane",
@@ -11447,6 +11468,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 105,
         "strings": [
             {
                 "name": "Baa Baa Gunlance",
@@ -11953,6 +11975,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Kamak Gunlance",
@@ -12373,6 +12396,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Teostra Gunlance",
@@ -12757,6 +12781,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obsidian Gunlance",
@@ -13295,6 +13320,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Ancient Gyrelance",
@@ -13756,6 +13782,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 37,
         "strings": [
             {
                 "name": "Spine Blaster",
@@ -14262,6 +14289,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 1,
         "strings": [
             {
                 "name": "Princess Panoply",
@@ -14768,6 +14796,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 4,
         "strings": [
             {
                 "name": "Red Rook",
@@ -15274,6 +15303,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 39,
         "strings": [
             {
                 "name": "Lagia Burst",
@@ -15780,6 +15810,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 45,
         "strings": [
             {
                 "name": "Usurper's Roar",
@@ -16200,6 +16231,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 68,
         "strings": [
             {
                 "name": "Ukiyo no Yamiwo",
@@ -16792,6 +16824,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 67,
         "strings": [
             {
                 "name": "Verdant Rook",
@@ -17384,6 +17417,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 69,
         "strings": [
             {
                 "name": "Giant's Artillery",
@@ -17976,6 +18010,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 65,
         "strings": [
             {
                 "name": "Burning Kabeira",
@@ -18568,6 +18603,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 60,
         "strings": [
             {
                 "name": "Tyrannenarm",
@@ -19074,6 +19110,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Jaya Gunlance",
@@ -19535,6 +19572,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 28,
         "strings": [
             {
                 "name": "Tiger Blast",
@@ -19919,6 +19957,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Thunder Yell",
@@ -20425,6 +20464,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Dios Gunlance",
@@ -20931,6 +20971,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 61,
         "strings": [
             {
                 "name": "L'Onde",
@@ -21437,6 +21478,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 25,
         "strings": [
             {
                 "name": "Venomous Cologne",
@@ -21857,6 +21899,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Chasm Gunlance",
@@ -22363,6 +22406,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Cornpopper",
@@ -22747,6 +22791,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Wycademy Gunlance",
@@ -23167,6 +23212,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Yukumo Puregunlance",
@@ -23551,6 +23597,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Black Smoke Gunlance",
@@ -24057,6 +24104,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "General's Arbalance",
@@ -24441,6 +24489,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 54,
         "strings": [
             {
                 "name": "Arya Gadda",
@@ -24861,6 +24910,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 62,
         "strings": [
             {
                 "name": "Monsieur Gore",
@@ -25281,6 +25331,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Seadiver",
@@ -25701,6 +25752,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Worn Gunlance",
@@ -26162,6 +26214,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 50,
         "strings": [
             {
                 "name": "Lagomberastrophe",
@@ -26496,6 +26549,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 55,
         "strings": [
             {
                 "name": "Blue Devil Uberlance",
@@ -26803,6 +26857,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 57,
         "strings": [
             {
                 "name": "Deepbuster",
@@ -27137,6 +27192,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 10,
         "strings": [
             {
                 "name": "Marine Fisher",
@@ -27471,6 +27527,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 21,
         "strings": [
             {
                 "name": "Gerd Sting",
@@ -27805,6 +27862,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 31,
         "strings": [
             {
                 "name": "Volcano Gunlance",
@@ -28139,6 +28197,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Felyoshka",
@@ -28473,6 +28532,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 59,
         "strings": [
             {
                 "name": "Madame Butcher",
@@ -28807,6 +28867,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 41,
         "strings": [
             {
                 "name": "Flamethrower",
@@ -29141,6 +29202,7 @@
         "named": 0,
         "special_skill": 1,
         "private": 0,
+        "monster_id": 63,
         "strings": [
             {
                 "name": "Seditious Gunlance",
@@ -29448,6 +29510,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 53,
         "strings": [
             {
                 "name": "Demolition Gunlance",
@@ -29782,6 +29845,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 22,
         "strings": [
             {
                 "name": "Demon Gunlance",
@@ -30202,6 +30266,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 35,
         "strings": [
             {
                 "name": "Ravenous Gunlance",
@@ -30536,6 +30601,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Hero Gunlance",
@@ -30843,6 +30909,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Obelisk",
@@ -31177,6 +31244,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Platinum Trophy",
@@ -31484,6 +31552,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Volt Works",
@@ -31818,6 +31887,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 0,
         "strings": [
             {
                 "name": "Pirate Gunlance J",
@@ -32125,6 +32195,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 24,
         "strings": [
             {
                 "name": "Icesteel Gunlance",
@@ -32459,6 +32530,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 5,
         "strings": [
             {
                 "name": "Silver Rook",
@@ -32793,6 +32865,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 2,
         "strings": [
             {
                 "name": "Queen's Panoply",
@@ -33127,6 +33200,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 23,
         "strings": [
             {
                 "name": "Demonlord Artillery",
@@ -33461,6 +33535,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 36,
         "strings": [
             {
                 "name": "Consummate Gunlance",
@@ -33795,6 +33870,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 30,
         "strings": [
             {
                 "name": "Akantor Gunlance",
@@ -34102,6 +34178,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 34,
         "strings": [
             {
                 "name": "Ukanlos Gunlance",
@@ -34436,6 +34513,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 47,
         "strings": [
             {
                 "name": "Ominous Monsoon",
@@ -34770,6 +34848,7 @@
         "named": 0,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 70,
         "strings": [
             {
                 "name": "Astral Centaurus",
@@ -35104,6 +35183,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 51,
         "strings": [
             {
                 "name": "Blackhare Gunlance",
@@ -36040,6 +36120,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 19,
         "strings": [
             {
                 "name": "Pincher Cannon",
@@ -36976,6 +37057,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 3,
         "strings": [
             {
                 "name": "Royal Burst",
@@ -37912,6 +37994,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 56,
         "strings": [
             {
                 "name": "Pierce Cannon",
@@ -38758,6 +38841,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 33,
         "strings": [
             {
                 "name": "Nightfall Burst",
@@ -39604,6 +39688,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 38,
         "strings": [
             {
                 "name": "Geode Burst",
@@ -40450,6 +40535,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 17,
         "strings": [
             {
                 "name": "Hardened Gunlance",
@@ -41386,6 +41472,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 6,
         "strings": [
             {
                 "name": "Tomb Gunlance",
@@ -42322,6 +42409,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 46,
         "strings": [
             {
                 "name": "Raiden Cannon",
@@ -43258,6 +43346,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 29,
         "strings": [
             {
                 "name": "Seize Burst",
@@ -44104,6 +44193,7 @@
         "named": 1,
         "special_skill": 0,
         "private": 0,
+        "monster_id": 66,
         "strings": [
             {
                 "name": "Explosive Kabeira",
