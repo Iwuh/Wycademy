@@ -16,7 +16,7 @@ namespace WycademyV2
 #if BETA
         public const string DATA_LOCATION = @"D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\Data";
 #else
-        public const string DATA_LOCATION = @"C:\Users\Discord\Documents\Visual Studio 2017\Projects\Wycademy\WycademyV2\src\WycademyV2\Data";
+        public const string DATA_LOCATION = @"/home/ubuntu/Wycademy/WycademyV2/src/WycademyV2/Data";
 #endif
     }
 }
