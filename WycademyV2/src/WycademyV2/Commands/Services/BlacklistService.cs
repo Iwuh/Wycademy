@@ -125,9 +125,9 @@ namespace WycademyV2.Commands.Services
         /// </summary>
         public async Task LoadAsync()
         {
-            using (FileStream userBlacklist = File.Open(@".\userblacklist.txt", FileMode.OpenOrCreate))
-            using (FileStream guildBlacklist = File.Open(@".\guildblacklist.txt", FileMode.OpenOrCreate))
-            using (FileStream guildOwnerBlacklist = File.Open(@".\guildownerblacklist.txt", FileMode.OpenOrCreate))
+            using (FileStream userBlacklist = File.Open(@"./userblacklist.txt", FileMode.OpenOrCreate))
+            using (FileStream guildBlacklist = File.Open(@"./guildblacklist.txt", FileMode.OpenOrCreate))
+            using (FileStream guildOwnerBlacklist = File.Open(@"./guildownerblacklist.txt", FileMode.OpenOrCreate))
             {
                 // Create a byte array for each file.
                 byte[] userBytes = new byte[userBlacklist.Length];
@@ -149,9 +149,9 @@ namespace WycademyV2.Commands.Services
 
         private async Task SaveAsync()
         {
-            using (FileStream userBlacklist = File.Open(@".\userblacklist.txt", FileMode.Create))
-            using (FileStream guildBlacklist = File.Open(@".\guildblacklist.txt", FileMode.Create))
-            using (FileStream guildOwnerBlacklist = File.Open(@".\guildownerblacklist.txt", FileMode.Create))
+            using (FileStream userBlacklist = File.Open(@"./userblacklist.txt", FileMode.Create))
+            using (FileStream guildBlacklist = File.Open(@"./guildblacklist.txt", FileMode.Create))
+            using (FileStream guildOwnerBlacklist = File.Open(@"./guildownerblacklist.txt", FileMode.Create))
             {
                 // Join each blacklist into a string separated by spaces then convert to a byte array.
                 UnicodeEncoding unicode = new UnicodeEncoding();
