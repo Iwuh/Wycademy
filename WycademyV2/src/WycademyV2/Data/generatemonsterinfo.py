@@ -6,6 +6,7 @@ from json import dump
 wb = openpyxl.load_workbook(r"Monster Info.xlsx")
 
 for i in wb.sheetnames:
+    name = i.lower()
     hitzones = OrderedDict()
     staggersever = OrderedDict()
     status = OrderedDict()
@@ -29,6 +30,6 @@ for i in wb.sheetnames:
         else:
             raise ValueError("Invalid category")
 
-        with open("./monster/%s.json" % i, "w+", encoding="utf-8") as f:
+        with open("./monster/%s.json" % name, "w+", encoding="utf-8") as f:
             dump({"Hitzone": hitzones, "Stagger/Sever": staggersever, "Status": status, "Item Effects": itemeffects},
                  f, indent=4)

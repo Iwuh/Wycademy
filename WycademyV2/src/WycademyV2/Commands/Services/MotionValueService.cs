@@ -54,55 +54,55 @@ namespace WycademyV2.Commands.Services
                 {
                     case "great sword":
                     case "great_sword":
-                        return "GS";
+                        return "gs";
 
                     case "long sword":
                     case "long_sword":
-                        return "LS";
+                        return "ls";
 
                     case "sword and shield":
                     case "sword_and_shield":
                     case "sword & shield":
                     case "s&s":
-                        return "SnS";
+                        return "sns";
 
                     case "dual blades":
                     case "dual_blades":
-                        return "DB";
+                        return "db";
 
                     case "gunlance":
                     case "gun_lance":
                     case "gun lance":
-                        return "GL";
+                        return "gl";
 
                     case "hemr":
                     case "hemmr":
-                        return "Hammer";
+                        return "hammer";
 
                     case "hunting horn":
                     case "hunting_horn":
                     case "doot":
-                        return "HH";
+                        return "hh";
 
                     case "switch axe":
                     case "switch_axe":
                     case "switchaxe":
                     case "swaxe":
                     case "swag axe":
-                        return "SA";
+                        return "sa";
 
                     case "charge blade":
                     case "charge_blade":
                     case "chargeblade":
-                        return "CB";
+                        return "cb";
 
                     case "light bowgun":
                     case "light_bowgun":
-                        return "LBG";
+                        return "lbg";
 
                     case "heavy bowgun":
                     case "heavy_bowgun":
-                        return "HBG";
+                        return "lbg";
 
                     default:
                         throw new ArgumentException();
