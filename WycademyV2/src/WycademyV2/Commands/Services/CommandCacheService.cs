@@ -27,16 +27,28 @@ namespace WycademyV2.Commands.Services
 
             _purgeOldMessages = new Timer(_ =>
             {
-                foreach (var pair in _cache)
+                // Lock the cache to ensure thread-safety while the callback is executing, as Timer executes its callback on another thread.
+                lock (_cache)
                 {
-                    // The timestamp of a message can be calculated by getting the leftmost 42 bits of the ID, then
-                    // adding January 1, 2015 as a Unix timestamp.
-                    DateTimeOffset timestamp = DateTimeOffset.FromUnixTimeMilliseconds((long)((pair.Key >> 22) + 1420070400000UL));
-                    TimeSpan difference = DateTimeOffset.UtcNow - timestamp;
-
-                    if (difference.TotalHours >= 2.0)
+                    /*
+                     * Get all messages where the timestamp is older than 2 hours. Then convert it to a list. The reason for this is that
+                     * Where is lazy, and the elements of the IEnumerable are merely references to the elements of the original collection.
+                     * So, iterating over the query result and removing each element from the original collection will throw an exception.
+                     * By using ToList, the elements are copied over to a new collection, and thus will not throw an exception.
+                     */
+                    var purge = _cache.Where(p =>
                     {
-                        _cache.Remove(pair);
+                        // The timestamp of a message can be calculated by getting the leftmost 42 bits of the ID, then
+                        // adding January 1, 2015 as a Unix timestamp.
+                        DateTimeOffset timestamp = DateTimeOffset.FromUnixTimeMilliseconds((long)((p.Key >> 22) + 1420070400000UL));
+                        TimeSpan difference = DateTimeOffset.UtcNow - timestamp;
+
+                        return difference.TotalHours >= 2.0;
+                    }).ToList();
+
+                    foreach (var item in purge)
+                    {
+                        Remove(item);
                     }
                 }
             }, null, 7200000, 7200000);
