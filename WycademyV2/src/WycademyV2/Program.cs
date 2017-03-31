@@ -91,22 +91,12 @@ namespace WycademyV2
             _map = new DependencyMap();
             _map.Add(_client);
 
-            // Create a CancellationTokenSource to cancel the infinite delay when shutting down.
-            var shutdown = new CancellationTokenSource();
-
             // Initialize and add the CommandHandler to the map.
             _handler = new CommandHandler();
-            await _handler.Install(_map, Log, shutdown);
+            await _handler.Install(_map, Log);
 
-            try
-            {
-                // Asynchronously block until the bot is exited.
-                await Task.Delay(-1, shutdown.Token);
-            }
-            catch (TaskCanceledException)
-            {
-                // When the infinite delay is cancelled a TaskCancelledException is thrown, so just ignore it.
-            }
+            // Asynchronously block until the bot is exited.
+            await Task.Delay(-1);
         }
 
         private Task Log(LogMessage msg)

@@ -19,9 +19,8 @@ namespace WycademyV2.Commands
         private CommandService _commands;
         private IDependencyMap _map;
         private Func<LogMessage, Task> _errorLog;
-        private CancellationTokenSource _shutdownToken;
 
-        public async Task Install(IDependencyMap map, Func<LogMessage, Task> log, CancellationTokenSource shutdown)
+        public async Task Install(IDependencyMap map, Func<LogMessage, Task> log)
         {
             // Extract the client from the dependency map.
             _client = map.Get<DiscordSocketClient>();
@@ -33,8 +32,6 @@ namespace WycademyV2.Commands
 
             // Set the method for error logging.
             _errorLog = log;
-
-            _shutdownToken = shutdown;
 
             // Add services to the dependency map.
             await AddServices(_map);
@@ -108,7 +105,7 @@ namespace WycademyV2.Commands
 
             map.Add(new CommandCacheService(_client, 500));
 
-            map.Add(new UtilityService(_shutdownToken));
+            map.Add(new UtilityService());
 
             map.Add(new DamageCalculatorService(map.Get<DiscordSocketClient>()));
 

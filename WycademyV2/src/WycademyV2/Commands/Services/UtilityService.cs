@@ -12,13 +12,10 @@ namespace WycademyV2.Commands.Services
 
         public DateTime StartTime { get; private set; }
 
-        public CancellationTokenSource Shutdown { get; private set; }
-
-        public UtilityService(CancellationTokenSource cancel)
+        public UtilityService()
         {
             rand = new Random();
             StartTime = DateTime.Now;
-            Shutdown = cancel;
         }
 
         public int GetRandomNumber()

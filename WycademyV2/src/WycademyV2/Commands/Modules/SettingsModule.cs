@@ -18,13 +18,11 @@ namespace WycademyV2.Commands.Modules
     {
         private LockerService _locker;
         private CommandCacheService _cache;
-        private UtilityService _utility;
 
-        public SettingsModule(LockerService locker, CommandCacheService ccs, UtilityService us)
+        public SettingsModule(LockerService locker, CommandCacheService ccs)
         {
             _locker = locker;
             _cache = ccs;
-            _utility = us;
         }
 
         [Command("lock")]
@@ -43,7 +41,7 @@ namespace WycademyV2.Commands.Modules
             return Task.CompletedTask;
         }
 
-        [Command("shutdown")]
+        [Command("shutdown", RunMode = RunMode.Async)]
         [Summary("Disconnects and closes the bot.")]
         public async Task Shutdown()
         {
@@ -59,17 +57,10 @@ namespace WycademyV2.Commands.Modules
                 // Dispose of the command cache.
                 _cache.Dispose();
 
-                // Cancel the infinite delay then dispose the token source.
-                _utility.Shutdown.Cancel();
-                _utility.Shutdown.Dispose();
-
-                // Disconnect, log out, and dispose.
+                // Disconnect and log out.
                 var client = Context.Client as DiscordSocketClient;
                 await client.StopAsync();
-                await Task.Delay(1000);
                 await client.LogoutAsync();
-                await Task.Delay(1000);
-                client.Dispose();
 
                 // Finally, exit the console application.
                 Environment.Exit(0);
