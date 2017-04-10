@@ -57,7 +57,7 @@ namespace WycademyV2.Commands.Services
         /// <param name="weapon">The type of the weapon.</param>
         /// <param name="cache">The optional CommandCacheService to add the message to.</param>
         /// <returns>The sent message.</returns>
-        public async Task<IUserMessage> SendDamageCalculatorMessageAsync(CommandContext context, float raw, float element, float affinity, SharpnessType sharpness, WeaponType weapon, CommandCacheService cache = null)
+        public async Task<IUserMessage> SendDamageCalculatorMessageAsync(ICommandContext context, float raw, float element, float affinity, SharpnessType sharpness, WeaponType weapon, CommandCacheService cache = null)
         {
             const string initialMessage = "Please confirm which game you'd like to calculate for by selecting a reaction below.";
 

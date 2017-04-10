@@ -30,7 +30,7 @@ namespace WycademyV2.Commands.Services
             .WithImports("System", "System.Linq", "System.Threading.Tasks", "System.Collections.Generic", "System.Text", "System.IO", "Discord", "Discord.Commands", "Discord.WebSocket");
         }
 
-        public async Task<EvalResult> EvaluateAsync(string input, DiscordSocketClient client, CommandContext context)
+        public async Task<EvalResult> EvaluateAsync(string input, DiscordSocketClient client, ICommandContext context)
         {
             bool successful;
             string output;
@@ -55,9 +55,9 @@ namespace WycademyV2.Commands.Services
         public class ScriptHost
         {
             public DiscordSocketClient Client { get; set; }
-            public CommandContext Context { get; set; }
+            public ICommandContext Context { get; set; }
 
-            public ScriptHost(DiscordSocketClient client, CommandContext context)
+            public ScriptHost(DiscordSocketClient client, ICommandContext context)
             {
                 Client = client;
                 Context = context;
