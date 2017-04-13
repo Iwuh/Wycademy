@@ -43,6 +43,8 @@ namespace WycademyV2
                 // If userMessage is null then it's a system message, which should be ignored.
                 var userMessage = message as SocketUserMessage;
                 if (userMessage == null) return;
+                // Ignore the message if it's by a bot.
+                if (userMessage.Author.IsBot) return;
 
                 // To save on processing, only check if the bot was mentioned if there is at least one mention.
                 if (userMessage.MentionedUsers.Count > 0)
