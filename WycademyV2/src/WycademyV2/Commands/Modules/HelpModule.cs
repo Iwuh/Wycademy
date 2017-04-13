@@ -91,6 +91,7 @@ namespace WycademyV2.Commands.Modules
 
             var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
             await dm.SendMessageAsync(helpBuilder.ToString());
+            await Context.Message.AddReactionAsync(WycademyConst.HELP_REACTION);
         }
 
         [Command("help")]
@@ -107,7 +108,7 @@ namespace WycademyV2.Commands.Modules
                 foreach (CommandInfo command in result.Commands.Select(x => x.Command))
                 {
                     helpBuilder.AppendLine(Format.Underline(command.Module.Summary));
-                    helpBuilder.AppendLine($"{Format.Bold(command.Name)} ({(command.Summary != null ? command.Summary : "There is no summary available for this command.")})");
+                    helpBuilder.AppendLine($"{Format.Bold(command.Name)} ({(command.Summary ?? "There is no summary available for this command.")})");
                     helpBuilder.AppendLine();
                     if (command.Aliases.Count >= 1)
                     {
@@ -117,7 +118,7 @@ namespace WycademyV2.Commands.Modules
 
                     foreach (ParameterInfo parameter in command.Parameters)
                     {
-                        helpBuilder.AppendLine($"{(parameter.IsOptional ? "(Optional) " : "")}`{parameter.Name}` - {(parameter.Summary != null ? parameter.Summary : "There is no summary available for this parameter.")}");
+                        helpBuilder.AppendLine($"{(parameter.IsOptional ? "(Optional) " : "")}`{parameter.Name}` - {(parameter.Summary ?? "There is no summary available for this parameter.")}");
                         helpBuilder.AppendLine();
                     }
 
@@ -126,6 +127,7 @@ namespace WycademyV2.Commands.Modules
 
                 var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
                 await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: helpBuilder.ToString(), prependZWSP: true);
+                await Context.Message.AddReactionAsync(WycademyConst.HELP_REACTION);
             }
         }
     }

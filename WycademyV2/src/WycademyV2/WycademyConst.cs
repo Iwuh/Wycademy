@@ -18,5 +18,7 @@ namespace WycademyV2
 #else
         public const string DATA_LOCATION = @"/home/ubuntu/Wycademy/WycademyV2/src/WycademyV2/Data";
 #endif
+
+        public const string HELP_REACTION = "🏛";
     }
 }
