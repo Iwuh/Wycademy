@@ -57,12 +57,12 @@ namespace WycademyV2.Commands.Services
             {
                 if (ContainsKey(cacheable.Id))
                 {
-                    var message = await channel.GetMessageAsync(this[cacheable.Id]);
                     try
                     {
+                        var message = await channel.GetMessageAsync(this[cacheable.Id]);
                         await message.DeleteAsync();
                     }
-                    catch (HttpException)
+                    catch (NullReferenceException)
                     {
                         // If we get here, the message was already deleted. There's nothing to do, so just move on.
                     }
