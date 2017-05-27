@@ -15,13 +15,13 @@ namespace WycademyV2.Commands.Modules
     {
         private CommandService _commands;
         private CommandCacheService _cache;
-        private IDependencyMap _map;
+        private IServiceProvider _provider;
 
-        public HelpModule(CommandService cmds, CommandCacheService ccs, IDependencyMap map)
+        public HelpModule(CommandService cmds, CommandCacheService ccs, IServiceProvider provider)
         {
             _commands = cmds;
             _cache = ccs;
-            _map = map;
+            _provider = provider;
         }
 
         [Command("help")]
@@ -39,7 +39,7 @@ namespace WycademyV2.Commands.Modules
                 // Skip the module if none of the commands are usable by the user in the current context.
                 if (module.Commands.None(c =>
                 {
-                    var result = c.CheckPreconditionsAsync(Context, _map).Result;
+                    var result = c.CheckPreconditionsAsync(Context, _provider).Result;
                     return result.IsSuccess;
                 })) continue;
 
@@ -91,7 +91,7 @@ namespace WycademyV2.Commands.Modules
 
             var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
             await dm.SendMessageAsync(helpBuilder.ToString());
-            await Context.Message.AddReactionAsync(WycademyConst.HELP_REACTION);
+            await Context.Message.AddReactionAsync(Emote.Parse(WycademyConst.HELP_REACTION));
         }
 
         [Command("help")]
@@ -127,7 +127,7 @@ namespace WycademyV2.Commands.Modules
 
                 var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
                 await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: helpBuilder.ToString(), prependZWSP: true);
-                await Context.Message.AddReactionAsync(WycademyConst.HELP_REACTION);
+                await Context.Message.AddReactionAsync(Emote.Parse(WycademyConst.HELP_REACTION));
             }
         }
     }

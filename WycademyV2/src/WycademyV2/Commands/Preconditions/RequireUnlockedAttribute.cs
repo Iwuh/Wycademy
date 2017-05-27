@@ -1,4 +1,5 @@
 ﻿using Discord.Commands;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace WycademyV2.Commands.Preconditions
 {
     public class RequireUnlockedAttribute : PreconditionAttribute
     {
-        public override Task<PreconditionResult> CheckPermissions(ICommandContext context, CommandInfo command, IDependencyMap map)
+        public override Task<PreconditionResult> CheckPermissions(ICommandContext context, CommandInfo command, IServiceProvider provider)
         {
-            var locker = map.Get<LockerService>();
+            var locker = provider.GetService<LockerService>();
 
             if (!locker.IsLocked)
             {

@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,24 +18,23 @@ namespace WycademyV2.Commands
     {
         private DiscordSocketClient _client;
         private CommandService _commands;
-        private IDependencyMap _map;
+        private IServiceProvider _provider;
         private Func<LogMessage, Task> _errorLog;
 
-        public async Task Install(IDependencyMap map, Func<LogMessage, Task> log)
+        public async Task Install(IServiceProvider provider, Func<LogMessage, Task> log)
         {
-            // Extract the client from the dependency map.
-            _client = map.Get<DiscordSocketClient>();
+            // Extract the client from the provider.
+            _client = provider.GetService<DiscordSocketClient>();
 
-            // Initialize the CommandService.
-            _commands = new CommandService();
+            // Get the command service from the provider.
+            _commands = provider.GetService<CommandService>();
 
-            _map = map;
+            _provider = provider;
 
             // Set the method for error logging.
             _errorLog = log;
 
-            // Add services to the dependency map.
-            await AddServices(_map);
+            // Add any custom typereaders.
             _commands.AddTypeReader<BlacklistTypeReader>(new BlacklistTypeReader());
 
             // Add all modules in the assembly to the CommandService.
@@ -51,7 +51,7 @@ namespace WycademyV2.Commands
             // Ignore any bot messages.
             if (userMessage.Author.IsBot) return;
             // Ignore any users on the blacklist.
-            if (_map.Get<BlacklistService>().CheckBlacklist(msg.Author.Id, BlacklistType.User)) return;
+            if (_provider.GetService<BlacklistService>().CheckBlacklist(msg.Author.Id, BlacklistType.User)) return;
 
             // The character index to start parsing the command at.
             int argPos = 0;
@@ -62,7 +62,7 @@ namespace WycademyV2.Commands
 #endif
             {
                 var context = new CommandContext(_client, userMessage);
-                var result = await _commands.ExecuteAsync(context, argPos, _map);
+                var result = await _commands.ExecuteAsync(context, argPos, _provider);
 
                 if (!result.IsSuccess)
                 {
@@ -93,31 +93,6 @@ namespace WycademyV2.Commands
                     }
                 }
             }
-        }
-
-        private async Task AddServices(IDependencyMap map)
-        {
-            map.Add(new MonsterInfoService());
-
-            map.Add(new LockerService());
-
-            map.Add(new MotionValueService());
-
-            map.Add(new CommandCacheService(_client, 500));
-
-            map.Add(new UtilityService());
-
-            map.Add(new DamageCalculatorService(map.Get<DiscordSocketClient>()));
-
-            var blacklist = new BlacklistService();
-            await blacklist.LoadAsync();
-            map.Add(blacklist);
-
-            map.Add(new EvalService(map.Get<DiscordSocketClient>()));
-
-            map.Add(new WeaponInfoService());
-
-            map.Add(new ReactionMenuService(_map.Get<DiscordSocketClient>()));
         }
     }
 }

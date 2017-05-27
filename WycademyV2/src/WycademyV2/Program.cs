@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace WycademyV2
 
         private DiscordSocketClient _client;
         private CommandHandler _handler;
-        private DependencyMap _map;
+        private IServiceProvider _provider;
 
         public async Task Start()
         {
@@ -53,13 +54,13 @@ namespace WycademyV2
                     if (userMessage.MentionedUsers.Select(x => x.Id).Contains(_client.CurrentUser.Id))
                     {
                         // React with eyes.
-                        await userMessage.AddReactionAsync("👀");
+                        await userMessage.AddReactionAsync(Emote.Parse("👀"));
                     }
                 }
             };
             _client.JoinedGuild += async guild =>
             {
-                BlacklistService blacklist = _map.Get<BlacklistService>();
+                BlacklistService blacklist = _provider.GetService<BlacklistService>();
 
                 if (blacklist.CheckBlacklist(guild.Id, BlacklistType.Guild))
                 {
@@ -89,16 +90,49 @@ namespace WycademyV2
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
 
-            // Add the client to the DependencyMap that will be used during command execution.
-            _map = new DependencyMap();
-            _map.Add(_client);
+            // Add services and the client to the IServiceProvider.
+            _provider = await ConfigureServices();
 
-            // Initialize and add the CommandHandler to the map.
+            // Initialize the CommandHandler.
             _handler = new CommandHandler();
-            await _handler.Install(_map, Log);
+            await _handler.Install(_provider, Log);
 
             // Asynchronously block until the bot is exited.
             await Task.Delay(-1);
+        }
+
+        private async Task<IServiceProvider> ConfigureServices()
+        {
+            // Add all services with parameterless constructors.
+            var services = new ServiceCollection()
+                .AddSingleton(_client)
+                .AddSingleton(new CommandService()) // TODO: Make DefaultRunMode async
+                .AddSingleton<MonsterInfoService>()
+                .AddSingleton<LockerService>()
+                .AddSingleton<MotionValueService>()
+                .AddSingleton<UtilityService>()
+                .AddSingleton<WeaponInfoService>();
+
+            // Add all services with custom constructors.
+            services.AddSingleton(new CommandCacheService(_client, 500))
+                .AddSingleton(new DamageCalculatorService(_client))
+                .AddSingleton(new EvalService(_client))
+                .AddSingleton(new ReactionMenuService(_client));
+
+            // Add the blacklist service.
+            var blacklist = new BlacklistService();
+            await blacklist.LoadAsync();
+            services.AddSingleton(blacklist);
+
+            // Build the collection into an IServiceProvider.
+            var provider = services.BuildServiceProvider();
+
+            // Request certain services to create them (a singleton is not created until the first time it is requested).
+            provider.GetService<UtilityService>();
+            provider.GetService<WeaponInfoService>();
+
+            // Return the provider.
+            return provider;
         }
 
         private Task Log(LogMessage msg)
