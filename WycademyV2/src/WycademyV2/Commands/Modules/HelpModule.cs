@@ -91,7 +91,7 @@ namespace WycademyV2.Commands.Modules
 
             var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
             await dm.SendMessageAsync(helpBuilder.ToString());
-            await Context.Message.AddReactionAsync(Emote.Parse(WycademyConst.HELP_REACTION));
+            await Context.Message.AddReactionAsync(new Emoji(WycademyConst.HELP_REACTION));
         }
 
         [Command("help")]
@@ -127,7 +127,7 @@ namespace WycademyV2.Commands.Modules
 
                 var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
                 await dm.SendCachedMessageAsync(Context.Message.Id, _cache, text: helpBuilder.ToString(), prependZWSP: true);
-                await Context.Message.AddReactionAsync(Emote.Parse(WycademyConst.HELP_REACTION));
+                await Context.Message.AddReactionAsync(new Emoji(WycademyConst.HELP_REACTION));
             }
         }
     }

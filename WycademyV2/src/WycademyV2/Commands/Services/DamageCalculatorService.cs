@@ -76,8 +76,8 @@ namespace WycademyV2.Commands.Services
             }
 
             // Add reaction choices.
-            await message.AddReactionAsync(FOUR);
-            await message.AddReactionAsync(G);
+            await message.AddReactionAsync(new Emoji(FOUR));
+            await message.AddReactionAsync(new Emoji(G));
 
             // Add the message ID (and associated data) to the dictionary.
             _messages.Add(message.Id, calculatorMessage);
@@ -230,7 +230,7 @@ namespace WycademyV2.Commands.Services
                 if (calcMessage.User.Id != reaction.UserId) return;
 
                 // Check whether the user chose 4U or Gen and edit the message accordingly.
-                switch (reaction.Emoji.Name)
+                switch (reaction.Emote.Name)
                 {
                     case FOUR:
                         if (calcMessage.Weapon == WeaponType.Prowler)

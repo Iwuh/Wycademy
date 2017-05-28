@@ -64,9 +64,9 @@ namespace WycademyV2.Commands.Entities
 
             var message = await channel.SendMessageAsync(string.Empty, embed: embed);
 
-            await message.AddReactionAsync(START);
-            await message.AddReactionAsync(STOP);
-            await message.AddReactionAsync(RESTART);
+            await message.AddReactionAsync(new Emoji(START));
+            await message.AddReactionAsync(new Emoji(STOP));
+            await message.AddReactionAsync(new Emoji(RESTART));
 
             _message = message;
             return message;
@@ -74,7 +74,7 @@ namespace WycademyV2.Commands.Entities
 
         public async override Task HandleReaction(SocketReaction reaction)
         {
-            switch (reaction.Emoji.Name)
+            switch (reaction.Emote.Name)
             {
                 case START:
                     if (_running) break;

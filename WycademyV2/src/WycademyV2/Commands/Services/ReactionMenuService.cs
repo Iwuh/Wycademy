@@ -25,7 +25,7 @@ namespace WycademyV2.Commands.Services
             // Send the message, using the implementation defined by the reaction menu message.
             var message = await menu.CreateMessageAsync(channel);
             // Add the button to close the menu.
-            await message.AddReactionAsync(CLOSE);
+            await message.AddReactionAsync(new Emoji(CLOSE));
 
             // Add the message to the cache.
             _messages.Add(message.Id, menu);
@@ -48,7 +48,7 @@ namespace WycademyV2.Commands.Services
                 if (reaction.UserId != menu.User.Id) return;
 
                 // If the close reaction is used, end the reaction menu. Otherwise, handle the reaction.
-                if (reaction.Emoji.Name == CLOSE)
+                if (reaction.Emote.Name == CLOSE)
                 {
                     await menu.CloseMenuAsync();
                     _messages.Remove(message.Id);
@@ -63,13 +63,13 @@ namespace WycademyV2.Commands.Services
                 var guildAuthor = message.Author as SocketGuildUser;
                 if (guildAuthor.GuildPermissions.ManageMessages)
                 {
-                    if (reaction.Emoji.Id == null) // Unicode emoji
+                    if (reaction.Emote as Emote == null) // Unicode emoji
                     {
-                        await message.RemoveReactionAsync(reaction.Emoji.Name, menu.User);
+                        await message.RemoveReactionAsync(new Emoji(reaction.Emote.Name), menu.User);
                     }
                     else // Discord emoji
                     {
-                        await message.RemoveReactionAsync(reaction.Emoji, menu.User);
+                        await message.RemoveReactionAsync(reaction.Emote, menu.User);
                     }
                 }
             }

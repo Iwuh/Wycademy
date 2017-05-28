@@ -27,7 +27,7 @@ namespace WycademyV2.Commands.Entities
 
         public async override Task HandleReaction(SocketReaction reaction)
         {
-            switch (reaction.Emoji.Name)
+            switch (reaction.Emote.Name)
             {
                 case BEGIN:
                     // Don't do anything if it's already on the first page.
@@ -63,10 +63,10 @@ namespace WycademyV2.Commands.Entities
             // Send the starting page, at the specified index (if said index is within the range of pages).
             var message = await channel.SendMessageAsync( MakeCodeBlock( _pages[_pageIndex] ) );
 
-            await message.AddReactionAsync(BEGIN);
-            await message.AddReactionAsync(PREV_PAGE);
-            await message.AddReactionAsync(NEXT_PAGE);
-            await message.AddReactionAsync(END);
+            await message.AddReactionAsync(new Emoji(BEGIN));
+            await message.AddReactionAsync(new Emoji(PREV_PAGE));
+            await message.AddReactionAsync(new Emoji(NEXT_PAGE));
+            await message.AddReactionAsync(new Emoji(END));
 
             _message = message;
             return message;

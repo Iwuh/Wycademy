@@ -54,7 +54,7 @@ namespace WycademyV2
                     if (userMessage.MentionedUsers.Select(x => x.Id).Contains(_client.CurrentUser.Id))
                     {
                         // React with eyes.
-                        await userMessage.AddReactionAsync(Emote.Parse("👀"));
+                        await userMessage.AddReactionAsync(new Emoji("👀"));
                     }
                 }
             };
