@@ -26,11 +26,12 @@ namespace WycademyV2.Commands.Services
             // Also add imports for various essential namespaces.
             _evalOptions = ScriptOptions.Default
             .WithReferences(typeof(object).GetTypeInfo().Assembly, typeof(Enumerable).GetTypeInfo().Assembly, typeof(Embed).GetTypeInfo().Assembly,
-                typeof(CommandContext).GetTypeInfo().Assembly, typeof(DiscordSocketClient).GetTypeInfo().Assembly)
-            .WithImports("System", "System.Linq", "System.Threading.Tasks", "System.Collections.Generic", "System.Text", "System.IO", "Discord", "Discord.Commands", "Discord.WebSocket");
+                typeof(CommandContext).GetTypeInfo().Assembly, typeof(DiscordSocketClient).GetTypeInfo().Assembly, Assembly.GetEntryAssembly())
+            .WithImports("System", "System.Linq", "System.Threading.Tasks", "System.Collections.Generic", "System.Text", "System.IO", "Discord", "Discord.Commands", "Discord.WebSocket",
+                         "WycademyV2", "WycademyV2.Commands.Services", "Microsoft.Extensions.DependencyInjection");
         }
 
-        public async Task<EvalResult> EvaluateAsync(string input, DiscordSocketClient client, ICommandContext context)
+        public async Task<EvalResult> EvaluateAsync(string input, ICommandContext context, IServiceProvider provider)
         {
             bool successful;
             string output;
@@ -38,7 +39,7 @@ namespace WycademyV2.Commands.Services
             try
             {
                 // Evaluate the input, using the current client and context as global variables.
-                object result = await CSharpScript.EvaluateAsync(input, options: _evalOptions, globals: new ScriptHost(client, context));
+                object result = await CSharpScript.EvaluateAsync(input, options: _evalOptions, globals: new ScriptHost(context.Client as DiscordSocketClient, context, provider));
 
                 successful = true;
                 output = result?.ToString() ?? "null";
@@ -54,13 +55,15 @@ namespace WycademyV2.Commands.Services
 
         public class ScriptHost
         {
-            public DiscordSocketClient Client { get; set; }
-            public ICommandContext Context { get; set; }
+            public DiscordSocketClient Client { get; }
+            public ICommandContext Context { get; }
+            public IServiceProvider Provider { get; }
 
-            public ScriptHost(DiscordSocketClient client, ICommandContext context)
+            public ScriptHost(DiscordSocketClient client, ICommandContext context, IServiceProvider provider)
             {
                 Client = client;
                 Context = context;
+                Provider = provider;
             }
         }
     }

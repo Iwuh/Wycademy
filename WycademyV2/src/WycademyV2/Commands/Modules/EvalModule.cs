@@ -12,11 +12,13 @@ namespace WycademyV2.Commands.Modules
     {
         private CommandCacheService _cache;
         private EvalService _eval;
+        private IServiceProvider _provider;
 
-        public EvalModule(CommandCacheService cache, EvalService eval)
+        public EvalModule(CommandCacheService cache, EvalService eval, IServiceProvider provider)
         {
             _cache = cache;
             _eval = eval;
+            _provider = provider;
         }
 
         [Command("eval")]
@@ -24,7 +26,7 @@ namespace WycademyV2.Commands.Modules
         [RequireOwner]
         public async Task EvaluateExpression([Remainder, Summary("The C# expression to evaluate.")] string expr)
         {
-            var result = await _eval.EvaluateAsync(expr, Context.Client as DiscordSocketClient, Context);
+            var result = await _eval.EvaluateAsync(expr, Context, _provider);
 
             string message;
             if (!result.IsSuccess)
