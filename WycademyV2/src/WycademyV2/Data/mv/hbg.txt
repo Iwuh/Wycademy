@@ -1,0 +1,13 @@
+HEAVY BOWGUN
+Motion Values:
+Melee Attack (Special attack) = 2 neutral damage
+Hunter Arts:
+Super Nova I (costs 420) = 100 neutral damage in the center, 30 neutral damage at the edge
+Super Nova II (costs 500) = 130 neutral damage in the center, 40 neutral damage at the edge
+Super Nova III (costs 830) = 175 neutral damage in the center, 50 neutral damage at the edge
+Guns Blazing I (costs 830) = 0 (Boosts movement and reload speed and reduces recoil for 40 seconds)
+Guns Blazing II (costs 1000) = 0 (Boosts movement and reload speed and reduces recoil for 60 seconds)
+Guns Blazing III (costs 1080) = 0 (Boosts movement and reload speed and reduces recoil for 90 seconds)
+Gunpowder Infusion I (costs 170) = 0 (Boosts the power of the next 10 bullets by 15%)
+Gunpowder Infusion II (costs 250) = 0 (Boosts the power of the next 17 bullets by 15%)
+Gunpowder Infusion III (costs 330) = 0 (Boosts the power of the next 22 bullets by 15%)

@@ -1,0 +1,40 @@
+{
+    "Hitzone": {
+        "Head": "65 65 60 10 10 5 15 15 100 100",
+        "Head (Rage)": "30 34 30 15 15 10 20 20 120 100",
+        "Torso": "37 37 35 15 15 10 20 20 0 100",
+        "Torso (Rage)": "76 76 60 10 10 15 15 15 0 100",
+        "Torso (Back)": "25 25 25 5 5 5 20 20 0 100",
+        "Torso (Back) (Rage)": "22 22 20 5 5 5 25 25 0 100",
+        "Forelegs": "30 30 30 10 10 5 15 15 0 100",
+        "Forelegs (Rage)": "27 27 30 15 15 10 20 20 0 100",
+        "Hind Legs": "43 38 35 5 5 5 10 10 0 100",
+        "Hind Legs (Rage)": "35 32 25 10 10 5 15 15 0 100",
+        "Tail": "35 32 30 5 5 5 20 20 0 100",
+        "Tail (Rage)": "38 35 30 5 5 5 20 20 0 100"
+    },
+    "Stagger/Sever": {
+        "Head": "350 N/A Red",
+        "Stomach": "300 N/A Red",
+        "Torso": "200 N/A Orange",
+        "Forelegs": "150 N/A Green",
+        "Hind Leg (Left)": "220 N/A White",
+        "Hind Leg (Right)": "220 N/A White",
+        "Tail": "180 180 Green"
+    },
+    "Status": {
+        "Poison": "100 50 600 45sec 10/10sec 8",
+        "Sleep": "180 200 980 60sec 10/10sec 0",
+        "Paralysis": "180 200 980 15sec 10/10sec 0",
+        "KO": "180 150 780 15sec 5/10sec 0",
+        "Exhaust": "180 150 780 0sec 5/10sec 0",
+        "Jump": "50 120 410 0sec 0/0sec 0",
+        "Mount": "60 100 1000 0sec 0/0sec 150",
+        "Blast": "130 45 1030 0sec 0/0sec 300"
+    },
+    "Item Effects": {
+        "Flash Bomb": "15sec 15sec 30sec",
+        "Pitfall Trap": "10sec 10sec 20sec",
+        "Shock Trap": "5sec 5sec 15sec"
+    }
+}

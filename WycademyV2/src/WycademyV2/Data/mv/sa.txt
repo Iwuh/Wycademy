@@ -1,0 +1,51 @@
+SWITCH AXE
+Phial effects:
+- Power Phial = 1.20 attack modifier
+- Element Phial = 1.25 element modifier
+- Exhaust Phial = sword mode has a chance to deal exhaust damage with every hit
+- Poison Phial = sword mode has a chance to deal poison status with every hit
+- Para Phial = sword mode has a chance to deal para status with every hit
+- Dragon Phial = sword mode deals dragon elemental damage with every hit
+Motion Values:
+Axe mode
+Draw attack/Side Slash = 23
+Overhead Slash (X1) = 48
+Forward Thrust (-> X) = 19
+Up Swing (X+A) = 32
+Hack `n` Slash (A, A, A... after X+A) = 24 per hit
+Hack `n` Slash finisher (R during H`n`S) = 25+30+40
+Sword to Axe morph Side Slash (A, R) = 19
+Jump Attack = 40
+Sword to Axe morph Jump attack = 40
+Aerial Style (Axe mode):
+Aerial Axe Slash (X after a vault) = 40
+Adept Style (Axe mode):
+Triple Round Slash (X after adept evade) = 25+30+40
+Sword mode
+Down Slash (X1) = 32 (costs 4 Phial gauge)
+Up Slash (X2) = 25 (costs 4 Phial gauge)
+Side Slash (A1) = 28 (costs 4 Phial gauge)
+Dual Slash (A2) = 28+36 (costs 4 Phial gauge)
+Elemental Discharge thrust (X+A) = 28 (costs 11 Phial gauge)
+Elemental Discharge hits = 13 per hit (max 7 hits, costs 3×2 Phial gauge)
+Elemental Discharge finisher = 80 (costs 20 Phial gauge)
+Elemental Discharge early finisher (back+X) = 50 (costs 20 Phial gauge)
+Axe to Sword morph Down Slash (-> X, R) = 32 (costs 4 Phial gauge)
+Jump Attack (X in the air) = 30 (costs 4 Phial gauge)
+Axe to Sword morph Jump Attack = 30 (costs 4 Phial gauge)
+Aerial Style (Sword mode):
+Rising aerial slash (automatic after valut) = 35 (costs 4 Phial gauge)
+Descending aerial Slash (X after a vault) = 30 (costs 4 Phial gauge)
+Aerial Elemental Discharge (X+A after a vault) = 40+13×7+80 (costs 11+3×2+20 Phial gauge)
+Adept Style (Sword mode):
+Dual Up Slash (X after adept evade) = 25+25 (costs 4 Phial gauge)
+Hunter Arts:
+Trance Slash I (costs 670) = 13+15+20+20+25+30+15×4+80 [or +70+20 with Demon Riot] = 263 [273]
+Trance Slash II (costs 750) = 15+17+22+24+29+35+25×4+90 [or +80+30 with Demon Riot] = 332 [352]
+Trance Slash III (costs 830) = 18+20+25+28+33+40+30×4+100 [or +90+40 with Demon Riot] = 384 [414]
+Demon Riot I (costs 1080) = 0 (1.05 boost to Phial effects, Phial decreases over time at a fast rate)
+Demon Riot II (costs 1170) = 0 (1.10 boost to Phial effects, Phial decreases over time at a moderate rate)
+Demon Riot III (costs 1250) = 0 (1.20 boost to Phial effects, Phial decreases slowly over time)
+Energy Charge I (costs 250) = 25 (reloads 75% of your Phial)
+Energy Charge II (costs 330) = 25 (reloads 100% of your Phial and increases affinity by 10% for 120 seconds)
+Energy Charge III (costs 500) = 25 (reloads 100% of your Phial and increases affinity by 30% for 120 seconds)

@@ -1,0 +1,48 @@
+GREAT SWORD
+Center of blade modifer = 1.05 (when hitting with the middle of your GS)
+Motion Values:
+Draw Slash (X1) = 48
+Side Slash (A1) = 32
+Up Swing (X+A) = 44
+Kick (Special attack) = 2 neutral damage
+Slap (X after roll, kick or lv. 3 charge) = 18 (22 KO)
+Charge lv. 1 = 65 (has a hidden sharpness modifier of 1.1 and element modifier of 1.2)
+Charge lv. 2 = 80 (has a hidden sharpness modifier of 1.2 and element modifier of 1.5)
+Charge lv. 3 = 100 (has a hidden sharpness modifier of 1.3 and element modifier of 2.0)
+Overcharge = 80 (has a hidden sharpness modifier of 1.2 and element modifier of 1.5)
+Strong Charge lv. 0 = 52
+Strong Charge lv. 1 = 72 (has a hidden sharpness modifier of 1.1 and element modifier of 1.8)
+Strong Charge lv. 2 = 90 (has a hidden sharpness modifier of 1.2 and element modifier of 2.25)
+Strong Charge lv. 3 = 120 (has a hidden sharpness modifier of 1.3 and element modifier of 3.0)
+Finisher Side Slash lv. 0 = 48
+Finisher Side Slash lv. 1 = 52 (has a hidden sharpness modifier of 1.1)
+Finisher Side Slash lv. 2 = 60 (has a hidden sharpness modifier of 1.2)
+Finisher Side Slash lv. 3 = 80 (has a hidden sharpness modifier of 1.3)
+Jump Slash = 48
+Aerial style:
+Aerial Slash = 48
+Aerial Charge lv. 1 = 57 (has a hidden sharpness modifier of 1.1)
+Aerial Charge lv. 2 = 66 (has a hidden sharpness modifier of 1.2)
+Aerial Charge lv. 3 = 75 (has a hidden sharpness modifier of 1.3)
+Strong Side Slash = 60 (has a hidden sharpness modifier of 1.2)
+Adept Style:
+Dashing Up Swing = 50
+Hunter Arts:
+Ground Slash I (costs 630) = 50 + 20
+Ground Slash II (costs 670) = 50 + 21 +21
+Ground Slash III (costs 830) = 50 + 22 + 22 + 22 + 22
+Lion`s Maw I (costs 250) = 48 side slash and powers up next hit by +10%
+Lion`s Maw II (costs 350) = 52 side slash and powers up next hit by +20%
+Lion`s Maw III (costs 500) = 66 side slash and powers up next hit by +33%
+Brimstone Slash I (costs 1250): Damage is increased by up to 1.5 times based on damage taken while charging
+- Charge lv. 0 = 130
+- Charge lv. 1 = 150 (has a hidden sharpness multiplier of 1.1)
+Brimstone Slash II (costs 1500): Damage is increased by up to 1.5 times based on damage taken while charging
+- Charge lv. 0 = 130
+- Charge lv. 1 = 150 (has a hidden sharpness multiplier of 1.1)
+- Charge lv. 2 = 175 (has a hidden sharpness multiplier of 1.2)
+Brimstone Slash III (costs 1670): Damage is increased by up to 1.5 times based on damage taken while charging
+- Charge lv. 0 = 130
+- Charge lv. 1 = 150 (has a hidden sharpness multiplier of 1.1)
+- Charge lv. 2 = 175 (has a hidden sharpness multiplier of 1.2)
+- Charge lv. 3 = 190 (has a hidden sharpness multiplier of 1.3)

@@ -1,0 +1,24 @@
+{
+    "Hitzone": {
+        "Head": "80 70 70 20 10 5 30 0 100 100 ",
+        "Body": "70 60 60 10 5 0 20 0 0 100 "
+    },
+    "Stagger/Sever": {
+        "Torso": "300 N/A Red"
+    },
+    "Status": {
+        "Poison": "30 100 330 90sec 10/5sec 10 ",
+        "Sleep": "30 100 330 30sec 5/10sec 0 ",
+        "Paralysis": "150 100 350 20sec 5/10sec 0 ",
+        "KO": "100 150 400 10sec 5/10sec 0 ",
+        "Exhaust": "150 50 350 0sec 5/10sec 0 ",
+        "Jump": "80 120 530 0sec 0/0sec 0 ",
+        "Mount": "50 60 600 0sec 0/0sec 150 ",
+        "Blast": "70 30 500 0sec 0/0sec 100 "
+    },
+    "Item Effects": {
+        "Flash Bomb": "20sec 20sec 30sec ",
+        "Pitfall Trap": "15sec 15sec 25sec ",
+        "Shock Trap": "15sec 15sec 25sec "
+    }
+}

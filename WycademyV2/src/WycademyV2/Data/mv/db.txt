@@ -1,0 +1,53 @@
+DUAL BLADES
+Motion values:
+Draw attack = 7+7, 7+7 = 28 total
+Up Slash (X after roll) = 18
+Dual Slash 1 (X1) = 8+12 = 20 total
+Dual Slash 2 (X2) = 7+10 = 17 total
+Circle Slash (X3) = 10, 12+12 = 34 total
+Right Dual Slash (A1) = 7+10 = 17 total
+Right Jumping Spin Slash (A2) = 16, 6, 8 = 30 total
+Left Dual Slash (Left + A1) = 9+12 = 21 total
+Left Jumping Spin Slash (A2) = 16, 6, 8 = 30 total
+Jump Attack (X in the air) = 10, 13 = 23 total
+Archdemon mode: Activates by exiting Demon Mode using R when the Demon gauge fills up
+Draw attack/Spinning attack (X+A) = 7, 7, 7, 7, 10+10 = 48 total
+Up Slash (X after roll) = 18
+Dual Slash (X1) = 8+12 = 20 total
+Dual Slash (X2) = 7+10 = 17 total
+Circle Slash (X3) = 10, 12+12 = 34 total
+Archdemon Dance (X+A after X1, X2, X3, A1 or A2) = 8+8, 8, 8, 6, 20+20 = 78 total
+Right Dual Slash (A1) = 7+10 = 17 total
+Right Double Jumping Spin Slashes (A2) = 16, 6, 8 + 18, 6, 10 = 30 + 34 total
+Left Dual Slash (Left + A1) = 9+12 = 21 total
+Left Double Jumping Spin Slashes (A2) = 16, 6, 8 + 18, 6, 10 = 30 + 34 total
+Jump Double Slash (X in the air) = 10, 13 = 23 total
+Jump Spin Slashes (Demon dash off cliff) = 12, 15, 15, 12 = 54 total
+Jump finisher (X after Jump Spin Slashes) = 16+16, 10+10, 7+7 = 66 total
+Demon mode: Activate by pressing R
+Spinning attack (Special attack) = 8, 8, 8, 8, 11+11 = 54 total
+Circle Slash (X1) = 11, 13+13 = 37 total
+Demon Combo (X2) = 4, 9, 4, 9, 12+12 = 50 total
+Double Jumping Spin Slashes (A1) = 18, 6, 9 + 20, 6, 11 = 33 + 37 total
+Demon Dance (X+A) = 33, (4 + 4) x 4, 6, 20 + 20 = 111 total
+Jump Double Slash (X in the air) = 11, 14 = 25 total
+Jump Spin Slashes (Dash off cliff) = 13, 17, 17, 13 = 60 total
+Jump finisher (X after Jump Spin Slashes) = 18+18, 11+11, 8+8 = 74 total
+Aerial Style:
+Rising Aerial Slashes (archdemon mode) = 12, 15, 15, 12 = 54 total
+Rising Aerial Slahes (demon mode) = 13, 17, 17, 13 = 60 total
+Descending Aerial Slashes (archdemon mode) = 16+16, 10+10, 7+7 = 66 total
+Descending Aerial Slashes (demon mode) = 18+18, 11+11, 8+8 = 74 total
+Adept style:
+Adept Evade (archdemon mode) = 20, 14, 7, 7 = 48 total
+Adept Evade (demon mode) = 23, 16, 8, 8 = 55 total
+Hunter Arts:
+Blood Wind I (costs 670) = (13 + 13 + 13 + 13) × 3 + 30 + 30 = 216 total
+Blood Wind II (costs 750) = (13 + 13 + 13 + 13) × 4 + 30 + 30 = 268 total
+Blood Wind III (costs 830) = (13 + 13 + 13 + 13) × 5 + 30 + 30 = 320 total
+Aerial Slam I (costs 420) = 12 + 15 + 15 + 12 + 18 + 18 + 80 = 170 total
+Aerial Slam II (costs 500) = 12 + 15 + 15 + 12 + 18 + 18 + 110 = 200 total
+Aerial Slam III (costs 580) = 12 + 15 + 15 + 12 + 18 + 18 + 150 = 240 total
+Wolf`s Maw I (costs 1250) = doubles hit count for 60 s (second hit deals 20% damage)
+Wolf`s Maw II (costs 1500) = doubles hit count for 90 s (second hit deals 25% damage)
+Wolf`s Maw III (costs 1670) = doubles hit count for 120 s (second hit deals 30% damage)

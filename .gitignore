@@ -243,3 +243,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Wycademy Blacklist files
+userblacklist.txt
+guildblacklist.txt
+guildownerblacklist.txt
