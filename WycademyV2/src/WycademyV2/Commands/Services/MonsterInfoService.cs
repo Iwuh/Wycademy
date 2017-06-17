@@ -2,10 +2,13 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Entities;
 
 namespace WycademyV2.Commands.Services
 {
@@ -23,79 +26,79 @@ namespace WycademyV2.Commands.Services
         private readonly string[] STAGGER_COLUMN_NAMES = new string[] { "Stagger Value", "Sever Value", "Extract Colour" };
         private readonly string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
         private readonly string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
-        private readonly string[] MONSTER_LIST = new string[71]
+        private readonly string[] MONSTER_LIST = new string[] 
         {
-            "Great_Maccao",
-            "Velocidrome",
-            "Bulldrome",
-            "Seltas",
-            "Arzuros",
-            "Redhelm_Arzuros",
-            "Gendrome",
-            "Cephadrome",
-            "Yian_Kut-Ku",
-            "Iodrome",
-            "Kecha_Wacha",
-            "Lagombi",
-            "Snowbaron_Lagombi",
-            "Gypceros",
-            "Tetsucabra",
-            "Drilltusk_Tetsucabra",
-            "Daimyo_Hermitaur",
-            "Stonefist_Hermitaur",
-            "Volvidon",
-            "Royal_Ludroth",
-            "Malfestio",
-            "Zamtrios",
-            "Khezu",
-            "Rathian",
-            "Gold_Rathian",
-            "Dreadqueen_Rathian",
-            "Nibelsnarf",
-            "Plesioth",
-            "Blagonga",
-            "Lavasioth",
-            "Shogun_Ceanataur",
-            "Najarala",
-            "Nargacuga",
-            "Silverwind_Nargacuga",
-            "Yian_Garuga",
-            "Deadeye_Yian_Garuga",
-            "Uragaan",
-            "Crystalbeard_Uragaan",
-            "Seltas_Queen",
-            "Rathalos",
-            "Silver_Rathalos",
-            "Dreadking_Rathalos",
-            "Lagiacrus",
-            "Zinogre",
-            "Thunderlord_Zinogre",
-            "Mizutsune",
-            "Astalos",
-            "Gammoth",
-            "Glavenus",
-            "Hellblade_Glavenus",
-            "Agnaktor",
-            "Gore_Magala",
-            "Seregios",
-            "Duramboros",
-            "Tigrex",
-            "Grimclaw_Tigrex",
-            "Kirin",
-            "Brachydios",
-            "Shagaru_Magala",
-            "Rajang",
-            "Furious_Rajang",
-            "Deviljho",
-            "Savage_Deviljho",
-            "Kushala_Daora",
-            "Chameleos",
-            "Teostra",
-            "Akantor",
-            "Ukanlos",
-            "Amatsu",
-            "Nakarkos",
-            "Alatreon"
+            "great-maccao",
+            "velocidrome",
+            "bulldrome",
+            "seltas",
+            "arzuros",
+            "redhelm-arzuros",
+            "gendrome",
+            "cephadrome",
+            "yian-kut-ku",
+            "iodrome",
+            "kecha-wacha",
+            "lagombi",
+            "snowbaron-lagombi",
+            "gypceros",
+            "tetsucabra",
+            "drilltusk-tetsucabra",
+            "daimyo-hermitaur",
+            "stonefist-hermitaur",
+            "volvidon",
+            "royal-ludroth",
+            "malfestio",
+            "zamtrios",
+            "khezu",
+            "rathian",
+            "gold-rathian",
+            "dreadqueen-rathian",
+            "nibelsnarf",
+            "plesioth",
+            "blangonga",
+            "lavasioth",
+            "shogun-ceanataur",
+            "najarala",
+            "nargacuga",
+            "silverwind-nargacuga",
+            "yian-garuga",
+            "deadeye-yian-garuga",
+            "uragaan",
+            "crystalbeard-uragaan",
+            "seltas-queen",
+            "rathalos",
+            "silver-rathalos",
+            "dreadking-rathalos",
+            "lagiacrus",
+            "zinogre",
+            "thunderlord-zinogre",
+            "mizutsune",
+            "astalos",
+            "gammoth",
+            "glavenus",
+            "hellblade-glavenus",
+            "agnaktor",
+            "gore-magala",
+            "seregios",
+            "duramboros",
+            "tigrex",
+            "grimclaw-tigrex",
+            "kirin",
+            "brachydios",
+            "shagaru-magala",
+            "rajang",
+            "furious-rajang",
+            "deviljho",
+            "savage-deviljho",
+            "kushala-daora",
+            "chameleos",
+            "teostra",
+            "akantor",
+            "ukanlos",
+            "amatsu",
+            "nakarkos",
+            "alatreon"
         };
 
         /// <summary>
@@ -104,54 +107,52 @@ namespace WycademyV2.Commands.Services
         /// <param name="category">The category of data to find.</param>
         /// <param name="monsterName">The name of the monster to find data for.</param>
         /// <returns>Task(string)</returns>
-        public async Task<string> GetMonsterInfo(string category, string monsterName)
+        public string GetMonsterInfo(string category, string monsterName)
         {
-            string newName;
-            var split = monsterName.Split(' ');
-            if (split.Length > 1)
-            {
-                newName = string.Join("_", split);
-            }
-            else
-            {
-                newName = monsterName;
-            }
+#if DEBUG
+            string path = Path.Combine(WycademyConst.DATA_LOCATION, "gen", "monster", $"{monsterName}.json");
+#else
+            string path = Path.Combine("Data", "gen", "monster", $"{monsterName}".json);
+#endif
 
-            // Deserialise the json on a threadpool to avoid blocking while reading from disk.
-            Dictionary<string, string[]> Data = await Task.Run(() => GetDictionaryFromJson(category, newName));
+            // Deserialise the json into a MonsterInfo object.
+            MonsterInfo monster = JsonConvert.DeserializeObject<MonsterInfo>(File.ReadAllText(path, Encoding.UTF8));
 
             StringBuilder infoBuilder = new StringBuilder();
-            int columnTitleWidth;
-            int rowTitleWidth;
             string[] columnNames;
+            Dictionary<string, List<string>> data;
 
             // Get the appropriate column titles depending on the category.
             switch (category)
             {
                 case "Hitzone":
                     columnNames = HITZONE_COLUMN_NAMES;
+                    data = monster.Hitzones;
                     break;
                 case "Status":
                     columnNames = STATUS_COLUMN_NAMES;
+                    data = monster.Status;
                     break;
-                case "Stagger/Sever":
+                case "Stagger":
                     columnNames = STAGGER_COLUMN_NAMES;
+                    data = monster.Stagger;
                     break;
-                case "Item Effects":
+                case "Item Effect":
                     columnNames = ITEMEFFECTS_COLUMN_NAMES;
+                    data = monster.Items;
                     break;
                 default:
                     throw new ArgumentException($"{category} is not a valid category.");
             }
             // Set the widths of the row title column and the data columns.
-            columnTitleWidth = columnNames.Max(x => x.Length);
-            rowTitleWidth = Data.Keys.Max(x => x.Length);
+            int columnTitleWidth = columnNames.Max(x => x.Length);
+            int rowTitleWidth = data.Keys.Max(x => x.Length);
 
             // Add a title to the table.
-            infoBuilder.AppendLine($"{category} info for {monsterName}:");
+            infoBuilder.AppendLine($"{category} info for {GetFormattedName(monsterName)}:");
 
             // Open the code block.
-            infoBuilder.AppendLine("```xl");
+            infoBuilder.AppendLine("```");
 
             // Add blank space to the upper-left corner.
             infoBuilder.Append(' ', rowTitleWidth);
@@ -164,28 +165,16 @@ namespace WycademyV2.Commands.Services
             infoBuilder.AppendLine();
 
             // Add rows.
-            foreach (var title in Data.Keys)
+            foreach (var title in data.Keys)
             {
                 // Add the row title with spaces appended so that each title is the same width.
                 infoBuilder.Append(title + new string(' ', rowTitleWidth - title.Length));
 
-                if (category == "Hitzone")
+                foreach (var value in data[title])
                 {
-                    // Each key has 10 values, but the last 2 are unused due to character limits, and I'm not editing 71 sheets.
-                    for (int i = 0; i < 8; i++)
-                    {
-                        infoBuilder.Append($"|{PadCenter(Data[title][i], columnTitleWidth)}");
-                    }
-                    infoBuilder.AppendLine();
+                    infoBuilder.Append($"|{PadCenter(value, columnTitleWidth)}");
                 }
-                else
-                {
-                    foreach (var value in Data[title])
-                    {
-                        infoBuilder.Append($"|{PadCenter(value, columnTitleWidth)}");
-                    }
-                    infoBuilder.AppendLine();
-                }
+                infoBuilder.AppendLine();
             }
 
             // Close the code block.
@@ -198,24 +187,7 @@ namespace WycademyV2.Commands.Services
 
         public string GetMonsterNames()
         {
-            return "```\n" + string.Join("\n", MONSTER_LIST) + "```";
-        }
-
-        /// <summary>
-        /// Deserialize json data into a dictionary.
-        /// </summary>
-        /// <param name="key">The key to get the values under.</param>
-        /// <param name="filename">The filename to open.</param>
-        /// <returns>Dictionary(string, string[])</returns>
-        private Dictionary<string, string[]> GetDictionaryFromJson(string key, string filename)
-        {
-            // Parse the json data in a file into a JObject.
-            JObject parsed = JObject.Parse(File.ReadAllText(string.Join(Path.DirectorySeparatorChar.ToString(), WycademyConst.DATA_LOCATION, "monster", $"{filename.ToLower()}.json"), Encoding.UTF8));
-
-            // Get the requested subsection and cast it to an IDictionary.
-            var rawData = parsed[key] as IDictionary<string, JToken>;
-            // Convert it to a Dictionary<string, string[]> and return.
-            return rawData.ToDictionary(pair => pair.Key, pair => ((string)pair.Value).Split(' '));
+            return "```\n" + string.Join("\n", MONSTER_LIST.Select(s => GetFormattedName(s))) + "```";
         }
 
         /// <summary>
@@ -233,6 +205,21 @@ namespace WycademyV2.Commands.Services
             int padLeft = delta / 2 + stringToPad.Length;
 
             return stringToPad.PadLeft(padLeft).PadRight(totalLength);
+        }
+
+        /// <summary>
+        /// Converts a monster filename to its properly formatted name (ex. gore-magala -> Gore Magala).
+        /// </summary>
+        /// <param name="input">The string to format.</param>
+        /// <returns>The input string, formatted to title case.</returns>
+        private string GetFormattedName(string input)
+        {
+            // The one exception, as Kut-Ku should keep the hyphen in between.
+            if (input == "yian-kut-ku") return "Yian Kut-Ku";
+
+            string[] split = input.Split('-');
+            var properCase = split.Select(s => s.Substring(0, 1).ToUpper() + s.Substring(1).ToLower());
+            return string.Join(" ", properCase);
         }
     }
 }
