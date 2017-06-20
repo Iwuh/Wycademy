@@ -37,8 +37,8 @@ namespace WycademyV2.Commands.Modules
             await GetInfo("Status", monster);
         }
 
-        [Command("staggersever")]
-        [Alias("stagger", "sever", "break", "extract")]
+        [Command("stagger")]
+        [Alias("sever", "break", "extract")]
         [Summary("Gets the stagger/sever/extract colour data for the specified monster.")]
         [RequireUnlocked]
         public async Task GetStagger([Remainder, Summary("The monster to search for.")] string monster)
