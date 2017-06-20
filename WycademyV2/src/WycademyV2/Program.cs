@@ -78,9 +78,9 @@ namespace WycademyV2
                 }
             };
 
-            // Set token to either that of Wycademy or Wycademy Beta depending on whether or not the BETA flag is defined in the build options.
+            // Set token to either that of Wycademy or Wycademy Beta depending on whether the build configuration is debug or release.
             string token;
-#if BETA
+#if DEBUG
             token = Environment.GetEnvironmentVariable("WYCADEMY_BETA_TOKEN");
 #else
             token = Environment.GetEnvironmentVariable("WYCADEMY_TOKEN");

@@ -13,7 +13,7 @@ namespace WycademyV2
         public const string INVALID_DC_WEAPON_NAME = " is not a recognised weapon type. Check the help for the command.";
         public const string DC_WEAPON_TYPE_NOT_SUPPORTED = "Sorry, but that weapon type is not supported yet. It will be, sometime in the near future. Thank you for your understanding.";
 
-#if BETA
+#if DEBUG
         public const string DATA_LOCATION = @"D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\Data";
 #else
         public const string DATA_LOCATION = @"/home/ubuntu/Wycademy/WycademyV2/src/WycademyV2/Data";

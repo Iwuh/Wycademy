@@ -55,7 +55,7 @@ namespace WycademyV2.Commands
 
             // The character index to start parsing the command at.
             int argPos = 0;
-#if BETA
+#if DEBUG
             if (userMessage.HasStringPrefix("<<", ref argPos) || userMessage.HasMentionPrefix(_client.CurrentUser, ref argPos))
 #else
             if (userMessage.HasCharPrefix('<', ref argPos) || userMessage.HasMentionPrefix(_client.CurrentUser, ref argPos))

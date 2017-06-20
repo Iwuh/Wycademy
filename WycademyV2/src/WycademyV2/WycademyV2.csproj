@@ -3,7 +3,7 @@
   <PropertyGroup>
     <VersionPrefix>2.1.1</VersionPrefix>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <DefineConstants>$(DefineConstants);BETA</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP1_1</DefineConstants>
     <AssemblyName>WycademyV2</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>WycademyV2</PackageId>
