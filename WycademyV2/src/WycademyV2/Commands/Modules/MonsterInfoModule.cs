@@ -66,7 +66,7 @@ namespace WycademyV2.Commands.Modules
 
         private async Task GetInfo(string category, string monstername)
         {
-            string lowerMonsterName = string.Join("-", monstername.ToLower().Split(' '));
+            string lowerMonsterName = string.Join("-", monstername.ToLower().Split(' ', '_'));
 
             string message;
             try
