@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -60,8 +61,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetMonsterList()
         {
-            var dm = await Context.User.CreateDMChannelAsync();
-            await dm.SendMessageAsync(_monster.GetMonsterNames());
+            await Context.User.SendMessageAsync(_monster.GetMonsterNames());
         }
 
         private async Task GetInfo(string category, string monstername)

@@ -9,7 +9,7 @@ namespace WycademyV2.Commands.TypeReaders
 {
     public class BlacklistTypeReader : TypeReader
     {
-        public override Task<TypeReaderResult> Read(ICommandContext context, string input)
+        public override Task<TypeReaderResult> Read(ICommandContext context, string input, IServiceProvider provider)
         {
             switch (input.ToLower())
             {

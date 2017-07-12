@@ -48,8 +48,7 @@ namespace WycademyV2.Commands.Modules
             
             foreach (var user in owners)
             {
-                var dm = await user.CreateDMChannelAsync();
-                await dm.SendMessageAsync(message);
+                await user.SendMessageAsync(message);
             }
         }
     }

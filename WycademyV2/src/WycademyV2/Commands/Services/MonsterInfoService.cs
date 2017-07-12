@@ -112,7 +112,7 @@ namespace WycademyV2.Commands.Services
 #if DEBUG
             string path = Path.Combine(WycademyConst.DATA_LOCATION, "gen", "monster", $"{monsterName}.json");
 #else
-            string path = Path.Combine("Data", "gen", "monster", $"{monsterName}".json);
+            string path = Path.Combine("Data", "gen", "monster", $"{monsterName}.json");
 #endif
 
             // Deserialise the json into a MonsterInfo object.

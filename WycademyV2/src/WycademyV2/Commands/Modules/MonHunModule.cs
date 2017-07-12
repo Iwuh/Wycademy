@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,8 +60,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetWeaponList()
         {
-            var dm = await Context.User.GetDMChannelAsync() ?? await Context.User.CreateDMChannelAsync();
-            await dm.SendMessageAsync(_mv.GetWeaponNames());
+            await Context.User.SendMessageAsync(_mv.GetWeaponNames());
         }
 
         [Command("damagecalculator")]
