@@ -1,14 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WycademyV2.Commands.Entities;
+using WycademyV2.Commands.Enums;
+using WycademyV2.Commands.Models;
 
 namespace WycademyV2.Commands.Services
 {
@@ -101,88 +105,115 @@ namespace WycademyV2.Commands.Services
             "alatreon"
         };
 
-        /// <summary>
-        /// Gets a table containing the requested data about the requested monster.
-        /// </summary>
-        /// <param name="category">The category of data to find.</param>
-        /// <param name="monsterName">The name of the monster to find data for.</param>
-        /// <returns>Task(string)</returns>
-        public string GetMonsterInfo(string category, string monsterName)
+//        /// <summary>
+//        /// Gets a table containing the requested data about the requested monster.
+//        /// </summary>
+//        /// <param name="category">The category of data to find.</param>
+//        /// <param name="monsterName">The name of the monster to find data for.</param>
+//        /// <returns>Task(string)</returns>
+//        public string GetMonsterInfo(string category, string monsterName)
+//        {
+//#if DEBUG
+//            string path = Path.Combine(WycademyConst.DATA_LOCATION, "gen", "monster", $"{monsterName}.json");
+//#else
+//            string path = Path.Combine("Data", "gen", "monster", $"{monsterName}.json");
+//#endif
+
+//            // Deserialise the json into a MonsterInfo object.
+//            MonsterInfo monster = JsonConvert.DeserializeObject<MonsterInfo>(File.ReadAllText(path, Encoding.UTF8));
+
+//            StringBuilder infoBuilder = new StringBuilder();
+//            string[] columnNames;
+//            Dictionary<string, List<string>> data;
+
+//            // Get the appropriate column titles depending on the category.
+//            switch (category)
+//            {
+//                case "Hitzone":
+//                    columnNames = HITZONE_COLUMN_NAMES;
+//                    data = monster.Hitzones;
+//                    break;
+//                case "Status":
+//                    columnNames = STATUS_COLUMN_NAMES;
+//                    data = monster.Status;
+//                    break;
+//                case "Stagger":
+//                    columnNames = STAGGER_COLUMN_NAMES;
+//                    data = monster.Stagger;
+//                    break;
+//                case "Item Effect":
+//                    columnNames = ITEMEFFECTS_COLUMN_NAMES;
+//                    data = monster.Items;
+//                    break;
+//                default:
+//                    throw new ArgumentException($"{category} is not a valid category.");
+//            }
+//            // Set the widths of the row title column and the data columns.
+//            int columnTitleWidth = columnNames.Max(x => x.Length);
+//            int rowTitleWidth = data.Keys.Max(x => x.Length);
+
+//            // Add a title to the table.
+//            infoBuilder.AppendLine($"{category} info for {GetFormattedName(monsterName)}:");
+
+//            // Open the code block.
+//            infoBuilder.AppendLine("```");
+
+//            // Add blank space to the upper-left corner.
+//            infoBuilder.Append(' ', rowTitleWidth);
+
+//            // Add the column titles and a newline.
+//            foreach (var title in columnNames)
+//            {
+//                infoBuilder.Append("|" + PadCenter(title, columnTitleWidth));
+//            }
+//            infoBuilder.AppendLine();
+
+//            // Add rows.
+//            foreach (var title in data.Keys)
+//            {
+//                // Add the row title with spaces appended so that each title is the same width.
+//                infoBuilder.Append(title + new string(' ', rowTitleWidth - title.Length));
+
+//                foreach (var value in data[title])
+//                {
+//                    infoBuilder.Append($"|{PadCenter(value, columnTitleWidth)}");
+//                }
+//                infoBuilder.AppendLine();
+//            }
+
+//            // Close the code block.
+//            infoBuilder.AppendLine("```");
+
+//            Queries++;
+
+//            return infoBuilder.ToString();
+//        }
+
+        public async Task<string> GetMonsterInfo(MonsterDataCategory category, string name, MonsterContext context, Expression<Func<Monster, IEnumerable<IMonsterData>>> include)
         {
-#if DEBUG
-            string path = Path.Combine(WycademyConst.DATA_LOCATION, "gen", "monster", $"{monsterName}.json");
-#else
-            string path = Path.Combine("Data", "gen", "monster", $"{monsterName}.json");
-#endif
+            var monster = await context.Monsters
+                            .Include(include)
+                            .SingleAsync(m => m.WebName == name);
 
-            // Deserialise the json into a MonsterInfo object.
-            MonsterInfo monster = JsonConvert.DeserializeObject<MonsterInfo>(File.ReadAllText(path, Encoding.UTF8));
-
-            StringBuilder infoBuilder = new StringBuilder();
-            string[] columnNames;
-            Dictionary<string, List<string>> data;
-
-            // Get the appropriate column titles depending on the category.
+            IEnumerable<IMonsterData> data;
             switch (category)
             {
-                case "Hitzone":
-                    columnNames = HITZONE_COLUMN_NAMES;
+                case MonsterDataCategory.Hitzone:
                     data = monster.Hitzones;
                     break;
-                case "Status":
-                    columnNames = STATUS_COLUMN_NAMES;
+                case MonsterDataCategory.Status:
                     data = monster.Status;
                     break;
-                case "Stagger":
-                    columnNames = STAGGER_COLUMN_NAMES;
-                    data = monster.Stagger;
-                    break;
-                case "Item Effect":
-                    columnNames = ITEMEFFECTS_COLUMN_NAMES;
+                case MonsterDataCategory.Item:
                     data = monster.Items;
                     break;
-                default:
-                    throw new ArgumentException($"{category} is not a valid category.");
-            }
-            // Set the widths of the row title column and the data columns.
-            int columnTitleWidth = columnNames.Max(x => x.Length);
-            int rowTitleWidth = data.Keys.Max(x => x.Length);
-
-            // Add a title to the table.
-            infoBuilder.AppendLine($"{category} info for {GetFormattedName(monsterName)}:");
-
-            // Open the code block.
-            infoBuilder.AppendLine("```");
-
-            // Add blank space to the upper-left corner.
-            infoBuilder.Append(' ', rowTitleWidth);
-
-            // Add the column titles and a newline.
-            foreach (var title in columnNames)
-            {
-                infoBuilder.Append("|" + PadCenter(title, columnTitleWidth));
-            }
-            infoBuilder.AppendLine();
-
-            // Add rows.
-            foreach (var title in data.Keys)
-            {
-                // Add the row title with spaces appended so that each title is the same width.
-                infoBuilder.Append(title + new string(' ', rowTitleWidth - title.Length));
-
-                foreach (var value in data[title])
-                {
-                    infoBuilder.Append($"|{PadCenter(value, columnTitleWidth)}");
-                }
-                infoBuilder.AppendLine();
+                case MonsterDataCategory.Stagger:
+                    data = monster.Stagger;
+                    break;
             }
 
-            // Close the code block.
-            infoBuilder.AppendLine("```");
+            
 
-            Queries++;
-
-            return infoBuilder.ToString();
         }
 
         public string GetMonsterNames()

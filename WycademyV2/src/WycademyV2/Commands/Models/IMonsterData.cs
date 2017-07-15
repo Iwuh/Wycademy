@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WycademyV2.Commands.Models
 {
-    interface IMonsterData
+    public interface IMonsterData
     {
         IDictionary<string, string> Values { get; }
     }

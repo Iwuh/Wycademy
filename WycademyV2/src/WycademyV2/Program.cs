@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WycademyV2.Commands;
 using WycademyV2.Commands.Enums;
+using WycademyV2.Commands.Models;
 using WycademyV2.Commands.Services;
 
 namespace WycademyV2
@@ -123,6 +124,9 @@ namespace WycademyV2
             var blacklist = new BlacklistService();
             await blacklist.LoadAsync();
             services.AddSingleton(blacklist);
+
+            // Add the monster DB context.
+            services.AddDbContext<MonsterContext>(ServiceLifetime.Transient);
 
             // Build the collection into an IServiceProvider.
             var provider = services.BuildServiceProvider();
