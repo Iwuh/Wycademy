@@ -34,17 +34,7 @@ namespace WycademyV2.Commands.Models
         public string Dragon { get; set; }
 
         [NotMapped]
-        public IDictionary<string, string> Values => new Dictionary<string, string>()
-        {
-            { "Cut", Cut },
-            { "Impact", Impact },
-            { "Shot", Shot },
-            { "Fire", Fire },
-            { "Water", Water },
-            { "Ice", Ice },
-            { "Thunder", Thunder },
-            { "Dragon", Dragon }
-        };
+        public IEnumerable<string> Values => new List<string>() { Cut, Impact, Shot, Fire, Water, Ice, Thunder, Dragon };
 
         public Monster Monster { get; set; }
     }

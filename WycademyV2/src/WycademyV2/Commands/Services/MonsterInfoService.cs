@@ -29,7 +29,7 @@ namespace WycademyV2.Commands.Services
         private readonly string[] HITZONE_COLUMN_NAMES = new string[] { "Cut", "Impact", "Shot", "Fire", "Water", "Ice", "Thunder", "Dragon" };
         private readonly string[] STAGGER_COLUMN_NAMES = new string[] { "Stagger Value", "Sever Value", "Extract Colour" };
         private readonly string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
-        private readonly string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Duration Normal", "Duration Enraged", "Duration Fatigued" };
+        private readonly string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Normal", "Enraged", "Fatigued" };
         private readonly string[] MONSTER_LIST = new string[] 
         {
             "great-maccao",
@@ -189,30 +189,87 @@ namespace WycademyV2.Commands.Services
 //            return infoBuilder.ToString();
 //        }
 
-        public async Task<string> GetMonsterInfo(MonsterDataCategory category, string name, MonsterContext context, Expression<Func<Monster, IEnumerable<IMonsterData>>> include)
+        public async Task<Dictionary<string, string>> GetMonsterInfo(MonsterDataCategory category, string name, MonsterContext context, Expression<Func<Monster, IEnumerable<IMonsterData>>> include)
         {
+            // Get the monster matching the input name, joined with its hitzones/status/items/stagger data using the supplied function.
             var monster = await context.Monsters
                             .Include(include)
                             .SingleAsync(m => m.WebName == name);
 
+            // Get the data depending on the category requested.
+            string[] columnTitles;
             IEnumerable<IMonsterData> data;
             switch (category)
             {
                 case MonsterDataCategory.Hitzone:
                     data = monster.Hitzones;
+                    columnTitles = HITZONE_COLUMN_NAMES;
                     break;
                 case MonsterDataCategory.Status:
                     data = monster.Status;
+                    columnTitles = STATUS_COLUMN_NAMES;
                     break;
                 case MonsterDataCategory.Item:
                     data = monster.Items;
+                    columnTitles = ITEMEFFECTS_COLUMN_NAMES;
                     break;
                 case MonsterDataCategory.Stagger:
                     data = monster.Stagger;
+                    columnTitles = STAGGER_COLUMN_NAMES;
                     break;
+                default:
+                    throw new ArgumentException($"Invalid Category: {category}");
             }
 
-            
+            // Find how many different games are included in the result set.
+            var games = data.Select(d => d.Game).Distinct();
+            Dictionary<string, string> pages;
+            if (games.Count() == 1)
+            {
+                pages = new Dictionary<string, string>() { { games.First(), BuildTable(data, columnTitles) } };
+            }
+            else
+            {
+                var grouped = data.GroupBy(d => d.Game);
+                pages = grouped.ToDictionary(g => g.Key, g => BuildTable(g.ToList(), columnTitles));
+            }
+
+            return pages;
+
+            string BuildTable(IEnumerable<IMonsterData> rows, string[] titles)
+            {
+                int columnTitleWidth = titles.Max(t => t.Length);
+                int rowTitleWidth = rows.Max(d => d.Name.Length);
+
+                // Create the string builder with the table's title, and open the code block.
+                var tableBuilder = new StringBuilder($"{rows.First().Game} {category} info for {monster.TitleName}");
+                tableBuilder.AppendLine("```");
+                // Put blank spaces in the upper left corner.
+                tableBuilder.Append(' ', rowTitleWidth);
+                // Add all the column titles.
+                foreach (var title in titles)
+                {
+                    tableBuilder.Append("|" + PadCenter(title, columnTitleWidth));
+                }
+                tableBuilder.AppendLine();
+
+                foreach (var row in rows)
+                {
+                    // Add the name, plus blank spaces to keep the columns aligned.
+                    tableBuilder.Append(row.Name.PadRight(rowTitleWidth));
+
+                    // Add all the values.
+                    foreach (var value in row.Values)
+                    {
+                        tableBuilder.Append("|" + PadCenter(value, columnTitleWidth));
+                    }
+                    tableBuilder.AppendLine();
+                }
+
+                tableBuilder.AppendLine("```");
+
+                return tableBuilder.ToString();
+            }
 
         }
 

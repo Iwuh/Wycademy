@@ -6,6 +6,8 @@ namespace WycademyV2.Commands.Models
 {
     public interface IMonsterData
     {
-        IDictionary<string, string> Values { get; }
+        string Name { get; set; }
+        string Game { get; set; }
+        IEnumerable<string> Values { get; }
     }
 }

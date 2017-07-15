@@ -23,12 +23,8 @@ namespace WycademyV2.Commands.Models
         [Column("extract_colour")]
         public string Extract { get; set; }
 
-        public IDictionary<string, string> Values => new Dictionary<string, string>()
-        {
-            { "Stagger", Stagger },
-            { "Sever", Sever },
-            { "Extract Colour", Extract }
-        };
+        [NotMapped]
+        public IEnumerable<string> Values => new List<string>() { Stagger, Sever, Extract };
 
         public Monster Monster { get; set; }
     }

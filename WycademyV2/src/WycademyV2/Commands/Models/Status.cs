@@ -29,15 +29,8 @@ namespace WycademyV2.Commands.Models
         [Column("damage")]
         public string Damage { get; set; }
 
-        public IDictionary<string, string> Values => new Dictionary<string, string>()
-        {
-            { "Initial", Initial },
-            { "Increase", Increase },
-            { "Maximum", Max },
-            { "Duration", Duration },
-            { "Reduction", Reduction },
-            { "Damage", Damage }
-        };
+        [NotMapped]
+        public IEnumerable<string> Values => new List<string>() { Initial, Increase, Max, Duration, Reduction, Damage };
 
         public Monster Monster { get; set; }
     }
