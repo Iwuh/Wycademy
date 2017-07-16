@@ -21,11 +21,6 @@ namespace WycademyV2.Commands.Services
     /// </summary>
     public class MonsterInfoService
     {
-        /// <summary>
-        /// Used for statistics.
-        /// </summary>
-        public int Queries { get; private set; }
-
         private readonly string[] HITZONE_COLUMN_NAMES = new string[] { "Cut", "Impact", "Shot", "Fire", "Water", "Ice", "Thunder", "Dragon" };
         private readonly string[] STAGGER_COLUMN_NAMES = new string[] { "Stagger Value", "Sever Value", "Extract Colour" };
         private readonly string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };

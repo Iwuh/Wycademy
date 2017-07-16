@@ -12,11 +12,6 @@ namespace WycademyV2.Commands.Services
     public class MotionValueService
     {
         /// <summary>
-        /// Used for statistics.
-        /// </summary>
-        public int Queries { get; private set; }
-
-        /// <summary>
         /// The names of all the motion value files.
         /// </summary>
         private readonly string[] WEAPON_FILENAMES = new string[] { "GS", "LS", "SnS", "DB", "Lance", "GL", "Hammer", "HH", "SA", "CB", "Ammo", "LBG", "HBG", "Bow", "Prowler" };
@@ -29,8 +24,6 @@ namespace WycademyV2.Commands.Services
         public FileStream GetMotionValueStream(string name)
         {
             string fileName = string.Join(Path.DirectorySeparatorChar.ToString(), WycademyConst.DATA_LOCATION, "mv", $"{AliasWeaponNames(name)}.txt");
-
-            Queries++;
 
             return File.Open(fileName, FileMode.Open);
         }
