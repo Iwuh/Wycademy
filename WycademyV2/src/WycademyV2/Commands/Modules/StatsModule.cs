@@ -55,7 +55,7 @@ namespace WycademyV2.Commands.Modules
 
                 .AddField(x => x.WithName("Heap Size:").WithValue((GC.GetTotalMemory(false) / 1024.0f / 1024.0f).ToString() + " MB").WithIsInline(true))
 
-                .WithFooter(new EmbedFooterBuilder() { Text = DateTime.Now.ToUniversalTime().ToString("R") });
+                .WithCurrentTimestamp();
             }
 
             await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, embed: statsEmbed);
@@ -89,7 +89,7 @@ namespace WycademyV2.Commands.Modules
 
                 .AddField(x => x.WithName("Runtime:").WithValue($"{RuntimeInformation.FrameworkDescription} {RuntimeInformation.OSArchitecture}"))
 
-                .WithFooter(new EmbedFooterBuilder() { Text = DateTime.Now.ToUniversalTime().ToString("R") });
+                .WithCurrentTimestamp();
 
             await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, embed: aboutEmbed);
         }
