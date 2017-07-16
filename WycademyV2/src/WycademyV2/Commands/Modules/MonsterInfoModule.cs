@@ -22,15 +22,13 @@ namespace WycademyV2.Commands.Modules
         private CommandCacheService _cache;
         private ReactionMenuService _reaction;
         private MonsterContext _db;
-        private DiscordSocketClient _client;
 
-        public MonsterInfoModule(MonsterInfoService monster, CommandCacheService cache, ReactionMenuService reaction, MonsterContext context, DiscordSocketClient client)
+        public MonsterInfoModule(MonsterInfoService monster, CommandCacheService cache, ReactionMenuService reaction, MonsterContext context)
         {
             _monster = monster;
             _cache = cache;
             _reaction = reaction;
             _db = context;
-            _client = client;
         }
 
         [Command("hitzone")]
@@ -68,17 +66,16 @@ namespace WycademyV2.Commands.Modules
             await GetInfo(MonsterDataCategory.Item, monster, m => m.Items);
         }
 
-        [Command("monsterlist")]
-        [Summary("Provides a list of all monster names that are recognised by the bot.")]
-        [RequireUnlocked]
-        public async Task GetMonsterList()
-        {
-            await Context.User.SendMessageAsync(_monster.GetMonsterNames());
-        }
-
         private async Task GetInfo(MonsterDataCategory category, string monstername, Expression<Func<Monster, IEnumerable<IMonsterData>>> getValues)
         {
             string lowerMonsterName = string.Join("-", monstername.ToLower().Split(' ', '_'));
+
+            var noStaggerData = new string[] { "shah-dalamadur", "fatalis", "crimson-fatalis", "white-fatalis" };
+            if (category == MonsterDataCategory.Stagger && noStaggerData.Contains(lowerMonsterName))
+            {
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, "Stagger data is not available for this monster.");
+                return;
+            }
 
             try
             {
@@ -99,7 +96,7 @@ namespace WycademyV2.Commands.Modules
                 }
                 else
                 {
-                    var menu = new MonsterInfoMessage(Context.User, tables, _client);
+                    var menu = new MonsterInfoMessage(Context.User, tables, (Context.Guild?.CurrentUser as IUser) ?? Context.Client.CurrentUser as IUser);
                     var message = await _reaction.SendReactionMenuMessageAsync(Context.Channel, menu);
                     _cache.Add(Context.Message.Id, message.Id);
                 }

@@ -80,20 +80,7 @@ namespace WycademyV2.Commands.Entities
                 await _message.DeleteAsync();
             }
             else
-            {
-                //try
-                //{
-                //    // Attempt to bulk remove reactions (will throw HttpException if the bot does not have Manage Messages).
-                //    await _message.RemoveAllReactionsAsync();
-                //}
-                //catch (HttpException)
-                //{
-                //    foreach (var game in _tables.Keys)
-                //    {
-                //        await _message.RemoveReactionAsync(new Emoji(GAME_EMOTES[game]), _client.CurrentUser);
-                //    }
-                //}   
-
+            {   
                 var guildAuthor = _botUser as SocketGuildUser;
                 if (guildAuthor != null && guildAuthor.GuildPermissions.ManageMessages)
                 {
