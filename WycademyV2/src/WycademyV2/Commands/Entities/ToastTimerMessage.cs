@@ -31,7 +31,7 @@ namespace WycademyV2.Commands.Entities
         public ToastTimerMessage(IUser user) : base(user)
         {
             _randFooter = new Random();
-            _timer = new Timer(OnTimerEnded, null, 90000, Timeout.Infinite);
+            _timer = new Timer(OnTimerEnded, null, Timeout.Infinite, Timeout.Infinite);
         }
 
         public async override Task CloseMenuAsync()

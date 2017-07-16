@@ -97,14 +97,14 @@ namespace WycademyV2.Commands.Modules
             await _damagecalc.SendDamageCalculatorMessageAsync(Context, raw, element, affinity, sType.Value, wType.Value, _cache);
         }
 
-        [Command("toasttimer")]
-        [Alias("toast", "tost")]
+        [Command("teostratimer")]
+        [Alias("toast", "tost", "toasttimer", "tosttimer")]
         [Summary("Sends a timer menu to help you keep track of Teostra novas.")]
         [RequireUnlocked]
         public async Task ToastTimer()
         {
-            //await _toast.SendToastTimerMessageAsync(Context, _cache);
             var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, new ToastTimerMessage(Context.User));
+            _cache.Add(Context.Message.Id, message.Id);
         }
 
         [Command("weaponinfo")]
