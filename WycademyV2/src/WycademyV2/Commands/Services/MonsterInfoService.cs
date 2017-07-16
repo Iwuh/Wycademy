@@ -189,7 +189,7 @@ namespace WycademyV2.Commands.Services
 //            return infoBuilder.ToString();
 //        }
 
-        public async Task<Dictionary<string, string>> GetMonsterInfo(MonsterDataCategory category, string name, MonsterContext context, Expression<Func<Monster, IEnumerable<IMonsterData>>> include)
+        public async Task<Dictionary<string, (string, int?)>> GetMonsterInfo(MonsterDataCategory category, string name, MonsterContext context, Expression<Func<Monster, IEnumerable<IMonsterData>>> include)
         {
             // Get the monster matching the input name, joined with its hitzones/status/items/stagger data using the supplied function.
             var monster = await context.Monsters
@@ -223,10 +223,10 @@ namespace WycademyV2.Commands.Services
 
             // Find how many different games are included in the result set.
             var games = data.Select(d => d.Game).Distinct();
-            Dictionary<string, string> pages;
+            Dictionary<string, (string, int?)> pages;
             if (games.Count() == 1)
             {
-                pages = new Dictionary<string, string>() { { games.First(), BuildTable(data, columnTitles) } };
+                pages = new Dictionary<string, (string, int?)>() { { games.First(), BuildTable(data, columnTitles) } };
             }
             else
             {
@@ -236,7 +236,7 @@ namespace WycademyV2.Commands.Services
 
             return pages;
 
-            string BuildTable(IEnumerable<IMonsterData> rows, string[] titles)
+            (string, int?) BuildTable(IEnumerable<IMonsterData> rows, string[] titles)
             {
                 int columnTitleWidth = titles.Max(t => t.Length);
                 int rowTitleWidth = rows.Max(d => d.Name.Length);
@@ -253,22 +253,39 @@ namespace WycademyV2.Commands.Services
                 }
                 tableBuilder.AppendLine();
 
+                int? splitPoint = null;
+                bool split = false;
+
                 foreach (var row in rows)
                 {
+                    var rowBuilder = new StringBuilder();
+
                     // Add the name, plus blank spaces to keep the columns aligned.
-                    tableBuilder.Append(row.Name.PadRight(rowTitleWidth));
+                    rowBuilder.Append(row.Name.PadRight(rowTitleWidth));
 
                     // Add all the values.
                     foreach (var value in row.Values)
                     {
-                        tableBuilder.Append("|" + PadCenter(value, columnTitleWidth));
+                        rowBuilder.Append("|" + PadCenter(value ?? "N/A", columnTitleWidth));
                     }
-                    tableBuilder.AppendLine();
+
+                    // If adding the row will bring the character count over 1990 characters (limit is 2000), mark the point where the table should be split into two messages.
+                    if (tableBuilder.Length + rowBuilder.Length >= 1990 && !split)
+                    {
+                        // Close the first code block.
+                        tableBuilder.AppendLine("```");
+                        // Get the index of the split.
+                        splitPoint = tableBuilder.Length - 1;
+                        split = true;
+                        // Open the second code block.
+                        tableBuilder.AppendLine("```");
+                    }
+                    tableBuilder.AppendLine(rowBuilder.ToString());
                 }
 
                 tableBuilder.AppendLine("```");
 
-                return tableBuilder.ToString();
+                return (tableBuilder.ToString(), splitPoint);
             }
 
         }

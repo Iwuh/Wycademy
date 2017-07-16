@@ -1,10 +1,16 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using WycademyV2.Commands.Entities;
+using WycademyV2.Commands.Enums;
+using WycademyV2.Commands.Models;
 using WycademyV2.Commands.Preconditions;
 using WycademyV2.Commands.Services;
 
@@ -14,11 +20,17 @@ namespace WycademyV2.Commands.Modules
     {
         private MonsterInfoService _monster;
         private CommandCacheService _cache;
+        private ReactionMenuService _reaction;
+        private MonsterContext _db;
+        private DiscordSocketClient _client;
 
-        public MonsterInfoModule(MonsterInfoService monster, CommandCacheService cache)
+        public MonsterInfoModule(MonsterInfoService monster, CommandCacheService cache, ReactionMenuService reaction, MonsterContext context, DiscordSocketClient client)
         {
             _monster = monster;
             _cache = cache;
+            _reaction = reaction;
+            _db = context;
+            _client = client;
         }
 
         [Command("hitzone")]
@@ -27,7 +39,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetHitzones([Remainder, Summary("The monster to search for.")] string monster)
         {
-            await GetInfo("Hitzone", monster);
+            await GetInfo(MonsterDataCategory.Hitzone, monster, m => m.Hitzones);
         }
 
         [Command("status")]
@@ -35,7 +47,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetStatus([Remainder, Summary("The monster to search for.")] string monster)
         {
-            await GetInfo("Status", monster);
+            await GetInfo(MonsterDataCategory.Status, monster, m => m.Status);
         }
 
         [Command("stagger")]
@@ -44,7 +56,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetStagger([Remainder, Summary("The monster to search for.")] string monster)
         {
-            await GetInfo("Stagger", monster);
+            await GetInfo(MonsterDataCategory.Stagger, monster, m => m.Stagger);
         }
 
         [Command("itemeffects")]
@@ -53,7 +65,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task GetItems([Remainder, Summary("The monster to search for.")] string monster)
         {
-            await GetInfo("Item Effect", monster);
+            await GetInfo(MonsterDataCategory.Item, monster, m => m.Items);
         }
 
         [Command("monsterlist")]
@@ -64,21 +76,43 @@ namespace WycademyV2.Commands.Modules
             await Context.User.SendMessageAsync(_monster.GetMonsterNames());
         }
 
-        private async Task GetInfo(string category, string monstername)
+        private async Task GetInfo(MonsterDataCategory category, string monstername, Expression<Func<Monster, IEnumerable<IMonsterData>>> getValues)
         {
             string lowerMonsterName = string.Join("-", monstername.ToLower().Split(' ', '_'));
 
-            string message;
             try
             {
-                message = _monster.GetMonsterInfo(category, lowerMonsterName);
-            }
-            catch (FileNotFoundException)
-            {
-                message = $"`{monstername}`" + WycademyConst.INVALID_MONSTER_NAME;
-            }
+                Dictionary<string, (string, int?)> tables = await _monster.GetMonsterInfo(category, lowerMonsterName, _db, getValues);
 
-            await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, message, prependZWSP: true);
+                if (tables.Count == 1)
+                {
+                    var tuple = tables.Values.First();
+                    if (tuple.Item2 == null)
+                    {
+                        await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, tuple.Item1, prependZWSP: true);
+                    }
+                    else
+                    {
+                        await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, tuple.Item1.Substring(0, tuple.Item2.Value), prependZWSP: true);
+                        await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, tuple.Item1.Substring(tuple.Item2.Value), prependZWSP: true);
+                    }
+                }
+                else
+                {
+                    var menu = new MonsterInfoMessage(Context.User, tables, _client);
+                    var message = await _reaction.SendReactionMenuMessageAsync(Context.Channel, menu);
+                    _cache.Add(Context.Message.Id, message.Id);
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, $"`{monstername}`" + WycademyConst.INVALID_MONSTER_NAME, prependZWSP: true);
+            }
+        }
+
+        protected override void AfterExecute(CommandInfo command)
+        {
+            _db.Dispose();
         }
     }
 }

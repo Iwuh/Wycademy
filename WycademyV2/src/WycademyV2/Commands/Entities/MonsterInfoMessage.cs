@@ -12,6 +12,7 @@ namespace WycademyV2.Commands.Entities
     {
         private const string FOUR = "4⃣";
         private const string GEN = "🇬";
+        private const string CLOSE = "❌";
 
         private readonly Dictionary<string, string> GAME_EMOTES = new Dictionary<string, string>()
         {
@@ -19,15 +20,15 @@ namespace WycademyV2.Commands.Entities
             { "GEN", GEN }
         };
 
-        private IDictionary<string, string> _tables;
+        private IDictionary<string, (string, int?)> _tables;
         private bool _choosing;
         private IUserMessage _message;
-        private DiscordSocketClient _client;
+        private IUser _botUser;
 
-        public MonsterInfoMessage(IUser user, IDictionary<string, string> tables, DiscordSocketClient client) : base(user)
+        public MonsterInfoMessage(IUser user, IDictionary<string, (string, int?)> tables, IUser botUser) : base(user)
         {
             _tables = tables;
-            _client = client;
+            _botUser = botUser;
         }
 
         public async override Task<IUserMessage> CreateMessageAsync(IMessageChannel channel)
@@ -44,16 +45,32 @@ namespace WycademyV2.Commands.Entities
 
         public async override Task HandleReaction(SocketReaction reaction)
         {
+            string key;
             switch (reaction.Emote.Name)
             {
                 case FOUR:
-                    await _message.ModifyAsync(m => m.Content = _tables["4U"]);
+                    key = "4U";
                     break;
                 case GEN:
-                    await _message.ModifyAsync(m => m.Content = _tables["GEN"]);
+                    key = "GEN";
                     break;
+                default:
+                    return;
             }
+
+            var tuple = _tables[key];
+            if (tuple.Item2 == null)
+            {
+                await _message.ModifyAsync(m => m.Content = tuple.Item1);
+            }
+            else
+            {
+                await _message.ModifyAsync(m => m.Content = tuple.Item1.Substring(0, tuple.Item2.Value));
+                await _message.Channel.SendMessageAsync(tuple.Item1.Substring(tuple.Item2.Value));
+            }
+
             _choosing = false;
+            await CloseMenuAsync();
         }
 
         public async override Task CloseMenuAsync()
@@ -64,18 +81,32 @@ namespace WycademyV2.Commands.Entities
             }
             else
             {
-                try
+                //try
+                //{
+                //    // Attempt to bulk remove reactions (will throw HttpException if the bot does not have Manage Messages).
+                //    await _message.RemoveAllReactionsAsync();
+                //}
+                //catch (HttpException)
+                //{
+                //    foreach (var game in _tables.Keys)
+                //    {
+                //        await _message.RemoveReactionAsync(new Emoji(GAME_EMOTES[game]), _client.CurrentUser);
+                //    }
+                //}   
+
+                var guildAuthor = _botUser as SocketGuildUser;
+                if (guildAuthor != null && guildAuthor.GuildPermissions.ManageMessages)
                 {
-                    // Attempt to bulk remove reactions (will throw HttpException if the bot does not have Manage Messages).
                     await _message.RemoveAllReactionsAsync();
                 }
-                catch (HttpException)
+                else
                 {
                     foreach (var game in _tables.Keys)
                     {
-                        await _message.RemoveReactionAsync(new Emoji(GAME_EMOTES[game]), _client.CurrentUser);
+                        await _message.RemoveReactionAsync(new Emoji(GAME_EMOTES[game]), _botUser);
                     }
-                }   
+                    await _message.RemoveReactionAsync(new Emoji(CLOSE), _botUser);
+                }
             }
         }
     }

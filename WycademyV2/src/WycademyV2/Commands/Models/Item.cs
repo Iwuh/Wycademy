@@ -23,12 +23,8 @@ namespace WycademyV2.Commands.Models
         [Column("fatigued")]
         public string Fatigued { get; set; }
 
-        public IDictionary<string, string> Values => new Dictionary<string, string>()
-        {
-            { "Normal", Normal },
-            { "Enraged", Enraged },
-            { "Fatigued", Fatigued }
-        };
+        [NotMapped]
+        public IEnumerable<string> Values => new List<string> { Normal, Enraged, Fatigued };
 
         public Monster Monster { get; set; }
     }
