@@ -10,7 +10,7 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
-    public class MonsterInfoModule : ModuleBase
+    public class MonsterInfoModule : ModuleBase<SocketCommandContext>
     {
         private MonsterInfoService _monster;
         private CommandCacheService _cache;

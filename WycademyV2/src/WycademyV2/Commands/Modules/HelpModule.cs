@@ -11,7 +11,7 @@ using WycademyV2.Commands.Services;
 namespace WycademyV2.Commands.Modules
 {
     [Remarks("hidden")]
-    public class HelpModule : ModuleBase
+    public class HelpModule : ModuleBase<SocketCommandContext>
     {
         private CommandService _commands;
         private CommandCacheService _cache;

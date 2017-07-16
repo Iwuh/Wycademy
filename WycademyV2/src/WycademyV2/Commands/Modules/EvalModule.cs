@@ -8,7 +8,7 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
-    public class EvalModule : ModuleBase
+    public class EvalModule : ModuleBase<SocketCommandContext>
     {
         private CommandCacheService _cache;
         private EvalService _eval;

@@ -61,7 +61,7 @@ namespace WycademyV2.Commands
             if (userMessage.HasCharPrefix('<', ref argPos) || userMessage.HasMentionPrefix(_client.CurrentUser, ref argPos))
 #endif
             {
-                var context = new CommandContext(_client, userMessage);
+                var context = new SocketCommandContext(_client, userMessage);
                 var result = await _commands.ExecuteAsync(context, argPos, _provider);
 
                 if (!result.IsSuccess)

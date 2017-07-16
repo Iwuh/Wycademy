@@ -9,7 +9,7 @@ using WycademyV2.Commands.Preconditions;
 namespace WycademyV2.Commands.Modules
 {
     [Summary("Moderator Commands")]
-    public class ModeratorModule : ModuleBase
+    public class ModeratorModule : ModuleBase<SocketCommandContext>
     {
         [Command("clean")]
         [Alias("clear")]

@@ -15,7 +15,7 @@ using WycademyV2.Commands.Services;
 namespace WycademyV2.Commands.Modules
 {
     [Summary("Stats Commands")]
-    public class StatsModule : ModuleBase
+    public class StatsModule : ModuleBase<SocketCommandContext>
     {
         private LockerService _locker;
         private MonsterInfoService _moninfo;
@@ -53,11 +53,11 @@ namespace WycademyV2.Commands.Modules
 
                 .AddField(x => x.WithName("Cached Messages:").WithValue($"{_cache.Count} / {_cache.MaxCapacity}").WithIsInline(true))
 
-                .AddField(x => x.WithName("Connected Servers").WithValue((Context.Client as DiscordSocketClient).Guilds.Count.ToString()).WithIsInline(true))
+                .AddField(x => x.WithName("Connected Servers").WithValue(Context.Client.Guilds.Count.ToString()).WithIsInline(true))
 
                 .AddField(x => x.WithName("Heap Size:").WithValue((GC.GetTotalMemory(false) / 1024.0f / 1024.0f).ToString() + " MB").WithIsInline(true))
 
-                .AddField(x => x.WithName("Total Users:").WithValue((Context.Client as DiscordSocketClient).Guilds.Sum(g => g.Users.Count).ToString()).WithIsInline(true))
+                .AddField(x => x.WithName("Total Users:").WithValue(Context.Client.Guilds.Sum(g => g.Users.Count).ToString()).WithIsInline(true))
 
                 .WithFooter(new EmbedFooterBuilder() { Text = DateTime.Now.ToUniversalTime().ToString("R") });
             }

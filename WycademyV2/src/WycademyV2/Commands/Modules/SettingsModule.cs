@@ -14,7 +14,7 @@ namespace WycademyV2.Commands.Modules
     [Summary("Settings Commands")]
     [Remarks("group")]
     [RequireOwner]
-    public class SettingsModule : ModuleBase
+    public class SettingsModule : ModuleBase<SocketCommandContext>
     {
         private LockerService _locker;
         private CommandCacheService _cache;
@@ -58,9 +58,8 @@ namespace WycademyV2.Commands.Modules
                 _cache.Dispose();
 
                 // Disconnect and log out.
-                var client = Context.Client as DiscordSocketClient;
-                await client.StopAsync();
-                await client.LogoutAsync();
+                await Context.Client.StopAsync();
+                await Context.Client.LogoutAsync();
 
                 // Finally, exit the console application.
                 Environment.Exit(0);
@@ -73,7 +72,7 @@ namespace WycademyV2.Commands.Modules
         [RequireContext(ContextType.Guild)]
         public async Task SetNickname([Remainder] string name)
         {
-            var botUser = await Context.Guild.GetCurrentUserAsync();
+            var botUser = Context.Guild.CurrentUser;
 
             await botUser.ModifyAsync(x => x.Nickname = name == "DEFAULT" ? null : name);
         }
@@ -83,7 +82,7 @@ namespace WycademyV2.Commands.Modules
         [RequireUnlocked]
         public async Task SetGame([Remainder] string game)
         {
-            await (Context.Client as DiscordSocketClient).SetGameAsync(game);
+            await Context.Client.SetGameAsync(game);
         }
     }
 }

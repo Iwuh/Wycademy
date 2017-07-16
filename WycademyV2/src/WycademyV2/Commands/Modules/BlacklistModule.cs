@@ -12,7 +12,7 @@ namespace WycademyV2.Commands.Modules
     [Summary("Blacklist Commmands")]
     [Remarks("group")]
     [RequireOwner]
-    public class BlacklistModule : ModuleBase
+    public class BlacklistModule : ModuleBase<SocketCommandContext>
     {
         private BlacklistService _blacklist;
         private CommandCacheService _cache;

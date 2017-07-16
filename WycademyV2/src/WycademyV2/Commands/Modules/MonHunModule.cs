@@ -14,7 +14,7 @@ using WycademyV2.Commands.Services;
 namespace WycademyV2.Commands.Modules
 {
     [Summary("Monster Hunter Commands")]
-    public class MonHunModule : ModuleBase
+    public class MonHunModule : ModuleBase<SocketCommandContext>
     {
         private MonsterInfoService _minfo;
         private LockerService _locker;
@@ -33,9 +33,7 @@ namespace WycademyV2.Commands.Modules
             _damagecalc = dcs;
             _weapon = wis;
             _reactions = rms;
-        }
-
-        
+        } 
 
         [Command("motionvalue")]
         [Alias("motionvalues", "movementvalue", "movementvalues", "mv")]
