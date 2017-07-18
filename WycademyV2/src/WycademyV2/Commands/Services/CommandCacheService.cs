@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Services
 {
-    public class CommandCacheService : IDictionary<ulong, ulong>, IDisposable
+    public class CommandCacheService : IDictionary<ulong, HashSet<ulong>>, IDisposable
     {
         private int _maxCapacity;
-        private List<KeyValuePair<ulong, ulong>> _cache;
+        private Dictionary<ulong, HashSet<ulong>> _cache;
         private Timer _purgeOldMessages;
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace WycademyV2.Commands.Services
         public CommandCacheService(DiscordSocketClient client, int capacity = 200)
         {
             _maxCapacity = capacity;
-            _cache = new List<KeyValuePair<ulong, ulong>>();
+            _cache = new Dictionary<ulong, HashSet<ulong>>();
 
             _purgeOldMessages = new Timer(_ =>
             {
@@ -57,19 +57,21 @@ namespace WycademyV2.Commands.Services
             {
                 if (ContainsKey(cacheable.Id))
                 {
-                    try
+                    var messages = this[cacheable.Id];
+
+                    foreach (var messageId in messages)
                     {
-                        var message = await channel.GetMessageAsync(this[cacheable.Id]);
-                        await message.DeleteAsync();
+                        try
+                        {
+                            var message = await channel.GetMessageAsync(messageId);
+                        }
+                        catch (NullReferenceException)
+                        {
+                            // If we get here the message was already deleted and there's nothing we can do.
+                        }
                     }
-                    catch (NullReferenceException)
-                    {
-                        // If we get here, the message was already deleted. There's nothing to do, so just move on.
-                    }
-                    finally
-                    {
-                        Remove(cacheable.Id);
-                    }
+
+                    Remove(cacheable.Id);
                 }
             };
         }
@@ -77,111 +79,115 @@ namespace WycademyV2.Commands.Services
         /// <summary>
         /// Gets the maximum amount of command:response pairs to store before old ones are pushed off the end.
         /// </summary>
-        public int MaxCapacity
-        {
-            get { return _maxCapacity; }
-        }
+        public int MaxCapacity => _maxCapacity;
 
         /// <summary>
         /// Gets a list of all keys in the cache.
         /// </summary>
-        public ICollection<ulong> Keys
-        {
-            get { return _cache.Select(x => x.Key).ToList(); }
-        }
+        public ICollection<ulong> Keys => _cache.Keys;
 
         /// <summary>
         /// Gets a list of all values in the cache.
         /// </summary>
-        public ICollection<ulong> Values
-        {
-            get { return _cache.Select(x => x.Value).ToList(); }
-        }
+        public ICollection<HashSet<ulong>> Values => _cache.Values;
 
         /// <summary>
         /// Gets the amount of items in the cache.
         /// </summary>
-        public int Count
-        {
-            get { return _cache.Count; }
-        }
+        public int Count => _cache.Count;
 
         /// <summary>
         /// Only here because it has to be. Why would you want a command cache to be read-only?
         /// </summary>
-        public bool IsReadOnly
-        {
-            get { return false; }
-        }
+        public bool IsReadOnly => false;
 
         /// <summary>
         /// Gets or sets a value of a key.
         /// </summary>
         /// <param name="key">The key to search for.</param>
-        /// <returns>The value of the passed key.</returns>
+        /// <returns>The values of the passed key.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the key is not found.</exception>
-        public ulong this[ulong key]
+        public HashSet<ulong> this[ulong key]
         {
             get
             {
-                var pair = _cache.FirstOrDefault(x => x.Key == key);
-
-                if (!pair.Equals(default(KeyValuePair<ulong, ulong>)))
-                {
-                    return pair.Value;
-                }
-                throw new KeyNotFoundException($"The key {key} was not found.");
+                return _cache[key];
             }
             set
             {
-                var pair = _cache.FirstOrDefault(x => x.Key == key);
-
-                if (!pair.Equals(default(KeyValuePair<ulong, ulong>)))
-                {
-                    int index = _cache.IndexOf(pair);
-                    _cache.Remove(pair);
-                    _cache.Insert(index, new KeyValuePair<ulong, ulong>(pair.Key, value));
-                }
-                throw new KeyNotFoundException($"The key {key} was not found.");
+                _cache[key] = value;
             }
         }
 
         /// <summary>
-        /// Adds a new command:response pair to the cache.
+        /// Adds a new command:response set to the cache.
         /// </summary>
         /// <param name="key">The ID of the command message.</param>
         /// <param name="value">The ID of the response message.</param>
-        public void Add(ulong key, ulong value)
+        public void Add(ulong key, HashSet<ulong> values)
         {
-            Add(new KeyValuePair<ulong, ulong>(key, value));
+            if (_cache.Count >= _maxCapacity)
+            {
+                // Always remove at least one item.
+                int itemsToRemove = (_cache.Count - _maxCapacity) + 1;
+                // The leftmost 44 bits of an ID represent the timestamp.
+                var orderedKeys = Keys.OrderBy(k => k >> 22).ToList();
+                for (int i = 0; i < itemsToRemove; i++)
+                {
+                    Remove(orderedKeys[i]);
+                }
+            }
+
+            _cache.Add(key, values);
         }
 
         /// <summary>
-        /// Checks whether or not the cache contains a value for a specified key.
+        /// Adds a command:response set to the cache.
+        /// </summary>
+        /// <param name="item">The KeyValuePair to add.</param>
+        public void Add(KeyValuePair<ulong, HashSet<ulong>> item) => Add(item.Key, item.Value);
+
+        /// <summary>
+        /// Adds a new value to an existing key, or adds a new key:value set if it doesn't exist. Attempting to add a value that is already associated with the key will silently fail.
+        /// </summary>
+        /// <param name="key">The key to add or update.</param>
+        /// <param name="value">The value to insert.</param>
+        public void Add(ulong key, ulong value)
+        {
+            if (ContainsKey(key))
+            {
+                _cache[key].Add(value);
+            }
+            else
+            {
+                Add(key, new HashSet<ulong>() { value });
+            }
+        }
+
+        /// <summary>
+        /// Adds a new key and several values to the cache.
+        /// </summary>
+        /// <param name="key">The key to use.</param>
+        /// <param name="values">One or more values to associate with the key.</param>
+        public void Add(ulong key, params ulong[] values)
+        {
+            Add(key, new HashSet<ulong>(values));
+        }
+
+        /// <summary>
+        /// Checks whether or not the cache contains values for a specified key.
         /// </summary>
         /// <param name="key">The key to check for.</param>
         /// <returns>true if the key is found, otherwise false.</returns>
-        public bool ContainsKey(ulong key)
-        {
-            return _cache.Select(x => x.Key).Contains(key);
-        }
+        public bool ContainsKey(ulong key) => _cache.Keys.Contains(key);
 
         /// <summary>
-        /// Removes a command:response pair from the cache by key.
+        /// Removes a command:response set from the cache by key.
         /// </summary>
         /// <param name="key">The key to remove.</param>
         /// <returns>true if the removal was successful, false otherwise.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the key is not found.</exception>
-        public bool Remove(ulong key)
-        {
-            var pair = _cache.FirstOrDefault(x => x.Key == key);
-
-            if (!pair.Equals(default(KeyValuePair<ulong, ulong>)))
-            {
-                return _cache.Remove(pair);
-            }
-            throw new KeyNotFoundException($"The key {key} was not found.");
-        }
+        public bool Remove(ulong key) => _cache.Remove(key);
 
         /// <summary>
         /// What do *you* think TryGetValue does?
@@ -189,82 +195,39 @@ namespace WycademyV2.Commands.Services
         /// <param name="key">The key to search for.</param>
         /// <param name="value">The variable to store the result in.</param>
         /// <returns>true if the key was found, false if it wasn't (value will be 0).</returns>
-        public bool TryGetValue(ulong key, out ulong value)
-        {
-            var pair = _cache.FirstOrDefault(x => x.Key == key);
-
-            if (!pair.Equals(default(KeyValuePair<ulong, ulong>)))
-            {
-                value = pair.Value;
-                return true;
-            }
-            value = 0;
-            return false;
-        }
-
-        /// <summary>
-        /// Adds a command:response pair to the cache.
-        /// </summary>
-        /// <param name="item">The KeyValuePair to add.</param>
-        public void Add(KeyValuePair<ulong, ulong> item)
-        {
-            if (_cache.Count >= _maxCapacity)
-            {
-                // Find how many elements need to be removed to bring the count to _maxCapacity - 1.
-                int i = 0;
-                do
-                {
-                    // i can be incremented once without checking the condition because this block will only be entered if the number of items is greater than or equal to the max.
-                    i++;
-                } while (_cache.Count - i >= _maxCapacity);
-                _cache.RemoveRange(0, i);
-            }
-            _cache.Add(item);
-        }
+        public bool TryGetValue(ulong key, out HashSet<ulong> value) => _cache.TryGetValue(key, out value);
 
         /// <summary>
         /// Remove everything from the cache. You monster.
         /// </summary>
-        public void Clear()
-        {
-            _cache.Clear();
-        }
+        public void Clear() => _cache.Clear();
 
         /// <summary>
         /// Checks if the cache contains a key value pair. But tbh who's actually going to use this one?
         /// </summary>
         /// <param name="item">The KeyValuePair to search for.</param>
         /// <returns>Whether or not the cache contains the item.</returns>
-        public bool Contains(KeyValuePair<ulong, ulong> item)
-        {
-            return _cache.Contains(item);
-        }
+        public bool Contains(KeyValuePair<ulong, HashSet<ulong>> item) => _cache.Contains(item);
 
         /// <summary>
-        /// Copies a range of items to an array (why though).
+        /// Copies a range of values to an array.
         /// </summary>
-        /// <param name="array">The destination of the copy.</param>
-        /// <param name="arrayIndex">Where to start copying.</param>
-        public void CopyTo(KeyValuePair<ulong, ulong>[] array, int arrayIndex)
-        {
-            _cache.CopyTo(array, arrayIndex);
-        }
+        /// <param name="array">The array to copy to.</param>
+        /// <param name="arrayIndex">The index to begin copying from.</param>
+        public void CopyTo(KeyValuePair<ulong, HashSet<ulong>>[] array, int arrayIndex) => ((IDictionary<ulong, HashSet<ulong>>)_cache).CopyTo(array, arrayIndex);
 
         /// <summary>
-        /// Removes a key value pair from the cache. But again, who's actually going to do this with a KeyValuePair?
+        /// Remove a set from the cache.
         /// </summary>
-        /// <param name="item">The item to remove.</param>
-        /// <returns>Whether or not the removal operation was successful.</returns>
-        public bool Remove(KeyValuePair<ulong, ulong> item)
-        {
-            return _cache.Remove(item);
-        }
+        /// <param name="item">The set to remove.</param>
+        /// <returns>Whether or not the remove operation completed successfully.</returns>
+        public bool Remove(KeyValuePair<ulong, HashSet<ulong>> item) => _cache.Remove(item.Key);
 
         /// <summary>
         /// Gets the enumerator for this object.
         /// </summary>
         /// <returns>The IEnumerator for this instance of CommandCacheService.</returns>
-        public IEnumerator<KeyValuePair<ulong, ulong>> GetEnumerator()
+        public IEnumerator<KeyValuePair<ulong, HashSet<ulong>>> GetEnumerator()
         {
             return _cache.GetEnumerator();
         }
