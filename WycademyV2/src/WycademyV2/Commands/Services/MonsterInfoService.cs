@@ -26,6 +26,14 @@ namespace WycademyV2.Commands.Services
         private readonly string[] STATUS_COLUMN_NAMES = new string[] { "Initial", "Increase", "Max", "Duration", "Reduction", "Damage" };
         private readonly string[] ITEMEFFECTS_COLUMN_NAMES = new string[] { "Normal", "Enraged", "Fatigued" };
 
+        /// <summary>
+        /// Gets the data of a certain category for a monster from all applicable games.
+        /// </summary>
+        /// <param name="category">What category of monster data should be used.</param>
+        /// <param name="name">The name of the monster. All lowercase, with words separated by hyphens.</param>
+        /// <param name="context">The database context that should be queried.</param>
+        /// <param name="include">The function used to join the table that will be used for building results.</param>
+        /// <returns>Dictionary of string, (string, int?). The key represents the game, and the value is a tuple, with the first item representing the table and the second representing the split point for multiple messages.</returns>
         public async Task<Dictionary<string, (string, int?)>> GetMonsterInfo(MonsterDataCategory category, string name, MonsterContext context, Expression<Func<Monster, IEnumerable<IMonsterData>>> include)
         {
             // Get the monster matching the input name, joined with its hitzones/status/items/stagger data using the supplied function.

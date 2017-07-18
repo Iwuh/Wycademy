@@ -69,6 +69,16 @@ namespace WycademyV2.Commands.Modules
         private async Task GetInfo(MonsterDataCategory category, string monstername, Expression<Func<Monster, IEnumerable<IMonsterData>>> getValues)
         {
             string lowerMonsterName = string.Join("-", monstername.ToLower().Split(' ', '_'));
+            // Take care of any exceptions.
+            switch (lowerMonsterName)
+            {
+                case "plum-daimyo-hermitaur":
+                    lowerMonsterName = "plum-d.hermitaur";
+                    break;
+                case "dah'ren-mohran":
+                    lowerMonsterName = "dahren-mohran";
+                    break;
+            }
 
             var noStaggerData = new string[] { "shah-dalamadur", "fatalis", "crimson-fatalis", "white-fatalis" };
             if (category == MonsterDataCategory.Stagger && noStaggerData.Contains(lowerMonsterName))
