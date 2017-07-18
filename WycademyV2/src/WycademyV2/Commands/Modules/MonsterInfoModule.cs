@@ -96,7 +96,7 @@ namespace WycademyV2.Commands.Modules
                 }
                 else
                 {
-                    var menu = new MonsterInfoMessage(Context.User, tables, (Context.Guild?.CurrentUser as IUser) ?? Context.Client.CurrentUser as IUser);
+                    var menu = new MonsterInfoMessage(Context.User, tables, (Context.Guild?.CurrentUser as IUser) ?? Context.Client.CurrentUser as IUser, _cache, Context.Message.Id);
                     var message = await _reaction.SendReactionMenuMessageAsync(Context.Channel, menu);
                     _cache.Add(Context.Message.Id, message.Id);
                 }

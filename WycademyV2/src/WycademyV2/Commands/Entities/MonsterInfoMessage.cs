@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using Discord.Net;
+using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Entities
 {
@@ -24,11 +25,15 @@ namespace WycademyV2.Commands.Entities
         private bool _choosing;
         private IUserMessage _message;
         private IUser _botUser;
+        private CommandCacheService _cache;
+        private ulong _commandMessageId;
 
-        public MonsterInfoMessage(IUser user, IDictionary<string, (string, int?)> tables, IUser botUser) : base(user)
+        public MonsterInfoMessage(IUser user, IDictionary<string, (string, int?)> tables, IUser botUser, CommandCacheService cache, ulong commandMessageId) : base(user)
         {
             _tables = tables;
             _botUser = botUser;
+            _cache = cache;
+            _commandMessageId = commandMessageId;
         }
 
         public async override Task<IUserMessage> CreateMessageAsync(IMessageChannel channel)
@@ -66,7 +71,7 @@ namespace WycademyV2.Commands.Entities
             else
             {
                 await _message.ModifyAsync(m => m.Content = tuple.Item1.Substring(0, tuple.Item2.Value));
-                await _message.Channel.SendMessageAsync(tuple.Item1.Substring(tuple.Item2.Value));
+                await _message.Channel.SendCachedMessageAsync(_commandMessageId, _cache, tuple.Item1.Substring(tuple.Item2.Value));
             }
 
             _choosing = false;
@@ -80,9 +85,8 @@ namespace WycademyV2.Commands.Entities
                 await _message.DeleteAsync();
             }
             else
-            {   
-                var guildAuthor = _botUser as SocketGuildUser;
-                if (guildAuthor != null && guildAuthor.GuildPermissions.ManageMessages)
+            {
+                if (_botUser is SocketGuildUser guildAuthor && guildAuthor.GuildPermissions.ManageMessages)
                 {
                     await _message.RemoveAllReactionsAsync();
                 }

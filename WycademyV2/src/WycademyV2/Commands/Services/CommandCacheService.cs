@@ -64,6 +64,7 @@ namespace WycademyV2.Commands.Services
                         try
                         {
                             var message = await channel.GetMessageAsync(messageId);
+                            await message.DeleteAsync();
                         }
                         catch (NullReferenceException)
                         {
