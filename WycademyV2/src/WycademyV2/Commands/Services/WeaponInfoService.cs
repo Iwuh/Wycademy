@@ -22,11 +22,7 @@ namespace WycademyV2.Commands.Services
             var deserialized = new List<List<WeaponInfo>>();
             foreach (var name in FILENAMES)
             {
-#if DEBUG
-                string text = File.ReadAllText(Path.Combine(WycademyConst.DATA_LOCATION, "gen", "weapon", $"{name}.json"), Encoding.UTF8);
-#else
-                string text = File.ReadAllText(Path.Combine("Data", "gen", "weapon", $"{name}.json"), Encoding.UTF8);
-#endif
+                string text = File.ReadAllText(Path.Combine(WycademyConst.DATA_LOCATION, "gen", "weapon", $"{name}.json"), new UTF8Encoding(false));
                 deserialized.Add(JsonConvert.DeserializeObject<List<WeaponInfo>>(text));
             }
             // Flatten the list of lists into a single list.
