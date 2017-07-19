@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace WycademyV2.Commands.Services
@@ -14,23 +15,38 @@ namespace WycademyV2.Commands.Services
         /// <summary>
         /// The names of all the motion value files.
         /// </summary>
-        private readonly string[] WEAPON_FILENAMES = new string[] { "GS", "LS", "SnS", "DB", "Lance", "GL", "Hammer", "HH", "SA", "CB", "Ammo", "LBG", "HBG", "Bow", "Prowler" };
+        private readonly string[] WEAPON_FILENAMES = new string[] { "gs", "ls", "sns", "db", "lance", "gl", "hammer", "hh", "sa", "cb", "ammo", "lbg", "hbg", "bow", "prowler" };
 
         /// <summary>
-        /// Get the file containing the movement values for a specific weapon.
+        /// Gets the motion values for a weapon.
         /// </summary>
-        /// <param name="name">The name of the weapon to search for.</param>
-        /// <returns>Task(FileStream)</returns>
-        public FileStream GetMotionValueStream(string name)
+        /// <param name="weaponName">The weapon's name, either in its shortened form or all lowercase, with words separated by hyphens.</param>
+        /// <returns>A tuple, with text being the code block(s) and splitPoint being the substring length, if applicable.</returns>
+        public (string text, int? splitPoint) GetMotionValues(string weaponName)
         {
-            string fileName = string.Join(Path.DirectorySeparatorChar.ToString(), WycademyConst.DATA_LOCATION, "mv", $"{AliasWeaponNames(name)}.txt");
+            string filePath = Path.Combine(WycademyConst.DATA_LOCATION, "gen", "mv", $"{AliasWeaponNames(weaponName)}.txt");
 
-            return File.Open(fileName, FileMode.Open);
-        }
+            int? point = null;
+            bool split = false;
+            var builder = new StringBuilder("```");
+            foreach (var line in File.ReadAllLines(filePath, new UTF8Encoding(false)))
+            {
+                // 2000 - (```) x 2
+                if (builder.Length + line.Length >= 1994 && !split)
+                {
+                    split = true;
+                    // Close the first code block.
+                    builder.Append("```");
+                    point = builder.Length;
+                    // Open the second code block.
+                    builder.Append("```");
+                }
+                builder.AppendLine(line);
+            }
 
-        public string GetWeaponNames()
-        {
-            return "```\n" + string.Join("\n", WEAPON_FILENAMES) + "```\n" + "Other forms of these abbreviations are recognised as well.";
+            builder.AppendLine("```");
+
+            return (builder.ToString(), point);
         }
 
         /// <summary>
@@ -41,60 +57,44 @@ namespace WycademyV2.Commands.Services
         private string AliasWeaponNames(string original)
         {
             // Only convert it if the name isn't already in the preferred form.
-            if (!WEAPON_FILENAMES.Contains(original, StringComparer.OrdinalIgnoreCase))
+            if (!WEAPON_FILENAMES.Contains(original))
             {
                 switch (original)
                 {
-                    case "great sword":
-                    case "great_sword":
+                    case "great-sword":
                         return "gs";
 
-                    case "long sword":
-                    case "long_sword":
+                    case "long-sword":
                         return "ls";
 
-                    case "sword and shield":
-                    case "sword_and_shield":
-                    case "sword & shield":
+                    case "sword-and-shield":
+                    case "sword-&-shield":
                     case "s&s":
                         return "sns";
 
-                    case "dual blades":
-                    case "dual_blades":
+                    case "dual-blades":
                         return "db";
 
                     case "gunlance":
-                    case "gun_lance":
-                    case "gun lance":
+                    case "gun-lance":
                         return "gl";
 
-                    case "hemr":
-                    case "hemmr":
-                        return "hammer";
-
-                    case "hunting horn":
-                    case "hunting_horn":
-                    case "doot":
+                    case "hunting-horn":
                         return "hh";
 
-                    case "switch axe":
+                    case "switch-axe":
                     case "switch_axe":
                     case "switchaxe":
-                    case "swaxe":
-                    case "swag axe":
                         return "sa";
 
-                    case "charge blade":
-                    case "charge_blade":
+                    case "charge-blade":
                     case "chargeblade":
                         return "cb";
 
-                    case "light bowgun":
-                    case "light_bowgun":
+                    case "light-bowgun":
                         return "lbg";
 
-                    case "heavy bowgun":
-                    case "heavy_bowgun":
+                    case "heavy-bowgun":
                         return "lbg";
 
                     default:

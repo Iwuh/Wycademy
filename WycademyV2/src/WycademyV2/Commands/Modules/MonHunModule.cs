@@ -39,26 +39,25 @@ namespace WycademyV2.Commands.Modules
         [Alias("motionvalues", "movementvalue", "movementvalues", "mv")]
         [Summary("Gets the motion values for a specific weapon.")]
         [RequireUnlocked]
-        public async Task GetMV([Remainder, Summary("The weapon to find motion values for.")] string weapon)
+        public async Task GetMV([Remainder, Summary("The weapon to find motion values for. Can be the shortened form of the weapon (ex. gs, hh) or the full name (ex. hammer, dual blades).")] string weapon)
         {
-            //try
-            //{
-            //    var mvStream = _mv.GetMotionValueStream(weapon);
-            //    await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, file: mvStream, fileName: mvStream.Name);
-            //}
-            //catch (ArgumentException)
-            //{
-            //    await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: weapon + WycademyConst.INVALID_MV_WEAPON_NAME, prependZWSP: true);
-            //}
-            await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, "This command is temporarily unavailable. Thank you for your understanding.");
-        }
-
-        [Command("weaponlist")]
-        [Summary("Gets a list of weapon names recognised by `<motionvalue`.")]
-        [RequireUnlocked]
-        public async Task GetWeaponList()
-        {
-            await Context.User.SendMessageAsync(_mv.GetWeaponNames());
+            try
+            {
+                var tuple = _mv.GetMotionValues(string.Join("-", weapon.Split(' ', '_')));
+                if (tuple.splitPoint != null)
+                {
+                    await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, tuple.text.Substring(0, tuple.splitPoint.Value));
+                    await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, tuple.text.Substring(tuple.splitPoint.Value));
+                }
+                else
+                {
+                    await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, tuple.text);
+                }
+            }
+            catch (ArgumentException)
+            {
+                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, weapon + WycademyConst.INVALID_MV_WEAPON_NAME);
+            }
         }
 
         [Command("damagecalculator")]

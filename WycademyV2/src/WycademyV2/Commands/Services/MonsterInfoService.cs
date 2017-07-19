@@ -120,7 +120,7 @@ namespace WycademyV2.Commands.Services
                         // Close the first code block.
                         tableBuilder.AppendLine("```");
                         // Get the index of the split.
-                        splitPoint = tableBuilder.Length - 1;
+                        splitPoint = tableBuilder.Length;
                         split = true;
                         // Open the second code block.
                         tableBuilder.AppendLine("```");
