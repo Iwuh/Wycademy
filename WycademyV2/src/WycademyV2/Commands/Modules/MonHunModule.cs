@@ -43,7 +43,7 @@ namespace WycademyV2.Commands.Modules
         {
             try
             {
-                var tuple = _mv.GetMotionValues(string.Join("-", weapon.Split(' ', '_')));
+                var tuple = _mv.GetMotionValues(string.Join("-", weapon.ToLower().Split(' ', '_')));
                 if (tuple.splitPoint != null)
                 {
                     await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, tuple.text.Substring(0, tuple.splitPoint.Value));
