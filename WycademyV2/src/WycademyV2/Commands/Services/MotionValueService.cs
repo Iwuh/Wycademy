@@ -15,7 +15,7 @@ namespace WycademyV2.Commands.Services
         /// <summary>
         /// The names of all the motion value files.
         /// </summary>
-        private readonly string[] WEAPON_FILENAMES = new string[] { "gs", "ls", "sns", "db", "lance", "gl", "hammer", "hh", "sa", "cb", "ammo", "lbg", "hbg", "bow", "prowler" };
+        private readonly string[] WEAPON_FILENAMES = new string[] { "gs", "ls", "sns", "db", "lance", "gl", "hammer", "hh", "sa", "cb", "ig", "ammo", "lbg", "hbg", "bow", "prowler" };
 
         /// <summary>
         /// Gets the motion values for a weapon.
@@ -90,6 +90,10 @@ namespace WycademyV2.Commands.Services
                     case "charge-blade":
                     case "chargeblade":
                         return "cb";
+
+                    case "insect-glaive":
+                    case "insectglaive":
+                        return "ig";
 
                     case "light-bowgun":
                         return "lbg";
