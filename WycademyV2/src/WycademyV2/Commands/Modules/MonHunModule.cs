@@ -113,7 +113,7 @@ namespace WycademyV2.Commands.Modules
         {
             var split = query.Split('|');
 
-            var results = _weapon.SearchWeaponInfo(split[0]);
+            var results = _weapon.SearchWeaponInfo(split[0].ToLower());
             if (results.Count == 0)
             {
                 await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: $"No weapon was found containing the string \"{split[0]}\"", prependZWSP: true);
