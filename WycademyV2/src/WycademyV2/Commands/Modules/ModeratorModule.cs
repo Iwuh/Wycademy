@@ -15,7 +15,8 @@ namespace WycademyV2.Commands.Modules
         [Alias("clear")]
         [Summary("Downloads the last 100 messages in the channel and deletes any from the bot.")]
         [RequireContext(ContextType.Guild)]
-        [RequireUserPermissionOrOwner(GuildPermission.ManageMessages)]
+        [RequireOwner(Group = "moderation")]
+        [RequireUserPermission(ChannelPermission.ManageMessages, Group = "moderation")]
         [RequireUnlocked]
         public async Task CleanBotMessages()
         {

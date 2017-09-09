@@ -16,6 +16,7 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
+    [RequireBotPermission(ChannelPermission.AddReactions)]
     public class MonsterInfoModule : ModuleBase<SocketCommandContext>
     {
         private MonsterInfoService _monster;

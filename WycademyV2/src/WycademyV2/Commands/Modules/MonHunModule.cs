@@ -64,6 +64,7 @@ namespace WycademyV2.Commands.Modules
         [Alias("dc")]
         [Summary("Finds the expected raw and element for a weapon based on the inputted data.")]
         [RequireUnlocked]
+        [RequireBotPermission(ChannelPermission.AddReactions)]
         public async Task DamageCalculator([Summary("The weapon to calculate for. Can be either the full name or an abbreviation, but must be one word. ex. greatsword/great_sword/gs.")] string weapon,
             [Summary("The raw damage of the weapon. Can be a whole number or a decimal.")] float raw,
             [Summary("The elemental (or status) damage of the weapon. Can be a whole number or a decimal.")] float element,
@@ -100,6 +101,7 @@ namespace WycademyV2.Commands.Modules
         [Alias("toast", "tost", "toasttimer", "tosttimer")]
         [Summary("Sends a timer menu to help you keep track of Teostra novas.")]
         [RequireUnlocked]
+        [RequireBotPermission(ChannelPermission.AddReactions)]
         public async Task ToastTimer()
         {
             var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, new ToastTimerMessage(Context.User));
@@ -109,6 +111,7 @@ namespace WycademyV2.Commands.Modules
         [Command("weaponinfo")]
         [Summary("Gets the info for a specific weapon.")]
         [RequireUnlocked]
+        [RequireBotPermission(ChannelPermission.AddReactions)]
         public async Task GetWeaponInfo([Remainder, Summary("All or part of the weapons name. |<number> after the name lets you optionally specify a starting level.")] string query)
         {
             var split = query.Split('|');
