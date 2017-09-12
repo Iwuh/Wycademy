@@ -43,7 +43,7 @@ namespace WycademyV2.Commands.Modules
                 statsEmbed = new EmbedBuilder()
                 .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", Url = @"https://github.com/Iwuh/Wycademy" })
 
-                .WithColor(new Color((byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256)))
+                .WithHighestRoleColour(Context.Guild?.CurrentUser) // Will pass null if the context is a dm, this is ok as the method has null checking.
 
                 .WithTitle("Statistics about the Wycademy:")
 
@@ -71,12 +71,12 @@ namespace WycademyV2.Commands.Modules
             EmbedBuilder aboutEmbed = new EmbedBuilder()
                 .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", Url = @"https://github.com/Iwuh/Wycademy" })
 
-                .WithColor(new Color((byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256), (byte)_utility.GetRandomNumber(0, 256)))
+                .WithHighestRoleColour(Context.Guild?.CurrentUser)
 
                 .WithTitle("About the Wycademy")
 
                 .WithDescription("Wycademy is a Monster Hunter info bot, to help you with your hunting without you needing to leave Discord! Check out what it can do by using the `<help` command." +
-                " You can invite it to your server [here](https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=52224), view the source code [here](https://github.com/Iwuh/Wycademy), and" +
+                " You can invite it to your server [here](https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=27712), view the source code [here](https://github.com/Iwuh/Wycademy), and" +
                 " join the development/feature request/bug report server [here](https://discord.gg/R8g3BCS).  If you enjoy the bot, a star would be much appreciated! The icon was created by" +
                 " [@thechewer on Instagram](https://www.instagram.com/p/BH42dbZjiYt/?taken-by=thechewer) and the data is taken from Kiranico. Special thanks to my brother for helping me gather the monster data. Monster Hunter is © CAPCOM.")
 
