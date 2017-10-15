@@ -54,6 +54,12 @@ namespace WycademyV2
                     // If the message is mentioning the bot...
                     if (userMessage.MentionedUsers.Select(x => x.Id).Contains(_client.CurrentUser.Id))
                     {
+                        // Make sure the bot has permission to add reactions if this is a guild context.
+                        if (userMessage.Channel is SocketGuildChannel channel)
+                        {
+                            var perms = channel.Guild.CurrentUser.GetPermissions(channel);
+                            if (!perms.AddReactions) return;
+                        }
                         // React with eyes.
                         await userMessage.AddReactionAsync(new Emoji("👀"));
                     }

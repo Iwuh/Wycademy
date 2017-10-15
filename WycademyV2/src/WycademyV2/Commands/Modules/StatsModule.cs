@@ -35,6 +35,7 @@ namespace WycademyV2.Commands.Modules
         [Command("stats")]
         [Summary("Gets statistics about the bot.")]
         [RequireUnlocked]
+        [RequireBotPermission(ChannelPermission.EmbedLinks)]
         public async Task GetStatistics()
         {
             EmbedBuilder statsEmbed;
@@ -64,6 +65,7 @@ namespace WycademyV2.Commands.Modules
         [Command("about")]
         [Summary("Gets information about the bot.")]
         [RequireUnlocked]
+        [RequireBotPermission(ChannelPermission.EmbedLinks)]
         public async Task GetInfo()
         {
             var appInfo = await Context.Client.GetApplicationInfoAsync();
