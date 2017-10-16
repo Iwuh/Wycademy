@@ -7,7 +7,7 @@ You can add the bot to a server that you administrate by clicking here:
 
 https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=27712
 
-If you have any questions or problems, feel free to PM me (Iwuh#6351) on Discord.
+If you have any questions or problems, feel free to PM me (Iwuh#6351) on Discord. You can also join the support/development server: https://discord.gg/R8g3BCS
 
 # Permissions breakdown
 
