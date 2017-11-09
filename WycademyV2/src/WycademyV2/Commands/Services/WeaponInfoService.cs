@@ -129,8 +129,6 @@ namespace WycademyV2.Commands.Services
             }
         }
 
-        
-
         /// <summary>
         /// Search for MH4U weapons matching a given search term.
         /// </summary>
@@ -181,6 +179,11 @@ namespace WycademyV2.Commands.Services
             return deserialized.SelectMany(x => x).ToDictionary(w => w.Id);
         }
 
+        /// <summary>
+        /// Generates an embed for a 4U weapon.
+        /// </summary>
+        /// <param name="weapon">The weapon to use when generating.</param>
+        /// <returns>An embed with all the weapon's data inserted.</returns>
         private Embed BuildFour(FourWeaponInfo weapon)
         {
             var eb = new EmbedBuilder()

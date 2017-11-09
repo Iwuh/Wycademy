@@ -20,6 +20,7 @@ namespace WycademyV2.Commands.Enums
         IG,
         LBG,
         HBG,
-        Bow
+        Bow,
+        Prowler
     }
 }

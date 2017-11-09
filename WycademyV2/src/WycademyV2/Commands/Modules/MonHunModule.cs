@@ -107,46 +107,5 @@ namespace WycademyV2.Commands.Modules
             var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, new ToastTimerMessage(Context.User));
             _cache.Add(Context.Message.Id, message.Id);
         }
-
-        [Command("weaponinfo")]
-        [Summary("Gets the info for a specific weapon.")]
-        [RequireUnlocked]
-        [RequireBotPermission(ChannelPermission.AddReactions)]
-        public async Task GetWeaponInfo([Remainder, Summary("All or part of the weapons name. |<number> after the name lets you optionally specify a starting level.")] string query)
-        {
-            var split = query.Split('|');
-
-            var results = _weapon.SearchWeaponInfo(split[0].ToLower());
-            if (results.Count == 0)
-            {
-                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, text: $"No weapon was found containing the string \"{split[0]}\"", prependZWSP: true);
-            }
-            else if (results.Count > 1)
-            {
-                await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, prependZWSP: true,
-                    text: $"Multiple matches were found:\n{string.Join("\n", results.Select(r => r.Name))}");
-            }
-            else
-            {
-                var pages = _weapon.BuildWeaponInfoPages(results[0]);
-                var message = await _reactions.SendReactionMenuMessageAsync(Context.Channel, 
-                    new WeaponInfoMessage(Context.User, pages, ValidatePageNumber()));
-                await Task.Delay(1000);
-                _cache.Add(Context.Message.Id, message.Id);
-            }
-
-            int ValidatePageNumber()
-            {
-                // Return 0 (default page) if no page is specified.
-                if (split.Length == 1) return 0;
-
-                // Return the page index if it can be parsed, otherwise 0.
-                if (int.TryParse(split[1], out int result))
-                {
-                    return result;
-                }
-                return 0;
-            }
-        }
     }
 }
