@@ -41,6 +41,7 @@ namespace WycademyV2.Commands
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
 
             _client.MessageReceived += HandleCommand;
+
         }
 
         public async Task HandleCommand(SocketMessage msg)

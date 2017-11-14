@@ -12,7 +12,7 @@ namespace WycademyV2.Commands.Enums
         Dragon,
         Ice,
         Poison,
-        Para ,
+        Para,
         Sleep,
         Blast
     }

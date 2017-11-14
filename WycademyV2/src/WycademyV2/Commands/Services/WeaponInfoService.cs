@@ -13,53 +13,6 @@ namespace WycademyV2.Commands.Services
 {
     public class WeaponInfoService
     {
-        //private readonly string[] FILENAMES = new string[] { "bow", "chargeblade", "dualblades", "greatsword", "gunlance", "hammer", "heavybowgun", "huntinghorn", "insectglaive", "lance", "lightbowgun", "longsword", "switchaxe", "swordshield" };
-
-        //private List<WeaponInfo> _weapons;
-        //private List<string> _pages;
-        //private StringBuilder _currentPage;
-
-        //public WeaponInfoService()
-        //{
-        //    var deserialized = new List<List<WeaponInfo>>();
-        //    foreach (var name in FILENAMES)
-        //    {
-        //        string text = File.ReadAllText(Path.Combine(WycademyConst.DATA_LOCATION, "gen", "weapon", $"{name}.json"), new UTF8Encoding(false));
-        //        deserialized.Add(JsonConvert.DeserializeObject<List<WeaponInfo>>(text));
-        //    }
-        //    // Flatten the list of lists into a single list.
-        //    _weapons = deserialized.SelectMany(x => x).ToList();
-
-        //    _pages = new List<string>();
-        //    _currentPage = new StringBuilder();
-        //}
-
-        ///// <summary>
-        ///// Find 0 or more WeaponInfo objects using part or all of the weapon's name.
-        ///// </summary>
-        ///// <param name="searchTerm">The string to search names for.</param>
-        ///// <returns>0 or more search results.</returns>
-        //public List<WeaponInfo> SearchWeaponInfo(string searchTerm)
-        //{
-        //    var lowerTerm = searchTerm.ToLower();
-        //    return _weapons.Where(w => w.Name.ToLower().Contains(searchTerm)).ToList();
-        //}
-
-        ///// <summary>
-        ///// Gets a WeaponInfo by its ID.
-        ///// </summary>
-        ///// <param name="id">The weapon's ID.</param>
-        ///// <returns>The WeaponInfo with the requested ID, or null if not found.</returns>
-        //public WeaponInfo GetWeaponInfoById(int? id)
-        //{
-        //    return _weapons.FirstOrDefault(w => w.ID == id);
-        //}
-
-        //public List<string> BuildWeaponInfoPages(WeaponInfo info)
-        //{
-        //    return new WeaponInfoBuilder().Build(info, GetWeaponInfoById(info.UpgradesFrom));
-        //}
-
         private readonly Dictionary<WeaponType, string> WEAPON_EMOTES = new Dictionary<WeaponType, string>()
         {
             { WeaponType.GS,     "<:great_sword:376232911059288065>"      },
@@ -113,15 +66,45 @@ namespace WycademyV2.Commands.Services
             _genWeapons = LoadWeaponInfo<GenWeaponInfo>("gen");
         }
 
-        public List<Embed> Build(BaseWeaponInfo weapon)
+        public List<Embed> Build(BaseWeaponInfo weapon, IUser user)
         {
             if (weapon is FourWeaponInfo four)
             {
-                return new List<Embed>() { BuildFour(four) };
+                var eb = new EmbedBuilder()
+                    .WithAuthor("Wycademy", "https://cdn.discordapp.com/avatars/207172354101608448/67bb079bde2e9ed142ad824e4a31d5af.png", "https://github.com/Iwuh/Wycademy")
+                    .WithTitle($"{weapon.Name} - {weapon.WeaponTypeName} (RARE {weapon.Rare})")
+                    .WithUrl(weapon.Url)
+                    .WithDescription($"Upgrades from: {GetNameById(_fourWeapons, weapon.UpgradesFromId)}\nUpgrades into: {GetNameById(_fourWeapons, four.UpgradesIntoId)}")
+                    .WithFooter(user.ToString(), user.GetAvatarUrl())
+                    .WithCurrentTimestamp();
+
+                return new List<Embed>() { BuildLevel(eb, four.Levels.First(), four.WeaponType, false) };
             }
             else if (weapon is GenWeaponInfo gen)
             {
-                return BuildGen(gen);
+                var embeds = new List<Embed>();
+
+                foreach (WeaponLevel level in gen.Levels)
+                {
+                    var description = new StringBuilder()
+                        .AppendLine($"Upgrades from: {GetNameById(_fourWeapons, weapon.UpgradesFromId)}")
+                        .AppendLine($"Name: {weapon.Name}")
+                        .AppendLine($"Final Name: {gen.FinalName}")
+                        .AppendLine($"Description: {gen.Description}")
+                        .AppendLine($"Final Description: {gen.FinalDescription}");
+
+                    var eb = new EmbedBuilder()
+                        .WithAuthor("Wycademy", "https://cdn.discordapp.com/avatars/207172354101608448/67bb079bde2e9ed142ad824e4a31d5af.png", "https://github.com/Iwuh/Wycademy")
+                        .WithTitle($"{weapon.Name} / {gen.FinalName} - {weapon.WeaponTypeName} (RARE {(weapon.Rare == "8" ? "X" : weapon.Rare)})")
+                        .WithUrl(weapon.Url)
+                        .WithDescription(description.ToString())
+                        .WithFooter(user.ToString(), user.GetAvatarUrl())
+                        .WithCurrentTimestamp();
+
+                    embeds.Add(BuildLevel(eb, level, gen.WeaponType, true));
+                }
+
+                return embeds;
             }
             else
             {
@@ -134,26 +117,22 @@ namespace WycademyV2.Commands.Services
         /// </summary>
         /// <param name="searchTerm">The search term to use.</param>
         /// <returns>All MH4U weapons that match the given search term.</returns>
-        public IEnumerable<FourWeaponInfo> SearchFour(string searchTerm) => SearchInternal(_fourWeapons, searchTerm);
+        public IEnumerable<FourWeaponInfo> SearchFour(string searchTerm)
+        {
+            var pairs = _fourWeapons.Where(p => p.Value.Name.ToLower().Contains(searchTerm.ToLower()));
+            return pairs.Select(p => p.Value).ToList();
+        }
 
         /// <summary>
         /// Search for MHGen weapons matching a given search term.
         /// </summary>
         /// <param name="searchTerm">The search term to use.</param>
         /// <returns>All MHGen weapons that match the given search term.</returns>
-        public IEnumerable<GenWeaponInfo> SearchGen(string searchTerm) => SearchInternal(_genWeapons, searchTerm);
-
-        /// <summary>
-        /// Search for all weapons matching the given search term.
-        /// </summary>
-        /// <typeparam name="T">The implementation of <see cref="BaseWeaponInfo"/> to return.</typeparam>
-        /// <param name="weapons">The dictionary of weapons to search.</param>
-        /// <param name="searchTerm">The search term to use.</param>
-        /// <returns>All weapons that match the search term.</returns>
-        private IEnumerable<T> SearchInternal<T>(Dictionary<int, T> weapons, string searchTerm) where T : BaseWeaponInfo
+        public IEnumerable<GenWeaponInfo> SearchGen(string searchTerm)
         {
-            var pairs = weapons.Where(p => p.Value.Name.ToLower().Contains(searchTerm.ToLower()));
-            return pairs.Select(p => p.Value);
+            var pairs = _genWeapons.Where(p => p.Value.Name.ToLower().Contains(searchTerm.ToLower()) 
+                                            || p.Value.FinalName.ToLower().Contains(searchTerm.ToLower()));
+            return pairs.Select(p => p.Value).ToList();
         }
         
         /// <summary>
@@ -179,37 +158,37 @@ namespace WycademyV2.Commands.Services
             return deserialized.SelectMany(x => x).ToDictionary(w => w.Id);
         }
 
-        /// <summary>
-        /// Generates an embed for a 4U weapon.
-        /// </summary>
-        /// <param name="weapon">The weapon to use when generating.</param>
-        /// <returns>An embed with all the weapon's data inserted.</returns>
-        private Embed BuildFour(FourWeaponInfo weapon)
+        private Embed BuildLevel(EmbedBuilder builder, WeaponLevel level, WeaponType type, bool isGen)
         {
-            var eb = new EmbedBuilder()
-                .WithAuthor("Wycademy", "https://cdn.discordapp.com/avatars/207172354101608448/67bb079bde2e9ed142ad824e4a31d5af.png", "https://github.com/Iwuh/Wycademy")
-                .WithTitle($"{weapon.Name} - {weapon.WeaponTypeName} (RARE {weapon.Rare})")
-                .WithUrl(weapon.Url)
-                .WithDescription($"Upgrades from: {GetNameById(_fourWeapons, weapon.UpgradesFromId)}\nUpgrades into: {GetNameById(_fourWeapons, weapon.UpgradesIntoId)}");
-
-            // 4U weapons only have one level.
-            WeaponLevel level = weapon.Levels.First();
-
             var stats = new StringBuilder();
 
-            // Add the display raw and true raw.
-            stats.AppendLine($"{level.Raw} raw ({(int)(level.Raw / level.Modifier)} true)");
+            // Add the display raw, and true raw if it's a 4U weapon.
+            if (isGen)
+            {
+                stats.AppendLine($"{level.Raw} raw");
+            }
+            else
+            {
+                stats.AppendLine($"{level.Raw} raw ({(int)(level.Raw / level.Modifier)} true)");
+            }
 
             // Add the affinity and frenzy affinity, if applicable.
-            stats.AppendLine($"{level.Affinity}{(level.FrenzyAffinity != 0 ? "/" + level.FrenzyAffinity : string.Empty)}% affinity");
+            if (isGen)
+            {
+                stats.AppendLine($"{level.Affinity}% affinity");
+            }
+            else
+            {
+                stats.AppendLine($"{level.Affinity}{(level.FrenzyAffinity != 0 ? "/" + level.FrenzyAffinity : string.Empty)}% affinity");
+            }
 
             // Add the defense bonus.
             stats.AppendLine($"+{level.Defense} defense");
 
+            // Add elements and set the embed colour.
             if (level.Effects.Count > 0)
             {
-                // Use the first effect's main colour as the embed colour.
-                eb.WithColor(EFFECT_COLOURS[level.Effects.First().Type]);
+                builder.WithColor(EFFECT_COLOURS[level.Effects[0].Type]);
 
                 // Certain Dual Blades can have two elements.
                 foreach (WeaponEffect effect in level.Effects)
@@ -231,78 +210,81 @@ namespace WycademyV2.Commands.Services
                 stats.AppendLine("No Element/Status");
             }
 
-            // Add the weapon's slots (O = open slot, - = closed slot)
+            // Add the weapon's slots.
             stats.AppendLine(new string('O', level.Slots) + new string('-', 3 - level.Slots));
 
-            eb.AddField("Stats", stats.ToString());
+            builder.AddField("Stats", stats.ToString());
 
             // As long as the weapon has at least one sharpness...
             if (level.Sharpnesses.Count > 0)
             {
-                var sharpnesses = new StringBuilder();
+                var sharpnessBuilder = new StringBuilder();
                 // Add the base sharpness and the sharpness with S+1 if applicable.
                 for (int i = 0; i < level.Sharpnesses.Count; i++)
                 {
-                    sharpnesses.AppendLine($"{level.Sharpnesses[i]} (+{i})");
+                    sharpnessBuilder.AppendLine($"{level.Sharpnesses[i]} (+{i})");
                 }
-                eb.AddField("Sharpnesses", sharpnesses.ToString());
+                builder.AddField("Sharpnesses", sharpnessBuilder.ToString());
             }
 
-            switch (weapon.WeaponType)
+            switch (type)
             {
                 // Add the HH's notes.
                 case WeaponType.HH:
-                    eb.AddField($"{WEAPON_EMOTES[WeaponType.HH]} Notes", string.Join(" ", level.HornNotes));
+                    builder.AddField($"{WEAPON_EMOTES[WeaponType.HH]} Notes", string.Join(" ", level.HornNotes));
                     break;
 
                 // Add the GL's shell type and level.
                 case WeaponType.GL:
-                    eb.AddField($"{WEAPON_EMOTES[WeaponType.GL]} Shells", $"{level.GunlanceShells.Type} lv {level.GunlanceShells.Level}");
+                    builder.AddField($"{WEAPON_EMOTES[WeaponType.GL]} Shells", $"{level.GunlanceShells.Type} lv {level.GunlanceShells.Level}");
                     break;
 
                 // Add the SA's phial type and value, if applicable.
                 case WeaponType.SA:
                     if (level.Phial.Value != "0")
                     {
-                        eb.AddField($"{WEAPON_EMOTES[WeaponType.SA]} Phial", $"{level.Phial.Value} {level.Phial.Type}");
+                        builder.AddField($"{WEAPON_EMOTES[WeaponType.SA]} Phial", $"{level.Phial.Value} {level.Phial.Type}");
                     }
                     else
                     {
-                        eb.AddField($"{WEAPON_EMOTES[WeaponType.SA]} Phial", level.Phial.Type);
+                        builder.AddField($"{WEAPON_EMOTES[WeaponType.SA]} Phial", level.Phial.Type);
                     }
                     break;
 
                 // Add the CB's phial type.
                 case WeaponType.CB:
-                    eb.AddField($"{WEAPON_EMOTES[WeaponType.CB]} Phials", level.Phial.Type);
+                    builder.AddField($"{WEAPON_EMOTES[WeaponType.CB]} Phials", level.Phial.Type);
                     break;
 
                 // Add the general gun data and the LBG's rapid fire shots.
                 case WeaponType.LBG:
-                    AddUniversalGunFields(WeaponType.LBG, level.GunStats, eb);
-                    eb.AddInlineField($"{WEAPON_EMOTES[WeaponType.LBG]} Rapid Fire Shots", string.Join("\n", level.GunStats.RapidFireShots.Select(s => $"{s.Name} ({s.Count})")));
+                    AddUniversalGunFields(WeaponType.LBG, level.GunStats, builder);
+                    string rapidFireShots;
+                    if (isGen)
+                    {
+                        rapidFireShots = string.Join("\n", level.GunStats.RapidFireShots.Select(s => $"{s.Name} - {s.Count} shots / {s.Multiplier} multiplier / {s.WaitTime} wait time"));
+                    }
+                    else
+                    {
+                        rapidFireShots = string.Join("\n", level.GunStats.RapidFireShots.Select(s => $"{s.Name} ({s.Count})"));
+                    }
+                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.LBG]} Rapid Fire Shots", rapidFireShots);
                     break;
 
                 // Add the general gun data and the HBG's crouching fire shots.
                 case WeaponType.HBG:
-                    AddUniversalGunFields(WeaponType.HBG, level.GunStats, eb);
-                    eb.AddInlineField($"{WEAPON_EMOTES[WeaponType.HBG]} Crouching Fire Shots", string.Join("\n", level.GunStats.CrouchingFireShots.Select(s => $"{s.Name} ({s.Count})")));
+                    AddUniversalGunFields(WeaponType.HBG, level.GunStats, builder);
+                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.HBG]} Crouching Fire Shots", string.Join("\n", level.GunStats.CrouchingFireShots.Select(s => $"{s.Name} ({s.Count})")));
                     break;
 
                 // Add the bow's arc shot, charge shots, and usable coatings.
                 case WeaponType.Bow:
-                    eb.AddInlineField($"{WEAPON_EMOTES[WeaponType.Bow]} Shots", $"Arc Shot: {level.BowShots.ArcShot}\n{string.Join("\n", level.BowShots.ChargeShots)}");
-                    eb.AddInlineField($"{WEAPON_EMOTES[WeaponType.Bow]} Coatings", string.Join("\n", level.BowCoatings));
+                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.Bow]} Shots", $"Arc Shot: {level.BowShots.ArcShot}\n{string.Join("\n", level.BowShots.ChargeShots)}");
+                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.Bow]} Coatings", string.Join("\n", level.BowCoatings));
                     break;
             }
 
-            // Finally, build and return the embed.
-            return eb.Build();
-        }
-
-        private List<Embed> BuildGen(GenWeaponInfo weapon)
-        {
-
+            return builder.Build();
         }
 
         private void AddUniversalGunFields(WeaponType type, GunStats stats, EmbedBuilder builder)

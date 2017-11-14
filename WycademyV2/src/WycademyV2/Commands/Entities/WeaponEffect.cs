@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Discord;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ namespace WycademyV2.Commands.Entities
         /// <summary>
         /// The type of the weapon effect, ex: Fire.
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("id")]
         public WeaponEffectType Type { get; set; }
 
         /// <summary>
