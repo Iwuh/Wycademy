@@ -17,15 +17,16 @@ namespace WycademyV2.Commands.Entities
         private int _pageIndex;
         private IUserMessage _message;
 
-        public WeaponInfoMessage(IUser user, List<Embed> pages) : base(user)
+        public WeaponInfoMessage(IUser user, List<Embed> pages, int startIndex) : base(user)
         {
             _pages = pages;
+            _pageIndex = startIndex < _pages.Count ? startIndex : 0;
         }
 
         public async override Task<IUserMessage> CreateMessageAsync(IMessageChannel channel)
         {
             // Send the message starting with the first page.
-            _message = await channel.SendMessageAsync($"Weapon Info {GetPageNumberString()}", embed: _pages[0]);
+            _message = await channel.SendMessageAsync($"Weapon Info {GetPageNumberString()}", embed: _pages[_pageIndex]);
 
             // Add all the reaction options.
             await _message.AddReactionAsync(new Emoji(BEGIN));

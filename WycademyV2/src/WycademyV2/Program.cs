@@ -147,30 +147,7 @@ namespace WycademyV2
 
         private Task Log(LogMessage msg)
         {
-            switch (msg.Severity)
-            {
-                case LogSeverity.Critical:
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    break;
-                case LogSeverity.Error:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case LogSeverity.Warning:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    break;
-                case LogSeverity.Info:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    break;
-                case LogSeverity.Verbose:
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case LogSeverity.Debug:
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    break;
-            }
+            Console.ForegroundColor = WycademyConst.GetConsoleColor(msg.Severity);
 
             Console.WriteLine(msg.ToString());
             Console.ForegroundColor = ConsoleColor.White;
