@@ -20,7 +20,6 @@ namespace WycademyV2.Commands
         private DiscordSocketClient _client;
         private CommandService _commands;
         private IServiceProvider _provider;
-        private Func<LogMessage, Task> _errorLog;
 
         public async Task Install(IServiceProvider provider, Func<LogMessage, Task> log)
         {
@@ -33,7 +32,7 @@ namespace WycademyV2.Commands
             _provider = provider;
 
             // Set the method for error logging.
-            _errorLog = log;
+            _commands.Log += log;
 
             // Add any custom typereaders.
             _commands.AddTypeReader<BlacklistTypeReader>(new BlacklistTypeReader());
@@ -72,19 +71,6 @@ namespace WycademyV2.Commands
                     {
                         case CommandError.BadArgCount:
                             await msg.Channel.SendMessageAsync("Error: Invalid argument count. Try `<help [command]`.");
-                            break;
-                        case CommandError.Exception:
-                            if (msg.Author.Id == (await _client.GetApplicationInfoAsync()).Owner.Id)
-                            {
-                                // If the command was called by the owner show the full exception message.
-                                await msg.Channel.SendMessageAsync("Exception: " + result.ErrorReason);
-                            }
-                            else
-                            {
-                                // Otherwise show a generic message and log to the console.
-                                await msg.Channel.SendMessageAsync(":interrobang: An exception occured and has been logged to the console. If this happens again, contact Iwuh#6351.");
-                                await _errorLog(new LogMessage(LogSeverity.Error, "Command Error", result.ErrorReason));
-                            }
                             break;
                         case CommandError.ParseFailed:
                             await msg.Channel.SendMessageAsync("Error: Invalid input. Double check your quotation marks and numbers.");

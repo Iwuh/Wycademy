@@ -2,6 +2,7 @@
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,14 @@ namespace WycademyV2
         private CommandHandler _handler;
         private IServiceProvider _provider;
 
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         public async Task Start()
         {
             // Initialize the DiscordSocketClient and set the LogLevel.
             _client = new DiscordSocketClient(new DiscordSocketConfig()
             {
-                LogLevel = LogSeverity.Info,
+                LogLevel = LogSeverity.Debug,
                 MessageCacheSize = 1000
             });
 
@@ -147,11 +150,37 @@ namespace WycademyV2
 
         private Task Log(LogMessage msg)
         {
-            Console.ForegroundColor = WycademyConst.GetConsoleColor(msg.Severity);
+            // Set the function to use for logging.
+            Action<Exception, string> logFunc;
+            switch (msg.Severity)
+            {
+                case LogSeverity.Critical:
+                    logFunc = _logger.Fatal;
+                    break;
+                case LogSeverity.Error:
+                    logFunc = _logger.Error;
+                    break;
+                case LogSeverity.Warning:
+                    logFunc = _logger.Warn;
+                    break;
+                case LogSeverity.Info:
+                    logFunc = _logger.Info;
+                    break;
+                case LogSeverity.Verbose:
+                    logFunc = _logger.Debug;
+                    break;
+                case LogSeverity.Debug:
+                    logFunc = _logger.Trace;
+                    break;
+                default:
+                    // This should never be reached, but if it is, use an empty action.
+                    logFunc = (ex, str) => { };
+                    break;
+            }
 
-            Console.WriteLine(msg.ToString());
-            Console.ForegroundColor = ConsoleColor.White;
-            // Represents a completed Task for methods that have to return Task but don't do any asynchronous work.
+            // Call the function. Omit the timestamp from the LogMessage because a timestamp is already included by NLog.
+            logFunc(msg.Exception, msg.ToString(prependTimestamp: false));
+
             return Task.CompletedTask;
         }
 

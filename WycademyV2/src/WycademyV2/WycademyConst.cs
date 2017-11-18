@@ -21,31 +21,5 @@ namespace WycademyV2
 #endif
 
         public const string HELP_REACTION = "🏛";
-
-        /// <summary>
-        /// Gets the console color for a log severity.
-        /// </summary>
-        /// <param name="severity">The log message's severity.</param>
-        /// <returns>A <see cref="ConsoleColor"/>.</returns>
-        public static ConsoleColor GetConsoleColor(LogSeverity severity)
-        {
-            switch (severity)
-            {
-                case LogSeverity.Critical:
-                    return ConsoleColor.DarkRed;
-                case LogSeverity.Error:
-                    return ConsoleColor.Red;
-                case LogSeverity.Warning:
-                    return ConsoleColor.Yellow;
-                case LogSeverity.Info:
-                    return ConsoleColor.White;
-                case LogSeverity.Verbose:
-                    return ConsoleColor.Gray;
-                case LogSeverity.Debug:
-                    return ConsoleColor.DarkGray;
-                default:
-                    return ConsoleColor.White;
-            }
-        }
     }
 }
