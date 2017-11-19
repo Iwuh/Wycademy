@@ -21,7 +21,7 @@ namespace WycademyV2.Commands.Modules
             _provider = provider;
         }
 
-        [Command("eval")]
+        [Command("eval", RunMode = RunMode.Async)]
         [Summary("Evaluates a C# expression using the Roslyn scripting API.")]
         [RequireOwner]
         public async Task EvaluateExpression([Remainder, Summary("The C# expression to evaluate.")] string expr)
@@ -31,7 +31,7 @@ namespace WycademyV2.Commands.Modules
             string message;
             if (!result.IsSuccess)
             {
-                message = $"Compilation Failed:\n```{result.Output}```";
+                message = $"{result.Output}:\n```{result.Exception.GetType()}\n{result.Exception.Message}```";
             }
             else
             {

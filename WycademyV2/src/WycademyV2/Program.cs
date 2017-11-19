@@ -121,12 +121,12 @@ namespace WycademyV2
                 .AddSingleton<LockerService>()
                 .AddSingleton<MotionValueService>()
                 .AddSingleton<UtilityService>()
-                .AddSingleton<WeaponInfoService>();
+                .AddSingleton<WeaponInfoService>()
+                .AddSingleton<EvalService>();
 
             // Add all services with custom constructors.
             services.AddSingleton(new CommandCacheService(_client, 500))
                 .AddSingleton(new DamageCalculatorService(_client))
-                .AddSingleton(new EvalService(_client))
                 .AddSingleton(new ReactionMenuService(_client));
 
             // Add the blacklist service.

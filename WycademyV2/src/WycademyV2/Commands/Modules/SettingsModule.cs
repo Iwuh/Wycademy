@@ -1,5 +1,6 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,9 @@ namespace WycademyV2.Commands.Modules
                 // Disconnect and log out.
                 await Context.Client.StopAsync();
                 await Context.Client.LogoutAsync();
+
+                // Shut down logging.
+                LogManager.Shutdown();
 
                 // Finally, exit the console application.
                 Environment.Exit(0);
