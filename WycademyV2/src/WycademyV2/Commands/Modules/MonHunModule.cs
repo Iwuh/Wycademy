@@ -13,7 +13,8 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
-    [Summary("Monster Hunter Commands")]
+    [Name("monhun")]
+    [Summary("General MH Commands")]
     public class MonHunModule : ModuleBase<SocketCommandContext>
     {
         private MonsterInfoService _minfo;

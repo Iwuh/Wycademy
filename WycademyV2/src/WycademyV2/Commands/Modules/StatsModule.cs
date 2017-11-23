@@ -14,7 +14,8 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
-    [Summary("Stats Commands")]
+    [Name("stats")]
+    [Summary("Bot Statistics")]
     public class StatsModule : ModuleBase<SocketCommandContext>
     {
         private LockerService _locker;

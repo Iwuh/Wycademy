@@ -11,6 +11,7 @@ using WycademyV2.Commands.Utilities;
 
 namespace WycademyV2.Commands.Modules
 {
+    [Name("other")]
     [Summary("Misc. Commands")]
     public class OtherModule : ModuleBase<SocketCommandContext>
     {

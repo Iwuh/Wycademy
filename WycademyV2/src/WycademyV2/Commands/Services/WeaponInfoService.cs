@@ -71,7 +71,7 @@ namespace WycademyV2.Commands.Services
             if (weapon is FourWeaponInfo four)
             {
                 var eb = new EmbedBuilder()
-                    .WithAuthor("Wycademy", "https://cdn.discordapp.com/avatars/207172354101608448/67bb079bde2e9ed142ad824e4a31d5af.png", "https://github.com/Iwuh/Wycademy")
+                    .WithAuthor("Wycademy", WycademyConst.AVATAR_URL, WycademyConst.GITHUB)
                     .WithTitle($"{weapon.Name} - {weapon.WeaponTypeName} (RARE {weapon.Rare})")
                     .WithUrl(weapon.Url)
                     .WithDescription($"Upgrades from: {GetNameById(_fourWeapons, weapon.UpgradesFromId)}\nUpgrades into: {GetNameById(_fourWeapons, four.UpgradesIntoId)}")
@@ -94,7 +94,7 @@ namespace WycademyV2.Commands.Services
                         .AppendLine($"Final Description: {gen.FinalDescription}");
 
                     var eb = new EmbedBuilder()
-                        .WithAuthor("Wycademy", "https://cdn.discordapp.com/avatars/207172354101608448/67bb079bde2e9ed142ad824e4a31d5af.png", "https://github.com/Iwuh/Wycademy")
+                        .WithAuthor("Wycademy", WycademyConst.AVATAR_URL, WycademyConst.GITHUB)
                         .WithTitle($"{weapon.Name} / {gen.FinalName} - {weapon.WeaponTypeName} (RARE {(weapon.Rare == "8" ? "X" : weapon.Rare)})")
                         .WithUrl(weapon.Url)
                         .WithDescription(description.ToString())

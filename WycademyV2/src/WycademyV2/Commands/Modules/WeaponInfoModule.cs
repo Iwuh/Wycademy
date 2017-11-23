@@ -14,6 +14,7 @@ namespace WycademyV2.Commands.Modules
 {
     [RequireUnlocked]
     [Group("weaponinfo")]
+    [Summary("MH Weapon Info")]
     [RequireBotPermission(ChannelPermission.EmbedLinks)]
     public class WeaponInfoModule : ModuleBase<SocketCommandContext>
     {
@@ -52,6 +53,7 @@ namespace WycademyV2.Commands.Modules
         }
 
         [Command("gen", RunMode = RunMode.Async)]
+        [Summary("Gets information about a Gen weapon.")]
         public async Task GetGenWeaponData([Remainder, Summary("All or part of the weapon's name. Can optionally be followed by a pipe and number to specify a starting level.")] string weaponName)
         {
             // Extract the weapon name and optionally a starting level.

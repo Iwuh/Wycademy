@@ -24,21 +24,52 @@ namespace WycademyV2.Commands.Modules
             _provider = provider;
         }
         
-        [Command("help")]
+        [Command("help", RunMode = RunMode.Async)]
         [Summary("Why are you even looking at this?")]
         [RequireUnlocked]
         public async Task GetGeneralHelp()
         {
             var helpBuilder = new StringBuilder();
 
-            foreach (CommandInfo command in _commands.Commands)
+            foreach (var module in _commands.Modules)
             {
-                if (GetCommandUsage(command, out string usage))
+                // The below code throws an ArgumentException in a DM with Discord.Net v1.0.2. The issue has been fixed, and the code will be uncommented
+                // once the changes are pushed to stable.
+
+                //bool usable = false;
+                //foreach (var command in module.Commands)
+                //{
+                //    var result = await command.CheckPreconditionsAsync(Context, _provider);
+                //    if (result.IsSuccess)
+                //    {
+                //        usable = true;
+                //        break;
+                //    }
+                //}
+                //if (!usable) continue;
+
+                // Skip over any hidden modules.
+                if (module.Remarks != null && module.Remarks.Contains("hidden")) continue;
+
+                // Check if the module is a group.
+                bool isGroup = module.Aliases.First() != string.Empty;
+                // Add all of the module's commands.
+                helpBuilder.AppendLine($"{module.Summary}:");
+                foreach (var command in module.Commands)
                 {
-                    // Add the summary, or an error message if there is no summary.
-                    helpBuilder.AppendLine($"`{usage}` - {command.Summary ?? "There is no summary for this command."}");
-                    helpBuilder.AppendLine();
+                    string usage;
+                    if (isGroup)
+                    {
+                        usage = $"{module.Name} {command.Name}";
+                    }
+                    else
+                    {
+                        usage = command.Name;
+                    }
+                    helpBuilder.AppendLine($"\t`<{usage}` - {command.Summary}");
                 }
+
+                helpBuilder.AppendLine();
             }
 
             helpBuilder.AppendLine("To see help for an individual command, do `<help [command]` where `[command]` is the command you want info about. ex. `<help hitzone`");
@@ -46,44 +77,6 @@ namespace WycademyV2.Commands.Modules
 
             await Context.User.SendMessageAsync(helpBuilder.ToString());
             await Context.Message.AddReactionAsync(new Emoji(WycademyConst.HELP_REACTION));
-
-            bool GetCommandUsage(CommandInfo cmd, out string usage)
-            {
-                string fullPath = cmd.Name;
-                bool show = true;
-
-                ModuleInfo currentModule = cmd.Module;
-                while (currentModule.Remarks != null && currentModule.Remarks.Contains("group"))
-                {
-                    // NB: I put "group" in the remarks if the module uses GroupAttribute, as Discord.Net does not provide a way to check.
-                    // NB: "hidden" in a module's remarks indicates that its commands should not be shown in help.
-
-                    if (currentModule.Remarks.Contains("hidden"))
-                    {
-                        // If the module should be hidden, set show to false and stop looping.
-                        show = false;
-                        break;
-                    }
-
-                    // Add the module name to the front of the command.
-                    fullPath = fullPath.Insert(0, $"{currentModule.Name} ");
-                    if (currentModule.IsSubmodule)
-                    {
-                        // Go another step up if applicable.
-                        currentModule = currentModule.Parent;
-                    }
-                    else
-                    {
-                        // Otherwise, stop looping.
-                        break;
-                    }
-                }
-                // Add the bot prefix to the front of the command usage.
-                fullPath = fullPath.Insert(0, "<");
-
-                usage = fullPath;
-                return show;
-            }
         }
 
         [Command("help")]
@@ -110,6 +103,21 @@ namespace WycademyV2.Commands.Modules
                         // Add any aliases, if applicable.
                         helpBuilder.AppendLine(Format.Italics($"Aliases: {string.Join(" ", command.Aliases.Where(a => a != command.Name))}"));
                     }
+
+                    // Add the command usage.
+                    helpBuilder.Append($"Usage: `<{command.Name}");
+                    foreach (var parameter in command.Parameters)
+                    {
+                        if (parameter.IsOptional)
+                        {
+                            helpBuilder.Append($" [{parameter.Name}]");
+                        }
+                        else
+                        {
+                            helpBuilder.Append($" <{parameter.Name}>");
+                        }
+                    }
+                    helpBuilder.AppendLine("`");
 
                     foreach (ParameterInfo parameter in command.Parameters)
                     {

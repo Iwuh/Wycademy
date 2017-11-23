@@ -16,6 +16,8 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
+    [Name("monsterinfo")]
+    [Summary("MH Monster Info")]
     [RequireBotPermission(ChannelPermission.AddReactions)]
     public class MonsterInfoModule : ModuleBase<SocketCommandContext>
     {

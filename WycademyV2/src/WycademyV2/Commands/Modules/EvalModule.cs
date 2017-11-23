@@ -8,6 +8,8 @@ using WycademyV2.Commands.Services;
 
 namespace WycademyV2.Commands.Modules
 {
+    [Name("eval")]
+    [Summary("Eval Commands")]
     public class EvalModule : ModuleBase<SocketCommandContext>
     {
         private CommandCacheService _cache;

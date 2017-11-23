@@ -21,5 +21,8 @@ namespace WycademyV2
 #endif
 
         public const string HELP_REACTION = "🏛";
+
+        public const string AVATAR_URL = "https://cdn.discordapp.com/avatars/207172354101608448/67bb079bde2e9ed142ad824e4a31d5af.png";
+        public const string GITHUB = "https://github.com/Iwuh/Wycademy";
     }
 }

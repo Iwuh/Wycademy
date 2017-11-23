@@ -8,6 +8,7 @@ using WycademyV2.Commands.Preconditions;
 
 namespace WycademyV2.Commands.Modules
 {
+    [Name("mod")]
     [Summary("Moderator Commands")]
     public class ModeratorModule : ModuleBase<SocketCommandContext>
     {
