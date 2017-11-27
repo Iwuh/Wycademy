@@ -45,7 +45,7 @@ namespace WycademyV2.Commands.Modules
                 statsEmbed = new EmbedBuilder()
                 .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", Url = @"https://github.com/Iwuh/Wycademy" })
 
-                .WithHighestRoleColour(Context.Guild?.CurrentUser) // Will pass null if the context is a dm, this is ok as the method has null checking.
+                .WithColor(Context.Guild?.CurrentUser.GetHighestRoleColour() ?? Color.Default)
 
                 .WithTitle("Statistics about the Wycademy:")
 
@@ -53,7 +53,7 @@ namespace WycademyV2.Commands.Modules
 
                 .AddField(x => x.WithName("Cached Messages:").WithValue($"{_cache.Count} / {_cache.MaxCapacity}").WithIsInline(true))
 
-                .AddField(x => x.WithName("Connected Servers").WithValue(Context.Client.Guilds.Count.ToString()).WithIsInline(true))
+                .AddField(x => x.WithName("Connected Servers:").WithValue(Context.Client.Guilds.Count.ToString()).WithIsInline(true))
 
                 .AddField(x => x.WithName("Heap Size:").WithValue((GC.GetTotalMemory(false) / 1024.0f / 1024.0f).ToString() + " MB").WithIsInline(true))
 
@@ -74,7 +74,7 @@ namespace WycademyV2.Commands.Modules
             EmbedBuilder aboutEmbed = new EmbedBuilder()
                 .WithAuthor(new EmbedAuthorBuilder() { Name = "Wycademy", Url = @"https://github.com/Iwuh/Wycademy" })
 
-                .WithHighestRoleColour(Context.Guild?.CurrentUser)
+                .WithColor(Context.Guild?.CurrentUser.GetHighestRoleColour() ?? Color.Default)
 
                 .WithTitle("About the Wycademy")
 

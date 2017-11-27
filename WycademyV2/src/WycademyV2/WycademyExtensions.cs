@@ -86,5 +86,23 @@ namespace WycademyV2
 
             return builder.WithColor(colour); // Personal preference > consistency
         }
+
+        /// <summary>
+        /// Gets the colour of a user's highest role.
+        /// </summary>
+        /// <returns>The user's highest role colour, or <see cref="Color.Default"/> if the user does not have any coloured roles.</returns>
+        public static Color GetHighestRoleColour(this IUser user)
+        {
+            if (user is IGuildUser guildUser)
+            {
+                // Get all the user's roles, ordered by position in the role hierarchy.
+                var roles = guildUser.RoleIds.Select(i => guildUser.Guild.GetRole(i)).OrderByDescending(r => r.Position);
+                // Get the first role that has a colour, or null if none have a colour.
+                var firstColouredRole = roles.FirstOrDefault(r => !r.Color.Equals(Color.Default));
+                // Return the colour if applicable, otherwise return the default colour.
+                return firstColouredRole?.Color ?? Color.Default;
+            }
+            return Color.Default;
+        }
     }
 }
