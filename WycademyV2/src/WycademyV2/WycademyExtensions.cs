@@ -71,23 +71,6 @@ namespace WycademyV2
         }
 
         /// <summary>
-        /// Uses the user's highest role colour if the user is a guild user, otherwise uses the default colour.
-        /// </summary>
-        /// <param name="user">The user to check. <see cref="Color.Default"/> will be used if the user is not an IGuildUser, or is null.</param>
-        /// <returns>The EmbedBuilder instance.</returns>
-        public static EmbedBuilder WithHighestRoleColour(this EmbedBuilder builder, IUser user)
-        {
-            var colour = Color.Default; // 'Colour' should have a 'u', fight me irl
-            if (user != null && user is IGuildUser guildUser)
-            {
-                var roles = guildUser.RoleIds.Select(i => guildUser.Guild.GetRole(i)).OrderByDescending(r => r.Position);
-                colour = roles.First().Color;
-            }
-
-            return builder.WithColor(colour); // Personal preference > consistency
-        }
-
-        /// <summary>
         /// Gets the colour of a user's highest role.
         /// </summary>
         /// <returns>The user's highest role colour, or <see cref="Color.Default"/> if the user does not have any coloured roles.</returns>

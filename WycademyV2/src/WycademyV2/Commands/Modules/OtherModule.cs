@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using WycademyV2.Commands.Preconditions;
 using WycademyV2.Commands.Services;
@@ -51,6 +52,18 @@ namespace WycademyV2.Commands.Modules
             {
                 await user.SendMessageAsync(message);
             }
+        }
+
+        [Command("invite")]
+        [RequireUnlocked]
+        [Summary("Provides a link to invite Wycademy to your Discord server.")]
+        public async Task Invite()
+        {
+            var sb = new StringBuilder()
+                .AppendLine($"Want to add Wycademy to your server? Just click here: <https://discordapp.com/oauth2/authorize?client_id=207172340809859072&scope=bot&permissions=27712>")
+                .AppendLine($"For support, feature requests, and feedback, join the development server: https://discord.gg/R8g3BCS");
+
+            await Context.User.SendMessageAsync(sb.ToString());
         }
     }
 }
