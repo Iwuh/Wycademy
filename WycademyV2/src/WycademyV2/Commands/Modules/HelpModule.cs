@@ -72,7 +72,7 @@ namespace WycademyV2.Commands.Modules
                 helpBuilder.AppendLine();
             }
 
-            helpBuilder.AppendLine("To see help for an individual command, do `<help [command]` where `[command]` is the command you want info about. ex. `<help hitzone`");
+            helpBuilder.AppendLine("To see help for an individual command, do `<help <command>`.");
             helpBuilder.AppendLine("For support, feature requests, and bug reports, please join the development server: https://discord.gg/R8g3BCS");
 
             await Context.User.SendMessageAsync(helpBuilder.ToString());
