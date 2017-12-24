@@ -30,6 +30,7 @@ namespace WycademyV2.Commands.Modules
         }
 
         [Command("4u")]
+        [Priority(1)]
         [Summary("Gets information about a 4U weapon.")]
         public async Task GetFourWeaponData([Remainder, Summary("All or part of the weapon's name.")] string weaponName)
         {
@@ -47,12 +48,13 @@ namespace WycademyV2.Commands.Modules
             else
             {
                 var embed = _weaponInfo.Build(results.First(), Context.User);
-                var message = await ReplyAsync("Weapon Info", embed: embed.First());
+                var message = await ReplyAsync(string.Empty, embed: embed.First());
                 _cache.Add(Context.Message.Id, message.Id);
             }
         }
 
         [Command("gen", RunMode = RunMode.Async)]
+        [Priority(1)]
         [Summary("Gets information about a Gen weapon.")]
         public async Task GetGenWeaponData([Remainder, Summary("All or part of the weapon's name. Can optionally be followed by a pipe and number to specify a starting level.")] string weaponName)
         {
@@ -104,6 +106,7 @@ namespace WycademyV2.Commands.Modules
         }
 
         [Command]
+        [Priority(0)]
         [Summary("Fall-through for when a user doesn't specify a game.")]
         public async Task Default([Remainder, Summary("This input is discarded as the command simply returns an error message.")] string input)
             => await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, "Please specify a game (`<weaponinfo 4u` or `<weaponinfo gen`).");

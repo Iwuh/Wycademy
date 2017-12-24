@@ -26,7 +26,7 @@ namespace WycademyV2.Commands.Entities
         public async override Task<IUserMessage> CreateMessageAsync(IMessageChannel channel)
         {
             // Send the message starting with the first page.
-            _message = await channel.SendMessageAsync($"Weapon Info {GetPageNumberString()}", embed: _pages[_pageIndex]);
+            _message = await channel.SendMessageAsync(GetPageNumberString(), embed: _pages[_pageIndex]);
 
             // Add all the reaction options.
             await _message.AddReactionAsync(new Emoji(BEGIN));
@@ -82,7 +82,7 @@ namespace WycademyV2.Commands.Entities
         {
             await _message.ModifyAsync(m =>
             {
-                m.Content = $"Weapon Info {GetPageNumberString()}";
+                m.Content = GetPageNumberString();
                 m.Embed = _pages[_pageIndex];
             });
         }
