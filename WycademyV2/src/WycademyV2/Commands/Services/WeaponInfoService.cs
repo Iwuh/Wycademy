@@ -88,8 +88,6 @@ namespace WycademyV2.Commands.Services
                 {
                     var description = new StringBuilder()
                         .AppendLine($"Upgrades from: {GetNameById(_fourWeapons, weapon.UpgradesFromId)}")
-                        .AppendLine($"Name: {weapon.Name}")
-                        .AppendLine($"Final Name: {gen.FinalName}")
                         .AppendLine($"Description: {gen.Description}")
                         .AppendLine($"Final Description: {gen.FinalDescription}");
 

@@ -71,7 +71,7 @@ namespace WycademyV2.Commands.Entities
         /// <summary>
         /// The Switch Axe/Charge Blade phial, or null if the weapon is not a SA/CB.
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("phials")]
         public SaCbPhial Phial { get; set; }
 
         /// <summary>

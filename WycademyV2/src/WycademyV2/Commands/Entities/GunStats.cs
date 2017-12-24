@@ -28,7 +28,7 @@ namespace WycademyV2.Commands.Entities
         /// <summary>
         /// The shots that can be loaded by the gun.
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("shots")]
         public List<GunShot> UsableShots { get; set; }
 
         /// <summary>
