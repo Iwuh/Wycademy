@@ -30,9 +30,12 @@ namespace WycademyV2.Commands.Modules
         public async Task GetGeneralHelp()
         {
             var helpBuilder = new StringBuilder();
+            var pages = new List<string>();
 
             foreach (var module in _commands.Modules)
             {
+                var moduleBuilder = new StringBuilder();
+
                 // The below code throws an ArgumentException in a DM with Discord.Net v1.0.2. The issue has been fixed, and the code will be uncommented
                 // once the changes are pushed to stable.
 
@@ -54,28 +57,53 @@ namespace WycademyV2.Commands.Modules
                 // Check if the module is a group.
                 bool isGroup = module.Aliases.First() != string.Empty;
                 // Add all of the module's commands.
-                helpBuilder.AppendLine($"{module.Summary}:");
+                moduleBuilder.AppendLine($"{module.Summary}:");
                 foreach (var command in module.Commands)
                 {
                     string usage;
                     if (isGroup)
                     {
-                        usage = $"{module.Name} {command.Name}";
+                        if (command.Remarks == "default")
+                        {
+                            usage = module.Name;
+                        }
+                        else
+                        {
+                            usage = $"{module.Name} {command.Name}";
+                        }
                     }
                     else
                     {
-                        usage = command.Name;
+                        usage = command.Aliases.First();
                     }
-                    helpBuilder.AppendLine($"\t`<{usage}` - {command.Summary}");
+                    moduleBuilder.AppendLine($"\t`<{usage}` - {command.Summary}");
                 }
 
-                helpBuilder.AppendLine();
+                moduleBuilder.AppendLine();
+
+                // 2000 is the hard limit for messages.
+                if (helpBuilder.Length + moduleBuilder.Length > 1990)
+                {
+                    pages.Add(helpBuilder.ToString());
+                    helpBuilder.Clear();
+                }
+                helpBuilder.AppendLine(moduleBuilder.ToString());
             }
 
-            helpBuilder.AppendLine("To see help for an individual command, do `<help <command>`.");
-            helpBuilder.AppendLine("For support, feature requests, and bug reports, please join the development server: https://discord.gg/R8g3BCS");
+            const string extraInfo = "To see help for an individual command, do `<help <command>`.\nFor support, feature requests, and bug reports, please join the development server: https://discord.gg/R8g3BCS";
+            if (helpBuilder.Length + extraInfo.Length > 1990)
+            {
+                pages.Add(helpBuilder.ToString());
+                helpBuilder.Clear();
+            }
+            helpBuilder.AppendLine(extraInfo);
 
-            await Context.User.SendMessageAsync(helpBuilder.ToString());
+            pages.Add(helpBuilder.ToString());
+
+            foreach (var message in pages)
+            {
+                await Context.User.SendMessageAsync(message);
+            }
             await Context.Message.AddReactionAsync(new Emoji(WycademyConst.HELP_REACTION));
         }
 
@@ -105,7 +133,7 @@ namespace WycademyV2.Commands.Modules
                     }
 
                     // Add the command usage.
-                    helpBuilder.Append($"Usage: `<{command.Name}");
+                    helpBuilder.Append($"Usage: `<{command.Aliases.First()}");
                     foreach (var parameter in command.Parameters)
                     {
                         if (parameter.IsOptional)

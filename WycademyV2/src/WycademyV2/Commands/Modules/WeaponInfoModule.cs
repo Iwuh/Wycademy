@@ -108,6 +108,7 @@ namespace WycademyV2.Commands.Modules
         [Command]
         [Priority(0)]
         [Summary("Fall-through for when a user doesn't specify a game.")]
+        [Remarks("default")]
         public async Task Default([Remainder, Summary("This input is discarded as the command simply returns an error message.")] string input)
             => await Context.Channel.SendCachedMessageAsync(Context.Message.Id, _cache, "Please specify a game (`<weaponinfo 4u` or `<weaponinfo gen`).");
     }

@@ -17,7 +17,7 @@ namespace WycademyV2
 #if DEBUG
         public const string DATA_LOCATION = @"D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\Data";
 #else
-        public const string DATA_LOCATION = @"/home/ubuntu/release/Data";
+        public const string DATA_LOCATION = @"/home/matthew/release/Data";
 #endif
 
         public const string HELP_REACTION = "🏛";

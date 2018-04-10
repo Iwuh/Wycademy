@@ -13,12 +13,14 @@ namespace WycademyV2.Commands.Entities
     {
         private const string FOUR = "4⃣";
         private const string GEN = "🇬";
+        private const string WORLD = "🇼";
         private const string CLOSE = "❌";
 
         private readonly Dictionary<string, string> GAME_EMOTES = new Dictionary<string, string>()
         {
             { "4U", FOUR },
-            { "GEN", GEN }
+            { "GEN", GEN },
+            { "WORLD", WORLD }
         };
 
         private IDictionary<string, (string, int?)> _tables;
@@ -58,6 +60,9 @@ namespace WycademyV2.Commands.Entities
                     break;
                 case GEN:
                     key = "GEN";
+                    break;
+                case WORLD:
+                    key = "WORLD";
                     break;
                 default:
                     return;
