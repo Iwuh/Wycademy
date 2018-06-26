@@ -1,7 +1,7 @@
 @ECHO off
 
-SET PUBLISH_DIR="D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\bin\Release\netcoreapp2.0\publish"
-SET DATA_DIR="D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\bin\Release\netcoreapp2.0\publish\Data"
+SET PUBLISH_DIR="D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\bin\Release\netcoreapp2.1\publish"
+SET DATA_DIR="D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\WycademyV2\src\WycademyV2\bin\Release\netcoreapp2.1\publish\Data"
 SET SCRAPER="D:\Documents\PyCharm\KiranicoScraper\generate.py"
 
 IF EXIST %DATA_DIR% (GOTO clean)
