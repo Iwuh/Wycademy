@@ -1,11 +1,8 @@
 ﻿using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using NLog;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace KiranicoScraper
@@ -14,13 +11,13 @@ namespace KiranicoScraper
     {
         private HttpClient _client;
         private DateTime _lastRequest;
-        private Logger _logger;
+        private ILogger _logger;
 
-        public WebRequester()
+        public WebRequester(ILogger logger)
         {
             _client = new HttpClient();
             _lastRequest = new DateTime(0);
-            _logger = LogManager.GetCurrentClassLogger();
+            _logger = logger;
         }
 
         public void Dispose()
@@ -61,7 +58,7 @@ namespace KiranicoScraper
         {
             SleepIfNecessary();
 
-            _logger.Debug($"GET {url}");
+            _logger.LogDebug($"GET {url}");
             // Get the requested page synchronously.
             var page = _client.GetStringAsync(url).Result;
             // Update the time of the last request.
@@ -77,7 +74,7 @@ namespace KiranicoScraper
             if (difference < 2000)
             {
                 var timeToSleep = (int)(2000 - difference);
-                _logger.Trace($"Sleeping for {timeToSleep}ms");
+                _logger.LogTrace($"Sleeping for {timeToSleep}ms");
                 Thread.Sleep(timeToSleep);
             }
         }

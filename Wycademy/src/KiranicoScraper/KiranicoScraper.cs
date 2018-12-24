@@ -1,5 +1,6 @@
 ﻿using KiranicoScraper.Scrapers;
-using NLog;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,17 @@ using System.Diagnostics;
 
 namespace KiranicoScraper
 {
-    class Program
+    public static class KiranicoScraper
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
-
-        static void Main(string[] args)
+        /// <summary>
+        /// Executes all scrapers, populating the database.
+        /// </summary>
+        /// <param name="logger"></param>
+        public static void RunScrapers(ILoggerFactory loggerFactory, IConfiguration config)
         {
+            // We can't use the generic overload of CreateLogger because this class is static.
+            var logger = loggerFactory.CreateLogger("KiranicoScraper.KiranicoScraper");
+
             var scrapers = new List<Scraper>()
             {
                 new MonsterScraper4U(),
@@ -25,12 +31,12 @@ namespace KiranicoScraper
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            using (var database = new DbManager())
-            using (var requester = new WebRequester())
+            using (var database = new DbManager(loggerFactory.CreateLogger<DbManager>(), config))
+            using (var requester = new WebRequester(loggerFactory.CreateLogger<WebRequester>()))
             {
                 foreach (var scraper in scrapers)
                 {
-                    _logger.Info($"Starting scraper {scraper.GetType()}.");
+                    logger.LogInformation($"Starting scraper {scraper.GetType()}.");
 
                     NpgsqlTransaction transaction = null;
                     try
@@ -44,7 +50,7 @@ namespace KiranicoScraper
                     }
                     catch (Exception ex)
                     {
-                        _logger.Error(ex, $"An exception was thrown during execution of scraper {scraper.GetType()}.");
+                        logger.LogError(ex, $"An exception was thrown during execution of scraper {scraper.GetType()}.");
                         if (transaction != null)
                         {
                             transaction.Rollback();
@@ -55,8 +61,7 @@ namespace KiranicoScraper
             }
 
             stopwatch.Stop();
-            Console.WriteLine($"Finished in {stopwatch.Elapsed.Minutes}m{stopwatch.Elapsed.Seconds}s, press enter to exit");
-            Console.ReadLine();
+            logger.LogInformation($"All scrapers finished running in {stopwatch.Elapsed.Minutes}m{stopwatch.Elapsed.Seconds}s.");
         }
     }
 }

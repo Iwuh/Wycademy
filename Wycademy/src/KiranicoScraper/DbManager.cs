@@ -1,32 +1,34 @@
 ﻿using KiranicoScraper.Enums;
 using KiranicoScraper.Scrapers.Lists;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NLog;
 using Npgsql;
-using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using System.Text;
 
 namespace KiranicoScraper
 {
     class DbManager : IDisposable
     {
-        private const string CONNECTION_STRING = "Host=localhost;Database=WycademyTest;Username=matt_;Password=Lagiacrus";
-
         private NpgsqlConnection _conn;
-        private Logger _logger = LogManager.GetCurrentClassLogger();
 
         public ScraperListCollection ScraperLists { get; }
 
-        public DbManager()
+        public DbManager(ILogger logger, IConfiguration config)
         {
-            _logger.Info($"Connecting to database with connection string '{CONNECTION_STRING}'");
-
-            _conn = new NpgsqlConnection(CONNECTION_STRING);
+            var connectionString = new NpgsqlConnectionStringBuilder()
+            {
+                Host = "localhost",
+                Port = int.Parse(config["Database:Port"]),
+                Database = config["Database:Name"],
+                Username = config["Database:User"],
+                Passfile = config["Database:Passfile"]
+            };
+            _conn = new NpgsqlConnection(connectionString.ConnectionString);
+            logger.LogInformation($"Connecting to database with connection string '{connectionString.ConnectionString}'");
             _conn.Open();
 
             CreateTables();
@@ -36,7 +38,7 @@ namespace KiranicoScraper
             _conn.TypeMapper.MapEnum<WeaponEffect>("public.weapon_effect_enum");
             _conn.TypeMapper.MapEnum<HornNote>("public.horn_note_enum");
 
-            _logger.Info("Created tables");
+            logger.LogInformation("Created tables");
 
             ScraperLists = JsonConvert.DeserializeObject<ScraperListCollection>(File.ReadAllText(@"Data\ScraperLists.json", new UTF8Encoding(false)));
         }

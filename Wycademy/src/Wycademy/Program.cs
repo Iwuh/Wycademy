@@ -1,12 +1,12 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NLog;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Wycademy.Commands;
 using Wycademy.Commands.Enums;
@@ -17,16 +17,29 @@ namespace Wycademy
 {
     public class Program
     {
-        // Convert synchronous static Main to an async non-static main method.
-        public static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
+        private static ILoggerFactory _loggerFactory;
+        private static ILogger _logger;
+        private static IConfiguration _config;
+
+        // Load configurations and repopulate database before starting bot.
+        public static void Main(string[] args)
+        {
+            _config = new ConfigurationBuilder()
+                .AddIniFile("WycademyConfig.ini", optional: false, reloadOnChange: false)
+                .Build();
+
+            _loggerFactory = new LoggerFactory().AddNLog();
+            _logger = _loggerFactory.CreateLogger<Program>();
+
+            // Call the async start method and block until the bot exits.
+            new Program().Start().GetAwaiter().GetResult();
+        }
 
         private DiscordSocketClient _client;
         private CommandHandler _handler;
         private IServiceProvider _provider;
 
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
-
-        public async Task Start()
+        private async Task Start()
         {
             // Initialize the DiscordSocketClient and set the LogLevel.
             _client = new DiscordSocketClient(new DiscordSocketConfig()
@@ -93,7 +106,7 @@ namespace Wycademy
 #if DEBUG
             token = Environment.GetEnvironmentVariable("WYCADEMY_BETA_TOKEN");
 #else
-            token = Environment.GetEnvironmentVariable("WYCADEMY_TOKEN");
+            token = _config["Discord:Token"];
 #endif
 
             // Log in and connect.
@@ -137,6 +150,10 @@ namespace Wycademy
             // Add the monster DB context.
             services.AddDbContext<MonsterContext>(ServiceLifetime.Transient);
 
+            // Add logging.
+            services.AddSingleton(_loggerFactory);
+            services.AddLogging();
+
             // Build the collection into an IServiceProvider.
             var provider = services.BuildServiceProvider();
 
@@ -150,36 +167,36 @@ namespace Wycademy
 
         private Task Log(LogMessage msg)
         {
-            // Set the function to use for logging.
-            Action<Exception, string> logFunc;
+            // Convert the Discord.Net log severity to Microsoft.Extensions.Logging log level.
+            LogLevel logLevel;
             switch (msg.Severity)
             {
                 case LogSeverity.Critical:
-                    logFunc = _logger.Fatal;
+                    logLevel = LogLevel.Critical;
                     break;
                 case LogSeverity.Error:
-                    logFunc = _logger.Error;
+                    logLevel = LogLevel.Error;
                     break;
                 case LogSeverity.Warning:
-                    logFunc = _logger.Warn;
+                    logLevel = LogLevel.Warning;
                     break;
                 case LogSeverity.Info:
-                    logFunc = _logger.Info;
+                    logLevel = LogLevel.Information;
                     break;
                 case LogSeverity.Verbose:
-                    logFunc = _logger.Debug;
+                    logLevel = LogLevel.Debug;
                     break;
                 case LogSeverity.Debug:
-                    logFunc = _logger.Trace;
+                    logLevel = LogLevel.Trace;
                     break;
                 default:
-                    // This should never be reached, but if it is, use an empty action.
-                    logFunc = (ex, str) => { };
+                    // This should never be reached, but if it is, default to Information.
+                    logLevel = LogLevel.Information;
                     break;
             }
 
-            // Call the function. Omit the timestamp from the LogMessage because a timestamp is already included by NLog.
-            logFunc(msg.Exception, msg.ToString(prependTimestamp: false));
+            // Log the message. Omit the timestamp from the LogMessage because a timestamp is already included by NLog.
+            _logger.Log(logLevel, msg.Exception, msg.Message);
 
             return Task.CompletedTask;
         }
