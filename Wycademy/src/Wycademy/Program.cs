@@ -196,7 +196,7 @@ namespace Wycademy
             }
 
             // Log the message. Omit the timestamp from the LogMessage because a timestamp is already included by NLog.
-            _logger.Log(logLevel, msg.Exception, msg.Message);
+            _logger.Log(logLevel, msg.Exception, msg.ToString(prependTimestamp: false));
 
             return Task.CompletedTask;
         }
