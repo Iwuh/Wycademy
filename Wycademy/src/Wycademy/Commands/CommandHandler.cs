@@ -2,6 +2,7 @@
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,21 @@ namespace Wycademy.Commands
         private DiscordSocketClient _client;
         private CommandService _commands;
         private IServiceProvider _provider;
+        private ILogger _logger;
 
-        public async Task Install(IServiceProvider provider, Func<LogMessage, Task> log)
+        public async Task Install(IServiceProvider provider)
         {
-            // Extract the client from the provider.
-            _client = provider.GetService<DiscordSocketClient>();
-
-            // Get the command service from the provider.
-            _commands = provider.GetService<CommandService>();
-
             _provider = provider;
 
+            // Get the client from the provider.
+            _client = _provider.GetService<DiscordSocketClient>();
+
+            // Get the command service from the provider.
+            _commands = _provider.GetService<CommandService>();
+
             // Set the method for error logging.
-            _commands.Log += log;
+            _logger = _provider.GetService<ILogger<CommandHandler>>();
+            _commands.Log += Log;
 
             // Add any custom typereaders.
             _commands.AddTypeReader<BlacklistTypeReader>(new BlacklistTypeReader());
@@ -44,7 +47,7 @@ namespace Wycademy.Commands
 
         }
 
-        public async Task HandleCommand(SocketMessage msg)
+        private async Task HandleCommand(SocketMessage msg)
         {
             // If userMessage is null, then it's a system message that should just be ignored.
             var userMessage = msg as SocketUserMessage;
@@ -81,6 +84,13 @@ namespace Wycademy.Commands
                     }
                 }
             }
+        }
+
+        private Task Log(LogMessage message)
+        {
+            _logger.LogDiscord(message);
+
+            return Task.CompletedTask;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,6 +83,45 @@ namespace Wycademy
             var firstColouredRole = roles.FirstOrDefault(r => !r.Color.Equals(Color.Default));
             // Return the colour if applicable, otherwise return the default colour.
             return firstColouredRole?.Color ?? Color.Default;
+        }
+
+        /// <summary>
+        /// Logs a Discord.Net <see cref="LogMessage"/>.
+        /// </summary>
+        /// <param name="logger">The <see cref="ILogger"/> instance to log through.</param>
+        /// <param name="message">The <see cref="LogMessage"/> to log.</param>
+        public static void LogDiscord(this ILogger logger, LogMessage message)
+        {
+            // Convert the Discord.Net log severity to Microsoft.Extensions.Logging log level.
+            LogLevel logLevel;
+            switch (message.Severity)
+            {
+                case LogSeverity.Critical:
+                    logLevel = LogLevel.Critical;
+                    break;
+                case LogSeverity.Error:
+                    logLevel = LogLevel.Error;
+                    break;
+                case LogSeverity.Warning:
+                    logLevel = LogLevel.Warning;
+                    break;
+                case LogSeverity.Info:
+                    logLevel = LogLevel.Information;
+                    break;
+                case LogSeverity.Verbose:
+                    logLevel = LogLevel.Debug;
+                    break;
+                case LogSeverity.Debug:
+                    logLevel = LogLevel.Trace;
+                    break;
+                default:
+                    // This should never be reached, but if it is, default to Information.
+                    logLevel = LogLevel.Information;
+                    break;
+            }
+
+            // Log the message. Omit the timestamp from the LogMessage because a timestamp is already included by NLog.
+            logger.Log(logLevel, message.Exception, message.ToString(prependTimestamp: false));
         }
     }
 }

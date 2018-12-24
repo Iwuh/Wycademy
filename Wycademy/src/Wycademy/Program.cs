@@ -118,7 +118,7 @@ namespace Wycademy
 
             // Initialize the CommandHandler.
             _handler = new CommandHandler();
-            await _handler.Install(_provider, Log);
+            await _handler.Install(_provider);
 
             // Asynchronously block until the bot is exited.
             await Task.Delay(-1);
@@ -167,36 +167,7 @@ namespace Wycademy
 
         private Task Log(LogMessage msg)
         {
-            // Convert the Discord.Net log severity to Microsoft.Extensions.Logging log level.
-            LogLevel logLevel;
-            switch (msg.Severity)
-            {
-                case LogSeverity.Critical:
-                    logLevel = LogLevel.Critical;
-                    break;
-                case LogSeverity.Error:
-                    logLevel = LogLevel.Error;
-                    break;
-                case LogSeverity.Warning:
-                    logLevel = LogLevel.Warning;
-                    break;
-                case LogSeverity.Info:
-                    logLevel = LogLevel.Information;
-                    break;
-                case LogSeverity.Verbose:
-                    logLevel = LogLevel.Debug;
-                    break;
-                case LogSeverity.Debug:
-                    logLevel = LogLevel.Trace;
-                    break;
-                default:
-                    // This should never be reached, but if it is, default to Information.
-                    logLevel = LogLevel.Information;
-                    break;
-            }
-
-            // Log the message. Omit the timestamp from the LogMessage because a timestamp is already included by NLog.
-            _logger.Log(logLevel, msg.Exception, msg.ToString(prependTimestamp: false));
+            _logger.LogDiscord(msg);
 
             return Task.CompletedTask;
         }
