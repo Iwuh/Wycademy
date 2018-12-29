@@ -1,6 +1,8 @@
-﻿using Discord;
+﻿using CommandLine;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using KiranicoScraper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -30,6 +32,28 @@ namespace Wycademy
 
             _loggerFactory = new LoggerFactory().AddNLog();
             _logger = _loggerFactory.CreateLogger<Program>();
+
+            Parser.Default.ParseArguments<CommandLineOptions>(args)
+                .WithParsed(opts =>
+                {
+                    var scraper = new ScraperManager(_loggerFactory, _config);
+
+                    if (opts.RepopulateClean)
+                    {
+                        scraper.RecreateDatabase();
+                    }
+
+                    if (opts.RepopulateClean || opts.Repopulate)
+                    {
+                        scraper.RunScrapers();
+                    }
+
+                    if (opts.NoLaunchBot)
+                    {
+                        Environment.Exit(0);
+                    }
+                })
+                .WithNotParsed(_ => Environment.Exit(1));
 
             // Call the async start method and block until the bot exits.
             new Program().Start().GetAwaiter().GetResult();
@@ -181,5 +205,17 @@ namespace Wycademy
 
             return $"{(isPrivate ? "Private" : channel.Guild.Name)}{(isPrivate ? "" : "/#" + channel.Name)} from {msg.Author}: {msg.Content}";
         }
+    }
+
+    class CommandLineOptions
+    {
+        [Option('r', "repopulate", HelpText = "Repopulate the database without recreating it.")]
+        public bool Repopulate { get; set; }
+
+        [Option('R', "repopulate-clean", HelpText = "Delete and recreate the database, then populate it. Takes precedence over --repopulate.")]
+        public bool RepopulateClean { get; set; }
+
+        [Option('N', "no-launch-bot", HelpText = "Exit after any database operations without launching the bot.")]
+        public bool NoLaunchBot { get; set; }
     }
 }
