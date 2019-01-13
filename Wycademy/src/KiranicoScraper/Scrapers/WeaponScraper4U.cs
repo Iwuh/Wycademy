@@ -129,8 +129,12 @@ namespace KiranicoScraper.Scrapers
                         // The Sharpness +1 values are represented by appending _plus to the end of each key.
                         var skillSharpnesses = Database.ScraperLists.FourUltimate.SharpnessKeys.Select(k => ToInt(sharpnesses[$"{k}_plus"])).ToList();
 
+                        // Add the sharpnesses to the database.
                         Database.AddWeaponSharpness(levelId, 0, baseSharpnesses);
                         Database.AddWeaponSharpness(levelId, 1, skillSharpnesses);
+
+                        // Generate an image for the sharpnesses.
+                        SharpnessImageGenerator.GenerateImage(Game.Four, levelId, new[] { baseSharpnesses, skillSharpnesses });
                     }
 
                     // This is an array of 3 notes, or empty if the weapon is not a hunting horn.

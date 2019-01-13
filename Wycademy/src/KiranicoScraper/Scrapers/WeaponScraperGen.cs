@@ -130,12 +130,20 @@ namespace KiranicoScraper.Scrapers
                         var sharpnesses = (JArray)level["sharpness"];
                         if (sharpnesses.Count != 0)
                         {
+                            IList<IList<int>> sharpnessLevels = new List<IList<int>>();
                             foreach (var sharpness in sharpnesses)
                             {
-                                // Get the values for red-white by their keys and then append 0 for purple.
-                                var sharpnessValues = Database.ScraperLists.Generations.SharpnessKeys.Select(k => (int)sharpness[k]).Append(0).ToList();
+                                // Get the values for red-white by their keys.
+                                var sharpnessValues = Database.ScraperLists.Generations.SharpnessKeys.Select(k => (int)sharpness[k]).ToList();
+
+                                // Add the values to the list for image generation.
+                                sharpnessLevels.Add(sharpnessValues);
+                                // Then append 0 for purple and add the values to the database.
+                                sharpnessValues.Add(0);
                                 Database.AddWeaponSharpness(levelId, sharpnesses.IndexOf(sharpness), sharpnessValues);
                             }
+                            // Finally, generate an image for the sharpness levels.
+                            SharpnessImageGenerator.GenerateImage(Game.Generations, levelId, sharpnessLevels);
                         }
 
                         // hhnotes is an array of one object.

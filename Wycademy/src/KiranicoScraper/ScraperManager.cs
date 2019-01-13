@@ -74,6 +74,9 @@ namespace KiranicoScraper
                     }
                 }
             }
+            // ImageSharp keeps ArrayPools for performance reasons. However, this results in a high memory footprint and as we only use ImageSharp in the scraper, we
+            // release these retained resources.
+            SixLabors.ImageSharp.Configuration.Default.MemoryAllocator.ReleaseRetainedResources();
 
             stopwatch.Stop();
             _logger.LogInformation($"All scrapers finished running in {stopwatch.Elapsed.Minutes}m{stopwatch.Elapsed.Seconds}s.");
