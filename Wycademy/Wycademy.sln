@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wycademy", "src\Wycademy\Wy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KiranicoScraper", "src\KiranicoScraper\KiranicoScraper.csproj", "{4A4178A1-3304-44FE-ABD1-3A83654C219B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wycademy.Core", "src\Wycademy.Core\Wycademy.Core.csproj", "{BDBC29E8-5C12-4547-A385-7D761DC41699}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{4A4178A1-3304-44FE-ABD1-3A83654C219B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A4178A1-3304-44FE-ABD1-3A83654C219B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A4178A1-3304-44FE-ABD1-3A83654C219B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDBC29E8-5C12-4547-A385-7D761DC41699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDBC29E8-5C12-4547-A385-7D761DC41699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDBC29E8-5C12-4547-A385-7D761DC41699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDBC29E8-5C12-4547-A385-7D761DC41699}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +41,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CF088A5C-0DD8-4549-9D67-761CD995A951} = {3476226C-5357-41AD-BA52-B61A68E71EE3}
 		{4A4178A1-3304-44FE-ABD1-3A83654C219B} = {3476226C-5357-41AD-BA52-B61A68E71EE3}
+		{BDBC29E8-5C12-4547-A385-7D761DC41699} = {3476226C-5357-41AD-BA52-B61A68E71EE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CF189CDF-B160-4DE2-B8E7-7660877E748B}
