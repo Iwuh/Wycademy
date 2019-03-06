@@ -7,19 +7,19 @@ namespace Wycademy.Core.Models
     {
         public Monsters()
         {
-            Hitzones = new HashSet<Hitzones>();
-            ItemEffects = new HashSet<ItemEffects>();
-            StaggerLimitsCommon = new HashSet<StaggerLimitsCommon>();
-            StatusEffects = new HashSet<StatusEffects>();
+            Hitzones = new HashSet<Hitzone>();
+            ItemEffects = new HashSet<ItemEffect>();
+            StaggerLimits = new HashSet<StaggerLimit>();
+            StatusEffects = new HashSet<StatusEffect>();
         }
 
         public int Id { get; set; }
         public string WebName { get; set; }
         public string ProperName { get; set; }
 
-        public virtual ICollection<Hitzones> Hitzones { get; set; }
-        public virtual ICollection<ItemEffects> ItemEffects { get; set; }
-        public virtual ICollection<StaggerLimitsCommon> StaggerLimitsCommon { get; set; }
-        public virtual ICollection<StatusEffects> StatusEffects { get; set; }
+        public virtual ICollection<Hitzone> Hitzones { get; set; }
+        public virtual ICollection<ItemEffect> ItemEffects { get; set; }
+        public virtual ICollection<StaggerLimit> StaggerLimits { get; set; }
+        public virtual ICollection<StatusEffect> StatusEffects { get; set; }
     }
 }

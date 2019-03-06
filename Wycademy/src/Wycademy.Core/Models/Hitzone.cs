@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Wycademy.Core.Enums;
 
 namespace Wycademy.Core.Models
 {
-    public partial class Hitzones
+    public partial class Hitzone
     {
         public int Id { get; set; }
         public int MonsterId { get; set; }
+        public Game? Game { get; set; }
         public string Name { get; set; }
         public int Cut { get; set; }
         public int Impact { get; set; }

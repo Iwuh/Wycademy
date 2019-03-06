@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wycademy.Core.Models
 {
-    public partial class Phials
+    public partial class Phial
     {
         public int Id { get; set; }
         public int WeaponLevelId { get; set; }

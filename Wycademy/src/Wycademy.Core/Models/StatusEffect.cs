@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Wycademy.Core.Enums;
 
 namespace Wycademy.Core.Models
 {
-    public partial class StatusEffects
+    public partial class StatusEffect
     {
         public int Id { get; set; }
         public int MonsterId { get; set; }
+        public Game? Game { get; set; }
         public string Name { get; set; }
         public int InitialThreshold { get; set; }
         public int Increase { get; set; }

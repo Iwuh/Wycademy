@@ -7,10 +7,10 @@ namespace Wycademy.Core.Models
     {
         public GunStats()
         {
-            GunCrouchingFireShots = new HashSet<GunCrouchingFireShots>();
-            GunInternalShots = new HashSet<GunInternalShots>();
-            GunRapidFireShots = new HashSet<GunRapidFireShots>();
-            GunShots = new HashSet<GunShots>();
+            GunCrouchingFireShots = new HashSet<GunCrouchingFireShot>();
+            GunInternalShots = new HashSet<GunInternalShot>();
+            GunRapidFireShots = new HashSet<GunRapidFireShot>();
+            GunShots = new HashSet<GunShot>();
         }
 
         public int Id { get; set; }
@@ -20,9 +20,9 @@ namespace Wycademy.Core.Models
         public string Deviation { get; set; }
 
         public virtual WeaponLevelsCommon WeaponLevel { get; set; }
-        public virtual ICollection<GunCrouchingFireShots> GunCrouchingFireShots { get; set; }
-        public virtual ICollection<GunInternalShots> GunInternalShots { get; set; }
-        public virtual ICollection<GunRapidFireShots> GunRapidFireShots { get; set; }
-        public virtual ICollection<GunShots> GunShots { get; set; }
+        public virtual ICollection<GunCrouchingFireShot> GunCrouchingFireShots { get; set; }
+        public virtual ICollection<GunInternalShot> GunInternalShots { get; set; }
+        public virtual ICollection<GunRapidFireShot> GunRapidFireShots { get; set; }
+        public virtual ICollection<GunShot> GunShots { get; set; }
     }
 }
