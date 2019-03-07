@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wycademy.Core.Models
 {
-    public partial class GunInternalShot
+    public class GunInternalShot
     {
         public int Id { get; set; }
         public int GunStatsId { get; set; }
@@ -11,6 +11,6 @@ namespace Wycademy.Core.Models
         public int Capacity { get; set; }
         public int ClipSize { get; set; }
 
-        public virtual GunStats GunStats { get; set; }
+        public GunStats GunStats { get; set; }
     }
 }

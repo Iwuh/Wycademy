@@ -4,7 +4,7 @@ using Wycademy.Core.Enums;
 
 namespace Wycademy.Core.Models
 {
-    public partial class Hitzone
+    public class Hitzone
     {
         public int Id { get; set; }
         public int MonsterId { get; set; }
@@ -19,6 +19,6 @@ namespace Wycademy.Core.Models
         public int Thunder { get; set; }
         public int Dragon { get; set; }
 
-        public virtual Monsters Monster { get; set; }
+        public Monsters Monster { get; set; }
     }
 }

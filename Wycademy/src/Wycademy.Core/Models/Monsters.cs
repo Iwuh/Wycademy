@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wycademy.Core.Models
 {
-    public partial class Monsters
+    public class Monsters
     {
         public Monsters()
         {
@@ -17,9 +17,9 @@ namespace Wycademy.Core.Models
         public string WebName { get; set; }
         public string ProperName { get; set; }
 
-        public virtual ICollection<Hitzone> Hitzones { get; set; }
-        public virtual ICollection<ItemEffect> ItemEffects { get; set; }
-        public virtual ICollection<StaggerLimit> StaggerLimits { get; set; }
-        public virtual ICollection<StatusEffect> StatusEffects { get; set; }
+        public ICollection<Hitzone> Hitzones { get; set; }
+        public ICollection<ItemEffect> ItemEffects { get; set; }
+        public ICollection<StaggerLimit> StaggerLimits { get; set; }
+        public ICollection<StatusEffect> StatusEffects { get; set; }
     }
 }

@@ -21,14 +21,14 @@ namespace Wycademy.Core.Models
         public int Defense { get; set; }
         public string Slots { get; set; }
 
-        public virtual WeaponsCommon Weapon { get; set; }
-        public virtual BowStats BowStats { get; set; }
-        public virtual GunStats GunStats { get; set; }
-        public virtual GunlanceShellStats GunlanceShellStats { get; set; }
-        public virtual HornNotes HornNotes { get; set; }
-        public virtual Phial Phials { get; set; }
-        public virtual ICollection<WeaponEffect> WeaponEffects { get; set; }
-        public virtual ICollection<WeaponSharpness> WeaponSharpnesses { get; set; }
+        public Weapon Weapon { get; set; }
+        public BowStats BowStats { get; set; }
+        public GunStats GunStats { get; set; }
+        public GunlanceShellStats GunlanceShellStats { get; set; }
+        public HornNotes HornNotes { get; set; }
+        public Phial Phials { get; set; }
+        public ICollection<WeaponEffect> WeaponEffects { get; set; }
+        public ICollection<WeaponSharpness> WeaponSharpnesses { get; set; }
     }
 
     public class WeaponLevel4U : WeaponLevel

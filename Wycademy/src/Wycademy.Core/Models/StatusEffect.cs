@@ -4,7 +4,7 @@ using Wycademy.Core.Enums;
 
 namespace Wycademy.Core.Models
 {
-    public partial class StatusEffect
+    public class StatusEffect
     {
         public int Id { get; set; }
         public int MonsterId { get; set; }
@@ -18,6 +18,6 @@ namespace Wycademy.Core.Models
         public int ReductionTime { get; set; }
         public int ReductionAmount { get; set; }
 
-        public virtual Monsters Monster { get; set; }
+        public Monsters Monster { get; set; }
     }
 }

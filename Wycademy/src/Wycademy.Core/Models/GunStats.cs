@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wycademy.Core.Models
 {
-    public partial class GunStats
+    public class GunStats
     {
         public GunStats()
         {
@@ -19,10 +19,10 @@ namespace Wycademy.Core.Models
         public string Recoil { get; set; }
         public string Deviation { get; set; }
 
-        public virtual WeaponLevelsCommon WeaponLevel { get; set; }
-        public virtual ICollection<GunCrouchingFireShot> GunCrouchingFireShots { get; set; }
-        public virtual ICollection<GunInternalShot> GunInternalShots { get; set; }
-        public virtual ICollection<GunRapidFireShot> GunRapidFireShots { get; set; }
-        public virtual ICollection<GunShot> GunShots { get; set; }
+        public WeaponLevel WeaponLevel { get; set; }
+        public ICollection<GunCrouchingFireShot> GunCrouchingFireShots { get; set; }
+        public ICollection<GunInternalShot> GunInternalShots { get; set; }
+        public ICollection<GunRapidFireShot> GunRapidFireShots { get; set; }
+        public ICollection<GunShot> GunShots { get; set; }
     }
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Wycademy.Core.Models
+﻿namespace Wycademy.Core.Models
 {
-    public partial class BowStats
+    public class BowStats
     {
         public int Id { get; set; }
         public int WeaponLevelId { get; set; }
@@ -11,6 +8,6 @@ namespace Wycademy.Core.Models
         public string[] ChargeShots { get; set; }
         public string[] Coatings { get; set; }
 
-        public virtual WeaponLevelsCommon WeaponLevel { get; set; }
+        public WeaponLevel WeaponLevel { get; set; }
     }
 }

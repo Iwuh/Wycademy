@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wycademy.Core.Models
 {
-    public partial class WeaponSharpness
+    public class WeaponSharpness
     {
         public int Id { get; set; }
         public int WeaponLevelId { get; set; }
@@ -16,6 +16,6 @@ namespace Wycademy.Core.Models
         public int White { get; set; }
         public int Purple { get; set; }
 
-        public virtual WeaponLevel WeaponLevel { get; set; }
+        public WeaponLevel WeaponLevel { get; set; }
     }
 }
