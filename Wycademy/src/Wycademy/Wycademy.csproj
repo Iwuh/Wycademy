@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KiranicoScraper\KiranicoScraper.csproj" />
+    <ProjectReference Include="..\Wycademy.Core\Wycademy.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

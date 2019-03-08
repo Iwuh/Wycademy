@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Wycademy.Core\Wycademy.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="C:\Users\matt_\.nuget\packages\nlog.config\4.5.6\contentFiles\any\any\NLog.config" Link="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

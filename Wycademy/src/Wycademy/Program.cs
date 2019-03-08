@@ -3,10 +3,12 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using KiranicoScraper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
+using Npgsql;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ using Wycademy.Commands;
 using Wycademy.Commands.Enums;
 using Wycademy.Commands.Models;
 using Wycademy.Commands.Services;
+using Wycademy.Core.Models;
 
 namespace Wycademy
 {
@@ -171,12 +174,24 @@ namespace Wycademy
             await blacklist.LoadAsync();
             services.AddSingleton(blacklist);
 
-            // Add the monster DB context.
-            services.AddDbContext<MonsterContext>(ServiceLifetime.Transient);
-
             // Add logging.
             services.AddSingleton(_loggerFactory);
             services.AddLogging();
+
+            // Add the EF database context.
+            services.AddDbContext<MonsterContext>(ServiceLifetime.Transient); // This will be removed when the database conversion is finished
+            services.AddDbContext<WycademyContext>(options =>
+            {
+                var connectionString = new NpgsqlConnectionStringBuilder()
+                {
+                    Host = "localhost",
+                    Port = int.Parse(_config["Database:Port"]),
+                    Database = _config["Database:Name"],
+                    Username = _config["Database:User"],
+                    Passfile = _config["Database:Passfile"]
+                };
+                options.UseNpgsql(connectionString.ToString());
+            }, ServiceLifetime.Scoped);
 
             // Build the collection into an IServiceProvider.
             var provider = services.BuildServiceProvider();
@@ -184,7 +199,6 @@ namespace Wycademy
             // Request certain services to create them (a singleton is not created until the first time it is requested).
             provider.GetService<UtilityService>();
             provider.GetService<WeaponInfoService>();
-
             // Return the provider.
             return provider;
         }
