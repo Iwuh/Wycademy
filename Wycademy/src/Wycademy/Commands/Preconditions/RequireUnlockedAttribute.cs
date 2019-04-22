@@ -10,7 +10,7 @@ namespace Wycademy.Commands.Preconditions
 {
     public class RequireUnlockedAttribute : PreconditionAttribute
     {
-        public override Task<PreconditionResult> CheckPermissions(ICommandContext context, CommandInfo command, IServiceProvider provider)
+        public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider provider)
         {
             var locker = provider.GetService<LockerService>();
 
