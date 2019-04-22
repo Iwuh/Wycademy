@@ -19,6 +19,6 @@ namespace Wycademy.Core.Models
         public int Thunder { get; set; }
         public int Dragon { get; set; }
 
-        public Monsters Monster { get; set; }
+        public Monster Monster { get; set; }
     }
 }

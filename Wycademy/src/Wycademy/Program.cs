@@ -22,52 +22,23 @@ namespace Wycademy
 {
     public class Program
     {
-        private static ILoggerFactory _loggerFactory;
-        private static ILogger _logger;
-        private static IConfiguration _config;
-
-        // Load configurations and repopulate database before starting bot.
+        // Launch the async main method and wait until it returns.
         public static void Main(string[] args)
-        {
-            _config = new ConfigurationBuilder()
-                .AddIniFile("WycademyConfig.ini", optional: false, reloadOnChange: false)
-                .Build();
-
-            _loggerFactory = new LoggerFactory().AddNLog();
-            _logger = _loggerFactory.CreateLogger<Program>();
-
-            Parser.Default.ParseArguments<CommandLineOptions>(args)
-                .WithParsed(opts =>
-                {
-                    var scraper = new ScraperManager(_loggerFactory, _config);
-
-                    if (opts.RepopulateClean)
-                    {
-                        scraper.RecreateDatabase();
-                    }
-
-                    if (opts.RepopulateClean || opts.Repopulate)
-                    {
-                        scraper.RunScrapers();
-                    }
-
-                    if (opts.NoLaunchBot)
-                    {
-                        Environment.Exit(0);
-                    }
-                })
-                .WithNotParsed(_ => Environment.Exit(1));
-
-            // Call the async start method and block until the bot exits.
-            new Program().Start().GetAwaiter().GetResult();
-        }
+            => new Program().Start(args[0] == "rebuild").GetAwaiter().GetResult();
 
         private DiscordSocketClient _client;
         private CommandHandler _handler;
         private IServiceProvider _provider;
+        private IConfiguration _config;
+        private ILogger _logger;
 
-        private async Task Start()
+        private async Task Start(bool shouldRebuildDatabase)
         {
+            // Load the configuration file.
+            _config = new ConfigurationBuilder()
+                .AddIniFile("WycademyConfig.ini", optional: false, reloadOnChange: false)
+                .Build();
+
             // Initialize the DiscordSocketClient and set the LogLevel.
             _client = new DiscordSocketClient(new DiscordSocketConfig()
             {
@@ -136,16 +107,17 @@ namespace Wycademy
             token = _config["Discord:Token"];
 #endif
 
-            // Log in and connect.
-            await _client.LoginAsync(TokenType.Bot, token);
-            await _client.StartAsync();
-
-            // Add services and the client to the IServiceProvider.
+            // Build the IServiceProvider that will be used for DI across all Wycademy projects.
             _provider = await ConfigureServices();
+            _logger = _provider.GetService<ILogger<Program>>();
 
             // Initialize the CommandHandler.
             _handler = new CommandHandler();
             await _handler.Install(_provider);
+
+            // Log in and connect.
+            await _client.LoginAsync(TokenType.Bot, token);
+            await _client.StartAsync();
 
             // Asynchronously block until the bot is exited.
             await Task.Delay(-1);
@@ -175,8 +147,7 @@ namespace Wycademy
             services.AddSingleton(blacklist);
 
             // Add logging.
-            services.AddSingleton(_loggerFactory);
-            services.AddLogging();
+            services.AddLogging(builder => builder.AddNLog());
 
             // Add the EF database context.
             services.AddDbContext<MonsterContext>(ServiceLifetime.Transient); // This will be removed when the database conversion is finished
@@ -219,17 +190,5 @@ namespace Wycademy
 
             return $"{(isPrivate ? "Private" : channel.Guild.Name)}{(isPrivate ? "" : "/#" + channel.Name)} from {msg.Author}: {msg.Content}";
         }
-    }
-
-    class CommandLineOptions
-    {
-        [Option('r', "repopulate", HelpText = "Repopulate the database without recreating it.")]
-        public bool Repopulate { get; set; }
-
-        [Option('R', "repopulate-clean", HelpText = "Delete and recreate the database, then populate it. Takes precedence over --repopulate.")]
-        public bool RepopulateClean { get; set; }
-
-        [Option('N', "no-launch-bot", HelpText = "Exit after any database operations without launching the bot.")]
-        public bool NoLaunchBot { get; set; }
     }
 }

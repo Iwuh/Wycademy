@@ -14,7 +14,7 @@ namespace Wycademy.Core.Models
         public int Stagger { get; set; }
         public string ExtractColour { get; set; }
 
-        public Monsters Monster { get; set; }
+        public Monster Monster { get; set; }
     }
 
     public class StaggerLimit4U : StaggerLimit { }

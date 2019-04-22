@@ -14,6 +14,6 @@ namespace Wycademy.Core.Models
         public int Enraged { get; set; }
         public int Fatigued { get; set; }
 
-        public Monsters Monster { get; set; }
+        public Monster Monster { get; set; }
     }
 }

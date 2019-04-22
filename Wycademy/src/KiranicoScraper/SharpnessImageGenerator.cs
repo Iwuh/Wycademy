@@ -1,13 +1,11 @@
-﻿using KiranicoScraper.Enums;
-using SixLabors.ImageSharp;
+﻿using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.Primitives;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
+using Wycademy.Core.Enums;
+using Wycademy.Core.Models;
 
 namespace KiranicoScraper
 {
@@ -35,7 +33,7 @@ namespace KiranicoScraper
             }
         }
 
-        public static void GenerateImage(Game game, int levelId, IList<IList<int>> sharpnessLevels)
+        public static void GenerateImage(Game game, int levelId, IList<WeaponSharpness> sharpnessLevels)
         {
             // TODO: logging
 
@@ -50,15 +48,18 @@ namespace KiranicoScraper
             // (top & bottom buffers) + (height of a box * number of boxes to draw) + (height of each separator * number of separators to draw) 
             var imageHeight = topBuffer * 2 + boxHeight * sharpnessLevels.Count + boxSeparator * (sharpnessLevels.Count - 1);
 
-            // The sum of sharpness values that make up a full sharpness bar.
+            // Set the sum of sharpness values that make up a full sharpness bar, and the number of sharpness values per bar.
             float fullBar;
+            int valueCount;
             switch (game)
             {
                 case Game.Four:
                     fullBar = 90;
+                    valueCount = 7;
                     break;
                 case Game.Generations:
                     fullBar = 400;
+                    valueCount = 6;
                     break;
                 case Game.World: // World weapons are currently not implemented
                     return;
@@ -83,7 +84,7 @@ namespace KiranicoScraper
 
                         // Add 1 to compensate for brush thickness when drawing the rectangle.
                         float xPosition = sideBuffer + 1;
-                        for (int j = 0; j < sharpnessLevels[i].Count; j++)
+                        for (int j = 0; j < valueCount; j++)
                         {
                             var colour = SHARPNESS_COLOURS[j];
 

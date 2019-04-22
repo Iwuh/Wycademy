@@ -1,32 +1,32 @@
-﻿using KiranicoScraper.Enums;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace KiranicoScraper.Scrapers.Lists
 {
-    class ScraperListCollection
+    static class ScraperListCollection
     {
+        static ScraperListCollection()
+        {
+            var lists = JObject.Parse(File.ReadAllText(Path.Combine(".", "Data", "ScraperLists.json")));
+
+            FourUltimate = lists["4u"].ToObject<ScraperList4U>();
+            Generations = lists["gen"].ToObject<ScraperListGen>();
+            World = lists["world"].ToObject<ScraperListWorld>();
+        }
+
         /// <summary>
         /// Lists relating to the scraping of 4U data.
         /// </summary>
-        [JsonProperty("4u")]
-        public ScraperList4U FourUltimate { get; set; }
+        public static ScraperList4U FourUltimate { get; private set; }
 
         /// <summary>
         /// Lists relating to the scraping of Generations data.
         /// </summary>
-        [JsonProperty("gen")]
-        public ScraperListGen Generations { get; set; }
+        public static ScraperListGen Generations { get; private set; }
 
         /// <summary>
         /// Lists relating to the scraping of World data.
         /// </summary>
-        [JsonProperty("world")]
-        public ScraperListWorld World { get; set; }
+        public static ScraperListWorld World { get; private set; }
     }
 }

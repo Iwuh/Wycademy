@@ -31,7 +31,7 @@ namespace Wycademy.Core.Models
         public DbSet<Hitzone> Hitzones { get; set; }
         public DbSet<HornNotes> HornNotes { get; set; }
         public DbSet<ItemEffect> ItemEffects { get; set; }
-        public DbSet<Monsters> Monsters { get; set; }
+        public DbSet<Monster> Monsters { get; set; }
         public DbSet<Phial> Phials { get; set; }
         public DbSet<StaggerLimit> StaggerLimits { get; set; }
         public DbSet<StatusEffect> StatusEffects { get; set; }
@@ -239,7 +239,7 @@ namespace Wycademy.Core.Models
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<Monsters>(entity =>
+            modelBuilder.Entity<Monster>(entity =>
             {
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd();

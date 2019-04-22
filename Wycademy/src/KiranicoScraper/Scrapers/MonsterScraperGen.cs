@@ -1,10 +1,9 @@
 ﻿using HtmlAgilityPack;
-using KiranicoScraper.Enums;
-using System;
-using System.Collections.Generic;
+using KiranicoScraper.Database;
+using KiranicoScraper.Scrapers.Lists;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
+using Wycademy.Core.Enums;
 
 namespace KiranicoScraper.Scrapers
 {
@@ -17,16 +16,20 @@ namespace KiranicoScraper.Scrapers
         /// </summary>
         public override void Execute()
         {
-            foreach (var monster in Database.ScraperLists.Generations.Monsters)
+            foreach (var monster in ScraperListCollection.Generations.Monsters)
             {
-                int monsterId = Database.AddMonsterAndGetId(monster);
+                using (WebResponse response = Requester.GetPage($"{BASE_URL}/{monster}"))
+                {
+                    HtmlDocument page = response.GetPageAsHtml();
+                    DbMonsterBuilder builder = response.CreateMonsterBuilder();
 
-                var page = Requester.GetHtml($"{BASE_URL}/{monster}");
-
-                AddHitzones(page, monsterId);
-                AddStagger(page, monsterId);
-                AddStatus(page, monsterId);
-                AddItemEffects(page, monsterId);
+                    builder.InitialiseMonster(monster);
+                    AddHitzones(page, builder);
+                    AddStagger(page, builder);
+                    AddStatus(page, builder);
+                    AddItemEffects(page, builder);
+                    builder.Commit();
+                }
             }
         }
 
@@ -34,22 +37,22 @@ namespace KiranicoScraper.Scrapers
         /// Adds a monster's hitzone data.
         /// </summary>
         /// <param name="page">The monster's Kiranico web page.</param>
-        /// <param name="monsterId">The monster's database ID.</param>
-        private void AddHitzones(HtmlDocument page, int monsterId)
+        /// <param name="builder">A <see cref="DbMonsterBuilder"/> used to add monster data to the database.</param>
+        private void AddHitzones(HtmlDocument page, DbMonsterBuilder builder)
         {
             // The hitzone data is all contained within a div with the class col-lg-12.
-            var hitzoneDiv = page.DocumentNode.SelectSingleNode("//div[@class='col-lg-12']");
+            HtmlNode hitzoneDiv = page.DocumentNode.SelectSingleNode("//div[@class='col-lg-12']");
 
             // The div contains an ul element with a number of li elements corresponding to the number of hitzone tabs.
             var tabCount = hitzoneDiv.SelectNodes("./ul/li").Count;
             for (int i = 0; i < tabCount; i++)
             {
                 // From the hitzone div, select the correct tab (given by the id attribute) and get the rows of the table body, each of which is a hitzone.
-                var tableRows = hitzoneDiv.SelectNodes($"./div/div[@id='state-{i}']/div/table/tbody/tr");
+                HtmlNodeCollection tableRows = hitzoneDiv.SelectNodes($"./div/div[@id='state-{i}']/div/table/tbody/tr");
 
-                foreach (var row in tableRows)
+                foreach (HtmlNode row in tableRows)
                 {
-                    var rowItems = row.SelectNodes("./td");
+                    HtmlNodeCollection rowItems = row.SelectNodes("./td");
 
                     string hitzoneName;
                     // This will not be empty if the hitzone has a modifier (ex. Enraged).
@@ -65,7 +68,7 @@ namespace KiranicoScraper.Scrapers
                     // Skip indices 0 and 1 (name and modifier) then take indices 2-9 and convert them to ints. 
                     var values = rowItems.Skip(2).Take(8).Select(n => int.Parse(n.InnerText)).ToList();
 
-                    Database.AddHitzone(monsterId, Game.Generations, hitzoneName, values);
+                    builder.AddHitzone(Game.Generations, hitzoneName, values);
                 }
             }
         }
@@ -74,28 +77,25 @@ namespace KiranicoScraper.Scrapers
         /// Adds a monster's stagger/sever/extract colour data.
         /// </summary>
         /// <param name="page">The monster's Kiranico web page.</param>
-        /// <param name="monsterId">The monster's database ID.</param>
-        private void AddStagger(HtmlDocument page, int monsterId)
+        /// <param name="builder">A <see cref="DbMonsterBuilder"/> used to add monster data to the database.</param>
+        private void AddStagger(HtmlDocument page, DbMonsterBuilder builder)
         {
-            // Stagger/sever data is in a div with a class of col-lg-5.
-            var staggerDiv = page.DocumentNode.SelectSingleNode("//div[@class='col-lg-5']");
-
-            // Get only the body rows of the table, we don't need the header.
-            var staggerRows = staggerDiv.SelectNodes("./div/table/tbody/tr");
-            foreach (var row in staggerRows)
+            // Stagger/sever data is in a div with a class of col-lg-5. Get only the body rows of the table, we don't need the header.
+            HtmlNodeCollection staggerRows = page.DocumentNode.SelectNodes("//div[@class='col-lg-5']/div/table/tbody/tr");
+            foreach (HtmlNode row in staggerRows)
             {
-                var rowItems = row.SelectNodes("./td");
+                HtmlNodeCollection rowItems = row.SelectNodes("./td");
 
-                var name = rowItems[0].InnerText;
+                string name = rowItems[0].InnerText;
                 var stagger = int.Parse(rowItems[1].InnerText);
 
-                var td3 = rowItems[2].InnerText;
+                string td3 = rowItems[2].InnerText;
                 // If it's empty, pass null to the database, otherwise the integer value.
                 int? sever = td3 == string.Empty ? null as int? : int.Parse(td3);
 
-                var extractColour = Database.ScraperLists.Generations.ExtractColours[rowItems[3].InnerText];
+                string extractColour = ScraperListCollection.Generations.ExtractColours[rowItems[3].InnerText];
 
-                Database.AddStaggerGen(monsterId, name, stagger, extractColour, sever);
+                builder.AddStaggerGen(name, stagger, extractColour, sever);
             }
         }
 
@@ -103,18 +103,18 @@ namespace KiranicoScraper.Scrapers
         /// Adds a monster's status susceptibility.
         /// </summary>
         /// <param name="page">The monster's Kiranico web page.</param>
-        /// <param name="monsterId">The monster's datbase ID.</param>
-        private void AddStatus(HtmlDocument page, int monsterId)
+        /// <param name="builder">A <see cref="DbMonsterBuilder"/> used to add monster data to the database.</param>
+        private void AddStatus(HtmlDocument page, DbMonsterBuilder builder)
         {
             // Both status and item effects are in the same div and the next sibling is empty so we find the label header then move two siblings down.
-            var statusDiv = page.DocumentNode.SelectSingleNode("//div[@class='col-lg-7']/h5[text()='Abnormal Status']").NextSibling.NextSibling;
+            HtmlNode statusDiv = page.DocumentNode.SelectSingleNode("//div[@class='col-lg-7']/h5[text()='Abnormal Status']").NextSibling.NextSibling;
 
-            var statusRows = statusDiv.SelectNodes("./table/tbody/tr");
-            foreach (var row in statusRows)
+            HtmlNodeCollection statusRows = statusDiv.SelectNodes("./table/tbody/tr");
+            foreach (HtmlNode row in statusRows)
             {
-                var rowItems = row.SelectNodes("./td");
+                HtmlNodeCollection rowItems = row.SelectNodes("./td");
 
-                var statusName = rowItems[0].InnerText;
+                string statusName = rowItems[0].InnerText;
                 
                 // Get indices 1-3 which correspond to initial threshold/increase per proc/max threshold
                 var values = rowItems.Skip(1).Take(3).Select(n => int.Parse(n.InnerText)).ToList();
@@ -135,26 +135,26 @@ namespace KiranicoScraper.Scrapers
                 values.Add(int.Parse(reductionMatch.Groups[2].Value));
                 values.Add(int.Parse(reductionMatch.Groups[1].Value));
 
-                Database.AddStatus(monsterId, Game.Generations, statusName, values);
+                builder.AddStatus(Game.Generations, statusName, values);
             }
         }
 
         /// <summary>
         /// Adds a monster's item susceptiblity.
         /// </summary>
-        /// <param name="page"></param>
-        /// <param name="monsterId"></param>
-        private void AddItemEffects(HtmlDocument page, int monsterId)
+        /// <param name="page">The monster's Kiranico web page.</param>
+        /// <param name="builder">A <see cref="DbMonsterBuilder"/> used to add monster data to the database.</param>
+        private void AddItemEffects(HtmlDocument page, DbMonsterBuilder builder)
         {
             // Get the item div in the same method as the status div.
-            var itemDiv = page.DocumentNode.SelectSingleNode("//div[@class='col-lg-7']/h5[text()='Item Effects']").NextSibling.NextSibling;
+            HtmlNode itemDiv = page.DocumentNode.SelectSingleNode("//div[@class='col-lg-7']/h5[text()='Item Effects']").NextSibling.NextSibling;
 
-            var itemRows = itemDiv.SelectNodes("./table/tbody/tr");
-            foreach (var row in itemRows)
+            HtmlNodeCollection itemRows = itemDiv.SelectNodes("./table/tbody/tr");
+            foreach (HtmlNode row in itemRows)
             {
-                var rowItems = row.SelectNodes("./td");
+                HtmlNodeCollection rowItems = row.SelectNodes("./td");
 
-                var itemName = rowItems[0].InnerText;
+                string itemName = rowItems[0].InnerText;
 
                 // Get normal/enraged/exhausted item durations.
                 var values = rowItems.Skip(1).Take(3).Select(n =>
@@ -163,7 +163,7 @@ namespace KiranicoScraper.Scrapers
                     return int.Parse(match.Groups[1].Value);
                 }).ToList();
 
-                Database.AddItemEffect(monsterId, Game.Generations, itemName, values);
+                builder.AddItemEffect(Game.Generations, itemName, values);
             }
         }
     }

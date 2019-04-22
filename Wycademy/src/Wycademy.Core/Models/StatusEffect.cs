@@ -18,6 +18,6 @@ namespace Wycademy.Core.Models
         public int ReductionTime { get; set; }
         public int ReductionAmount { get; set; }
 
-        public Monsters Monster { get; set; }
+        public Monster Monster { get; set; }
     }
 }

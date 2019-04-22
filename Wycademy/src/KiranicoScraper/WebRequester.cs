@@ -1,23 +1,30 @@
 ﻿using HtmlAgilityPack;
+using KiranicoScraper.Database;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Threading;
+using Wycademy.Core.Models;
 
 namespace KiranicoScraper
 {
     class WebRequester : IDisposable
     {
-        private HttpClient _client;
+        private readonly HttpClient _client;
         private DateTime _lastRequest;
-        private ILogger _logger;
 
-        public WebRequester(ILogger logger)
+        private readonly IServiceProvider _provider;
+        private readonly ILogger<WebRequester> _logger;
+
+        public WebRequester(IServiceProvider provider)
         {
             _client = new HttpClient();
             _lastRequest = new DateTime(0);
-            _logger = logger;
+
+            _provider = provider;
+            _logger = _provider.GetRequiredService<ILogger<WebRequester>>();
         }
 
         public void Dispose()
@@ -25,36 +32,7 @@ namespace KiranicoScraper
             _client.Dispose();
         }
 
-        public JToken GetJson(string url, string start, string end, bool shouldIncludeEndLength = true)
-        {
-            // Get the full page.
-            var page = GetPage(url);
-
-            // Find the start index according to the provided substring.
-            var startIndex = page.IndexOf(start);
-            // Find the end index according to the provided substring, adding the length of the substring because IndexOf returns the index of the substring's first character, unless we're told not to add the length.
-            var endIndex = page.IndexOf(end, startIndex);
-            if (shouldIncludeEndLength)
-            {
-                endIndex += end.Length;
-            }
-
-            // Get the proper substring, parse it to JSON, and return it.
-            return JToken.Parse(page.Substring(startIndex, endIndex - startIndex));
-        }
-
-        public HtmlDocument GetHtml(string url)
-        {
-            // Get the page as a string.
-            var page = GetPage(url);
-
-            // Parse it into a HAP document and return it.
-            var document = new HtmlDocument();
-            document.LoadHtml(page);
-            return document;
-        }
-
-        private string GetPage(string url)
+        public WebResponse GetPage(string url)
         {
             SleepIfNecessary();
 
@@ -63,7 +41,10 @@ namespace KiranicoScraper
             var page = _client.GetStringAsync(url).Result;
             // Update the time of the last request.
             _lastRequest = DateTime.Now;
-            return page;
+
+            // Create a new scope for this request. Normally scopes are disposed through a using block, but in this case the scope will be disposed when the response is disposed.
+            IServiceScope scope = _provider.CreateScope();
+            return new WebResponse(page, scope);
         }
 
         private void SleepIfNecessary()

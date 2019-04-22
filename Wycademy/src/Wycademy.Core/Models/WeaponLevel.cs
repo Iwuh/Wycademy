@@ -6,12 +6,6 @@ namespace Wycademy.Core.Models
 {
     public abstract class WeaponLevel
     {
-        protected WeaponLevel()
-        {
-            WeaponEffects = new HashSet<WeaponEffect>();
-            WeaponSharpnesses = new HashSet<WeaponSharpness>();
-        }
-
         public int Id { get; set; }
         public int WeaponId { get; set; }
         public Game? Game { get; set; }
@@ -27,8 +21,8 @@ namespace Wycademy.Core.Models
         public GunlanceShellStats GunlanceShellStats { get; set; }
         public HornNotes HornNotes { get; set; }
         public Phial Phials { get; set; }
-        public ICollection<WeaponEffect> WeaponEffects { get; set; }
-        public ICollection<WeaponSharpness> WeaponSharpnesses { get; set; }
+        public List<WeaponEffect> WeaponEffects { get; set; }
+        public List<WeaponSharpness> WeaponSharpnesses { get; set; }
     }
 
     public class WeaponLevel4U : WeaponLevel

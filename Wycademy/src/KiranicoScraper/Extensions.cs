@@ -70,5 +70,14 @@ namespace KiranicoScraper
         /// <param name="parameters">The parameters to add. Can be <see cref="NpgsqlParameter"/> or any derived type.</param>
         public static void AddParameters(this NpgsqlCommand cmd, params NpgsqlParameter[] parameters)
             => cmd.AddParameters(parameters as IEnumerable<NpgsqlParameter>);
+
+        /// <summary>
+        /// Throws an exception if the list doesn't have a given length.
+        /// </summary>
+        /// <param name="length">The expected length of the list.</param>
+        public static void ExpectLength<T>(this IList<T> list, int length)
+        {
+            if (list.Count != length) throw new ArgumentException($"Expected length of {length}, got {list.Count}.", nameof(list));
+        }
     }
 }

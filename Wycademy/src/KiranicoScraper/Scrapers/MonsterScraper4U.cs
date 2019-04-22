@@ -1,10 +1,9 @@
-﻿using KiranicoScraper.Enums;
+﻿using KiranicoScraper.Database;
 using KiranicoScraper.Scrapers.Lists;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Wycademy.Core.Enums;
 
 namespace KiranicoScraper.Scrapers
 {
@@ -17,19 +16,19 @@ namespace KiranicoScraper.Scrapers
         /// </summary>
         public override void Execute()
         {
-            foreach (var monster in Database.ScraperLists.FourUltimate.Monsters)
+            foreach (var monster in ScraperListCollection.FourUltimate.Monsters)
             {
-                int monsterId = Database.AddMonsterAndGetId(monster);
+                using (WebResponse page = GetPage(monster))
+                {
+                    JObject json = GetJson(page, out DbMonsterBuilder builder);
 
-                var json = GetJson(monster);
-
-                AddHitzones(json, monster, monsterId);
-
-                AddStagger(json, monsterId);
-
-                AddStatus(json, monsterId);
-
-                AddItemEffects(json, monsterId);
+                    builder.InitialiseMonster(monster);
+                    AddHitzones(json, monster, builder);
+                    AddStagger(json, builder);
+                    AddStatus(json, builder);
+                    AddItemEffects(json, builder);
+                    builder.Commit();
+                }
             }
 
             // Some monsters have inconsistensies that make them unable to be automatically processed, so we do it manually.
@@ -37,26 +36,31 @@ namespace KiranicoScraper.Scrapers
         }
 
         /// <summary>
-        /// Gets the json data for a given monster.
+        /// Gets the json data for a monster from the response page.
         /// </summary>
-        /// <param name="monster"></param>
-        /// <returns></returns>
-        private JObject GetJson(string monster)
+        /// <param name="response">The response to get the json from.</param>
+        /// <param name="builder">A <see cref="DbMonsterBuilder"/> used to add monster data to the database.</param>
+        private JObject GetJson(WebResponse response, out DbMonsterBuilder builder)
         {
-            var json = Requester.GetJson($"{BASE_URL}/{monster}", "{\"monster\":", "]}}");
-            // Get the actual monster data from an outside object.
-            return (JObject)json["monster"];
+            builder = response.CreateMonsterBuilder();
+            return (JObject)response.GetPageAsJson("{\"monster\":", "]}}")["monster"];
         }
+
+        /// <summary>
+        /// Gets the page for a monster.
+        /// </summary>
+        /// <param name="monster">The monster's url name.</param>
+        private WebResponse GetPage(string monster) => Requester.GetPage($"{BASE_URL}/{monster}");
 
         /// <summary>
         /// Adds hitzones for a monster with up to one table of alternate hitzones.
         /// </summary>
         /// <param name="json">The monster's json data.</param>
         /// <param name="monster">The monster's name.</param>
-        /// <param name="monsterId">The monster's database ID.</param>
-        private void AddHitzones(JToken json, string monster, int monsterId)
+        /// <param name="builder">The <see cref="DbMonsterBuilder"/> for this monster.</param>
+        private void AddHitzones(JObject json, string monster, DbMonsterBuilder builder)
         {
-            var alternateNames = Database.ScraperLists.FourUltimate.AltHitzones;
+            var alternateNames = ScraperListCollection.FourUltimate.AltHitzones;
 
             foreach (var hitzone in json["monsterbodyparts"])
             {
@@ -67,9 +71,9 @@ namespace KiranicoScraper.Scrapers
                 var hitzoneName = (string)hitzonePivot["type"] == "A" ? localName : $"{localName} ({alternateNames[monster]})";
 
                 // Get the hitzone value for each damage type.
-                var hitzoneValues = Database.ScraperLists.FourUltimate.HitzoneKeys.Select(k => (int)hitzonePivot[k]).ToList();
+                var hitzoneValues = ScraperListCollection.FourUltimate.HitzoneKeys.Select(k => (int)hitzonePivot[k]).ToList();
 
-                Database.AddHitzone(monsterId, Game.Four, hitzoneName, hitzoneValues);
+                builder.AddHitzone(Game.Four, hitzoneName, hitzoneValues);
             }
         }
 
@@ -78,10 +82,10 @@ namespace KiranicoScraper.Scrapers
         /// </summary>
         /// <param name="json">The monster's json data.</param>
         /// <param name="monster">The monster's name.</param>
-        /// <param name="monsterId">The monster's database ID.</param>
-        private void AddHitzonesWithThreeTables(JToken json, string monster, int monsterId)
+        /// <param name="builder">The <see cref="DbMonsterBuilder"/> for this monster.</param>
+        private void AddHitzonesWithThreeTables(JObject json, string monster, DbMonsterBuilder builder)
         {
-            var altNames = Database.ScraperLists.FourUltimate.DoubleAltHitzones;
+            var altNames = ScraperListCollection.FourUltimate.DoubleAltHitzones;
 
             foreach (var hitzone in json["monsterbodyparts"])
             {
@@ -103,9 +107,9 @@ namespace KiranicoScraper.Scrapers
                         break;
                 }
 
-                var hitzoneValues = Database.ScraperLists.FourUltimate.HitzoneKeys.Select(k => (int)hitzonePivot[k]).ToList();
+                var hitzoneValues = ScraperListCollection.FourUltimate.HitzoneKeys.Select(k => (int)hitzonePivot[k]).ToList();
 
-                Database.AddHitzone(monsterId, Game.Four, hitzoneName, hitzoneValues);
+                builder.AddHitzone(Game.Four, hitzoneName, hitzoneValues);
             }
         }
 
@@ -113,8 +117,8 @@ namespace KiranicoScraper.Scrapers
         /// Adds stagger data for a monster.
         /// </summary>
         /// <param name="json">The monster's json data.</param>
-        /// <param name="monsterId">The monster's database ID.</param>
-        private void AddStagger(JToken json, int monsterId)
+        /// <param name="builder">The <see cref="DbMonsterBuilder"/> for this monster.</param>
+        private void AddStagger(JObject json, DbMonsterBuilder builder)
         {
             foreach (var stagger in json["monsterstaggerlimits"])
             {
@@ -125,7 +129,7 @@ namespace KiranicoScraper.Scrapers
                 var value = (int)stagger["value"];
                 var colour = Utils.TitleCase((string)stagger["extract_color"]);
 
-                Database.AddStagger4U(monsterId, region, value, colour);
+                builder.AddStagger4U(region, value, colour);
             }
         }
 
@@ -133,8 +137,8 @@ namespace KiranicoScraper.Scrapers
         /// Adds status data for a monster.
         /// </summary>
         /// <param name="json">The monster's json data.</param>
-        /// <param name="monsterId">The monster's database ID.</param>
-        private void AddStatus(JToken json, int monsterId)
+        /// <param name="builder">The <see cref="DbMonsterBuilder"/> for this monster.</param>
+        private void AddStatus(JToken json, DbMonsterBuilder builder)
         {
             foreach (var status in json["weaponspecialattacks"])
             {
@@ -142,9 +146,9 @@ namespace KiranicoScraper.Scrapers
 
                 var name = (string)status["local_name"];
 
-                var statusValues = Database.ScraperLists.FourUltimate.StatusKeys.Select(k => (int)statusPivot[k]).ToList();
+                var statusValues = ScraperListCollection.FourUltimate.StatusKeys.Select(k => (int)statusPivot[k]).ToList();
 
-                Database.AddStatus(monsterId, Game.Four, name, statusValues);
+                builder.AddStatus(Game.Four, name, statusValues);
             }
         }
 
@@ -152,8 +156,8 @@ namespace KiranicoScraper.Scrapers
         /// Adds a monster's item suceptibility.
         /// </summary>
         /// <param name="json">The monster's json data.</param>
-        /// <param name="monsterId">The monster's database ID.</param>
-        private void AddItemEffects(JToken json, int monsterId)
+        /// <param name="builder">The <see cref="DbMonsterBuilder"/> for this monster.</param>
+        private void AddItemEffects(JToken json, DbMonsterBuilder builder)
         {
             foreach (var item in json["itemeffects"])
             {
@@ -161,9 +165,9 @@ namespace KiranicoScraper.Scrapers
 
                 var name = (string)item["local_name"];
 
-                var values = Database.ScraperLists.FourUltimate.ItemEffectKeys.Select(k => (int)itemPivot[k]).ToList();
+                var values = ScraperListCollection.FourUltimate.ItemEffectKeys.Select(k => (int)itemPivot[k]).ToList();
 
-                Database.AddItemEffect(monsterId, Game.Four, name, values);
+                builder.AddItemEffect(Game.Four, name, values);
             }
         }
 
@@ -182,226 +186,264 @@ namespace KiranicoScraper.Scrapers
             #region Cephadrome
             // Reason: No hitzones
 
-            var cephaJson = GetJson("cephadrome");
-            var cephaId = Database.AddMonsterAndGetId("cephadrome");
-
-            var cephaHitzones = new Dictionary<string, int[]>
+            using (WebResponse cephaResponse = GetPage("cephadrome"))
             {
-                { "Head",          new[] { 35, 40, 50, 0, 10, 15, 30, 5 } },
-                { "Neck",          new[] { 65, 60, 80, 5, 10, 15, 15, 5 } },
-                { "Belly",         new[] { 50, 55, 50, 0, 15, 15, 20, 5 } },
-                { "Back / Fin",    new[] { 60, 50, 80, 0, 12, 20, 17, 5 } },
-                { "Wing Membrane", new[] { 42, 35, 50, 0, 10, 10, 15, 5 } },
-                { "Legs",          new[] { 35, 40, 40, 0, 10, 10, 15, 5 } },
-                { "Tail",          new[] { 30, 30, 30, 0, 15, 10, 20, 5 } }
-            };
+                JObject cephaJson = GetJson(cephaResponse, out DbMonsterBuilder cephaBuilder);
+                cephaBuilder.InitialiseMonster("cephadrome");
 
-            cephaHitzones.ForEach(p => Database.AddHitzone(cephaId, Game.Four, p.Key, p.Value));
-            AddStagger(cephaJson, cephaId);
-            AddStatus(cephaJson, cephaId);
-            AddItemEffects(cephaJson, cephaId);
+                var cephaHitzones = new Dictionary<string, int[]>
+                {
+                    { "Head",          new[] { 35, 40, 50, 0, 10, 15, 30, 5 } },
+                    { "Neck",          new[] { 65, 60, 80, 5, 10, 15, 15, 5 } },
+                    { "Belly",         new[] { 50, 55, 50, 0, 15, 15, 20, 5 } },
+                    { "Back / Fin",    new[] { 60, 50, 80, 0, 12, 20, 17, 5 } },
+                    { "Wing Membrane", new[] { 42, 35, 50, 0, 10, 10, 15, 5 } },
+                    { "Legs",          new[] { 35, 40, 40, 0, 10, 10, 15, 5 } },
+                    { "Tail",          new[] { 30, 30, 30, 0, 15, 10, 20, 5 } }
+                };
+
+                cephaHitzones.ForEach(p => cephaBuilder.AddHitzone(Game.Four, p.Key, p.Value));
+                AddStagger(cephaJson, cephaBuilder);
+                AddStatus(cephaJson, cephaBuilder);
+                AddItemEffects(cephaJson, cephaBuilder);
+            }
 
             #endregion
 
             #region Plum Daimyo Hermitaur
             // Reason: Shell / Claws (Broken) should not include the (Guarding) modifier
 
-            var daimyoJson = GetJson("plum-d.hermitaur");
-            var daimyoId = Database.AddMonsterAndGetId("plum-d.hermitaur");
+            using (WebResponse daimyoResponse = GetPage("plum-d.hermitaur"))
+            {
+                JObject daimyoJson = GetJson(daimyoResponse, out DbMonsterBuilder daimyoBuilder);
+                daimyoBuilder.InitialiseMonster("plum-d.hermitaur");
 
-            // Remove the offending hitzone from the JSON.
-            daimyoJson["monsterbodyparts"].First(t => (string)t["local_name"] == "Shell / Claws (Broken)").Remove();
-            // Add the rest of the hitzones then manually add the last hitzone.
-            AddHitzones(daimyoJson, "plum-d.hermitaur", daimyoId);
-            Database.AddHitzone(daimyoId, Game.Four, "Shell / Claws (Broken)", new[] { 30, 40, 25, 10, 5, 15, 10, 0 });
+                // Remove the offending hitzone from the JSON.
+                daimyoJson["monsterbodyparts"].First(t => (string)t["local_name"] == "Shell / Claws (Broken)").Remove();
+                // Add the rest of the hitzones then manually add the last hitzone.
+                AddHitzones(daimyoJson, "plum-d.hermitaur", daimyoBuilder);
+                daimyoBuilder.AddHitzone(Game.Four, "Shell / Claws (Broken)", new[] { 30, 40, 25, 10, 5, 15, 10, 0 });
 
-            AddStagger(daimyoJson, daimyoId);
-            AddStatus(daimyoJson, daimyoId);
-            AddItemEffects(daimyoJson, daimyoId);
+                AddStagger(daimyoJson, daimyoBuilder);
+                AddStatus(daimyoJson, daimyoBuilder);
+                AddItemEffects(daimyoJson, daimyoBuilder); 
+            }
             #endregion
 
             #region Najarala
             // Reason: Tail hitzone is duplicated in the second table
 
-            var najaJson = GetJson("najarala");
-            var najaId = Database.AddMonsterAndGetId("najarala");
+            using (WebResponse najaResponse = GetPage("najarala"))
+            {
+                JObject najaJson = GetJson(najaResponse, out DbMonsterBuilder najaBuilder);
+                najaBuilder.InitialiseMonster("najarala");
 
-            najaJson["monsterbodyparts"].First(t => (string)t["local_name"] == "Tail" && (string)t["pivot"]["type"] == "B").Remove();
+                najaJson["monsterbodyparts"].First(t => (string)t["local_name"] == "Tail" && (string)t["pivot"]["type"] == "B").Remove();
 
-            AddHitzones(najaJson, "najarala", najaId);
-            AddStagger(najaJson, najaId);
-            AddStatus(najaJson, najaId);
-            AddItemEffects(najaJson, najaId);
+                AddHitzones(najaJson, "najarala", najaBuilder);
+                AddStagger(najaJson, najaBuilder);
+                AddStatus(najaJson, najaBuilder);
+                AddItemEffects(najaJson, najaBuilder); 
+            }
             #endregion
 
             #region Brachydios & Raging Brachydios
             // Reason: Raging Brachydios hitzones are on Brachydios' page
 
-            var brachJson = GetJson("brachydios");
-            var brachJsonClone = brachJson.DeepClone();
+            using (WebResponse brachResponse = GetPage("brachydios"))
+            using (WebResponse ragingBrachResponse = GetPage("raging-brachydios"))
+            {
+                JObject brachJson = GetJson(brachResponse, out DbMonsterBuilder brachBuilder);
+                var brachJsonClone = (JObject)brachJson.DeepClone();
 
-            var brachId = Database.AddMonsterAndGetId("brachydios");
+                brachBuilder.InitialiseMonster("brachydios");
 
-            ((JArray)brachJson["monsterbodyparts"]).RemoveRange(7);
-            AddHitzones(brachJson, "brachydios", brachId);
+                ((JArray)brachJson["monsterbodyparts"]).RemoveRange(7);
+                AddHitzones(brachJson, "brachydios", brachBuilder);
 
-            AddStagger(brachJson, brachId);
-            AddStatus(brachJson, brachId);
-            AddItemEffects(brachJson, brachId);
+                AddStagger(brachJson, brachBuilder);
+                AddStatus(brachJson, brachBuilder);
+                AddItemEffects(brachJson, brachBuilder);
 
-            var ragingBrachJson = GetJson("raging-brachydios");
-            var ragingBrachId = Database.AddMonsterAndGetId("raging-brachydios");
+                JObject ragingBrachJson = GetJson(ragingBrachResponse, out DbMonsterBuilder ragingBrachBuilder);
+                ragingBrachBuilder.InitialiseMonster("raging-brachydios");
 
-            // Use the clone of normal Brachydios json for hitzones, Raging Brachydios json for everything else.
-            ((JArray)brachJsonClone["monsterbodyparts"]).RemoveRange(0, 7);
-            AddHitzones(brachJsonClone, "raging-brachydios", ragingBrachId);
+                // Use the clone of normal Brachydios json for hitzones, Raging Brachydios json for everything else.
+                ((JArray)brachJsonClone["monsterbodyparts"]).RemoveRange(0, 7);
+                AddHitzones(brachJsonClone, "raging-brachydios", ragingBrachBuilder);
 
-            AddStagger(ragingBrachJson, ragingBrachId);
-            AddStatus(ragingBrachJson, ragingBrachId);
-            AddItemEffects(ragingBrachJson, ragingBrachId);
+                AddStagger(ragingBrachJson, ragingBrachBuilder);
+                AddStatus(ragingBrachJson, ragingBrachBuilder);
+                AddItemEffects(ragingBrachJson, ragingBrachBuilder);
+            }
             #endregion
 
             #region Gravios
             // Reason: Underbody hitzone is duplicated in second table
 
-            var gravJson = GetJson("gravios");
-            var gravId = Database.AddMonsterAndGetId("gravios");
+            using (WebResponse gravResponse = GetPage("gravios"))
+            {
+                JObject gravJson = GetJson(gravResponse, out DbMonsterBuilder gravBuilder);
+                gravBuilder.InitialiseMonster("gravios");
 
-            gravJson["monsterbodyparts"].First(t => (string)t["local_name"] == "Underbody" && (string)t["pivot"]["type"] == "B").Remove();
+                gravJson["monsterbodyparts"].First(t => (string)t["local_name"] == "Underbody" && (string)t["pivot"]["type"] == "B").Remove();
 
-            AddHitzones(gravJson, "gravios", gravId);
-            AddStagger(gravJson, gravId);
-            AddStatus(gravJson, gravId);
-            AddItemEffects(gravJson, gravId);
+                AddHitzones(gravJson, "gravios", gravBuilder);
+                AddStagger(gravJson, gravBuilder);
+                AddStatus(gravJson, gravBuilder);
+                AddItemEffects(gravJson, gravBuilder); 
+            }
             #endregion
 
             #region Gore Magala & Chaotic Gore Magala
             // Reason: Chaotic Gore Magala's hitzones are on Gore Magala's page
 
-            var goreJson = GetJson("gore-magala");
-            var goreJsonClone = goreJson.DeepClone();
+            using (WebResponse goreResponse = GetPage("gore-magala"))
+            using(WebResponse chaosGoreResponse = GetPage("chaotic-gore-magala"))
+            {
+                JObject goreJson = GetJson(goreResponse, out DbMonsterBuilder goreBuilder);
+                var goreJsonClone = (JObject)goreJson.DeepClone();
 
-            var goreId = Database.AddMonsterAndGetId("gore-magala");
+                goreBuilder.InitialiseMonster("gore-magala");
 
-            ((JArray)goreJson["monsterbodyparts"]).RemoveRange(10);
-            AddHitzones(goreJson, "gore-magala", goreId);
+                ((JArray)goreJson["monsterbodyparts"]).RemoveRange(10);
+                AddHitzones(goreJson, "gore-magala", goreBuilder);
 
-            AddStagger(goreJson, goreId);
-            AddStatus(goreJson, goreId);
-            AddItemEffects(goreJson, goreId);
+                AddStagger(goreJson, goreBuilder);
+                AddStatus(goreJson, goreBuilder);
+                AddItemEffects(goreJson, goreBuilder);
 
-            var chaosGoreJson = GetJson("chaotic-gore-magala");
-            var chaosGoreId = Database.AddMonsterAndGetId("chaotic-gore-magala");
+                JObject chaosGoreJson = GetJson(chaosGoreResponse, out DbMonsterBuilder chaosGoreBuilder);
+                chaosGoreBuilder.InitialiseMonster("chaotic-gore-magala");
 
-            // Use clone for hitzones, proper json for everything else.
-            ((JArray)goreJsonClone["monsterbodyparts"]).RemoveRange(0, 10);
-            AddHitzones(goreJsonClone, "chaotic-gore-magala", chaosGoreId);
+                // Use clone for hitzones, proper json for everything else.
+                ((JArray)goreJsonClone["monsterbodyparts"]).RemoveRange(0, 10);
+                AddHitzones(goreJsonClone, "chaotic-gore-magala", chaosGoreBuilder);
 
-            AddStagger(chaosGoreJson, chaosGoreId);
-            AddStatus(chaosGoreJson, chaosGoreId);
-            AddItemEffects(chaosGoreJson, chaosGoreId);
+                AddStagger(chaosGoreJson, chaosGoreBuilder);
+                AddStatus(chaosGoreJson, chaosGoreBuilder);
+                AddItemEffects(chaosGoreJson, chaosGoreBuilder);
+            }
             #endregion
 
             #region Dalamadur
             // Reason: Kiranico is missing the hitzone table for after parts are broken
 
-            var dalaJson = GetJson("dalamadur");
-            var dalaId = Database.AddMonsterAndGetId("dalamadur");
-
-            var brokenDalaHitzones = new Dictionary<string, int[]>
+            using (WebResponse dalaResponse = GetPage("dalamadur"))
             {
-                { "Head (Broken)",       new[] { 55, 55, 30, 0, 0, 10, 10, 15 } },
-                { "Front Legs (Broken)", new[] { 55, 55, 15, 5, 5, 10, 10, 20 } },
-                { "Back Leg (Broken)",   new[] { 17, 17, 15, 5, 5, 10, 10, 15 } },
-                { "Tail (Broken)",       new[] { 33, 33, 10, 5, 5, 10, 10, 15 } },
-                { "Tail Tip (Broken)",   new[] { 75, 75, 60, 5, 5, 10, 10, 15 } }
-            };
+                JObject dalaJson = GetJson(dalaResponse, out DbMonsterBuilder dalaBuilder);
+                dalaBuilder.InitialiseMonster("dalamadur");
 
-            AddHitzones(dalaJson, "dalamadur", dalaId);
-            brokenDalaHitzones.ForEach(p => Database.AddHitzone(dalaId, Game.Four, p.Key, p.Value));
+                var brokenDalaHitzones = new Dictionary<string, int[]>
+                {
+                    { "Head (Broken)",       new[] { 55, 55, 30, 0, 0, 10, 10, 15 } },
+                    { "Front Legs (Broken)", new[] { 55, 55, 15, 5, 5, 10, 10, 20 } },
+                    { "Back Leg (Broken)",   new[] { 17, 17, 15, 5, 5, 10, 10, 15 } },
+                    { "Tail (Broken)",       new[] { 33, 33, 10, 5, 5, 10, 10, 15 } },
+                    { "Tail Tip (Broken)",   new[] { 75, 75, 60, 5, 5, 10, 10, 15 } }
+                };
 
-            AddStagger(dalaJson, dalaId);
-            AddStatus(dalaJson, dalaId);
-            AddItemEffects(dalaJson, dalaId);
+                AddHitzones(dalaJson, "dalamadur", dalaBuilder);
+                brokenDalaHitzones.ForEach(p => dalaBuilder.AddHitzone(Game.Four, p.Key, p.Value));
+
+                AddStagger(dalaJson, dalaBuilder);
+                AddStatus(dalaJson, dalaBuilder);
+                AddItemEffects(dalaJson, dalaBuilder); 
+            }
             #endregion
 
             #region Shah Dalamadur
             // Reason: 3 hitzone tables; no stagger names
 
-            var shahJson = GetJson("shah-dalamadur");
-            var shahId = Database.AddMonsterAndGetId("shah-dalamadur");
+            using (WebResponse shahResponse = GetPage("shah-dalamadur"))
+            {
+                JObject shahJson = GetJson(shahResponse, out DbMonsterBuilder shahBuilder);
+                shahBuilder.InitialiseMonster("shah-dalamadur");
 
-            AddHitzonesWithThreeTables(shahJson, "shah-dalamadur", shahId);
-            AddStatus(shahJson, shahId);
-            AddItemEffects(shahJson, shahId);
+                AddHitzonesWithThreeTables(shahJson, "shah-dalamadur", shahBuilder);
+                AddStatus(shahJson, shahBuilder);
+                AddItemEffects(shahJson, shahBuilder); 
+            }
             #endregion
 
             #region Gogmazios
             // Reason: 3 hitzone tables
 
-            var gogJson = GetJson("gogmazios");
-            var gogId = Database.AddMonsterAndGetId("gogmazios");
+            using (WebResponse gogResponse = GetPage("gogmazios"))
+            {
+                JObject gogJson = GetJson(gogResponse, out DbMonsterBuilder gogBuilder);
+                gogBuilder.InitialiseMonster("gogmazios");
 
-            AddHitzonesWithThreeTables(gogJson, "gogmazios", gogId);
-            AddStagger(gogJson, gogId);
-            AddStatus(gogJson, gogId);
-            AddItemEffects(gogJson, gogId);
+                AddHitzonesWithThreeTables(gogJson, "gogmazios", gogBuilder);
+                AddStagger(gogJson, gogBuilder);
+                AddStatus(gogJson, gogBuilder);
+                AddItemEffects(gogJson, gogBuilder); 
+            }
             #endregion
 
             #region Fatalis
             // Reason: No stagger names
 
-            var fataJson = GetJson("fatalis");
-            var fataId = Database.AddMonsterAndGetId("fatalis");
+            using (WebResponse fataResponse = GetPage("fatalis"))
+            {
+                JObject fataJson = GetJson(fataResponse, out DbMonsterBuilder fataBuilder);
+                fataBuilder.InitialiseMonster("fatalis");
 
-            AddHitzones(fataJson, "fatalis", fataId);
-            AddStatus(fataJson, fataId);
-            AddItemEffects(fataJson, fataId);
+                AddHitzones(fataJson, "fatalis", fataBuilder);
+                AddStatus(fataJson, fataBuilder);
+                AddItemEffects(fataJson, fataBuilder); 
+            }
             #endregion
 
             #region Crimson Fatalis
             // Reason: No hitzones; no stagger names
 
-            var crimJson = GetJson("crimson-fatalis");
-            var crimId = Database.AddMonsterAndGetId("crimson-fatalis");
-
-            var crimHitzones = new Dictionary<string, int[]>
+            using (WebResponse crimResponse = GetPage("crimson-fatalis"))
             {
-                { "Face",         new[] { 50, 45, 45, 15, 5, 5, 5, 80 } },
-                { "Head",         new[] { 30, 25, 30, 15, 5, 5, 5, 50 } },
-                { "Neck",         new[] { 30, 25, 25, 15, 5, 5, 5, 30 } },
-                { "Chest",        new[] { 30, 15, 20, 15, 5, 5, 5, 10 } },
-                { "Wing",         new[] { 30, 25, 20, 15, 5, 5, 5, 10 } },
-                { "Back / Tail",  new[] { 10, 20, 20, 15, 5, 5, 5, 10 } },
-                { "Belly / Legs", new[] { 20, 20, 20, 15, 5, 5, 5, 20 } }
-            };
-            crimHitzones.ForEach(p => Database.AddHitzone(crimId, Game.Four, p.Key, p.Value));
+                JObject crimJson = GetJson(crimResponse, out DbMonsterBuilder crimBuilder);
+                crimBuilder.InitialiseMonster("crimson-fatalis");
 
-            AddStatus(crimJson, crimId);
-            AddItemEffects(crimJson, crimId);
+                var crimHitzones = new Dictionary<string, int[]>
+                {
+                    { "Face",         new[] { 50, 45, 45, 15, 5, 5, 5, 80 } },
+                    { "Head",         new[] { 30, 25, 30, 15, 5, 5, 5, 50 } },
+                    { "Neck",         new[] { 30, 25, 25, 15, 5, 5, 5, 30 } },
+                    { "Chest",        new[] { 30, 15, 20, 15, 5, 5, 5, 10 } },
+                    { "Wing",         new[] { 30, 25, 20, 15, 5, 5, 5, 10 } },
+                    { "Back / Tail",  new[] { 10, 20, 20, 15, 5, 5, 5, 10 } },
+                    { "Belly / Legs", new[] { 20, 20, 20, 15, 5, 5, 5, 20 } }
+                };
+                crimHitzones.ForEach(p => crimBuilder.AddHitzone(Game.Four, p.Key, p.Value));
+
+                AddStatus(crimJson, crimBuilder);
+                AddItemEffects(crimJson, crimBuilder); 
+            }
             #endregion
 
             #region White Fatalis
             // Reason: No hitzones; no stagger names
 
-            var whiteJson = GetJson("white-fatalis");
-            var whiteId = Database.AddMonsterAndGetId("white-fatalis");
-
-            var whiteHitzones = new Dictionary<string, int[]>
+            using (WebResponse whiteResponse = GetPage("white-fatalis"))
             {
-                { "Face",                new[] { 80, 75, 45, 15, 5, 5, 10, 80 } },
-                { "Head",                new[] { 50, 55, 30, 15, 5, 5, 10, 50 } },
-                { "Neck",                new[] { 30, 25, 25, 15, 5, 5, 10, 30 } },
-                { "Chest",               new[] { 30, 15, 20, 15, 5, 5, 10, 10 } },
-                { "Wing",                new[] { 30, 25, 20, 15, 5, 5, 10, 10 } },
-                { "Back / Tail",         new[] { 10, 20, 20, 15, 5, 5, 10, 10 } },
-                { "Belly / Legs",        new[] { 20, 20, 20, 15, 5, 5, 10, 20 } },
-                { "All Parts (Enraged)", new[] { 10, 10, 10, 10, 5, 5, 10, 10 } }
-            };
-            whiteHitzones.ForEach(p => Database.AddHitzone(whiteId, Game.Four, p.Key, p.Value));
+                JObject whiteJson = GetJson(whiteResponse, out DbMonsterBuilder whiteBuilder);
+                whiteBuilder.InitialiseMonster("white-fatalis");
 
-            AddStatus(whiteJson, whiteId);
-            AddItemEffects(whiteJson, whiteId);
+                var whiteHitzones = new Dictionary<string, int[]>
+                {
+                    { "Face",                new[] { 80, 75, 45, 15, 5, 5, 10, 80 } },
+                    { "Head",                new[] { 50, 55, 30, 15, 5, 5, 10, 50 } },
+                    { "Neck",                new[] { 30, 25, 25, 15, 5, 5, 10, 30 } },
+                    { "Chest",               new[] { 30, 15, 20, 15, 5, 5, 10, 10 } },
+                    { "Wing",                new[] { 30, 25, 20, 15, 5, 5, 10, 10 } },
+                    { "Back / Tail",         new[] { 10, 20, 20, 15, 5, 5, 10, 10 } },
+                    { "Belly / Legs",        new[] { 20, 20, 20, 15, 5, 5, 10, 20 } },
+                    { "All Parts (Enraged)", new[] { 10, 10, 10, 10, 5, 5, 10, 10 } }
+                };
+                whiteHitzones.ForEach(p => whiteBuilder.AddHitzone(Game.Four, p.Key, p.Value));
+
+                AddStatus(whiteJson, whiteBuilder);
+                AddItemEffects(whiteJson, whiteBuilder); 
+            }
             #endregion
         }
     }
