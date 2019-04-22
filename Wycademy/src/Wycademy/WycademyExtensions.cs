@@ -27,7 +27,7 @@ namespace Wycademy
             IUserMessage m;
             if (file == null)
             {
-                m = await channel.SendMessageAsync(prependZWSP ? "\x200b" + text : text, embed: embed);
+                m = await channel.SendMessageAsync(prependZWSP ? "\x200b" + text : text, embed: embed.Build());
             }
             else
             {

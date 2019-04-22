@@ -22,7 +22,7 @@ namespace Wycademy.Commands.Modules
         public async Task CleanBotMessages()
         {
             // Get the last 100 messages from the channel.
-            var messages = await Context.Channel.GetMessagesAsync().Flatten();
+            var messages = await Context.Channel.GetMessagesAsync().FlattenAsync();
 
             // Select the messages that are by the bot.
             var messagesToDelete = messages.Where(m => m.Author.Id == Context.Client.CurrentUser.Id);

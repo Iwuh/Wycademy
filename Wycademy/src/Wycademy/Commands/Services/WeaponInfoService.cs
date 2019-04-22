@@ -266,19 +266,19 @@ namespace Wycademy.Commands.Services
                     {
                         rapidFireShots = string.Join("\n", level.GunStats.RapidFireShots.Select(s => $"{s.Name} ({s.Count})"));
                     }
-                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.LBG]} Rapid Fire Shots", rapidFireShots);
+                    builder.AddField($"{WEAPON_EMOTES[WeaponType.LBG]} Rapid Fire Shots", rapidFireShots, inline: true);
                     break;
 
                 // Add the general gun data and the HBG's crouching fire shots.
                 case WeaponType.HBG:
                     AddUniversalGunFields(WeaponType.HBG, level.GunStats, builder);
-                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.HBG]} Crouching Fire Shots", string.Join("\n", level.GunStats.CrouchingFireShots.Select(s => $"{s.Name} ({s.Count})")));
+                    builder.AddField($"{WEAPON_EMOTES[WeaponType.HBG]} Crouching Fire Shots", string.Join("\n", level.GunStats.CrouchingFireShots.Select(s => $"{s.Name} ({s.Count})")), inline: true);
                     break;
 
                 // Add the bow's arc shot, charge shots, and usable coatings.
                 case WeaponType.Bow:
-                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.Bow]} Shots", $"Arc Shot: {level.BowShots.ArcShot}\n{string.Join("\n", level.BowShots.ChargeShots)}");
-                    builder.AddInlineField($"{WEAPON_EMOTES[WeaponType.Bow]} Coatings", string.Join("\n", level.BowCoatings));
+                    builder.AddField($"{WEAPON_EMOTES[WeaponType.Bow]} Shots", $"Arc Shot: {level.BowShots.ArcShot}\n{string.Join("\n", level.BowShots.ChargeShots)}", inline: true);
+                    builder.AddField($"{WEAPON_EMOTES[WeaponType.Bow]} Coatings", string.Join("\n", level.BowCoatings), inline: true);
                     break;
             }
 
@@ -287,12 +287,12 @@ namespace Wycademy.Commands.Services
 
         private void AddUniversalGunFields(WeaponType type, GunStats stats, EmbedBuilder builder)
         {
-            builder.AddInlineField($"{WEAPON_EMOTES[type]} Stats", $"Reload Speed: {stats.ReloadSpeed}\nRecoil: {stats.Recoil}\nDeviation: {stats.Deviation}");
-            builder.AddInlineField($"{WEAPON_EMOTES[type]} Shots", string.Join("\n", stats.UsableShots.Select(s => $"{s.Name} ({s.Capacity})")));
+            builder.AddField($"{WEAPON_EMOTES[type]} Stats", $"Reload Speed: {stats.ReloadSpeed}\nRecoil: {stats.Recoil}\nDeviation: {stats.Deviation}", inline: true);
+            builder.AddField($"{WEAPON_EMOTES[type]} Shots", string.Join("\n", stats.UsableShots.Select(s => $"{s.Name} ({s.Capacity})")), inline: true);
 
             if (stats.InternalShots != null)
             {
-                builder.AddInlineField($"{WEAPON_EMOTES[type]} Internal Shots", string.Join("\n", stats.InternalShots.Select(s => $"{s.Name} ({s.ClipSize} / {s.Total})")));
+                builder.AddField($"{WEAPON_EMOTES[type]} Internal Shots", string.Join("\n", stats.InternalShots.Select(s => $"{s.Name} ({s.ClipSize} / {s.Total})")), inline: true);
             }
         }
 

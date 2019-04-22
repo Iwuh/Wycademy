@@ -115,6 +115,9 @@ namespace Wycademy
             _handler = new CommandHandler();
             await _handler.Install(_provider);
 
+            var scraper = new ScraperManager(_provider);
+            scraper.RunScrapers();
+
             // Log in and connect.
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();

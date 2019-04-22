@@ -41,7 +41,7 @@ namespace Wycademy.Commands
             _commands.AddTypeReader<BlacklistTypeReader>(new BlacklistTypeReader());
 
             // Add all modules in the assembly to the CommandService.
-            await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
+            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
 
             _client.MessageReceived += HandleCommand;
 

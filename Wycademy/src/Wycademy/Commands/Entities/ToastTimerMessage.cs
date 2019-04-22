@@ -62,7 +62,7 @@ namespace Wycademy.Commands.Entities
                 .WithDescription($"A handy timer to help you time your Teostra novas. Click {START} to start the timer, {STOP} to stop it, and {RESTART} to restart from 0.")
                 .WithFooter(new EmbedFooterBuilder() { Text = FOOTERS[_randFooter.Next(FOOTERS.Length)] });
 
-            var message = await channel.SendMessageAsync(string.Empty, embed: embed);
+            var message = await channel.SendMessageAsync(string.Empty, embed: embed.Build());
 
             await message.AddReactionAsync(new Emoji(START));
             await message.AddReactionAsync(new Emoji(STOP));
