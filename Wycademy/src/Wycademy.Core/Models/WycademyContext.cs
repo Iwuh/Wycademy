@@ -139,7 +139,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.GunStats, e.Name });
+                entity.HasAlternateKey(e => new { e.GunStatsId, e.Name });
 
                 entity.HasOne(d => d.GunStats)
                     .WithMany(p => p.GunShots)
