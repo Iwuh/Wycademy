@@ -147,7 +147,7 @@ namespace Wycademy.Commands.Services
 
             // Start by storing each weapon type as its own element in a list.
             var deserialized = new List<List<T>>();
-            foreach (string fileName in Directory.GetFiles(Path.Combine(WycademyConst.DATA_LOCATION, gameString, "weapon")))
+            foreach (string fileName in Directory.GetFiles(Path.Combine(@"D:\Documents\Visual Studio 2017\Projects\Git\Wycademy\Wycademy\src\Wycademy\bin\Debug\netcoreapp2.1\Data", gameString, "weapon")))
             {
                 string json = File.ReadAllText(fileName, encoding);
                 deserialized.Add(JsonConvert.DeserializeObject<List<T>>(json));

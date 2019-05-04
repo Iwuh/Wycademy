@@ -24,7 +24,10 @@ namespace Wycademy
     {
         // Launch the async main method and wait until it returns.
         public static void Main(string[] args)
-            => new Program().Start(args[0] == "rebuild").GetAwaiter().GetResult();
+        {
+            bool shouldRebuild = args.Length > 0 && args[0] == "rebuild";
+            new Program().Start(shouldRebuild).GetAwaiter().GetResult();
+        }
 
         private DiscordSocketClient _client;
         private CommandHandler _handler;
@@ -152,7 +155,8 @@ namespace Wycademy
             // Add logging.
             services.AddLogging(builder => builder.AddNLog());
 
-            // Add the EF database context.
+            // Set up Entity Framework Core with Npgsql.
+            services.AddEntityFrameworkNpgsql();
             services.AddDbContext<MonsterContext>(ServiceLifetime.Transient); // This will be removed when the database conversion is finished
             services.AddDbContext<WycademyContext>(options =>
             {

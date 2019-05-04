@@ -91,7 +91,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.GunStatsId, e.Name });
+                entity.HasIndex(e => new { e.GunStatsId, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.GunStats)
                     .WithMany(p => p.GunCrouchingFireShots)
@@ -107,7 +107,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.GunStatsId, e.Name });
+                entity.HasIndex(e => new { e.GunStatsId, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.GunStats)
                     .WithMany(p => p.GunInternalShots)
@@ -123,7 +123,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.GunStatsId, e.Name });
+                entity.HasIndex(e => new { e.GunStatsId, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.GunStats)
                     .WithMany(p => p.GunRapidFireShots)
@@ -139,7 +139,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.GunStatsId, e.Name });
+                entity.HasIndex(e => new { e.GunStatsId, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.GunStats)
                     .WithMany(p => p.GunShots)
@@ -192,7 +192,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.MonsterId, e.Game, e.Name });
+                entity.HasIndex(e => new { e.MonsterId, e.Game, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.Monster)
                     .WithMany(p => p.Hitzones)
@@ -231,7 +231,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.MonsterId, e.Game, e.Name });
+                entity.HasIndex(e => new { e.MonsterId, e.Game, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.Monster)
                     .WithMany(p => p.ItemEffects)
@@ -281,7 +281,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.MonsterId, e.Game, e.Name });
+                entity.HasIndex(e => new { e.MonsterId, e.Game, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.Monster)
                     .WithMany(p => p.StaggerLimits)
@@ -305,7 +305,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Name)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.MonsterId, e.Game, e.Name });
+                entity.HasIndex(e => new { e.MonsterId, e.Game, e.Name }).IsUnique();
 
                 entity.HasOne(d => d.Monster)
                     .WithMany(p => p.StatusEffects)
@@ -321,7 +321,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.EffectType)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.WeaponLevelId, e.EffectType });
+                entity.HasIndex(e => new { e.WeaponLevelId, e.EffectType }).IsUnique();
 
                 entity.HasOne(d => d.WeaponLevel)
                     .WithMany(p => p.WeaponEffects)
@@ -340,7 +340,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Slots)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.WeaponId, e.LevelOrdinal });
+                entity.HasIndex(e => new { e.WeaponId, e.LevelOrdinal }).IsUnique();
 
                 entity.HasOne(d => d.Weapon)
                     .WithMany(p => p.WeaponLevels)
@@ -358,7 +358,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd();
 
-                entity.HasAlternateKey(e => new { e.WeaponLevelId, e.SharpnessOrdinal });
+                entity.HasIndex(e => new { e.WeaponLevelId, e.SharpnessOrdinal }).IsUnique();
 
                 entity.HasOne(d => d.WeaponLevel)
                     .WithMany(p => p.WeaponSharpnesses)
@@ -386,7 +386,7 @@ namespace Wycademy.Core.Models
                 entity.Property(e => e.Url)
                     .IsRequired();
 
-                entity.HasAlternateKey(e => new { e.Game, e.Name, e.WeaponType });
+                entity.HasIndex(e => new { e.Game, e.Name, e.WeaponType }).IsUnique();
 
                 entity.HasOne(d => d.Parent)
                     .WithMany(p => p.Children)

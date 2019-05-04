@@ -6,6 +6,12 @@ namespace Wycademy.Core.Models
 {
     public abstract class Weapon
     {
+        protected Weapon()
+        {
+            Children = new List<Weapon>();
+            WeaponLevels = new List<WeaponLevel>();
+        }
+
         public int Id { get; set; }
         public Game? Game { get; set; }
         public string Name { get; set; }
@@ -14,9 +20,9 @@ namespace Wycademy.Core.Models
         public string Url { get; set; }
         public int? ParentId { get; set; }
 
-        public virtual Weapon Parent { get; set; }
-        public virtual List<Weapon> Children { get; set; }
-        public virtual List<WeaponLevel> WeaponLevels { get; set; }
+        public Weapon Parent { get; set; }
+        public List<Weapon> Children { get; set; }
+        public List<WeaponLevel> WeaponLevels { get; set; }
     }
 
     public class Weapon4U : Weapon { }

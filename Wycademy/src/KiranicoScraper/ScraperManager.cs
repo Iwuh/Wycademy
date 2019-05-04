@@ -1,10 +1,12 @@
 ﻿using KiranicoScraper.Scrapers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Wycademy.Core.Models;
 
 namespace KiranicoScraper
 {
@@ -41,7 +43,10 @@ namespace KiranicoScraper
             stopwatch.Start();
 
             // Ensure the database schema is created and fully updated.
-            _provider.GetRequiredService<IMigrator>().Migrate();
+            using (var context = _provider.GetRequiredService<WycademyContext>())
+            {
+                context.Database.Migrate();
+            }
             using (var requester = new WebRequester(_provider))
             {
                 foreach (var scraper in scrapers)

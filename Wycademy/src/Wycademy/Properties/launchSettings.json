@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Wycademy": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "rebuild"
     }
   }
 }
