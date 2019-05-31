@@ -68,7 +68,8 @@ namespace KiranicoScraper.Scrapers
                     // Maps weapon ids in the json to their database ids, used for finding parents.
                     var idMap = new Dictionary<int, int>();
 
-                    foreach (JToken weapon in weapons["weapons"])
+                    // Filter out all dummy weapons to avoid unique constraint issues.
+                    foreach (JToken weapon in weapons["weapons"].Where(t => !((string)t["local_name"]).Contains("dummy")))
                     {
                         var builder = weaponResponse.CreateWeaponBuilder();
 

@@ -18,19 +18,46 @@ namespace KiranicoScraper.Scrapers
         {
             foreach (var monster in ScraperListCollection.Generations.Monsters)
             {
-                using (WebResponse response = Requester.GetPage($"{BASE_URL}/{monster}"))
+                using (WebResponse response = GetPage(monster))
                 {
-                    HtmlDocument page = response.GetPageAsHtml();
-                    DbMonsterBuilder builder = response.CreateMonsterBuilder();
+                    HtmlDocument page = GetHtml(response, out DbMonsterBuilder builder);
 
                     builder.InitialiseMonster(monster);
                     AddHitzones(page, builder);
                     AddStagger(page, builder);
                     AddStatus(page, builder);
                     AddItemEffects(page, builder);
+                    //try
+                    //{
+                    //    builder.Commit();
+                    //}
+                    //catch (Microsoft.EntityFrameworkCore.DbUpdateException e)
+                    //{
+                    //    var ie = e.InnerException as Npgsql.PostgresException;
+                    //    System.IO.File.WriteAllText($".\\{monster}.txt", $"{ie.ConstraintName}\n{ie.Detail}");
+                    //}
                     builder.Commit();
                 }
             }
+
+            HandleSpecialMonsters();
+        }
+
+        /// <summary>
+        /// Gets the MHGen Kiranico webpage for a monster.
+        /// </summary>
+        /// <param name="monster">The monster's Kiranico URL name.</param>
+        private WebResponse GetPage(string monster) => Requester.GetPage($"{BASE_URL}/{monster}");
+
+        /// <summary>
+        /// Gets the HTML from a <see cref="WebResponse"/> as a HAP <see cref="HtmlDocument"/> and sets a <see cref="DbMonsterBuilder"/>.
+        /// </summary>
+        /// <param name="response">The <see cref="WebResponse"/> to get the HTML from.</param>
+        /// <param name="builder">A <see cref="DbMonsterBuilder"/> used to add the monster's data.</param>
+        private HtmlDocument GetHtml(WebResponse response, out DbMonsterBuilder builder)
+        {
+            builder = response.CreateMonsterBuilder();
+            return response.GetPageAsHtml();
         }
 
         /// <summary>
@@ -165,6 +192,141 @@ namespace KiranicoScraper.Scrapers
 
                 builder.AddItemEffect(Game.Generations, itemName, values);
             }
+        }
+
+        /// <summary>
+        /// Manually process certain monsters that have an inconsistency that violates the database's unique constraints.
+        /// </summary>
+        private void HandleSpecialMonsters()
+        {
+            /* The following monsters have an inconsistency or error that makes it so that they must be processed separately:
+             * 
+             * tetsucabra, drilltusk-tetsucabra, royal-ludroth, shogun-ceanataur, nargacuga, silverwind-nargacuga
+             */
+
+            #region Tetsucabra
+            // Reason: Unknown duplicate tail stagger zone
+            using (WebResponse tetsuResponse = GetPage("tetsucabra"))
+            {
+                HtmlDocument tetsuHtml = GetHtml(tetsuResponse, out DbMonsterBuilder builder);
+
+                GetStaggerZonesByNameAndValue(tetsuHtml, "Tail", 15).Single().Remove();
+
+                builder.InitialiseMonster("tetsucabra");
+                AddHitzones(tetsuHtml, builder);
+                AddStagger(tetsuHtml, builder);
+                AddStatus(tetsuHtml, builder);
+                AddItemEffects(tetsuHtml, builder);
+                builder.Commit();
+            }
+            #endregion
+
+            #region Drilltusk Tetsucabra
+            // Reason: Unknown duplicate tail stagger zone
+            using (WebResponse drillResponse = GetPage("drilltusk-tetsucabra"))
+            {
+                HtmlDocument drillHtml = GetHtml(drillResponse, out DbMonsterBuilder builder);
+
+                GetStaggerZonesByNameAndValue(drillHtml, "Tail", 100).Single().Remove();
+
+                builder.InitialiseMonster("drilltusk-tetsucabra");
+                AddHitzones(drillHtml, builder);
+                AddStagger(drillHtml, builder);
+                AddStatus(drillHtml, builder);
+                AddItemEffects(drillHtml, builder);
+                builder.Commit();
+            }
+            #endregion
+
+            #region Royal Ludroth
+            // Reason: 2 nameless stagger zones with the same value and extract colour
+            using (WebResponse ludrothResponse = GetPage("royal-ludroth"))
+            {
+                HtmlDocument ludrothHtml = GetHtml(ludrothResponse, out DbMonsterBuilder builder);
+
+                foreach(HtmlNode node in GetStaggerZonesByNameAndValue(ludrothHtml, string.Empty, 100))
+                {
+                    node.Remove();
+                }
+
+                builder.InitialiseMonster("royal-ludroth");
+                AddHitzones(ludrothHtml, builder);
+                AddStagger(ludrothHtml, builder);
+                AddStatus(ludrothHtml, builder);
+                AddItemEffects(ludrothHtml, builder);
+                builder.Commit();
+            }
+            #endregion
+
+            #region Shogun Ceanataur
+            // Reason: Broken shell has different hitzones for Gravios skull shell vs normal shell
+            using (WebResponse shogunResponse = GetPage("shogun-ceanataur"))
+            {
+                HtmlDocument shogunHtml = GetHtml(shogunResponse, out DbMonsterBuilder builder);
+
+                // Table B has one row, we want to edit the condition that causes the alternate hitzone. XPath uses 1-based indexing.
+                shogunHtml.DocumentNode.SelectSingleNode("//div[@class='col-lg-12']/div/div[@id='state-1']/div/table/tbody/tr/td[2]").InnerHtml = "(Wounded, Gravios Skull)";
+
+                builder.InitialiseMonster("shogun-ceanataur");
+                AddHitzones(shogunHtml, builder);
+                AddStagger(shogunHtml, builder);
+                AddStatus(shogunHtml, builder);
+                AddItemEffects(shogunHtml, builder);
+                builder.Commit();
+            }
+            #endregion
+
+            #region Nargacuga
+            // Reason: Wing Blade (Left) stagger zone is duplicated
+            using (WebResponse nargaResponse = GetPage("nargacuga"))
+            {
+                HtmlDocument nargaHtml = GetHtml(nargaResponse, out DbMonsterBuilder builder);
+
+                // Get both stagger zones and remove the second (index 1).
+                GetStaggerZonesByNameAndValue(nargaHtml, "Wing Blade (Left)", 80).ElementAt(1).Remove();
+
+                builder.InitialiseMonster("nargacuga");
+                AddHitzones(nargaHtml, builder);
+                AddStagger(nargaHtml, builder);
+                AddStatus(nargaHtml, builder);
+                AddItemEffects(nargaHtml, builder);
+                builder.Commit();
+            }
+            #endregion
+
+            #region Silverwind Nargacuga
+            // Reason: Wing Blade (Left) stagger zone is duplicated
+            using (WebResponse silverResponse = GetPage("silverwind-nargacuga"))
+            {
+                HtmlDocument silverHtml = GetHtml(silverResponse, out DbMonsterBuilder builder);
+
+                // Get both stagger zones and remove the second (index 1).
+                GetStaggerZonesByNameAndValue(silverHtml, "Wing Blade (Left)", 80).ElementAt(1).Remove();
+
+                builder.InitialiseMonster("silverwind-nargacuga");
+                AddHitzones(silverHtml, builder);
+                AddStagger(silverHtml, builder);
+                AddStatus(silverHtml, builder);
+                AddItemEffects(silverHtml, builder);
+                builder.Commit();
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Gets stagger nodes matching a supplied name and value.
+        /// </summary>
+        /// <param name="html">The <see cref="HtmlDocument"/> to search.</param>
+        /// <param name="name">The name of the stagger zone.</param>
+        /// <param name="value">The value of the stagger zone.</param>
+        /// <returns>All the nodes matching the input.</returns>
+        private HtmlNodeCollection GetStaggerZonesByNameAndValue(HtmlDocument html, string name, int value)
+        {
+            // Set the text predicate expression to check for either lack of text or a specific string.
+            var textPredicate = string.IsNullOrEmpty(name) ? "not(text())" : $"text()='{name}'";
+
+            // Retrieve all the <tr> elements that contain <td> elements matching both the text predicate and the stagger value.
+            return html.DocumentNode.SelectNodes($"//div[@class='col-lg-5']/div/table/tbody/tr[td[{textPredicate}]][td[text()='{value}']]");
         }
     }
 }

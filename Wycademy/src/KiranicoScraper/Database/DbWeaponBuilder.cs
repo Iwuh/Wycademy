@@ -29,10 +29,14 @@ namespace KiranicoScraper.Database
             _context.Add(_weapon);
             _context.SaveChanges();
 
-            foreach (WeaponLevel level in _weapon.WeaponLevels)
+            if (_weapon.WeaponType != WeaponType.HBG && _weapon.WeaponType != WeaponType.LBG && _weapon.WeaponType != WeaponType.Bow)
             {
-                SharpnessImageGenerator.GenerateImage(_game, level.Id, level.WeaponSharpnesses);
+                foreach (WeaponLevel level in _weapon.WeaponLevels)
+                {
+                    SharpnessImageGenerator.GenerateImage(_game, level.Id, level.WeaponSharpnesses);
+                }
             }
+
             return _weapon.Id;
         }
 
@@ -128,6 +132,7 @@ namespace KiranicoScraper.Database
                     throw new NotSupportedException($"Unknown game type: '{_game}'");
             }
             _levelOrdinal++;
+            _weapon.WeaponLevels.Add(level);
             return new DbWeaponLevelBuilder(level);
         }
     }

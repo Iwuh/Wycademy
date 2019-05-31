@@ -5,6 +5,14 @@ namespace Wycademy.Core.Models
 {
     public class GunStats
     {
+        public GunStats()
+        {
+            GunCrouchingFireShots = new List<GunCrouchingFireShot>();
+            GunInternalShots = new List<GunInternalShot>();
+            GunRapidFireShots = new List<GunRapidFireShot>();
+            GunShots = new List<GunShot>();
+        }
+
         public int Id { get; set; }
         public int WeaponLevelId { get; set; }
         public string ReloadSpeed { get; set; }

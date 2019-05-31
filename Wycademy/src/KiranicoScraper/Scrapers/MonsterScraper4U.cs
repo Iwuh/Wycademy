@@ -172,14 +172,14 @@ namespace KiranicoScraper.Scrapers
         }
 
         /// <summary>
-        /// Manually process the 14 monsters that have some error, inconsistency, or missing data such that they can't be processed normally.
+        /// Manually process the monsters that have some error, inconsistency, or missing data such that they can't be processed normally.
         /// Most data missing from Kiranico was retrieved from the MH4G wiki and cross-referenced with Ping's Dex for accuracy.
         /// </summary>
         private void HandleSpecialMonsters()
         {
             /* The following monsters have an inconsistency or error that makes it so that they must be processed separately:
              * 
-             * cephadrome, plum-d.hermitaur, najarala, brachydios, raging-brachydios, gravios, gore-magala, chaotic-gore-magala, 
+             * cephadrome, plum-d.hermitaur, najarala, brachydios, raging-brachydios, khezu, red-khezu, gravios, azure-rathalos, gore-magala, chaotic-gore-magala, 
              * dalamadur, shah-dalamadur, gogmazios, fatalis, crimson-fatalis, white-fatalis
              */
 
@@ -206,6 +206,7 @@ namespace KiranicoScraper.Scrapers
                 AddStagger(cephaJson, cephaBuilder);
                 AddStatus(cephaJson, cephaBuilder);
                 AddItemEffects(cephaJson, cephaBuilder);
+                cephaBuilder.Commit();
             }
 
             #endregion
@@ -226,7 +227,8 @@ namespace KiranicoScraper.Scrapers
 
                 AddStagger(daimyoJson, daimyoBuilder);
                 AddStatus(daimyoJson, daimyoBuilder);
-                AddItemEffects(daimyoJson, daimyoBuilder); 
+                AddItemEffects(daimyoJson, daimyoBuilder);
+                daimyoBuilder.Commit();
             }
             #endregion
 
@@ -243,7 +245,8 @@ namespace KiranicoScraper.Scrapers
                 AddHitzones(najaJson, "najarala", najaBuilder);
                 AddStagger(najaJson, najaBuilder);
                 AddStatus(najaJson, najaBuilder);
-                AddItemEffects(najaJson, najaBuilder); 
+                AddItemEffects(najaJson, najaBuilder);
+                najaBuilder.Commit();
             }
             #endregion
 
@@ -264,6 +267,7 @@ namespace KiranicoScraper.Scrapers
                 AddStagger(brachJson, brachBuilder);
                 AddStatus(brachJson, brachBuilder);
                 AddItemEffects(brachJson, brachBuilder);
+                brachBuilder.Commit();
 
                 JObject ragingBrachJson = GetJson(ragingBrachResponse, out DbMonsterBuilder ragingBrachBuilder);
                 ragingBrachBuilder.InitialiseMonster("raging-brachydios");
@@ -275,6 +279,45 @@ namespace KiranicoScraper.Scrapers
                 AddStagger(ragingBrachJson, ragingBrachBuilder);
                 AddStatus(ragingBrachJson, ragingBrachBuilder);
                 AddItemEffects(ragingBrachJson, ragingBrachBuilder);
+                ragingBrachBuilder.Commit();
+            }
+            #endregion
+
+            #region Khezu
+            // Reason: First 'Head' stagger limit should be 'Body'
+
+            using (WebResponse khezuResponse = GetPage("khezu"))
+            {
+                JObject khezuJson = GetJson(khezuResponse, out DbMonsterBuilder khezuBuilder);
+
+                JToken error = khezuJson["monsterstaggerlimits"].First(t => (string)t["region"] == "Head" && (string)t["extract_color"] == "orange");
+                error["region"] = "Body";
+
+                khezuBuilder.InitialiseMonster("khezu");
+                AddHitzones(khezuJson, "khezu", khezuBuilder);
+                AddStatus(khezuJson, khezuBuilder);
+                AddStagger(khezuJson, khezuBuilder);
+                AddItemEffects(khezuJson, khezuBuilder);
+                khezuBuilder.Commit();
+            }
+            #endregion
+
+            #region Red Khezu
+            // Reason: First 'Head' stagger limit should be 'Body'
+
+            using (WebResponse redKhezuResponse = GetPage("red-khezu"))
+            {
+                JObject redKhezuJson = GetJson(redKhezuResponse, out DbMonsterBuilder redKhezuBuilder);
+
+                JToken error = redKhezuJson["monsterstaggerlimits"].First(t => (string)t["region"] == "Head" && (string)t["extract_color"] == "orange");
+                error["region"] = "Body";
+
+                redKhezuBuilder.InitialiseMonster("red-khezu");
+                AddHitzones(redKhezuJson, "red-khezu", redKhezuBuilder);
+                AddStatus(redKhezuJson, redKhezuBuilder);
+                AddStagger(redKhezuJson, redKhezuBuilder);
+                AddItemEffects(redKhezuJson, redKhezuBuilder);
+                redKhezuBuilder.Commit();
             }
             #endregion
 
@@ -291,7 +334,26 @@ namespace KiranicoScraper.Scrapers
                 AddHitzones(gravJson, "gravios", gravBuilder);
                 AddStagger(gravJson, gravBuilder);
                 AddStatus(gravJson, gravBuilder);
-                AddItemEffects(gravJson, gravBuilder); 
+                AddItemEffects(gravJson, gravBuilder);
+                gravBuilder.Commit();
+            }
+            #endregion
+
+            #region Azure Rathalos
+            // Reason: Azure Rathalos' page contains Pink Rathian's hitzones
+
+            using (WebResponse azureResponse = GetPage("azure-rathalos"))
+            {
+                JObject azureJson = GetJson(azureResponse, out DbMonsterBuilder azureBuilder);
+
+                ((JArray)azureJson["monsterbodyparts"]).RemoveRange(8);
+
+                azureBuilder.InitialiseMonster("azure-rathalos");
+                AddHitzones(azureJson, "azure-rathalos", azureBuilder);
+                AddStatus(azureJson, azureBuilder);
+                AddStagger(azureJson, azureBuilder);
+                AddItemEffects(azureJson, azureBuilder);
+                azureBuilder.Commit();
             }
             #endregion
 
@@ -312,6 +374,7 @@ namespace KiranicoScraper.Scrapers
                 AddStagger(goreJson, goreBuilder);
                 AddStatus(goreJson, goreBuilder);
                 AddItemEffects(goreJson, goreBuilder);
+                goreBuilder.Commit();
 
                 JObject chaosGoreJson = GetJson(chaosGoreResponse, out DbMonsterBuilder chaosGoreBuilder);
                 chaosGoreBuilder.InitialiseMonster("chaotic-gore-magala");
@@ -323,6 +386,7 @@ namespace KiranicoScraper.Scrapers
                 AddStagger(chaosGoreJson, chaosGoreBuilder);
                 AddStatus(chaosGoreJson, chaosGoreBuilder);
                 AddItemEffects(chaosGoreJson, chaosGoreBuilder);
+                chaosGoreBuilder.Commit();
             }
             #endregion
 
@@ -348,7 +412,8 @@ namespace KiranicoScraper.Scrapers
 
                 AddStagger(dalaJson, dalaBuilder);
                 AddStatus(dalaJson, dalaBuilder);
-                AddItemEffects(dalaJson, dalaBuilder); 
+                AddItemEffects(dalaJson, dalaBuilder);
+                dalaBuilder.Commit();
             }
             #endregion
 
@@ -362,7 +427,8 @@ namespace KiranicoScraper.Scrapers
 
                 AddHitzonesWithThreeTables(shahJson, "shah-dalamadur", shahBuilder);
                 AddStatus(shahJson, shahBuilder);
-                AddItemEffects(shahJson, shahBuilder); 
+                AddItemEffects(shahJson, shahBuilder);
+                shahBuilder.Commit();
             }
             #endregion
 
@@ -377,7 +443,8 @@ namespace KiranicoScraper.Scrapers
                 AddHitzonesWithThreeTables(gogJson, "gogmazios", gogBuilder);
                 AddStagger(gogJson, gogBuilder);
                 AddStatus(gogJson, gogBuilder);
-                AddItemEffects(gogJson, gogBuilder); 
+                AddItemEffects(gogJson, gogBuilder);
+                gogBuilder.Commit();
             }
             #endregion
 
@@ -391,7 +458,8 @@ namespace KiranicoScraper.Scrapers
 
                 AddHitzones(fataJson, "fatalis", fataBuilder);
                 AddStatus(fataJson, fataBuilder);
-                AddItemEffects(fataJson, fataBuilder); 
+                AddItemEffects(fataJson, fataBuilder);
+                fataBuilder.Commit();
             }
             #endregion
 
@@ -416,7 +484,8 @@ namespace KiranicoScraper.Scrapers
                 crimHitzones.ForEach(p => crimBuilder.AddHitzone(Game.Four, p.Key, p.Value));
 
                 AddStatus(crimJson, crimBuilder);
-                AddItemEffects(crimJson, crimBuilder); 
+                AddItemEffects(crimJson, crimBuilder);
+                crimBuilder.Commit();
             }
             #endregion
 
@@ -442,7 +511,8 @@ namespace KiranicoScraper.Scrapers
                 whiteHitzones.ForEach(p => whiteBuilder.AddHitzone(Game.Four, p.Key, p.Value));
 
                 AddStatus(whiteJson, whiteBuilder);
-                AddItemEffects(whiteJson, whiteBuilder); 
+                AddItemEffects(whiteJson, whiteBuilder);
+                whiteBuilder.Commit();
             }
             #endregion
         }

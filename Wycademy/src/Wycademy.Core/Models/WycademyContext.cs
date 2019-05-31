@@ -27,7 +27,7 @@ namespace Wycademy.Core.Models
         public DbSet<GunRapidFireShot> GunRapidFireShots { get; set; }
         public DbSet<GunShot> GunShots { get; set; }
         public DbSet<GunStats> GunStats { get; set; }
-        public DbSet<GunlanceShellStats> GunlanceShells { get; set; }
+        public DbSet<GunlanceShellStats> GunlanceShellStats { get; set; }
         public DbSet<Hitzone> Hitzones { get; set; }
         public DbSet<HornNotes> HornNotes { get; set; }
         public DbSet<ItemEffect> ItemEffects { get; set; }
@@ -35,6 +35,7 @@ namespace Wycademy.Core.Models
         public DbSet<Phial> Phials { get; set; }
         public DbSet<StaggerLimit> StaggerLimits { get; set; }
         public DbSet<StatusEffect> StatusEffects { get; set; }
+        public DbSet<Weapon> Weapons { get; set; }
         public DbSet<WeaponEffect> WeaponEffects { get; set; }
         public DbSet<WeaponLevel> WeaponLevels { get; set; }
         public DbSet<WeaponSharpness> WeaponSharpnesses { get; set; }
@@ -46,7 +47,7 @@ namespace Wycademy.Core.Models
                 // Enable detailed error logging and sensitive data logging, but only when the debug build configuration is used.
 #if DEBUG
                 optionsBuilder.EnableDetailedErrors();
-                optionsBuilder.EnableSensitiveDataLogging();
+                //optionsBuilder.EnableSensitiveDataLogging();
 #endif
             }
         }

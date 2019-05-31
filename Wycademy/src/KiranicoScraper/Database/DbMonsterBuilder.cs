@@ -10,6 +10,7 @@ namespace KiranicoScraper.Database
     {
         private readonly WycademyContext _context;
         private Monster _monster;
+        private bool _monsterExistsInDatabase;
 
         public DbMonsterBuilder(WycademyContext context)
         {
@@ -23,7 +24,10 @@ namespace KiranicoScraper.Database
         {
             if (_monster == null) throw new InvalidOperationException("Cannot add uninitialised monster to database.");
 
-            _context.Add(_monster);
+            if (!_monsterExistsInDatabase)
+            {
+                _context.Add(_monster);
+            }
             _context.SaveChanges();
         }
 
@@ -34,7 +38,10 @@ namespace KiranicoScraper.Database
         public void InitialiseMonster(string webName)
         {
             var monster = _context.Monsters.SingleOrDefault(m => m.WebName == webName);
-            _monster = monster ?? 
+
+            // Record whether or not a row already exists for the monster; avoids key violations.
+            _monsterExistsInDatabase = monster != null;
+            _monster = _monsterExistsInDatabase ? monster :
                 new Monster
                 {
                     WebName = webName,

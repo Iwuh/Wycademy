@@ -23,6 +23,13 @@ namespace KiranicoScraper.Scrapers
                     HtmlDocument page = response.GetPageAsHtml();
                     var builder = response.CreateMonsterBuilder();
 
+                    // Handle Vaal Hazak here because he's the only monster with an exception.
+                    if (monster == "vaal-hazak")
+                    {
+                        // Change the first "Tail Tip" hitzone to "Tail".
+                        page.DocumentNode.SelectSingleNode("//div[@class='col-sm-8']/table/tr[td[text()='Tail Tip']]/td[1]").InnerHtml = "Tail";
+                    }
+
                     builder.InitialiseMonster(monster);
                     AddHitzones(page, builder);
                     AddStagger(page, builder);

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -42,10 +43,20 @@ namespace KiranicoScraper
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            // Ensure the database schema is created and fully updated.
             using (var context = _provider.GetRequiredService<WycademyContext>())
             {
+                // Ensure the database is created and all migrations are applied.
                 context.Database.Migrate();
+
+                // Reload types in case the migrations created database enums.
+                var connection = (NpgsqlConnection)context.Database.GetDbConnection();
+                connection.Open();
+                connection.ReloadTypes();
+                connection.Close();
+
+                // Remove all rows of Monsters, Weapons, and all dependent tables.
+                context.Database.ExecuteSqlCommand(@"TRUNCATE TABLE ""Monsters"", ""Weapons"" RESTART IDENTITY CASCADE;");
+                context.SaveChanges();
             }
             using (var requester = new WebRequester(_provider))
             {

@@ -6,6 +6,12 @@ namespace Wycademy.Core.Models
 {
     public abstract class WeaponLevel
     {
+        protected WeaponLevel()
+        {
+            WeaponEffects = new List<WeaponEffect>();
+            WeaponSharpnesses = new List<WeaponSharpness>();
+        }
+
         public int Id { get; set; }
         public int WeaponId { get; set; }
         public Game? Game { get; set; }
