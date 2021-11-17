@@ -1,3 +1,5 @@
+This project has been discontinued. It has been years since I have worked on this project, and at this point would require a near-total rewrite I have neither the time nor the energy for. On top of that, questionable API changes brought forth by Discord make me loath to get back into bot development, so I'm official throwing in the towel. Thank you for your patronage over my years of bot development.
+
 # Wycademy
 This is a Discord bot that provides information about monsters from Capcom's Monster Hunter series of video games.
 
